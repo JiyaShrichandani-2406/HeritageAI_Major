@@ -1,0 +1,45 @@
+
+[
+  {
+    "destination": "Bhopal",
+    "budget": 3000,
+    "days": 2,
+    "interests": [
+      "history",
+      "architecture",
+      "culture"
+    ],
+    "travelers": 1,
+    "travel_style": "budget",
+    "include_food": true,
+    "include_transport": true
+  },
+  {
+    "destination": "Delhi",
+    "budget": 8000,
+    "days": 3,
+    "interests": [
+      "monuments",
+      "museums",
+      "history"
+    ],
+    "travelers": 2,
+    "travel_style": "balanced",
+    "include_food": true,
+    "include_transport": true
+  },
+  {
+    "destination": "Khajuraho",
+    "budget": 5000,
+    "days": 2,
+    "interests": [
+      "temples",
+      "sculpture",
+      "architecture"
+    ],
+    "travelers": 1,
+    "travel_style": "comfortable",
+    "include_food": false,
+    "include_transport": true
+  }
+]

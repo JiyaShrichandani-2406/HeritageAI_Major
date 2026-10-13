@@ -2,6 +2,9 @@
 from fastapi import FastAPI
 
 from backend.app.api.v1.endpoints.chat import router as chat_router
+from backend.app.api.v1.endpoints.itinerary import (
+    router as itinerary_router,
+)
 
 
 app = FastAPI(
@@ -29,4 +32,8 @@ def health_check():
     }
 
 
+# Member 5: RAG chatbot
 app.include_router(chat_router)
+
+# Member 6: AI budget-based itinerary planner
+app.include_router(itinerary_router)
