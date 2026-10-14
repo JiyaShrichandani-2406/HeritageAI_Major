@@ -1,0 +1,12 @@
+id,name,category,latitude,longitude,address,source_url
+taj-mahal,Taj Mahal,monument,27.1751,78.0421,"Dharmapuri, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001",https://en.wikipedia.org/wiki/Taj_Mahal
+agra-fort,Agra Fort,monument,27.1795,78.0211,"Rakabganj, Agra, Uttar Pradesh 282003",https://en.wikipedia.org/wiki/Agra_Fort
+mehtab-bagh,Mehtab Bagh,garden,27.1790,78.0437,"Northern bank of Yamuna river, Agra, Uttar Pradesh 282006",https://en.wikipedia.org/wiki/Mehtab_Bagh
+itmad-ud-daulah,Tomb of Itmad-ud-Daulah,monument,27.1930,78.0309,"Moti Bagh, Bairon Para, Agra, Uttar Pradesh 282006",https://en.wikipedia.org/wiki/Tomb_of_Itimad-ud-Daulah
+jama-masjid-agra,Jama Masjid Agra,religious,27.1830,78.0147,"Jama Masjid Rd, Agra, Uttar Pradesh 282003",https://en.wikipedia.org/wiki/Jama_Masjid,_Agra
+chini-ka-rauza,Chini Ka Rauza,monument,27.2000,78.0233,"Itmad-ud-Daulah Rd, Agra, Uttar Pradesh 282006",https://en.wikipedia.org/wiki/Chini_Ka_Rauza
+ram-bagh,Ram Bagh (Aram Bagh),garden,27.2087,78.0457,"Ram Bagh, Agra, Uttar Pradesh 282006",https://en.wikipedia.org/wiki/Ram_Bagh,_Agra
+akbar-tomb-sikandra,Akbar's Tomb (Sikandra),monument,27.2205,77.9511,"Sikandra, Agra, Uttar Pradesh 282007",https://en.wikipedia.org/wiki/Tomb_of_Akbar_the_Great
+fatehpur-sikri,Fatehpur Sikri,monument,27.0940,77.6610,"Fatehpur Sikri, Agra district, Uttar Pradesh 283110",https://en.wikipedia.org/wiki/Fatehpur_Sikri
+keoladeo-national-park,Keoladeo National Park,nature,27.1590,77.5220,"Bharatpur, Rajasthan 321001",https://en.wikipedia.org/wiki/Keoladeo_National_Park
+mankameshwar-temple,Mankameshwar Temple,religious,27.1880,78.0120,"Rawatpara, Agra, Uttar Pradesh 282003",https://en.wikipedia.org/wiki/Mankameshwar_Temple
