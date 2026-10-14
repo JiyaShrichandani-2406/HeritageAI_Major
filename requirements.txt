@@ -1,9 +1,9 @@
 
 fastapi
-uvicorn
+uvicorn[standard]
 pydantic
-python-dotenv
-SQLAlchemy
-sentence-transformers
 faiss-cpu
+sentence-transformers
 numpy
+pytest
+httpx

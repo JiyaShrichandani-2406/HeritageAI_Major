@@ -3,15 +3,12 @@ import json
 import urllib.error
 import urllib.request
 
-
 OLLAMA_URL = "http://localhost:11434/api/generate"
 MODEL_NAME = "llama3.2"
 
 
 def generate_response(prompt: str) -> str:
-    """
-    Send a prompt to Ollama and return the generated text.
-    """
+    """Send a prompt to Ollama and return the generated text."""
 
     if not prompt or not prompt.strip():
         raise ValueError("Prompt cannot be empty.")
@@ -20,6 +17,7 @@ def generate_response(prompt: str) -> str:
         "model": MODEL_NAME,
         "prompt": prompt,
         "stream": False,
+        "format": "json",
         "options": {
             "temperature": 0.2
         }
@@ -33,7 +31,7 @@ def generate_response(prompt: str) -> str:
     )
 
     try:
-        with urllib.request.urlopen(request, timeout=120) as response:
+        with urllib.request.urlopen(request, timeout=300) as response:
             result = json.loads(response.read().decode("utf-8"))
 
     except urllib.error.URLError as error:
@@ -52,8 +50,8 @@ def generate_response(prompt: str) -> str:
 
 if __name__ == "__main__":
     test_prompt = (
-        "You are a helpful assistant. "
-        "Reply with exactly: Ollama connection successful."
+        "Return a JSON object with one key, status, "
+        "whose value is Ollama connection successful."
     )
 
     print(generate_response(test_prompt))
