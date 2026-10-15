@@ -1,20 +1,63 @@
+"""FastAPI application entry point for HeritageAI."""
 
-from fastapi import FastAPI
+from contextlib import asynccontextmanager
+import logging
 
-from backend.app.api.v1.endpoints.chat import router as chat_router
-from backend.app.api.v1.endpoints.itinerary import (
-    router as itinerary_router,
-)
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
+from backend.app.api.v1.router import api_router
+from backend.app.core.config import get_settings
+
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Keep startup lightweight; AI resources are initialized on demand."""
+    logger.info("Starting HeritageAI API")
+    yield
+    logger.info("Shutting down HeritageAI API")
+
+
+settings = get_settings()
 
 app = FastAPI(
-    title="HeritageAI API",
+    title=settings.app_name,
     description=(
         "AI-powered Indian cultural heritage explorer "
         "using Retrieval-Augmented Generation (RAG)."
     ),
-    version="1.0.0",
+    version=settings.app_version,
+    lifespan=lifespan,
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=list(settings.cors_origins),
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.exception_handler(Exception)
+async def unexpected_exception_handler(
+    request: Request,
+    exc: Exception,
+) -> JSONResponse:
+    """Log unexpected failures without exposing internal details."""
+    logger.error(
+        "Unexpected error while handling %s %s",
+        request.method,
+        request.url.path,
+        exc_info=(type(exc), exc, exc.__traceback__),
+    )
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Internal server error"},
+    )
 
 
 @app.get("/")
@@ -32,8 +75,5 @@ def health_check():
     }
 
 
-# Member 5: RAG chatbot
-app.include_router(chat_router)
-
-# Member 6: AI budget-based itinerary planner
-app.include_router(itinerary_router)
+# All versioned endpoints (health, chat, itinerary, ...) live in one router.
+app.include_router(api_router)

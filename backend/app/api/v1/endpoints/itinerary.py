@@ -9,7 +9,7 @@ from backend.app.schemas.itinerary import (
 from backend.app.services.itinerary_service import build_itinerary_response
 
 
-router = APIRouter(prefix="/api/v1", tags=["Itinerary"])
+router = APIRouter(tags=["Itinerary"])
 
 
 @router.post("/itinerary", response_model=ItineraryResponse)
