@@ -1,8 +1,8 @@
-\# HeritageAI — Backend Architecture
+# HeritageAI — Backend Architecture
 
 
 
-\## 1. Purpose
+## 1. Purpose
 
 
 
@@ -14,7 +14,7 @@ This document describes the current backend implementation. Features owned by ot
 
 
 
-\## 2. Backend Directory Structure
+## 2. Backend Directory Structure
 
 
 
@@ -24,39 +24,39 @@ backend/
 
 └── app/
 
-&#x20;   ├── main.py
+    ├── main.py
 
-&#x20;   ├── core/
+    ├── core/
 
-&#x20;   │   ├── config.py
+    │   ├── config.py
 
-&#x20;   │   └── \_\_init\_\_.py
+    │   └── \_\_init\_\_.py
 
-&#x20;   ├── api/
+    ├── api/
 
-&#x20;   │   └── v1/
+    │   └── v1/
 
-&#x20;   │       ├── router.py
+    │       ├── router.py
 
-&#x20;   │       └── endpoints/
+    │       └── endpoints/
 
-&#x20;   ├── schemas/
+    ├── schemas/
 
-&#x20;   ├── services/
+    ├── services/
 
-&#x20;   ├── rag/
+    ├── rag/
 
-&#x20;   │   ├── document\_loader.py
+    │   ├── document\_loader.py
 
-&#x20;   │   ├── text\_splitter.py
+    │   ├── text\_splitter.py
 
-&#x20;   │   ├── vector\_store.py
+    │   ├── vector\_store.py
 
-&#x20;   │   └── retriever.py
+    │   └── retriever.py
 
-&#x20;   └── ai/
+    └── ai/
 
-&#x20;       └── llm\_client.py
+        └── llm\_client.py
 
 
 
@@ -82,7 +82,7 @@ The structure above represents the main application components. Additional endpo
 
 
 
-\## 3. Main Application
+## 3. Main Application
 
 
 
@@ -112,7 +112,7 @@ The main application should remain the central entry point rather than duplicati
 
 
 
-\## 4. Configuration Management
+## 4. Configuration Management
 
 
 
@@ -152,7 +152,7 @@ Secrets and machine-specific values should not be committed to the repository.
 
 
 
-\## 5. API Routing
+## 5. API Routing
 
 
 
@@ -188,7 +188,7 @@ Feature-specific endpoint modules are registered through the central router. Add
 
 
 
-\## 6. Shared Schemas
+## 6. Shared Schemas
 
 
 
@@ -222,11 +222,11 @@ Feature-specific request and response models should remain with their respective
 
 
 
-\## 7. AI and RAG Architecture
+## 7. AI and RAG Architecture
 
 
 
-\### 7.1 AI Client
+### 7.1 AI Client
 
 
 
@@ -256,7 +256,7 @@ The existing `generate\_response(prompt: str) -> str` interface should be preser
 
 
 
-\### 7.2 Retrieval-Augmented Generation
+### 7.2 Retrieval-Augmented Generation
 
 
 
@@ -306,7 +306,7 @@ AI-generated answers should not be presented as verified historical facts withou
 
 
 
-\## 8. Data and Storage
+## 8. Data and Storage
 
 
 
@@ -338,7 +338,7 @@ The `data/processed/` directory is not currently present and should not be treat
 
 
 
-\## 9. Error Handling and Middleware
+## 9. Error Handling and Middleware
 
 
 
@@ -364,7 +364,7 @@ Expected validation errors should be handled according to FastAPI's normal reque
 
 
 
-\## 10. Testing and Quality Assurance
+## 10. Testing and Quality Assurance
 
 
 
@@ -404,7 +404,7 @@ python -m pytest -q
 
 
 
-\## 11. Local Development
+## 11. Local Development
 
 
 
@@ -428,7 +428,7 @@ Refer to `docs/development\_setup.md` for instructions on:
 
 
 
-\## 12. Integration Boundaries
+## 12. Integration Boundaries
 
 
 
