@@ -6,7 +6,7 @@ from backend.app.services.heritage_service import get_heritage_context
 
 # A small app with only this router, so the test does not depend on other modules.
 app = FastAPI()
-app.include_router(router)
+app.include_router(router, prefix="/api/v1")
 client = TestClient(app)
 
 

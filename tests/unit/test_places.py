@@ -7,13 +7,13 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "backend"))
 
-from app.api.v1.endpoints import places as places_endpoint  # noqa: E402
-from app.ingestion.import_places import validate_row  # noqa: E402
-from app.models.place import CATEGORIES  # noqa: E402
-from app.repositories.place_repository import PlaceRepository, PlacesDataError  # noqa: E402
-from app.services.places_service import PlacesService, get_places_service, haversine_km  # noqa: E402
+
+from backend.app.api.v1.endpoints import places as places_endpoint
+from backend.app.ingestion.import_places import validate_row
+from backend.app.models.place import CATEGORIES
+from backend.app.repositories.place_repository import PlaceRepository, PlacesDataError
+from backend.app.services.places_service import PlacesService, get_places_service, haversine_km  # noqa: E402
 
 TAJ = (27.1751, 78.0421)
 DATA = ROOT / "data" / "processed" / "nearby_places.json"

@@ -8,8 +8,8 @@ from functools import lru_cache
 from math import asin, cos, radians, sin, sqrt
 from typing import List, Optional, Union
 
-from app.repositories.place_repository import PlaceRepository
-from app.schemas.place import NearbyPlace, PlaceCategory
+from backend.app.repositories.place_repository import PlaceRepository
+from backend.app.schemas.place import NearbyPlace, PlaceCategory
 
 EARTH_RADIUS_KM = 6371.0088
 

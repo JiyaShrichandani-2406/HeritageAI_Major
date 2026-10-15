@@ -1,23 +1,23 @@
 [
   {
-    "text": "DOCUMENT TYPE: Temporary RAG Test Data\nVERIFICATION STATUS: UNVERIFIED — TESTING ONLY\nDOCUMENT ID: test-taj-001\n\nTITLE: Taj Mahal\nCATEGORY: Monument\nLOCATION: Agra, Uttar Pradesh, India\nSOURCE URL: https://example.org/test/taj-mahal\nLAST VERIFIED: Not verified\n\nCONTENT:\n\nThe Taj Mahal is a monument located in Agra, Uttar Pradesh, India. For this temporary test document, the monument is described as a heritage attraction associated with Mughal architecture.\n\nThe monument name is Taj Mahal. Its te",
+    "text": "DOCUMENT ID: taj-mahal\nTITLE: Taj Mahal\nCATEGORY: Monument\nLOCATION: Agra, Uttar Pradesh, India\nSOURCE URL: https://whc.unesco.org/en/list/252\nLAST VERIFIED: Not verified\n\nCONTENT:\n\nTaj Mahal is located in Agra, Uttar Pradesh, India. Ivory-white marble mausoleum in Agra, built by the Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal.\n\nHistory of Taj Mahal. The Taj Mahal was commissioned by the Mughal emperor Shah Jahan after the death of his wife Mumtaz Mahal in 1631. Construction beg",
     "title": "Taj Mahal",
-    "source_url": "https://example.org/test/taj-mahal",
+    "source_url": "https://whc.unesco.org/en/list/252",
     "category": "Monument",
-    "file_name": "sample_monument_a.txt"
+    "file_name": "taj-mahal.txt"
   },
   {
-    "text": "hitecture.\n\nThe monument name is Taj Mahal. Its test location is Agra in Uttar Pradesh. The document contains keywords related to monuments, historical architecture, heritage tourism, and Indian cultural heritage.\n\nThis text is intentionally simplified for testing the HeritageAI retrieval pipeline. It is not a verified historical reference and must not be used to generate factual answers for project users.\n\nTEST QUESTIONS:\n1. What is the name of the monument in this document?\n2. Where is the Taj",
+    "text": "of his wife Mumtaz Mahal in 1631. Construction began around 1632 on the south bank of the Yamuna River in Agra. The main mausoleum was largely complete by about 1648, and the surrounding complex, including the gardens, mosque and guest house, was finished around 1653. It was inscribed as a UNESCO World Heritage Site in 1983.\n\nArchitecture of Taj Mahal. A masterpiece of Mughal architecture that combines Persian, Islamic and Indian elements. The central mausoleum is built of white marble on a rais",
     "title": "Taj Mahal",
-    "source_url": "https://example.org/test/taj-mahal",
+    "source_url": "https://whc.unesco.org/en/list/252",
     "category": "Monument",
-    "file_name": "sample_monument_a.txt"
+    "file_name": "taj-mahal.txt"
   },
   {
-    "text": "the monument in this document?\n2. Where is the Taj Mahal located according to the test data?\n3. Which architectural topic is mentioned in the document?\n\nEXPECTED RETRIEVAL:\nThis document should be retrieved for questions about the Taj Mahal, Agra, or Mughal architecture.",
+    "text": "ntral mausoleum is built of white marble on a raised platform, with four minarets at the corners, a large central dome surrounded by smaller domed pavilions, and decorative inlay work. It stands at the end of a symmetrical charbagh garden, flanked by a red sandstone mosque and a matching building.",
     "title": "Taj Mahal",
-    "source_url": "https://example.org/test/taj-mahal",
+    "source_url": "https://whc.unesco.org/en/list/252",
     "category": "Monument",
-    "file_name": "sample_monument_a.txt"
+    "file_name": "taj-mahal.txt"
   }
 ]

@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 from typing import List, Optional
 
-from app.models.place import Place
+from backend.app.models.place import Place
 
 # backend/app/repositories/place_repository.py -> repo root is parents[3]
 DEFAULT_DATA_PATH = Path(__file__).resolve().parents[3] / "data" / "processed" / "nearby_places.json"

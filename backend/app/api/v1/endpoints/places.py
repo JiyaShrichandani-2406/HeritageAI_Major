@@ -7,9 +7,9 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 
-from app.repositories.place_repository import PlacesDataError
-from app.schemas.place import NearbyPlacesResponse, PlaceCategory
-from app.services.places_service import PlacesService, get_places_service
+from backend.app.repositories.place_repository import PlacesDataError
+from backend.app.schemas.place import NearbyPlacesResponse, PlaceCategory
+from backend.app.services.places_service import PlacesService, get_places_service
 
 router = APIRouter()
 

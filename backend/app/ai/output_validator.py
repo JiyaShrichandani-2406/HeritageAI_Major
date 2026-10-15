@@ -70,9 +70,17 @@ def validate_output(result: dict) -> dict:
             "relevance_score": score,
         })
 
-    # Abstentions must not claim to be grounded answers.
-    if answer.strip() == ABSTENTION_ANSWER:
-        grounded = False
+    # Abstentions must never be marked as grounded answers.
+    normalized_answer = " ".join(answer.strip().upper().split())
+
+    if (
+    answer.strip() == ABSTENTION_ANSWER
+    or normalized_answer in {
+        "INSUFFICIENT_CONTEXT",
+        "INSUFFICIENT CONTEXT",
+       }
+    ):
+       grounded = False
 
     # An answer without retrieved sources cannot be marked grounded.
     if not validated_sources:

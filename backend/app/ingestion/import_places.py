@@ -8,7 +8,7 @@ import json
 import sys
 from pathlib import Path
 
-from app.models.place import CATEGORIES
+from backend.app.models.place import CATEGORIES
 
 ROOT = Path(__file__).resolve().parents[3]
 RAW_DIR = ROOT / "data" / "raw" / "places"

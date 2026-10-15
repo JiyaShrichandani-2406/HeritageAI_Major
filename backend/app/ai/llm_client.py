@@ -21,7 +21,6 @@ def generate_response(prompt: str) -> str:
         "model": settings.ollama_model,
         "prompt": prompt,
         "stream": False,
-        "format": "json",
         "options": {"temperature": 0.2},
     }
 

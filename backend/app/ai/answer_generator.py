@@ -1,9 +1,14 @@
 
 from backend.app.ai.llm_client import generate_response
 from backend.app.rag.retriever import HeritageRetriever
-
+from backend.app.services.places_service import get_places_service
 
 INSUFFICIENT_CONTEXT = "INSUFFICIENT_CONTEXT"
+
+ABSTENTION_ANSWER = (
+    "I couldn't find enough information in the available "
+    "heritage documents to answer this question."
+)
 
 # Create the retriever once and reuse it.
 _retriever = None
@@ -18,15 +23,73 @@ def get_retriever():
     return _retriever
 
 
+def get_nearby_places(
+    latitude=27.1751,
+    longitude=78.0421,
+    radius_km=15,
+    limit=5,
+):
+    """Return nearby attractions using the existing places service."""
+    service = get_places_service()
+
+    return service.find_nearby(
+        latitude=latitude,
+        longitude=longitude,
+        radius_km=radius_km,
+        limit=limit,
+    )
+
+
+def is_nearby_question(question: str) -> bool:
+    """Identify questions asking about nearby places."""
+    normalized = " ".join(question.lower().split())
+
+    keywords = (
+        "nearby",
+        "near ",
+        "close to",
+        "attractions near",
+        "places near",
+        "visit near",
+    )
+
+    return any(keyword in normalized for keyword in keywords)
+
+
+def is_market_question(question: str) -> bool:
+    """Identify market or shopping questions not covered by current data."""
+    normalized = question.lower()
+
+    keywords = (
+        "market",
+        "markets",
+        "shopping",
+        "shop",
+        "shops",
+        "bazaar",
+        "bazaars",
+    )
+
+    return any(keyword in normalized for keyword in keywords)
+
+
+def abstention_result(message: str) -> dict:
+    """Return a consistent response when available data is insufficient."""
+    return {
+        "answer": ABSTENTION_ANSWER,
+        "sources": [],
+        "grounded": False,
+        "message": message,
+    }
+
+
 def generate_answer(question: str, top_k: int = 3) -> dict:
     """
-    Generate an answer using retrieved heritage-document context.
+    Generate answers from nearby-place data or heritage documents.
 
-    Returns:
-        answer: Generated answer or an abstention message.
-        sources: Relevant document source metadata.
-        grounded: Whether an answer was produced from retrieved context.
-        message: Additional information for the caller.
+    The grounded flag indicates that available source data was used.
+    It does not certify that the underlying sources are accurate
+    or officially verified.
     """
 
     if not question or not question.strip():
@@ -35,19 +98,72 @@ def generate_answer(question: str, top_k: int = 3) -> dict:
     if top_k < 1:
         raise ValueError("top_k must be at least 1.")
 
+    cleaned_question = question.strip()
+
+    # The current dataset does not contain market or shopping information.
+    if is_market_question(cleaned_question):
+        return abstention_result(
+            "Market and shopping information is not available "
+            "in the current places dataset."
+        )
+
+    # Handle nearby-attraction questions directly from the dataset.
+    # No language-model call is used to generate these place facts.
+    if is_nearby_question(cleaned_question):
+        places = get_nearby_places(limit=5)
+
+        if not places:
+            return abstention_result(
+                "No nearby places were found in the available dataset."
+            )
+
+        answer_lines = [
+            "Here are the nearby places available in the HeritageAI dataset:"
+        ]
+        sources = []
+
+        for place in places:
+            answer_lines.append(
+                f"- {place.name} ({place.category}) — "
+                f"{place.distance_km} km away."
+            )
+
+            if place.address:
+                answer_lines.append(
+                    f"  Address: {place.address}"
+                )
+
+            if place.source_url:
+                sources.append(
+                    {
+                        "title": place.name,
+                        "url": place.source_url,
+                        "relevance_score": None,
+                    }
+                )
+
+        return {
+            "answer": "\n".join(answer_lines),
+            "sources": sources,
+            "grounded": bool(sources),
+            "message": (
+                "Places and distances are formatted directly from the "
+                "nearby-places dataset. Source accuracy and verification "
+                "must be checked separately."
+            ),
+        }
+
+    # Use the existing heritage RAG pipeline for other questions.
     retriever = get_retriever()
-    retrieved_chunks = retriever.search(question, top_k=top_k)
+    retrieved_chunks = retriever.search(
+        cleaned_question,
+        top_k=top_k,
+    )
 
     if not retrieved_chunks:
-        return {
-            "answer": (
-                "I couldn't find enough information in the available "
-                "heritage documents to answer this question."
-            ),
-            "sources": [],
-            "grounded": False,
-            "message": "No relevant document chunks were retrieved.",
-        }
+        return abstention_result(
+            "No relevant document chunks were retrieved."
+        )
 
     # Prepare the context supplied to the language model.
     context_parts = []
@@ -82,33 +198,31 @@ CONTEXT:
 {context}
 
 USER QUESTION:
-{question.strip()}
+{cleaned_question}
 
 ANSWER:
 """.strip()
 
     generated_text = generate_response(prompt).strip()
 
-    # Detect an abstention even if the model adds a short explanation.
-    if generated_text.upper().startswith(INSUFFICIENT_CONTEXT):
-        return {
-            "answer": (
-                "I couldn't find enough information in the available "
-                "heritage documents to answer this question."
-            ),
-            "sources": [],
-            "grounded": False,
-            "message": "The retrieved context did not support an answer.",
-        }
+    # Detect abstention despite changes in case or whitespace.
+    normalized_answer = " ".join(generated_text.upper().split())
 
-    # Remove duplicate sources while retaining the highest score.
+    if (
+        normalized_answer.startswith("INSUFFICIENT_CONTEXT")
+        or normalized_answer.startswith("INSUFFICIENT CONTEXT")
+    ):
+        return abstention_result(
+            "The retrieved context did not support an answer."
+        )
+
+    # Remove duplicate sources while retaining the highest relevance score.
     source_map = {}
 
     for chunk in retrieved_chunks:
         title = chunk.get("title", "Unknown")
         url = chunk.get("source_url", "")
         key = (title, url)
-
         score = chunk.get("relevance_score")
 
         if key not in source_map:
@@ -128,8 +242,6 @@ ANSWER:
 
     sources = list(source_map.values())
 
-    # This flag means the model answered using retrieved context.
-    # It does not certify that the underlying documents are accurate.
     return {
         "answer": generated_text,
         "sources": sources,

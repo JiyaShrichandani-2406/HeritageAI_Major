@@ -3,8 +3,7 @@ from fastapi import APIRouter, HTTPException, status
 from backend.app.schemas.monument import MonumentResponse
 from backend.app.services.heritage_service import get_monument
 
-router = APIRouter(prefix="/api/v1", tags=["Monuments"])
-
+router = APIRouter(tags=["Monuments"])
 
 @router.get("/monuments/{monument_id}", response_model=MonumentResponse)
 def get_monument_details(monument_id: str) -> MonumentResponse:
