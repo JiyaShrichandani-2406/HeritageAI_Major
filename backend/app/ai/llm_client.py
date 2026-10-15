@@ -1,4 +1,3 @@
-
 """Shared Ollama client for HeritageAI."""
 
 import json
@@ -22,6 +21,7 @@ def generate_response(prompt: str) -> str:
         "model": settings.ollama_model,
         "prompt": prompt,
         "stream": False,
+        "format": "json",
         "options": {"temperature": 0.2},
     }
 
@@ -57,7 +57,12 @@ def generate_response(prompt: str) -> str:
 
 
 if __name__ == "__main__":
+    test_prompt = (
+        "Return a JSON object with one key, status, "
+        "whose value is Ollama connection successful."
+    )
+
     try:
-        print(generate_response("Say hello in one sentence."))
+        print(generate_response(test_prompt))
     except (RuntimeError, ValueError) as error:
         print(f"LLM client error: {error}")
