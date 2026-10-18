@@ -6,6 +6,7 @@ from backend.app.services.budget_service import (
     calculate_day_cost,
     calculate_itinerary_cost,
     check_budget,
+    get_unknown_cost_fields,
 )
 
 
@@ -176,3 +177,19 @@ def test_optimize_itinerary_keeps_days_when_activities_removed():
         for day in result["itinerary"]
     )
     assert result["removed_activities"] == []
+   
+def test_unknown_cost_fields_are_detected():
+     activity = {
+        "estimated_entry_cost": 0,
+        "entry_cost_status": "unknown",
+        "estimated_transport_cost": 0,
+        "transport_cost_status": "unknown",
+        "estimated_food_cost": 0,
+        "food_cost_status": "unknown",
+    }
+
+     unknown_fields = get_unknown_cost_fields(activity)
+
+     assert "estimated_entry_cost" in unknown_fields
+     assert "estimated_transport_cost" in unknown_fields
+     assert "estimated_food_cost" in unknown_fields

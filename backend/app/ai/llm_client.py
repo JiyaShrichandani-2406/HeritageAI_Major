@@ -10,18 +10,28 @@ from backend.app.core.config import get_settings
 logger = logging.getLogger(__name__)
 
 
-def generate_response(prompt: str) -> str:
+def generate_response(
+    prompt: str,
+    *,
+    num_predict: int | None = None,
+) -> str:
     """Generate text through Ollama using the centralized application settings."""
     if not prompt or not prompt.strip():
         raise ValueError("Prompt cannot be empty.")
 
     settings = get_settings()
 
+    options = {"temperature": 0.2}
+    if num_predict is not None:
+        if num_predict < 1:
+            raise ValueError("num_predict must be at least 1.")
+        options["num_predict"] = num_predict
+
     payload = {
         "model": settings.ollama_model,
         "prompt": prompt,
         "stream": False,
-        "options": {"temperature": 0.2},
+        "options": options,
     }
 
     request = urllib.request.Request(

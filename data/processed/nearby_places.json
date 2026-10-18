@@ -6,7 +6,7 @@
     "latitude": 27.1795,
     "longitude": 78.0211,
     "address": "Rakabganj, Agra, Uttar Pradesh 282003",
-    "source_url": "https://en.wikipedia.org/wiki/Agra_Fort"
+    "source_url": "https://agra.nic.in/tourist-place/agra-fort/"
   },
   {
     "id": "akbar-tomb-sikandra",
@@ -99,3 +99,4 @@
     "source_url": "https://en.wikipedia.org/wiki/Taj_Mahal"
   }
 ]
+

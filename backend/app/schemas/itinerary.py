@@ -4,6 +4,9 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
+CostStatus = Literal["verified", "estimated", "unknown"]
+
+
 class ItineraryRequest(BaseModel):
     """Input accepted by POST /api/v1/itinerary."""
 
@@ -73,10 +76,46 @@ class ItineraryActivity(BaseModel):
 
     place_name: str
     description: str
+
     estimated_entry_cost: float = Field(default=0, ge=0)
     estimated_transport_cost: float = Field(default=0, ge=0)
     estimated_food_cost: float = Field(default=0, ge=0)
+
+    entry_cost_status: CostStatus | None = None
+    transport_cost_status: CostStatus | None = None
+    food_cost_status: CostStatus | None = None
+
     source_url: str | None = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def infer_cost_statuses(cls, data):
+        """Infer a safe default status when one is not supplied."""
+        if not isinstance(data, dict):
+            return data
+
+        data = dict(data)
+
+        status_fields = {
+            "estimated_entry_cost": "entry_cost_status",
+            "estimated_transport_cost": "transport_cost_status",
+            "estimated_food_cost": "food_cost_status",
+        }
+
+        for cost_field, status_field in status_fields.items():
+            if status_field not in data or data[status_field] is None:
+                value = data.get(cost_field, 0)
+
+                if (
+                    isinstance(value, (int, float))
+                    and not isinstance(value, bool)
+                    and value > 0
+                ):
+                    data[status_field] = "estimated"
+                else:
+                    data[status_field] = "unknown"
+
+        return data
 
 
 class ItineraryDay(BaseModel):

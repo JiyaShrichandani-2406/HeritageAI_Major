@@ -49,6 +49,34 @@ def test_generate_response_rejects_empty_prompt(monkeypatch):
     mock_urlopen.assert_not_called()
 
 
+def test_generate_response_sets_output_limit(monkeypatch):
+    settings = type("Settings", (), {
+        "ollama_url": "http://test-ollama:11434/api/generate",
+        "ollama_model": "test-model",
+        "ollama_timeout_seconds": 15,
+    })()
+    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+
+    response = MagicMock()
+    response.read.return_value = json.dumps({"response": "Done"}).encode()
+    mock_urlopen = MagicMock()
+    mock_urlopen.return_value.__enter__.return_value = response
+    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
+
+    assert llm_client.generate_response("Say hello", num_predict=768) == "Done"
+
+    payload = json.loads(mock_urlopen.call_args.args[0].data.decode())
+    assert payload["options"] == {
+        "temperature": 0.2,
+        "num_predict": 768,
+    }
+
+
+def test_generate_response_rejects_invalid_output_limit():
+    with pytest.raises(ValueError, match="num_predict must be at least 1"):
+        llm_client.generate_response("Say hello", num_predict=0)
+
+
 def test_generate_response_handles_connection_failure(monkeypatch):
     settings = type("Settings", (), {
         "ollama_url": "http://test-ollama:11434/api/generate",

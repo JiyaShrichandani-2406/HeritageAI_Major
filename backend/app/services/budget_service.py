@@ -2,6 +2,46 @@
 from typing import Any
 
 
+COST_STATUS_FIELDS = {
+    "estimated_entry_cost": "entry_cost_status",
+    "estimated_transport_cost": "transport_cost_status",
+    "estimated_food_cost": "food_cost_status",
+}
+
+
+def get_unknown_cost_fields(
+    activity: dict[str, Any],
+    include_food: bool = True,
+    include_transport: bool = True,
+) -> list[str]:
+    """Return included cost fields whose status is unknown."""
+
+    included_fields = {
+        "estimated_entry_cost": True,
+        "estimated_transport_cost": include_transport,
+        "estimated_food_cost": include_food,
+    }
+
+    unknown_fields = []
+
+    for cost_field, should_include in included_fields.items():
+        if not should_include:
+            continue
+
+        status_field = COST_STATUS_FIELDS[cost_field]
+        value = activity.get(cost_field, 0)
+        status = activity.get(status_field)
+
+        # Legacy data without statuses: positive costs are estimates;
+        # missing or zero costs are unknown.
+        if status is None:
+            status = "estimated" if value > 0 else "unknown"
+
+        if status == "unknown":
+            unknown_fields.append(cost_field)
+
+    return unknown_fields
+
 def calculate_activity_cost(
     activity: dict[str, Any],
     include_food: bool = True,

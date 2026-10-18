@@ -132,7 +132,7 @@ def test_over_budget_itinerary_is_reported():
 
     assert result.within_budget is False
     assert result.remaining_budget == -100
-    assert "exceeds" in result.message.lower()
+    assert "exceed" in result.message.lower()
 
 
 def test_empty_activities_are_allowed(sample_request):
@@ -145,3 +145,38 @@ def test_empty_activities_are_allowed(sample_request):
 
     assert result.estimated_total_cost == 0
     assert result.within_budget is True
+
+def test_unknown_costs_do_not_confirm_budget_compliance():
+    request = ItineraryRequest(
+        destination="Agra",
+        budget=5000,
+        days=1,
+    )
+
+    daily_plans = [
+        {
+            "title": "Day 1 - Heritage Sites",
+            "activities": [
+                {
+                    "place_name": "Taj Mahal",
+                    "description": "Explore the monument.",
+                    "estimated_entry_cost": 0,
+                    "entry_cost_status": "unknown",
+                    "estimated_transport_cost": 0,
+                    "transport_cost_status": "unknown",
+                    "estimated_food_cost": 0,
+                    "food_cost_status": "unknown",
+                    "source_url": None,
+                }
+            ],
+        }
+    ]
+
+    result = build_itinerary_response(request, daily_plans)
+
+    assert result.within_budget is False
+    assert "not verified" in result.message.lower()
+    assert any(
+        "unknown" in assumption.lower()
+        for assumption in result.assumptions
+    )

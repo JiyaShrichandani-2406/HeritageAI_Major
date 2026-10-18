@@ -10,6 +10,7 @@ from backend.app.schemas.itinerary import (
 from backend.app.services.budget_service import (
     calculate_day_cost,
     check_budget,
+    get_unknown_cost_fields,
     optimize_itinerary,
 )
 
@@ -38,14 +39,17 @@ def build_itinerary_response(
 
         validated_plans.append(
             {
-                "title": daily_plan.get("title", "Heritage activities"),
+                "title": daily_plan.get(
+                    "title", "Heritage activities"
+                ),
                 "activities": [
-                    activity.model_dump() for activity in activities
+                    activity.model_dump()
+                    for activity in activities
                 ],
             }
         )
 
-    # Optimize the itinerary if its estimated costs exceed the budget.
+    # Optimize the itinerary against the requested budget.
     optimization = optimize_itinerary(
         itinerary=validated_plans,
         budget=request.budget,
@@ -56,15 +60,52 @@ def build_itinerary_response(
     optimized_plans = optimization["itinerary"]
     itinerary_days: list[ItineraryDay] = []
 
-    # Recalculate each day's cost after optimization.
-    for day_number, daily_plan in enumerate(optimized_plans, start=1):
+    # Check whether any included costs are unknown.
+    final_assumptions = list(assumptions or [])
+    has_unknown_costs = False
+
+    for daily_plan in optimized_plans:
+        for activity in daily_plan.get("activities", []):
+            unknown_fields = get_unknown_cost_fields(
+                activity,
+                include_food=request.include_food,
+                include_transport=request.include_transport,
+            )
+
+            if unknown_fields:
+                has_unknown_costs = True
+                place_name = activity.get(
+                    "place_name", "Unknown place"
+                )
+
+                for field in unknown_fields:
+                    assumption = (
+                        f"{place_name}: {field} is UNKNOWN; "
+                        "the estimated total may be incomplete."
+                    )
+
+                    if assumption not in final_assumptions:
+                        final_assumptions.append(assumption)
+
+    # Preserve unknown-cost warnings supplied by the AI.
+    if any(
+        "UNKNOWN" in assumption.upper()
+        for assumption in final_assumptions
+    ):
+        has_unknown_costs = True
+
+    # Calculate each day's estimated cost.
+    for day_number, daily_plan in enumerate(
+        optimized_plans, start=1
+    ):
         activities = [
             ItineraryActivity(**activity)
             for activity in daily_plan.get("activities", [])
         ]
 
         activity_data = [
-            activity.model_dump() for activity in activities
+            activity.model_dump()
+            for activity in activities
         ]
 
         day_cost = calculate_day_cost(
@@ -82,6 +123,7 @@ def build_itinerary_response(
             )
         )
 
+    # Calculate the total estimated cost.
     total_cost = round(
         sum(day.estimated_cost for day in itinerary_days),
         2,
@@ -92,8 +134,7 @@ def build_itinerary_response(
         budget=request.budget,
     )
 
-    final_assumptions = list(assumptions or [])
-
+    # Record excluded costs in the assumptions.
     if not request.include_food:
         final_assumptions.append(
             "Food costs are excluded from the estimated total."
@@ -104,6 +145,7 @@ def build_itinerary_response(
             "Local transport costs are excluded from the estimated total."
         )
 
+    # Record activities removed during budget optimization.
     if optimization["removed_activities"]:
         final_assumptions.append(
             f"Budget optimization removed "
@@ -111,23 +153,44 @@ def build_itinerary_response(
             "activities to reduce estimated costs."
         )
 
-    if budget_result["within_budget"]:
-        message = "Itinerary generated within the available budget."
+       # Select the message based on budget and cost certainty.
+    if not budget_result["within_budget"]:
+        if has_unknown_costs:
+             message = (
+            "The known estimated costs exceed the available budget, "
+            "and some costs are unknown. The displayed total may be "
+            "incomplete, so budget compliance is not fully verified."
+        )
+        else:
+            message = (
+                "The itinerary exceeds the available budget after "
+                "optimization. Consider increasing the budget or changing "
+                "the trip requirements."
+            )
+    elif has_unknown_costs:
+        message = (
+            "Itinerary generated, but some costs are unknown. "
+            "Any displayed total is incomplete and must not be treated "
+            "as the actual trip cost. Budget compliance is not verified."
+        )
     else:
         message = (
-            "The itinerary still exceeds the available budget after "
-            "optimization. Consider increasing the budget or changing "
-            "the trip requirements."
+            "Itinerary generated within the available budget, "
+            "based on estimated costs."
         )
-
+    # Build the final response.
     return ItineraryResponse(
         destination=request.destination,
         days=request.days,
         itinerary=itinerary_days,
         estimated_total_cost=budget_result["estimated_total_cost"],
         budget=budget_result["budget"],
-        within_budget=budget_result["within_budget"],
+        within_budget=(
+            budget_result["within_budget"]
+            if not has_unknown_costs
+            else False
+        ),
         remaining_budget=budget_result["remaining_budget"],
-        assumptions=final_assumptions,
+        assumptions=list(dict.fromkeys(final_assumptions)),
         message=message,
     )

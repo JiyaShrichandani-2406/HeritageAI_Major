@@ -136,6 +136,4 @@ def test_create_itinerary_ai_service_unavailable(monkeypatch):
     )
 
     assert response.status_code == 503
-    assert response.json()["detail"] == (
-        "The itinerary generation service is unavailable."
-    )
+    assert response.json()["detail"] == "Simulated AI service failure."
