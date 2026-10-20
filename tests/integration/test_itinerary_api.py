@@ -173,3 +173,81 @@ def test_create_itinerary_ai_service_unavailable(monkeypatch):
 
     assert response.status_code == 503
     assert response.json()["detail"] == "Simulated AI service failure."
+
+
+def test_create_itinerary_rejects_empty_day_from_generator(monkeypatch):
+    def fake_generate_itinerary(request):
+        return {
+            "itinerary": [
+                {
+                    "title": "Day 1",
+                    "activities": [
+                        {
+                            "place_name": "Site A",
+                            "description": "Explore the heritage site.",
+                            "estimated_entry_cost": 100,
+                        }
+                    ],
+                },
+                {"title": "Day 2", "activities": []},
+            ],
+            "assumptions": [],
+        }
+
+    monkeypatch.setattr(
+        itinerary_endpoint,
+        "generate_itinerary",
+        fake_generate_itinerary,
+    )
+
+    response = client.post(
+        "/api/v1/itinerary",
+        json={"destination": "Agra", "budget": 3000, "days": 2},
+    )
+
+    assert response.status_code == 502
+    assert "Each itinerary day must contain at least one activity" in (
+        response.json()["detail"]
+    )
+
+
+def test_create_itinerary_returns_null_total_for_unknown_costs(monkeypatch):
+    def fake_generate_itinerary(request):
+        return {
+            "itinerary": [
+                {
+                    "title": "Day 1",
+                    "activities": [
+                        {
+                            "place_name": "Site A",
+                            "description": "Explore the heritage site.",
+                            "estimated_entry_cost": None,
+                            "entry_cost_status": "unknown",
+                            "estimated_transport_cost": None,
+                            "transport_cost_status": "unknown",
+                            "estimated_food_cost": None,
+                            "food_cost_status": "unknown",
+                        }
+                    ],
+                }
+            ],
+            "assumptions": [],
+        }
+
+    monkeypatch.setattr(
+        itinerary_endpoint,
+        "generate_itinerary",
+        fake_generate_itinerary,
+    )
+
+    response = client.post(
+        "/api/v1/itinerary",
+        json={"destination": "Agra", "budget": 3000, "days": 1},
+    )
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["known_cost_subtotal"] == 0
+    assert data["estimated_total_cost"] is None
+    assert data["remaining_budget"] is None
+    assert data["within_budget"] is None

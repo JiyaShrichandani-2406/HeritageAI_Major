@@ -175,7 +175,16 @@ class ItineraryResponse(BaseModel):
         default_factory=list,
         description="Visitor services matching the destination; their costs are not included in itinerary totals.",
     )
-    estimated_total_cost: float = Field(..., ge=0)
+    known_cost_subtotal: float = Field(
+        ...,
+        ge=0,
+        description="Sum of known included costs; may be incomplete.",
+    )
+    estimated_total_cost: float | None = Field(
+        ...,
+        ge=0,
+        description="Complete estimated total, or null if included costs are unknown.",
+    )
     budget: float = Field(..., gt=0)
     within_budget: bool | None = Field(
         ...,
@@ -185,6 +194,9 @@ class ItineraryResponse(BaseModel):
             "because one or more included costs are unknown."
         ),
     )
-    remaining_budget: float
+    remaining_budget: float | None = Field(
+        ...,
+        description="Remaining budget, or null when the total cost is incomplete.",
+    )
     assumptions: list[str] = Field(default_factory=list)
     message: str

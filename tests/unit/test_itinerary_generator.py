@@ -124,6 +124,33 @@ def test_itinerary_generation_rejects_empty_day(monkeypatch):
         generate_itinerary(request, heritage_context="Heritage context")
 
 
+def test_itinerary_generation_rejects_empty_second_day(monkeypatch):
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.generate_response",
+        lambda *args, **kwargs: (
+            '{"itinerary":['
+            '{"title":"Day 1","activities":[{"place_name":"Taj Mahal",'
+            '"description":"Visit the monument",'
+            '"estimated_entry_cost":null}]},'
+            '{"title":"Day 2","activities":[]}'
+            '],"assumptions":[]}'
+        ),
+    )
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator._validate_place",
+        lambda place_name, destination: place_name,
+    )
+
+    with pytest.raises(
+        RuntimeError,
+        match="No supported activities could be generated for day 2",
+    ):
+        generate_itinerary(
+            ItineraryRequest(destination="Agra", budget=10000, days=2),
+            heritage_context="Heritage context",
+        )
+
+
 def test_itinerary_loads_route_and_destination_service_references(monkeypatch):
     route = TransportOption(
         id="delhi-agra-train",

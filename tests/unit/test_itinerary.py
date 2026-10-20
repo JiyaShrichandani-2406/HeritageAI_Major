@@ -120,8 +120,11 @@ def test_over_budget_itinerary_is_reported():
                     "place_name": "Historical Site",
                     "description": "Visit a historical site.",
                     "estimated_entry_cost": 200,
+                    "entry_cost_status": "estimated",
                     "estimated_transport_cost": 0,
+                    "transport_cost_status": "verified",
                     "estimated_food_cost": 0,
+                    "food_cost_status": "verified",
                     "source_url": None,
                 }
             ],
@@ -137,11 +140,23 @@ def test_over_budget_itinerary_is_reported():
 
 def test_empty_activities_are_rejected(sample_request):
     daily_plans = [
-        {"title": "Day 1", "activities": []},
+        {
+            "title": "Day 1",
+            "activities": [
+                {
+                    "place_name": "Site A",
+                    "description": "Visit the heritage site.",
+                    "estimated_entry_cost": 100,
+                }
+            ],
+        },
         {"title": "Day 2", "activities": []},
     ]
 
-    with pytest.raises(ValueError):
+    with pytest.raises(
+        ValueError,
+        match="Each itinerary day must contain at least one activity",
+    ):
         build_itinerary_response(sample_request, daily_plans)
 
 def test_unknown_costs_do_not_confirm_budget_compliance():
@@ -173,6 +188,9 @@ def test_unknown_costs_do_not_confirm_budget_compliance():
     result = build_itinerary_response(request, daily_plans)
 
     assert result.within_budget is None
+    assert result.known_cost_subtotal == 0
+    assert result.estimated_total_cost is None
+    assert result.remaining_budget is None
     assert "not verified" in result.message.lower()
     assert any(
         "unknown" in assumption.lower()

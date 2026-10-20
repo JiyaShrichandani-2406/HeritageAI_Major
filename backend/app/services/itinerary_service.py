@@ -36,9 +36,19 @@ def build_itinerary_response(
     validated_plans = []
 
     for daily_plan in daily_plans:
+        activity_payloads = daily_plan.get("activities", [])
+        if not activity_payloads:
+            raise ValueError(
+                "Each itinerary day must contain at least one activity."
+            )
+        if len(activity_payloads) > 4:
+            raise ValueError(
+                "Each itinerary day may contain at most four activities."
+            )
+
         activities = [
             ItineraryActivity(**activity)
-            for activity in daily_plan.get("activities", [])
+            for activity in activity_payloads
         ]
 
         validated_plans.append(
@@ -97,13 +107,6 @@ def build_itinerary_response(
 
                     if assumption not in final_assumptions:
                         final_assumptions.append(assumption)
-
-    # Preserve unknown-cost warnings supplied by the AI.
-    if any(
-        "UNKNOWN" in assumption.upper()
-        for assumption in final_assumptions
-    ):
-        has_unknown_costs = True
 
     # Calculate each day's estimated cost.
     for day_number, daily_plan in enumerate(
@@ -209,15 +212,25 @@ def build_itinerary_response(
             VisitorServiceResponse(**service)
             for service in (visitor_services or [])
         ],
-        estimated_total_cost=budget_result["estimated_total_cost"],
         budget=budget_result["budget"],
-              within_budget=(
+        known_cost_subtotal=budget_result["estimated_total_cost"],
+        estimated_total_cost=(
+            None
+            if has_unknown_costs
+            else budget_result["estimated_total_cost"]
+        ),
+        within_budget=(
             False
             if not budget_result["within_budget"]
             else None
             if has_unknown_costs
             else True
-        ),       remaining_budget=budget_result["remaining_budget"],
+        ),
+        remaining_budget=(
+            None
+            if has_unknown_costs
+            else budget_result["remaining_budget"]
+        ),
         assumptions=list(dict.fromkeys(final_assumptions)),
         message=message,
     )

@@ -25,19 +25,27 @@ def load_documents():
             continue
 
         metadata = {}
+        additional_source_urls = []
 
         # Extract metadata from lines such as TITLE: Taj Mahal
         for line in text.splitlines():
             if ":" in line:
                 key, value = line.split(":", 1)
-                metadata[key.strip().lower().replace(" ", "_")] = (
-                    value.strip()
-                )
+                normalized_key = key.strip().lower().replace(" ", "_")
+                normalized_value = value.strip()
+                if normalized_key == "additional_source_url":
+                    additional_source_urls.append(normalized_value)
+                else:
+                    metadata[normalized_key] = normalized_value
 
         documents.append({
             "title": metadata.get("title", file_path.stem),
             "text": text,
             "source_url": metadata.get("source_url", ""),
+            "source_urls": [
+                metadata.get("source_url", ""),
+                *additional_source_urls,
+            ],
             "category": metadata.get("category", "unknown"),
             "last_verified": metadata.get(
                 "last_verified", "Not verified"

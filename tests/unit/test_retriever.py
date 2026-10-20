@@ -101,3 +101,51 @@ def test_invalid_top_k_raises_error(retriever):
     """A top_k value below one should be rejected."""
     with pytest.raises(ValueError, match="top_k must be at least 1"):
         retriever.search("Taj Mahal", top_k=0)
+
+
+@pytest.mark.parametrize(
+    ("question", "expected_title"),
+    [
+        ("Who rebuilt Agra Fort in red sandstone?", "Agra Fort"),
+        (
+            "How long was Fatehpur Sikri the Mughal capital?",
+            "Fatehpur Sikri",
+        ),
+        (
+            "Who completed Akbar's tomb and in which year?",
+            "Akbar's Tomb (Sikandra)",
+        ),
+        (
+            "Who aligned Mehtab Bagh with the Taj Mahal?",
+            "Mehtab Bagh",
+        ),
+        (
+            "When was Aram Bagh originally built and by whom?",
+            "Ram Bagh (Aram Bagh)",
+        ),
+        (
+            "When did Shah Jahan commission the Taj Mahal?",
+            "Taj Mahal",
+        ),
+    ],
+)
+def test_retrieval_evaluation_returns_expected_source(
+    retriever,
+    question,
+    expected_title,
+):
+    results = retriever.search(question, top_k=1)
+
+    assert results
+    assert results[0]["title"] == expected_title
+    assert results[0]["relevance_score"] >= 0.25
+    assert results[0]["source_url"].startswith("https://")
+
+
+def test_retrieval_evaluation_flags_unrelated_question(retriever):
+    results = retriever.search(
+        "What is the current bus ticket price in Tokyo?",
+        top_k=1,
+    )
+
+    assert not results or results[0]["relevance_score"] < 0.25

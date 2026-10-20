@@ -34,7 +34,15 @@ def build_vector_store():
                 "text": chunk,
                 "title": document["title"],
                 "source_url": document["source_url"],
+                "source_urls": document.get(
+                    "source_urls",
+                    [document["source_url"]],
+                ),
                 "category": document["category"],
+                "last_verified": document.get(
+                    "last_verified",
+                    "Not verified",
+                ),
                 "file_name": document["file_name"],
             })
 

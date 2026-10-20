@@ -26,5 +26,105 @@
         "source_url": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg"
       }
     ]
+  },
+  {
+    "id": "agra-fort",
+    "name": "Agra Fort",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "The walled imperial city of the Mughals in Agra, rebuilt in red sandstone by Emperor Akbar from 1565 and later embellished in white marble by Shah Jahan.",
+    "history": "The official Agra district tourism page describes Agra Fort as the walled imperial city of the Mughals and states that Emperor Akbar rebuilt it in red sandstone from 1565, with later white-marble additions by Shah Jahan.",
+    "architecture": "The fort's 2.5-kilometre ramparts enclose structures including Jahangir Mahal, Khas Mahal, Diwan-i-Aam, Diwan-i-Khas, Sheesh Mahal, Musamman Burj and Moti Masjid.",
+    "latitude": 27.1795,
+    "longitude": 78.0211,
+    "sources": [
+      {
+        "title": "Agra District Administration: Agra Fort",
+        "url": "https://agra.nic.in/tourist-place/agra-fort/"
+      }
+    ],
+    "last_verified": null,
+    "images": []
+  },
+  {
+    "id": "fatehpur-sikri",
+    "name": "Fatehpur Sikri",
+    "city": "Fatehpur Sikri",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Historic red-sandstone city in Agra district founded by Emperor Akbar in 1571 and used as the Mughal capital for about 14 years.",
+    "history": "The official Agra district tourism page states that Akbar founded Fatehpur Sikri in 1571 and that it served as the Mughal capital for about 14 years.",
+    "architecture": "The complex includes Buland Darwaza, Jama Masjid, the marble Tomb of Sheikh Salim Chishti, Panch Mahal, Diwan-i-Khas and Jodha Bai's Palace. The district page describes a blend of Persian, Hindu and Jain architectural idioms.",
+    "latitude": 27.094,
+    "longitude": 77.661,
+    "sources": [
+      {
+        "title": "Agra District Administration: Fatehpur Sikri",
+        "url": "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+      }
+    ],
+    "last_verified": null,
+    "images": []
+  },
+  {
+    "id": "akbar-tomb-sikandra",
+    "name": "Akbar's Tomb (Sikandra)",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Mausoleum of the Mughal emperor Akbar, located in Sikandra near Agra.",
+    "history": "The official Agra district tourism page says the mausoleum was begun by Akbar and completed by his son Jahangir in 1613. It stands in a 119-acre charbagh at Sikandra.",
+    "architecture": "The five-storeyed sandstone-and-marble pyramid and its gateway combine Hindu, Islamic and Persian motifs, according to the official Agra district tourism page.",
+    "latitude": 27.2205,
+    "longitude": 77.9511,
+    "sources": [
+      {
+        "title": "Agra District Administration: Akbar's Tomb, Sikandra",
+        "url": "https://agra.nic.in/tourist-place/akbars-tomb-sikandra/"
+      }
+    ],
+    "last_verified": null,
+    "images": []
+  },
+  {
+    "id": "mehtab-bagh",
+    "name": "Mehtab Bagh",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Mughal charbagh garden across the Yamuna River from the Taj Mahal, laid out originally by Babur and later aligned by Shah Jahan.",
+    "history": "The official Agra district tourism page describes Mehtab Bagh as originally laid out by Babur and later aligned by Shah Jahan with the Taj Mahal across the Yamuna.",
+    "architecture": "The restored charbagh includes fruit trees and pathways, according to the official Agra district tourism page.",
+    "latitude": 27.179,
+    "longitude": 78.0437,
+    "sources": [
+      {
+        "title": "Agra District Administration: Mehtab Bagh",
+        "url": "https://agra.nic.in/tourist-place/mehtab-bagh/"
+      }
+    ],
+    "last_verified": null,
+    "images": []
+  },
+  {
+    "id": "ram-bagh",
+    "name": "Ram Bagh (Aram Bagh)",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Mughal garden in Agra, also known as Aram Bagh.",
+    "history": "The garden is attributed to Emperor Babur and dated to 1526. Babur was temporarily buried there before his remains were moved to Kabul.",
+    "architecture": "Additional architectural details are not included in the currently reviewed source summary.",
+    "latitude": 27.2087,
+    "longitude": 78.0457,
+    "sources": [
+      {
+        "title": "Aram Bagh, Agra",
+        "url": "https://en.wikipedia.org/wiki/Aram_Bagh,_Agra"
+      }
+    ],
+    "last_verified": null,
+    "images": []
   }
 ]

@@ -53,6 +53,10 @@ def test_relevant_retrieval_is_used_for_answer(monkeypatch):
                     "category": "Monument",
                     "text": "The Taj Mahal was commissioned by Shah Jahan.",
                     "source_url": "https://whc.unesco.org/en/list/252",
+                    "source_urls": [
+                        "https://whc.unesco.org/en/list/252",
+                        "https://en.wikipedia.org/wiki/Taj_Mahal",
+                    ],
                     "relevance_score": 0.668,
                 }
             ]
@@ -70,3 +74,7 @@ def test_relevant_retrieval_is_used_for_answer(monkeypatch):
 
     assert result["grounded"] is True
     assert result["sources"][0]["title"] == "Taj Mahal"
+    assert {source["url"] for source in result["sources"]} == {
+        "https://whc.unesco.org/en/list/252",
+        "https://en.wikipedia.org/wiki/Taj_Mahal",
+    }

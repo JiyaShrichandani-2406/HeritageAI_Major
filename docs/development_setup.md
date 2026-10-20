@@ -58,25 +58,23 @@ Use the documented environment variable names and valid values from `.env.exampl
 
 ## 6. Prepare the heritage knowledge base
 
-The document loader expects text documents under:
+The curated monument catalog is `data/processed/heritage.json`. Each record
+contains source URLs and a `last_verified` field; keep the date `null` until a
+person has checked the claims against the cited source. The ingestion step
+exports the catalog to text documents under:
 
 `data/raw/heritage/`
 
-The vector-store builder reads these documents, creates embeddings, and writes the FAISS index and matching chunk metadata under:
-
-`data/vector_store/`
-
-Before running the builder, ensure the required source documents are present. Do not use placeholder or unverified heritage information as authoritative content.
-
-Build the vector store from the repository root:
+Export the catalog and rebuild the vector store from the repository root:
 
 ```cmd
-
-python -m backend.app.rag.vector_store
-
+python -m backend.app.ingestion.import_heritage
+python -m scripts.rebuild_vector_store
 ```
 
 This step may download the embedding model on its first run.
+The vector-store chunks preserve each document's primary and additional source
+URLs and verification-date value.
 
 ## 7. Start the API
 
@@ -123,6 +121,12 @@ python -m pytest tests/unit/test_llm_client.py -v
 ```
 
 Tests that exercise the RAG retriever may require the FAISS index, chunk metadata, and embedding model to be available.
+Retrieval quality checks cover the sourced Agra monument queries and an
+out-of-domain refusal case. Run them with:
+
+```cmd
+python -m pytest tests/unit/test_retriever.py tests/unit/test_answer_generator.py -v
+```
 
 ## 9. Git workflow
 

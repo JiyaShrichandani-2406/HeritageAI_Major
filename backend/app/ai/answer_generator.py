@@ -231,24 +231,28 @@ ANSWER:
 
     for chunk in retrieved_chunks:
         title = chunk.get("title", "Unknown")
-        url = chunk.get("source_url", "")
-        key = (title, url)
         score = chunk.get("relevance_score")
+        urls = chunk.get("source_urls") or [chunk.get("source_url", "")]
 
-        if key not in source_map:
-            source_map[key] = {
-                "title": title,
-                "url": url,
-                "relevance_score": score,
-            }
-        elif (
-            score is not None
-            and (
-                source_map[key]["relevance_score"] is None
-                or score > source_map[key]["relevance_score"]
-            )
-        ):
-            source_map[key]["relevance_score"] = score
+        for url in urls:
+            if not url:
+                continue
+
+            key = (title, url)
+            if key not in source_map:
+                source_map[key] = {
+                    "title": title,
+                    "url": url,
+                    "relevance_score": score,
+                }
+            elif (
+                score is not None
+                and (
+                    source_map[key]["relevance_score"] is None
+                    or score > source_map[key]["relevance_score"]
+                )
+            ):
+                source_map[key]["relevance_score"] = score
 
     sources = list(source_map.values())
 
