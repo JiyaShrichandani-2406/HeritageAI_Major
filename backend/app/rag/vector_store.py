@@ -1,17 +1,12 @@
 
-from pathlib import Path
-
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
+from backend.app.core.config import get_settings
 from backend.app.rag.document_loader import load_documents
 from backend.app.rag.text_splitter import split_text
 
-
-# Project folders
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-VECTOR_STORE_DIR = PROJECT_ROOT / "data" / "vector_store"
 
 # Embedding model
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
@@ -20,6 +15,7 @@ MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 def build_vector_store():
     """Create embeddings and a FAISS index from loaded documents."""
 
+    vector_store_dir = get_settings().vector_store_dir
     documents = load_documents()
 
     if not documents:
@@ -62,18 +58,18 @@ def build_vector_store():
     index = faiss.IndexFlatIP(embeddings.shape[1])
     index.add(embeddings)
 
-    VECTOR_STORE_DIR.mkdir(parents=True, exist_ok=True)
+    vector_store_dir.mkdir(parents=True, exist_ok=True)
 
     faiss.write_index(
         index,
-        str(VECTOR_STORE_DIR / "heritage.index"),
+        str(vector_store_dir / "heritage.index"),
     )
 
     # Save matching chunk information separately.
     import json
 
     with open(
-        VECTOR_STORE_DIR / "chunks.json",
+        vector_store_dir / "chunks.json",
         "w",
         encoding="utf-8",
     ) as file:
@@ -82,8 +78,8 @@ def build_vector_store():
     print("\nVector store created successfully.")
     print("Total documents:", len(documents))
     print("Total chunks indexed:", len(chunks))
-    print("Saved index:", VECTOR_STORE_DIR / "heritage.index")
-    print("Saved chunk metadata:", VECTOR_STORE_DIR / "chunks.json")
+    print("Saved index:", vector_store_dir / "heritage.index")
+    print("Saved chunk metadata:", vector_store_dir / "chunks.json")
 
 
 if __name__ == "__main__":

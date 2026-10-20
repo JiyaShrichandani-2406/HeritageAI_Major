@@ -1,6 +1,49 @@
+import json
+from types import SimpleNamespace
+
 import pytest
 
+from backend.app.rag import retriever as retriever_module
 from backend.app.rag.retriever import HeritageRetriever
+
+
+def test_retriever_uses_configured_vector_store_directory(
+    monkeypatch, tmp_path
+):
+    configured_path = tmp_path / "configured-vector-store"
+    configured_path.mkdir()
+    (configured_path / "heritage.index").touch()
+    (configured_path / "chunks.json").write_text(
+        json.dumps([{"text": "heritage"}]),
+        encoding="utf-8",
+    )
+
+    class StubIndex:
+        ntotal = 1
+
+    monkeypatch.setattr(
+        retriever_module,
+        "get_settings",
+        lambda: SimpleNamespace(vector_store_dir=configured_path),
+    )
+    monkeypatch.setattr(
+        retriever_module.faiss,
+        "read_index",
+        lambda path: (
+            path == str(configured_path / "heritage.index")
+            and StubIndex()
+        ),
+    )
+    monkeypatch.setattr(
+        retriever_module,
+        "SentenceTransformer",
+        lambda model_name: object(),
+    )
+
+    retriever = HeritageRetriever()
+
+    assert retriever.chunks == [{"text": "heritage"}]
+    assert isinstance(retriever.index, StubIndex)
 
 
 @pytest.fixture(scope="module")

@@ -47,6 +47,8 @@ def create_itinerary(request: ItineraryRequest) -> ItineraryResponse:
             request=request,
             daily_plans=daily_plans,
             assumptions=assumptions,
+            transport_options=generated.get("transport_options", []),
+            visitor_services=generated.get("visitor_services", []),
         )
 
         return result

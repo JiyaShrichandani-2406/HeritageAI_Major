@@ -1,11 +1,16 @@
 
 import json
 import re
+from dataclasses import asdict
 from typing import Any
 
 from backend.app.ai.llm_client import generate_response
 from backend.app.rag.retriever import HeritageRetriever
 from backend.app.repositories.place_repository import PlaceRepository
+from backend.app.repositories.transport_repository import TransportRepository
+from backend.app.repositories.visitor_service_repository import (
+    VisitorServiceRepository,
+)
 from backend.app.schemas.itinerary import ItineraryRequest
 
 
@@ -149,11 +154,47 @@ def _normalize_activity(activity: Any) -> dict[str, Any]:
     return normalized
 
 
+def _load_travel_references(
+    request: ItineraryRequest,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Load route options and services matching the itinerary destination."""
+    destination = request.destination.split(",")[0].strip()
+    transport_options = (
+        TransportRepository()
+        .search(
+            request.origin.split(",")[0].strip(),
+            destination,
+        )
+        if request.origin
+        else []
+    )
+
+    destination_key = destination.casefold()
+    visitor_services = [
+        service
+        for service in VisitorServiceRepository().all()
+        if destination_key in service.location.casefold()
+    ]
+
+    return (
+        [asdict(option) for option in transport_options],
+        [asdict(service) for service in visitor_services],
+    )
+
+
 def generate_itinerary(
     request: ItineraryRequest,
     heritage_context: str | None = None,
 ) -> dict[str, Any]:
     """Generate an itinerary using retrieved heritage context."""
+
+    try:
+        transport_options, visitor_services = _load_travel_references(request)
+    except (OSError, ValueError, RuntimeError) as error:
+        raise RuntimeError(
+            "Transport or visitor-service data is unavailable. Check the "
+            "processed datasets on the API host."
+        ) from error
 
     if heritage_context is None:
         try:
@@ -195,6 +236,15 @@ def generate_itinerary(
             "No prices can be considered verified."
         )
 
+    travel_references = json.dumps(
+        {
+            "transport_options": transport_options,
+            "visitor_services": visitor_services,
+        },
+        ensure_ascii=False,
+        indent=2,
+    )
+
     prompt = f"""
 You are a careful heritage travel-planning assistant.
 
@@ -213,6 +263,9 @@ Traveler requirements:
 
 Available heritage context:
 {heritage_context}
+
+Available destination travel references:
+{travel_references}
 
 Rules:
 1. Return ONLY one valid JSON object.
@@ -237,6 +290,9 @@ Rules:
     are unknown or merely estimated.
 16. Include no more than one activity per day. Keep each description to
     eight words or fewer and assumptions concise.
+17. Treat transport and visitor-service references as supplemental options.
+    Do not add their costs to activity costs; the response lists them
+    separately, and their cost basis may not match this trip.
 
 Required JSON structure:
 {{
@@ -301,6 +357,19 @@ Required JSON structure:
             "The assumptions field must be a list of strings."
         )
 
+    if request.origin and not transport_options:
+        assumptions.append(
+            f"No transport route data is available for "
+            f"{request.origin} to {request.destination}; "
+            "intercity transport is not included."
+        )
+
+    if not visitor_services:
+        assumptions.append(
+            f"No visitor-service records are available for "
+            f"{request.destination}."
+        )
+
     normalized_itinerary = []
 
     for daily_plan in itinerary:
@@ -344,6 +413,13 @@ Required JSON structure:
 
             normalized_activities.append(normalized)
 
+        if not normalized_activities:
+            raise RuntimeError(
+                f"No supported activities could be generated for day "
+                f"{len(normalized_itinerary) + 1}. Confirm the available "
+                "heritage and places data covers the requested destination."
+            )
+
         normalized_itinerary.append(
             {
                 **daily_plan,
@@ -364,4 +440,6 @@ Required JSON structure:
     return {
         "itinerary": normalized_itinerary,
         "assumptions": list(dict.fromkeys(assumptions)),
+        "transport_options": transport_options,
+        "visitor_services": visitor_services,
     }

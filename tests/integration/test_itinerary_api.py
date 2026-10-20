@@ -42,6 +42,35 @@ def mock_generated_itinerary(monkeypatch):
                 },
             ],
             "assumptions": ["Costs are sample estimates."],
+            "transport_options": [
+                {
+                    "id": "delhi-bhopal-train",
+                    "origin": "Delhi",
+                    "destination": "Bhopal",
+                    "transport_type": "train",
+                    "estimated_cost": 500,
+                    "currency": "INR",
+                    "estimated_duration_minutes": 120,
+                    "cost_status": "estimated",
+                    "source_url": "https://example.com/train",
+                    "notes": "",
+                }
+            ],
+            "visitor_services": [
+                {
+                    "id": "bhopal-guide",
+                    "name": "Bhopal guide",
+                    "category": "guide",
+                    "location": "Bhopal",
+                    "latitude": None,
+                    "longitude": None,
+                    "description": "Local guide service",
+                    "estimated_cost": 1000,
+                    "currency": "INR",
+                    "cost_status": "estimated",
+                    "source_url": "https://example.com/guide",
+                }
+            ],
         }
 
     monkeypatch.setattr(
@@ -56,6 +85,7 @@ def test_create_itinerary_success(mock_generated_itinerary):
         "/api/v1/itinerary",
         json={
             "destination": "Bhopal",
+            "origin": "Delhi",
             "budget": 3000,
             "days": 2,
             "interests": ["history"],
@@ -75,7 +105,13 @@ def test_create_itinerary_success(mock_generated_itinerary):
     assert data["estimated_total_cost"] == 800
     assert data["within_budget"] is True
     assert data["remaining_budget"] == 2200
-    assert data["assumptions"] == ["Costs are sample estimates."]
+    assert data["transport_options"][0]["id"] == "delhi-bhopal-train"
+    assert data["visitor_services"][0]["id"] == "bhopal-guide"
+    assert data["estimated_total_cost"] == 800
+    assert any(
+        "not included in the itinerary total" in assumption
+        for assumption in data["assumptions"]
+    )
 
 
 def test_create_itinerary_invalid_budget():

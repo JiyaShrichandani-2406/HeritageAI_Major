@@ -3,9 +3,12 @@ import pytest
 
 from backend.app.ai.itinerary_generator import (
     _extract_json,
+    _load_travel_references,
     generate_itinerary,
     _validate_source_url,
 )
+from backend.app.models.transport import TransportOption
+from backend.app.models.visitor_service import VisitorService
 from backend.app.schemas.itinerary import ItineraryRequest
 
 
@@ -64,3 +67,132 @@ def test_itinerary_generation_reports_ollama_timeout(monkeypatch):
 
     with pytest.raises(RuntimeError, match="Ollama timed out generating"):
         generate_itinerary(request, heritage_context="Heritage context")
+
+
+def test_itinerary_generation_rejects_days_without_supported_activities(
+    monkeypatch,
+):
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.generate_response",
+        lambda *args, **kwargs: (
+            '{"itinerary":[{"title":"Day 1","activities":[{'
+            '"place_name":"Taj Mahal",'
+            '"description":"Visit the monument",'
+            '"estimated_entry_cost":0,'
+            '"estimated_transport_cost":0,'
+            '"estimated_food_cost":0'
+            '}]}],"assumptions":[]}'
+        ),
+    )
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator._validate_place",
+        lambda place_name, destination: None,
+    )
+
+    request = ItineraryRequest(
+        destination="Bhopal",
+        budget=10000,
+        days=1,
+    )
+
+    with pytest.raises(
+        RuntimeError,
+        match="No supported activities could be generated for day 1",
+    ):
+        generate_itinerary(request, heritage_context="Heritage context")
+
+
+def test_itinerary_generation_rejects_empty_day(monkeypatch):
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.generate_response",
+        lambda *args, **kwargs: (
+            '{"itinerary":[{"title":"Day 1","activities":[]}],'
+            '"assumptions":[]}'
+        ),
+    )
+
+    request = ItineraryRequest(
+        destination="Bhopal",
+        budget=10000,
+        days=1,
+    )
+
+    with pytest.raises(
+        RuntimeError,
+        match="No supported activities could be generated for day 1",
+    ):
+        generate_itinerary(request, heritage_context="Heritage context")
+
+
+def test_itinerary_loads_route_and_destination_service_references(monkeypatch):
+    route = TransportOption(
+        id="delhi-agra-train",
+        origin="Delhi",
+        destination="Agra",
+        transport_type="train",
+        estimated_cost=500,
+        currency="INR",
+        estimated_duration_minutes=120,
+        cost_status="estimated",
+        source_url="https://example.com/train",
+    )
+    agra_service = VisitorService(
+        id="agra-guide",
+        name="Agra guide",
+        category="guide",
+        location="Agra, Uttar Pradesh",
+        latitude=None,
+        longitude=None,
+        description="Local heritage guide",
+        estimated_cost=1000,
+        currency="INR",
+        cost_status="estimated",
+        source_url="https://example.com/guide",
+    )
+    delhi_service = VisitorService(
+        id="delhi-guide",
+        name="Delhi guide",
+        category="guide",
+        location="Delhi",
+        latitude=None,
+        longitude=None,
+        description="Local heritage guide",
+        estimated_cost=1000,
+        currency="INR",
+        cost_status="estimated",
+        source_url="https://example.com/delhi-guide",
+    )
+
+    class StubTransportRepository:
+        def search(self, origin, destination):
+            assert (origin, destination) == ("Delhi", "Agra")
+            return [route]
+
+    class StubVisitorServiceRepository:
+        def all(self):
+            return [agra_service, delhi_service]
+
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.TransportRepository",
+        StubTransportRepository,
+    )
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.VisitorServiceRepository",
+        StubVisitorServiceRepository,
+    )
+
+    transport_options, visitor_services = _load_travel_references(
+        ItineraryRequest(
+            origin="Delhi",
+            destination="Agra, India",
+            budget=10000,
+            days=1,
+        )
+    )
+
+    assert [option["id"] for option in transport_options] == [
+        "delhi-agra-train"
+    ]
+    assert [service["id"] for service in visitor_services] == [
+        "agra-guide"
+    ]

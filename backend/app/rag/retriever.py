@@ -1,37 +1,35 @@
 
 import json
-from pathlib import Path
 
 import faiss
 from sentence_transformers import SentenceTransformer
 
-
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-VECTOR_STORE_DIR = PROJECT_ROOT / "data" / "vector_store"
-
-INDEX_PATH = VECTOR_STORE_DIR / "heritage.index"
-CHUNKS_PATH = VECTOR_STORE_DIR / "chunks.json"
+from backend.app.core.config import get_settings
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 
 class HeritageRetriever:
     def __init__(self):
-        if not INDEX_PATH.exists():
+        vector_store_dir = get_settings().vector_store_dir
+        index_path = vector_store_dir / "heritage.index"
+        chunks_path = vector_store_dir / "chunks.json"
+
+        if not index_path.exists():
             raise FileNotFoundError(
-                f"FAISS index not found: {INDEX_PATH}. "
+                f"FAISS index not found: {index_path}. "
                 "Run the vector-store builder first."
             )
 
-        if not CHUNKS_PATH.exists():
+        if not chunks_path.exists():
             raise FileNotFoundError(
-                f"Chunk metadata not found: {CHUNKS_PATH}"
+                f"Chunk metadata not found: {chunks_path}"
             )
 
         print("Loading FAISS index...")
-        self.index = faiss.read_index(str(INDEX_PATH))
+        self.index = faiss.read_index(str(index_path))
 
-        with open(CHUNKS_PATH, "r", encoding="utf-8") as file:
+        with open(chunks_path, "r", encoding="utf-8") as file:
             self.chunks = json.load(file)
 
         print("Loading embedding model...")

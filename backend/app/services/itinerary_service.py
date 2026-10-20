@@ -7,6 +7,8 @@ from backend.app.schemas.itinerary import (
     ItineraryRequest,
     ItineraryResponse,
 )
+from backend.app.schemas.route import TransportOptionResponse
+from backend.app.schemas.service import VisitorServiceResponse
 from backend.app.services.budget_service import (
     calculate_day_cost,
     check_budget,
@@ -19,6 +21,8 @@ def build_itinerary_response(
     request: ItineraryRequest,
     daily_plans: list[dict[str, Any]],
     assumptions: list[str] | None = None,
+    transport_options: list[dict[str, Any]] | None = None,
+    visitor_services: list[dict[str, Any]] | None = None,
 ) -> ItineraryResponse:
     """Build, optimize, and validate a budget-aware itinerary response."""
 
@@ -145,6 +149,12 @@ def build_itinerary_response(
             "Local transport costs are excluded from the estimated total."
         )
 
+    if transport_options or visitor_services:
+        final_assumptions.append(
+            "Listed transport options and visitor services are informational; "
+            "their costs are not included in the itinerary total."
+        )
+
     # Record activities removed during budget optimization.
     if optimization["removed_activities"]:
         final_assumptions.append(
@@ -183,6 +193,14 @@ def build_itinerary_response(
         destination=request.destination,
         days=request.days,
         itinerary=itinerary_days,
+        transport_options=[
+            TransportOptionResponse(**option)
+            for option in (transport_options or [])
+        ],
+        visitor_services=[
+            VisitorServiceResponse(**service)
+            for service in (visitor_services or [])
+        ],
         estimated_total_cost=budget_result["estimated_total_cost"],
         budget=budget_result["budget"],
         within_budget=(

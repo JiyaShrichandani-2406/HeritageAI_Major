@@ -3,6 +3,9 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from backend.app.schemas.route import TransportOptionResponse
+from backend.app.schemas.service import VisitorServiceResponse
+
 
 CostStatus = Literal["verified", "estimated", "unknown"]
 
@@ -17,6 +20,13 @@ class ItineraryRequest(BaseModel):
         min_length=2,
         max_length=150,
         description="City or region where the traveler wants to explore heritage sites",
+    )
+
+    origin: str | None = Field(
+        default=None,
+        min_length=2,
+        max_length=150,
+        description="Optional starting location for matching transport routes",
     )
 
     budget: float = Field(
@@ -66,6 +76,12 @@ class ItineraryRequest(BaseModel):
         for interest in self.interests:
             if not interest.strip():
                 raise ValueError("Interests cannot contain empty values.")
+        if (
+            self.origin
+            and self.origin.strip().casefold()
+            == self.destination.strip().casefold()
+        ):
+            raise ValueError("Origin and destination must be different.")
         return self
 
 
@@ -136,6 +152,14 @@ class ItineraryResponse(BaseModel):
     days: int
     currency: str = "INR"
     itinerary: list[ItineraryDay] = Field(default_factory=list)
+    transport_options: list[TransportOptionResponse] = Field(
+        default_factory=list,
+        description="Matching route options; their costs are not included in itinerary totals.",
+    )
+    visitor_services: list[VisitorServiceResponse] = Field(
+        default_factory=list,
+        description="Visitor services matching the destination; their costs are not included in itinerary totals.",
+    )
     estimated_total_cost: float = Field(..., ge=0)
     budget: float = Field(..., gt=0)
     within_budget: bool

@@ -10,6 +10,8 @@ ABSTENTION_ANSWER = (
     "heritage documents to answer this question."
 )
 
+MIN_RELEVANCE_SCORE = 0.25
+
 # Create the retriever once and reuse it.
 _retriever = None
 
@@ -160,9 +162,17 @@ def generate_answer(question: str, top_k: int = 3) -> dict:
         top_k=top_k,
     )
 
+    retrieved_chunks = [
+        chunk
+        for chunk in retrieved_chunks
+        if isinstance(chunk.get("relevance_score"), (int, float))
+        and not isinstance(chunk.get("relevance_score"), bool)
+        and chunk["relevance_score"] >= MIN_RELEVANCE_SCORE
+    ]
+
     if not retrieved_chunks:
         return abstention_result(
-            "No relevant document chunks were retrieved."
+            "No document chunks met the minimum relevance threshold."
         )
 
     # Prepare the context supplied to the language model.
