@@ -9,6 +9,8 @@ from backend.app.api.v1.endpoints import (
     itinerary,
     monuments,
     places,
+    routes,
+    services,
 )
 
 API_V1_PREFIX = "/api/v1"
@@ -20,3 +22,7 @@ api_router.include_router(chat.router)
 api_router.include_router(itinerary.router)
 api_router.include_router(monuments.router)
 api_router.include_router(places.router, prefix="/places", tags=["Places"])
+
+# Member 4: transport and visitor services
+api_router.include_router(routes.router)
+api_router.include_router(services.router)
