@@ -19,6 +19,12 @@ class MonumentImage(BaseModel):
     caption: str = Field(..., min_length=2, max_length=300)
     credit: str = Field(..., min_length=2, max_length=200)
     license: str = Field(..., min_length=2, max_length=100)
+    source_url: str | None = Field(
+        default=None,
+        min_length=8,
+        max_length=500,
+        description="Image file page with the source attribution and license terms.",
+    )
 
 
 class MonumentResponse(BaseModel):

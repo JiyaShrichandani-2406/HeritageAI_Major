@@ -4,7 +4,10 @@ import logging
 from fastapi import APIRouter, HTTPException, status
 
 from backend.app.ai.itinerary_generator import generate_itinerary
-from backend.app.schemas.common import ErrorResponse
+from backend.app.schemas.common import (
+    ErrorResponse,
+    ValidationErrorResponse,
+)
 from backend.app.schemas.itinerary import (
     ItineraryRequest,
     ItineraryResponse,
@@ -20,17 +23,55 @@ logger = logging.getLogger(__name__)
     "/itinerary",
     response_model=ItineraryResponse,
     responses={
-        status.HTTP_422_UNPROCESSABLE_ENTITY: {
-            "description": "Request validation failed.",
-            "model": ErrorResponse,
+        422: {
+            "description": "The request body failed validation.",
+            "model": ValidationErrorResponse,
+            "content": {
+                "application/json": {
+                    "example": {
+                        "detail": [
+                            {
+                                "loc": ["body", "days"],
+                                "msg": "Input should be greater than or equal to 1",
+                                "type": "greater_than_equal",
+                            }
+                        ]
+                    }
+                }
+            },
         },
-        status.HTTP_503_SERVICE_UNAVAILABLE: {
+        502: {
+            "description": "The AI service returned an invalid itinerary.",
+            "model": ErrorResponse,
+            "content": {
+                "application/json": {
+                    "example": {
+                        "detail": "The AI must return exactly 2 daily plans."
+                    }
+                }
+            },
+        },
+        503: {
             "description": "Itinerary generation service unavailable.",
             "model": ErrorResponse,
+            "content": {
+                "application/json": {
+                    "example": {
+                        "detail": "The itinerary generation service is unavailable."
+                    }
+                }
+            },
         },
-        status.HTTP_500_INTERNAL_SERVER_ERROR: {
+        500: {
             "description": "Unexpected itinerary generation error.",
             "model": ErrorResponse,
+            "content": {
+                "application/json": {
+                    "example": {
+                        "detail": "An unexpected error occurred while generating the itinerary."
+                    }
+                }
+            },
         },
     },
 )
@@ -55,20 +96,20 @@ def create_itinerary(request: ItineraryRequest) -> ItineraryResponse:
 
     except ValueError as error:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_502_BAD_GATEWAY,
             detail=str(error),
         ) from error
 
     except RuntimeError as error:
         logger.exception("Itinerary generation service failed.")
         raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            status_code=503,
             detail=str(error),
         ) from error
 
     except Exception as error:
         logger.exception("Unexpected itinerary endpoint error.")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=500,
             detail="An unexpected error occurred while generating the itinerary.",
         ) from error

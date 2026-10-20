@@ -92,10 +92,21 @@ class ItineraryActivity(BaseModel):
 
     place_name: str
     description: str
-
-    estimated_entry_cost: float = Field(default=0, ge=0)
-    estimated_transport_cost: float = Field(default=0, ge=0)
-    estimated_food_cost: float = Field(default=0, ge=0)
+    estimated_entry_cost: float | None = Field(
+        default=None,
+        ge=0,
+        description="Entry cost in INR, or null if unknown.",
+    )
+    estimated_transport_cost: float | None = Field(
+        default=None,
+        ge=0,
+        description="Transport cost in INR, or null if unknown.",
+    )
+    estimated_food_cost: float | None = Field(
+        default=None,
+        ge=0,
+        description="Food cost in INR, or null if unknown.",
+    )
 
     entry_cost_status: CostStatus | None = None
     transport_cost_status: CostStatus | None = None
@@ -139,7 +150,11 @@ class ItineraryDay(BaseModel):
 
     day: int = Field(..., ge=1)
     title: str
-    activities: list[ItineraryActivity] = Field(default_factory=list)
+    activities: list[ItineraryActivity] = Field(
+        default_factory=list,
+        min_length=1,
+        max_length=4,
+    )
     estimated_cost: float = Field(..., ge=0)
 
 
@@ -162,7 +177,14 @@ class ItineraryResponse(BaseModel):
     )
     estimated_total_cost: float = Field(..., ge=0)
     budget: float = Field(..., gt=0)
-    within_budget: bool
+    within_budget: bool | None = Field(
+        ...,
+        description=(
+            "True if within budget, false if over budget, "
+            "or null if budget compliance cannot be verified "
+            "because one or more included costs are unknown."
+        ),
+    )
     remaining_budget: float
     assumptions: list[str] = Field(default_factory=list)
     message: str

@@ -3,14 +3,34 @@ from fastapi import APIRouter, HTTPException, status
 from backend.app.ai.answer_generator import generate_answer
 from backend.app.ai.output_validator import validate_output
 from backend.app.schemas.chat import ChatRequest, ChatResponse
+from backend.app.schemas.common import ErrorResponse, ValidationErrorResponse
 
 
-router = APIRouter(
-    tags=["Chat"],
+router = APIRouter(tags=["Chat"])
+
+
+@router.post(
+    "/chat",
+    response_model=ChatResponse,
+    responses={
+        400: {
+            "description": "The question could not be processed.",
+            "model": ErrorResponse,
+        },
+        422: {
+            "description": "The request body failed validation.",
+            "model": ValidationErrorResponse,
+        },
+        503: {
+            "description": "The heritage answer service is unavailable.",
+            "model": ErrorResponse,
+        },
+        500: {
+            "description": "An unexpected answer-generation error occurred.",
+            "model": ErrorResponse,
+        },
+    },
 )
-
-
-@router.post("/chat", response_model=ChatResponse)
 def chat(request: ChatRequest) -> ChatResponse:
     """Answer a heritage question using RAG and Ollama."""
 

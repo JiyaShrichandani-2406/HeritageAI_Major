@@ -16,6 +16,15 @@
         "url": "https://whc.unesco.org/en/list/252"
       }
     ],
-    "images": []
+    "last_verified": null,
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Taj_Mahal%2C_Agra%2C_India_edit2.jpg",
+        "caption": "Taj Mahal viewed from the south side",
+        "credit": "Yann Forget; edited by King of Hearts / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg"
+      }
+    ]
   }
 ]

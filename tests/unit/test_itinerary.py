@@ -135,16 +135,14 @@ def test_over_budget_itinerary_is_reported():
     assert "exceed" in result.message.lower()
 
 
-def test_empty_activities_are_allowed(sample_request):
+def test_empty_activities_are_rejected(sample_request):
     daily_plans = [
         {"title": "Day 1", "activities": []},
         {"title": "Day 2", "activities": []},
     ]
 
-    result = build_itinerary_response(sample_request, daily_plans)
-
-    assert result.estimated_total_cost == 0
-    assert result.within_budget is True
+    with pytest.raises(ValueError):
+        build_itinerary_response(sample_request, daily_plans)
 
 def test_unknown_costs_do_not_confirm_budget_compliance():
     request = ItineraryRequest(
@@ -174,7 +172,7 @@ def test_unknown_costs_do_not_confirm_budget_compliance():
 
     result = build_itinerary_response(request, daily_plans)
 
-    assert result.within_budget is False
+    assert result.within_budget is None
     assert "not verified" in result.message.lower()
     assert any(
         "unknown" in assumption.lower()

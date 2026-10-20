@@ -60,6 +60,9 @@ def calculate_activity_cost(
     for field, should_include in cost_fields.items():
         value = activity.get(field, 0)
 
+        if value is None:
+            value = 0
+
         if isinstance(value, bool) or not isinstance(value, (int, float)):
             raise ValueError(f"{field} must be a number.")
 

@@ -43,6 +43,33 @@ def test_main_app_registers_chat_and_itinerary_routes():
     assert "/api/v1/itinerary" in paths
 
 
+def test_openapi_documents_itinerary_error_shapes_and_status_codes():
+    paths = app.openapi()["paths"]
+    responses = paths["/api/v1/itinerary"]["post"]["responses"]
+
+    assert {"200", "422", "500", "502", "503"} <= responses.keys()
+    validation_example = responses["422"]["content"]["application/json"]["example"]
+    assert isinstance(validation_example["detail"], list)
+
+    ai_error = responses["502"]["content"]["application/json"]["example"]
+    assert isinstance(ai_error["detail"], str)
+    assert {"400", "422", "500", "503"} <= paths["/api/v1/chat"]["post"][
+        "responses"
+    ].keys()
+    assert {"404", "500", "503"} <= paths[
+        "/api/v1/monuments/{monument_id}"
+    ]["get"]["responses"].keys()
+    assert {"422", "500", "503"} <= paths["/api/v1/places/nearby"]["get"][
+        "responses"
+    ].keys()
+    assert {"422", "500", "503"} <= paths["/api/v1/routes"]["post"][
+        "responses"
+    ].keys()
+    assert {"422", "500", "503"} <= paths["/api/v1/services"]["get"][
+        "responses"
+    ].keys()
+
+
 def test_main_app_configures_cors_middleware():
     settings = get_settings()
     origins = list(settings.cors_origins)

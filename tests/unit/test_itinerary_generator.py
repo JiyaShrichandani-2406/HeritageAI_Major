@@ -196,3 +196,81 @@ def test_itinerary_loads_route_and_destination_service_references(monkeypatch):
     assert [service["id"] for service in visitor_services] == [
         "agra-guide"
     ]
+
+
+def test_multiple_activities_are_allowed_and_transport_is_not_guessed(
+    monkeypatch,
+):
+    raw_response = (
+        '{"itinerary":[{"title":"Day 1","activities":['
+        '{"place_name":"Taj Mahal","description":"Explore the monument",'
+        '"estimated_entry_cost":50,"entry_cost_status":"estimated",'
+        '"estimated_transport_cost":250,'
+        '"transport_cost_status":"estimated",'
+        '"estimated_food_cost":null,"food_cost_status":"unknown"},'
+        '{"place_name":"Agra Fort","description":"Visit the fort",'
+        '"estimated_entry_cost":100,"entry_cost_status":"estimated",'
+        '"estimated_transport_cost":400,'
+        '"transport_cost_status":"estimated",'
+        '"estimated_food_cost":null,"food_cost_status":"unknown"}'
+        ']}],"assumptions":[]}'
+    )
+    captured = {}
+
+    def fake_generate_response(prompt, **kwargs):
+        captured["prompt"] = prompt
+        captured["num_predict"] = kwargs["num_predict"]
+        return raw_response
+
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.generate_response",
+        fake_generate_response,
+    )
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator._validate_place",
+        lambda place_name, destination: place_name,
+    )
+
+    result = generate_itinerary(
+        ItineraryRequest(destination="Agra", budget=10000, days=1),
+        heritage_context="Verified heritage context.",
+    )
+
+    activities = result["itinerary"][0]["activities"]
+    assert len(activities) == 2
+    assert all(
+        activity["estimated_transport_cost"] is None
+        and activity["transport_cost_status"] == "unknown"
+        for activity in activities
+    )
+    assert "Do not estimate local or intercity transport costs" in captured["prompt"]
+    assert "two to four distinct suitable activities per day" in captured["prompt"]
+    assert captured["num_predict"] == 512
+
+
+def test_itinerary_generation_rejects_more_than_four_activities(
+    monkeypatch,
+):
+    activities = ",".join(
+        (
+            '{"place_name":"Taj Mahal","description":"Visit the monument",'
+            '"estimated_entry_cost":null,'
+            '"estimated_transport_cost":null,'
+            '"estimated_food_cost":null}'
+        )
+        for _ in range(5)
+    )
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.generate_response",
+        lambda *args, **kwargs: (
+            '{"itinerary":[{"title":"Day 1","activities":['
+            f'{activities}'
+            ']}],"assumptions":[]}'
+        ),
+    )
+
+    with pytest.raises(ValueError, match="at most four activities"):
+        generate_itinerary(
+            ItineraryRequest(destination="Agra", budget=10000, days=1),
+            heritage_context="Verified heritage context.",
+        )

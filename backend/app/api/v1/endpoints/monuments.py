@@ -1,11 +1,30 @@
 from fastapi import APIRouter, HTTPException, status
 
+from backend.app.schemas.common import ErrorResponse
 from backend.app.schemas.monument import MonumentResponse
 from backend.app.services.heritage_service import get_monument
 
 router = APIRouter(tags=["Monuments"])
 
-@router.get("/monuments/{monument_id}", response_model=MonumentResponse)
+
+@router.get(
+    "/monuments/{monument_id}",
+    response_model=MonumentResponse,
+    responses={
+        404: {
+            "description": "The requested monument does not exist.",
+            "model": ErrorResponse,
+        },
+        503: {
+            "description": "The heritage dataset is unavailable.",
+            "model": ErrorResponse,
+        },
+        500: {
+            "description": "An unexpected monument lookup error occurred.",
+            "model": ErrorResponse,
+        },
+    },
+)
 def get_monument_details(monument_id: str) -> MonumentResponse:
     """Return the history, architecture and sources of a monument."""
 

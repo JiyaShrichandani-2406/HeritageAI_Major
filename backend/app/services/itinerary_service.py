@@ -68,6 +68,12 @@ def build_itinerary_response(
     final_assumptions = list(assumptions or [])
     has_unknown_costs = False
 
+    cost_labels = {
+        "estimated_entry_cost": "entry fee",
+        "estimated_transport_cost": "transport cost",
+        "estimated_food_cost": "food cost",
+    }
+
     for daily_plan in optimized_plans:
         for activity in daily_plan.get("activities", []):
             unknown_fields = get_unknown_cost_fields(
@@ -83,9 +89,10 @@ def build_itinerary_response(
                 )
 
                 for field in unknown_fields:
+                    label = cost_labels.get(field, "cost")
                     assumption = (
-                        f"{place_name}: {field} is UNKNOWN; "
-                        "the estimated total may be incomplete."
+                        f"{place_name}: the {label} is unknown. "
+                        "The estimated total may be incomplete."
                     )
 
                     if assumption not in final_assumptions:
@@ -163,14 +170,14 @@ def build_itinerary_response(
             "activities to reduce estimated costs."
         )
 
-       # Select the message based on budget and cost certainty.
+    # Select the message based on budget and cost certainty.
     if not budget_result["within_budget"]:
         if has_unknown_costs:
-             message = (
-            "The known estimated costs exceed the available budget, "
-            "and some costs are unknown. The displayed total may be "
-            "incomplete, so budget compliance is not fully verified."
-        )
+            message = (
+                "Known estimated costs exceed the available budget, "
+                "and some costs are unknown. The displayed total may "
+                "be incomplete."
+            )
         else:
             message = (
                 "The itinerary exceeds the available budget after "
@@ -180,14 +187,15 @@ def build_itinerary_response(
     elif has_unknown_costs:
         message = (
             "Itinerary generated, but some costs are unknown. "
-            "Any displayed total is incomplete and must not be treated "
-            "as the actual trip cost. Budget compliance is not verified."
+            "The displayed total may be incomplete, and budget "
+            "compliance is not verified."
         )
     else:
         message = (
             "Itinerary generated within the available budget, "
             "based on estimated costs."
         )
+
     # Build the final response.
     return ItineraryResponse(
         destination=request.destination,
@@ -203,12 +211,13 @@ def build_itinerary_response(
         ],
         estimated_total_cost=budget_result["estimated_total_cost"],
         budget=budget_result["budget"],
-        within_budget=(
-            budget_result["within_budget"]
-            if not has_unknown_costs
-            else False
-        ),
-        remaining_budget=budget_result["remaining_budget"],
+              within_budget=(
+            False
+            if not budget_result["within_budget"]
+            else None
+            if has_unknown_costs
+            else True
+        ),       remaining_budget=budget_result["remaining_budget"],
         assumptions=list(dict.fromkeys(final_assumptions)),
         message=message,
     )
