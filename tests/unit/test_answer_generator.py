@@ -78,3 +78,73 @@ def test_relevant_retrieval_is_used_for_answer(monkeypatch):
         "https://whc.unesco.org/en/list/252",
         "https://en.wikipedia.org/wiki/Taj_Mahal",
     }
+
+
+def test_weak_agreement_score_abstains(monkeypatch):
+    monkeypatch.setattr(
+        answer_generator,
+        "get_retriever",
+        lambda: StubRetriever(
+            [
+                {
+                    "title": "Agra Fort",
+                    "text": "A weakly matching result.",
+                    "source_url": "https://agra.nic.in/tourist-place/agra-fort/",
+                    "relevance_score": 0.509,
+                }
+            ]
+        ),
+    )
+    monkeypatch.setattr(
+        answer_generator,
+        "generate_response",
+        lambda prompt: (_ for _ in ()).throw(
+            AssertionError("The LLM must not receive weakly relevant context.")
+        ),
+    )
+
+    result = answer_generator.generate_answer(
+        "What is the population of Tokyo?"
+    )
+
+    assert result["grounded"] is False
+    assert result["sources"] == []
+
+
+def test_duplicate_urls_across_titles_keep_the_best_source(monkeypatch):
+    monkeypatch.setattr(
+        answer_generator,
+        "get_retriever",
+        lambda: StubRetriever(
+            [
+                {
+                    "title": "Taj Mahal",
+                    "text": "The Taj Mahal is in Agra.",
+                    "source_url": "https://whc.unesco.org/en/list/252/",
+                    "relevance_score": 0.61,
+                },
+                {
+                    "title": "Taj Mahal - duplicate",
+                    "text": "The Taj Mahal is in Agra.",
+                    "source_url": "https://whc.unesco.org/en/list/252",
+                    "relevance_score": 0.72,
+                },
+            ]
+        ),
+    )
+    monkeypatch.setattr(
+        answer_generator,
+        "generate_response",
+        lambda prompt: "The Taj Mahal is in Agra.",
+    )
+
+    result = answer_generator.generate_answer("Where is the Taj Mahal?")
+
+    matching = [
+        source
+        for source in result["sources"]
+        if source["url"].rstrip("/") == "https://whc.unesco.org/en/list/252"
+    ]
+    assert len(matching) == 1
+    assert matching[0]["title"] == "Taj Mahal - duplicate"
+    assert matching[0]["relevance_score"] == 0.72

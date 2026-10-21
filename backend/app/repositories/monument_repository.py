@@ -39,6 +39,11 @@ def get_monument_by_id(monument_id: str) -> dict[str, Any] | None:
     return None
 
 
+def get_monuments() -> tuple[dict[str, Any], ...]:
+    """Return the cached monument catalog."""
+    return _load_monuments()
+
+
 def find_monument(query: str) -> dict[str, Any] | None:
     """Match free text such as 'Taj Mahal' or 'Agra' against id, name or city."""
     wanted = query.strip().lower()

@@ -75,3 +75,12 @@ def test_validation_error_response_accepts_fastapi_error_shape():
 
     assert parsed.detail[0].loc == ["body", "question"]
     assert parsed.detail[0].msg == "Field required"
+
+
+def test_ollama_timeout_defaults_to_300_seconds(monkeypatch):
+    from backend.app.core import config
+
+    monkeypatch.setattr(config, "load_dotenv", lambda *args, **kwargs: None)
+    monkeypatch.delenv("OLLAMA_TIMEOUT_SECONDS", raising=False)
+
+    assert config.load_settings().ollama_timeout_seconds == 300

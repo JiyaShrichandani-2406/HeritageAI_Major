@@ -193,3 +193,47 @@ def test_unknown_cost_fields_are_detected():
      assert "estimated_entry_cost" in unknown_fields
      assert "estimated_transport_cost" in unknown_fields
      assert "estimated_food_cost" in unknown_fields
+
+
+def test_unknown_cost_amount_is_not_counted_as_a_zero_or_known_cost():
+    activity = {
+        "estimated_entry_cost": 100,
+        "entry_cost_status": "verified",
+        "estimated_food_cost": 500,
+        "food_cost_status": "unknown",
+    }
+
+    assert calculate_activity_cost(activity) == 100
+    assert get_unknown_cost_fields(
+        activity,
+        include_transport=False,
+    ) == ["estimated_food_cost"]
+
+
+def test_optimization_updates_day_title_after_removing_activity():
+    from backend.app.services.budget_service import optimize_itinerary
+
+    result = optimize_itinerary(
+        [
+            {
+                "title": "Ram Bagh and Taj Mahal",
+                "activities": [
+                    {
+                        "place_name": "Ram Bagh",
+                        "estimated_entry_cost": 500,
+                    },
+                    {
+                        "place_name": "Taj Mahal",
+                        "estimated_entry_cost": 100,
+                    },
+                ],
+            }
+        ],
+        budget=100,
+        include_food=False,
+        include_transport=False,
+    )
+
+    assert result["itinerary"][0]["title"] == "Day 1 - Taj Mahal"
+    assert [activity["place_name"] for activity in
+            result["itinerary"][0]["activities"]] == ["Taj Mahal"]

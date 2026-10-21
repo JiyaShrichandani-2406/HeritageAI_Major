@@ -15,7 +15,7 @@
     "latitude": 27.2205,
     "longitude": 77.9511,
     "address": "Sikandra, Agra, Uttar Pradesh 282007",
-    "source_url": "https://en.wikipedia.org/wiki/Tomb_of_Akbar_the_Great"
+    "source_url": "https://agra.nic.in/tourist-place/akbars-tomb-sikandra/"
   },
   {
     "id": "chini-ka-rauza",
@@ -33,7 +33,7 @@
     "latitude": 27.094,
     "longitude": 77.661,
     "address": "Fatehpur Sikri, Agra district, Uttar Pradesh 283110",
-    "source_url": "https://en.wikipedia.org/wiki/Fatehpur_Sikri"
+    "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/"
   },
   {
     "id": "itmad-ud-daulah",
@@ -78,7 +78,7 @@
     "latitude": 27.179,
     "longitude": 78.0437,
     "address": "Northern bank of Yamuna river, Agra, Uttar Pradesh 282006",
-    "source_url": "https://en.wikipedia.org/wiki/Mehtab_Bagh"
+    "source_url": "https://agra.nic.in/tourist-place/mehtab-bagh/"
   },
   {
     "id": "ram-bagh",
@@ -87,7 +87,7 @@
     "latitude": 27.2087,
     "longitude": 78.0457,
     "address": "Ram Bagh, Agra, Uttar Pradesh 282006",
-    "source_url": "https://en.wikipedia.org/wiki/Ram_Bagh"
+    "source_url": "https://agra.nic.in/tourist-place/ram-bagh-bagh-i-gul-afshan/"
   },
   {
     "id": "taj-mahal",
@@ -96,7 +96,6 @@
     "latitude": 27.1751,
     "longitude": 78.0421,
     "address": "Dharmapuri, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001",
-    "source_url": "https://en.wikipedia.org/wiki/Taj_Mahal"
+    "source_url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra/magnificent-world-heritage-site-taj-mahal"
   }
 ]
-

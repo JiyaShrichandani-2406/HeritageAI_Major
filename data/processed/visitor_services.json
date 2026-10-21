@@ -24,5 +24,18 @@
     "currency": "INR",
     "cost_status": "unknown",
     "source_url": "https://agra.nic.in/tourist-place/agra-fort/"
+  },
+  {
+    "id": "fatehpur-sikri-licensed-guides",
+    "name": "Licensed guides",
+    "category": "guide",
+    "location": "Fatehpur Sikri, Agra district, Uttar Pradesh",
+    "latitude": null,
+    "longitude": null,
+    "description": "The Agra District Administration lists licensed guides; availability and fees may vary.",
+    "estimated_cost": null,
+    "currency": "INR",
+    "cost_status": "unknown",
+    "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/"
   }
 ]

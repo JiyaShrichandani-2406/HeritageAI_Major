@@ -59,8 +59,10 @@ def test_build_itinerary_response(sample_request, sample_daily_plans):
     assert len(result.itinerary) == 2
     assert result.estimated_total_cost == 800
     assert result.budget == 3000
-    assert result.within_budget is True
-    assert result.remaining_budget == 2200
+    assert result.within_budget is None
+    assert result.remaining_budget is None
+    assert result.known_cost_subtotal == 0
+    assert result.estimated_total_cost == 800
 
 
 def test_day_costs_are_calculated_correctly(
@@ -81,7 +83,8 @@ def test_assumptions_are_preserved(sample_request, sample_daily_plans):
         assumptions=assumptions,
     )
 
-    assert result.assumptions == assumptions
+    assert result.assumptions[0] == assumptions[0]
+    assert len(result.assumptions) == 3
 
 
 def test_wrong_number_of_daily_plans_is_rejected(sample_request):
@@ -106,7 +109,7 @@ def test_negative_activity_cost_is_rejected(
         build_itinerary_response(sample_request, sample_daily_plans)
 
 
-def test_over_budget_itinerary_is_reported():
+def test_estimated_costs_do_not_claim_budget_compliance():
     request = ItineraryRequest(
         destination="Delhi",
         budget=100,
@@ -133,9 +136,11 @@ def test_over_budget_itinerary_is_reported():
 
     result = build_itinerary_response(request, daily_plans)
 
-    assert result.within_budget is False
-    assert result.remaining_budget == -100
-    assert "exceed" in result.message.lower()
+    assert result.within_budget is None
+    assert result.known_cost_subtotal == 0
+    assert result.estimated_total_cost == 200
+    assert result.remaining_budget is None
+    assert "not verified" in result.message.lower()
 
 
 def test_empty_activities_are_rejected(sample_request):
@@ -191,8 +196,45 @@ def test_unknown_costs_do_not_confirm_budget_compliance():
     assert result.known_cost_subtotal == 0
     assert result.estimated_total_cost is None
     assert result.remaining_budget is None
+    assert result.itinerary[0].estimated_cost is None
     assert "not verified" in result.message.lower()
     assert any(
         "unknown" in assumption.lower()
         for assumption in result.assumptions
     )
+
+
+def test_estimated_food_cost_is_not_in_known_cost_subtotal():
+    request = ItineraryRequest(
+        destination="Agra",
+        budget=1000,
+        days=1,
+    )
+    daily_plans = [
+        {
+            "title": "Day 1",
+            "activities": [
+                {
+                    "place_name": "Taj Mahal",
+                    "description": "Explore the monument.",
+                    "estimated_entry_cost": 100,
+                    "entry_cost_status": "verified",
+                    "estimated_transport_cost": 0,
+                    "transport_cost_status": "verified",
+                    "estimated_food_cost": 500,
+                    "food_cost_status": "estimated",
+                }
+            ],
+        }
+    ]
+
+    result = build_itinerary_response(request, daily_plans)
+
+    assert result.known_cost_subtotal == 100
+    assert result.estimated_total_cost == 600
+    assert (
+        result.itinerary[0].activities[0].estimated_food_cost
+        == 500
+    )
+    assert result.within_budget is None
+    assert result.remaining_budget is None

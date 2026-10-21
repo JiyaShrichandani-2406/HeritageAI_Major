@@ -103,8 +103,9 @@ def test_create_itinerary_success(mock_generated_itinerary):
     assert data["days"] == 2
     assert len(data["itinerary"]) == 2
     assert data["estimated_total_cost"] == 800
-    assert data["within_budget"] is True
-    assert data["remaining_budget"] == 2200
+    assert data["within_budget"] is None
+    assert data["remaining_budget"] is None
+    assert data["known_cost_subtotal"] == 0
     assert data["transport_options"][0]["id"] == "delhi-bhopal-train"
     assert data["visitor_services"][0]["id"] == "bhopal-guide"
     assert data["estimated_total_cost"] == 800
@@ -236,6 +237,31 @@ def test_create_itinerary_ai_service_unavailable(monkeypatch):
     assert response.json()["detail"] == "Simulated AI service failure."
 
 
+def test_create_itinerary_reports_unsupported_destination(monkeypatch):
+    def unsupported_destination(request):
+        from backend.app.ai.itinerary_generator import (
+            UnsupportedDestinationError,
+        )
+
+        raise UnsupportedDestinationError(
+            "No heritage or nearby-place data is available for Bhopal."
+        )
+
+    monkeypatch.setattr(
+        itinerary_endpoint,
+        "generate_itinerary",
+        unsupported_destination,
+    )
+
+    response = client.post(
+        "/api/v1/itinerary",
+        json={"destination": "Bhopal", "budget": 3000, "days": 1},
+    )
+
+    assert response.status_code == 422
+    assert "No heritage or nearby-place data" in response.json()["detail"]
+
+
 def test_create_itinerary_rejects_empty_day_from_generator(monkeypatch):
     def fake_generate_itinerary(request):
         return {
@@ -330,3 +356,4 @@ def test_create_itinerary_returns_null_total_for_unknown_costs(monkeypatch):
     assert data["estimated_total_cost"] is None
     assert data["remaining_budget"] is None
     assert data["within_budget"] is None
+    assert data["itinerary"][0]["estimated_cost"] is None

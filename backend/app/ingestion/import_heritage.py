@@ -66,6 +66,12 @@ def main() -> int:
     with HERITAGE_FILE.open(encoding="utf-8") as file:
         records = json.load(file)
 
+    if isinstance(records, dict):
+        records = [records]
+    elif not isinstance(records, list):
+        print("INVALID heritage.json: expected a monument object or list.")
+        return 1
+
     problems = 0
     seen_ids: set[str] = set()
 
@@ -74,7 +80,7 @@ def main() -> int:
 
         try:
             monument = MonumentResponse(**record)
-        except Exception as error:
+        except (TypeError, ValueError) as error:
             print(f"INVALID {label}: {error}")
             problems += 1
             continue

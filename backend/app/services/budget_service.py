@@ -29,13 +29,19 @@ def get_unknown_cost_fields(
             continue
 
         status_field = COST_STATUS_FIELDS[cost_field]
-        value = activity.get(cost_field, 0)
+        value = activity.get(cost_field)
         status = activity.get(status_field)
 
         # Legacy data without statuses: positive costs are estimates;
         # missing or zero costs are unknown.
         if status is None:
-            status = "estimated" if value > 0 else "unknown"
+            status = (
+                "estimated"
+                if isinstance(value, (int, float))
+                and not isinstance(value, bool)
+                and value > 0
+                else "unknown"
+            )
 
         if status == "unknown":
             unknown_fields.append(cost_field)
@@ -59,6 +65,7 @@ def calculate_activity_cost(
 
     for field, should_include in cost_fields.items():
         value = activity.get(field, 0)
+        status = activity.get(COST_STATUS_FIELDS[field])
 
         if value is None:
             value = 0
@@ -69,7 +76,7 @@ def calculate_activity_cost(
         if value < 0:
             raise ValueError(f"{field} cannot be negative.")
 
-        if should_include:
+        if should_include and status != "unknown":
             total += float(value)
 
     return round(total, 2)
@@ -214,10 +221,27 @@ def optimize_itinerary(
         # Remove the highest-cost activity first.
         _, day_index, activity_index = max(candidates)
 
-        removed = optimized[day_index]["activities"].pop(
-            activity_index
-        )
+        day = optimized[day_index]
+        removed = day["activities"].pop(activity_index)
         removed_activities.append(removed)
+
+        if day.get("title"):
+            original_prefix = day["title"].split(" - ", maxsplit=1)[0].strip()
+            title_prefix = (
+                original_prefix
+                if original_prefix.casefold().startswith("day ")
+                else f"Day {day_index + 1}"
+            )
+            remaining_names = [
+                activity["place_name"]
+                for activity in day["activities"]
+                if activity.get("place_name")
+            ]
+            day["title"] = (
+                f"{title_prefix} - {', '.join(remaining_names)}"
+                if remaining_names
+                else title_prefix
+            )
 
     final_cost = total_cost()
     budget_result = check_budget(final_cost, budget)

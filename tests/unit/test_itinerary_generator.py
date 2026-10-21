@@ -4,6 +4,9 @@ import pytest
 from backend.app.ai.itinerary_generator import (
     _extract_json,
     _load_travel_references,
+    _supports_destination,
+    _validate_place,
+    UnsupportedDestinationError,
     generate_itinerary,
     _validate_source_url,
 )
@@ -61,6 +64,23 @@ def test_generated_source_url_must_be_grounded_in_context():
         "https://redfort.in",
         context,
     ) is None
+
+
+def test_ram_bagh_parenthetical_alias_is_supported():
+    assert _validate_place("Ram Bagh", "Agra") == "Ram Bagh (Aram Bagh)"
+
+
+def test_destination_support_reflects_local_heritage_data():
+    assert _supports_destination("Agra") is True
+    assert _supports_destination("Fatehpur Sikri") is True
+    assert _supports_destination("Bhopal") is False
+
+
+def test_unsupported_destination_has_a_clear_error():
+    with pytest.raises(UnsupportedDestinationError, match="Bhopal"):
+        generate_itinerary(
+            ItineraryRequest(destination="Bhopal", budget=10000, days=1)
+        )
 
 
 def test_generated_ungrounded_source_url_is_removed(monkeypatch):
@@ -285,6 +305,28 @@ def test_agras_sourced_visitor_services_are_included_without_inventing_costs():
         == "https://agra.nic.in/tourist-place/agra-fort/"
         for service in visitor_services
     )
+
+
+def test_fatehpur_sikri_transport_and_services_are_sourced():
+    transport_options, visitor_services = _load_travel_references(
+        ItineraryRequest(
+            origin="Agra",
+            destination="Fatehpur Sikri",
+            budget=5000,
+            days=1,
+        )
+    )
+
+    assert [option["id"] for option in transport_options] == [
+        "agra-fatehpur-sikri-upsrtc-bus"
+    ]
+    assert transport_options[0]["cost_status"] == "unknown"
+    assert transport_options[0]["estimated_cost"] is None
+    assert [service["id"] for service in visitor_services] == [
+        "fatehpur-sikri-licensed-guides"
+    ]
+    assert visitor_services[0]["estimated_cost"] is None
+    assert visitor_services[0]["cost_status"] == "unknown"
 
 
 def test_multiple_activities_are_allowed_and_transport_is_not_guessed(

@@ -167,7 +167,11 @@ class ItineraryDay(BaseModel):
         min_length=1,
         max_length=4,
     )
-    estimated_cost: float = Field(..., ge=0)
+    estimated_cost: float | None = Field(
+        ...,
+        ge=0,
+        description="Estimated day total, or null if an included cost is unknown.",
+    )
 
 
 class ItineraryResponse(BaseModel):

@@ -10,7 +10,7 @@ ABSTENTION_ANSWER = (
     "heritage documents to answer this question."
 )
 
-MIN_RELEVANCE_SCORE = 0.25
+MIN_RELEVANCE_SCORE = 0.55
 
 # Create the retriever once and reuse it.
 _retriever = None
@@ -238,7 +238,7 @@ ANSWER:
             if not url:
                 continue
 
-            key = (title, url)
+            key = url.rstrip("/")
             if key not in source_map:
                 source_map[key] = {
                     "title": title,
@@ -252,6 +252,7 @@ ANSWER:
                     or score > source_map[key]["relevance_score"]
                 )
             ):
+                source_map[key]["title"] = title
                 source_map[key]["relevance_score"] = score
 
     sources = list(source_map.values())

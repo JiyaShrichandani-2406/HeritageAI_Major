@@ -11,6 +11,8 @@ RECORD = {
     "summary": "Marble mausoleum built by Shah Jahan.",
     "history": "Construction began around 1632.",
     "architecture": "Mughal architecture with a central dome.",
+    "latitude": 27.1751,
+    "longitude": 78.0421,
     "sources": [
         {"title": "UNESCO", "url": "https://whc.unesco.org/en/list/252"},
         {"title": "Second source", "url": "https://example.com/second"},
@@ -88,11 +90,27 @@ def test_heritage_catalog_contains_multiple_sourced_monuments():
     assert verified_dates["taj-mahal"] == "2026-10-21"
     assert verified_dates["agra-fort"] == "2026-10-21"
     assert all(
-        verified_dates[monument_id] is None
-        for monument_id in (
-            "fatehpur-sikri",
-            "akbar-tomb-sikandra",
-            "mehtab-bagh",
-            "ram-bagh",
-        )
+        value == "2026-10-21"
+        for value in verified_dates.values()
     )
+    assert all(record["images"] for record in records)
+    ram_bagh = next(
+        record for record in records if record["id"] == "ram-bagh"
+    )
+    assert "water channels" in ram_bagh["architecture"]
+    assert ram_bagh["sources"][0]["url"] == (
+        "https://agra.nic.in/tourist-place/ram-bagh-bagh-i-gul-afshan/"
+    )
+
+
+def test_import_accepts_single_monument_object(tmp_path, monkeypatch):
+    import json
+
+    monument_file = tmp_path / "heritage.json"
+    monument_file.write_text(json.dumps(RECORD), encoding="utf-8")
+    output_dir = tmp_path / "raw" / "heritage"
+    monkeypatch.setattr(import_heritage, "HERITAGE_FILE", monument_file)
+    monkeypatch.setattr(import_heritage, "RAG_DOCUMENTS_DIR", output_dir)
+
+    assert import_heritage.main() == 0
+    assert (output_dir / "taj-mahal.txt").exists()

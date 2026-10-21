@@ -3,7 +3,10 @@ import logging
 
 from fastapi import APIRouter, HTTPException, status
 
-from backend.app.ai.itinerary_generator import generate_itinerary
+from backend.app.ai.itinerary_generator import (
+    UnsupportedDestinationError,
+    generate_itinerary,
+)
 from backend.app.schemas.common import (
     ErrorResponse,
     ValidationErrorResponse,
@@ -24,8 +27,11 @@ logger = logging.getLogger(__name__)
     response_model=ItineraryResponse,
     responses={
         422: {
-            "description": "The request body failed validation.",
-            "model": ValidationErrorResponse,
+            "description": (
+                "The request body failed validation or the destination "
+                "is not covered by the heritage catalog."
+            ),
+            "model": ValidationErrorResponse | ErrorResponse,
             "content": {
                 "application/json": {
                     "example": {
@@ -93,6 +99,12 @@ def create_itinerary(request: ItineraryRequest) -> ItineraryResponse:
         )
 
         return result
+
+    except UnsupportedDestinationError as error:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+            detail=str(error),
+        ) from error
 
     except ValueError as error:
         raise HTTPException(

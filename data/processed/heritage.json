@@ -49,7 +49,15 @@
       }
     ],
     "last_verified": "2026-10-21",
-    "images": []
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Agra_03-2016_14_Agra_Fort.jpg",
+        "caption": "Agra Fort in Agra, India",
+        "credit": "A.Savin, Wikipedia",
+        "license": "Free Art License",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Agra_03-2016_14_Agra_Fort.jpg"
+      }
+    ]
   },
   {
     "id": "fatehpur-sikri",
@@ -68,8 +76,16 @@
         "url": "https://agra.nic.in/tourist-place/fatehpur-sikri/"
       }
     ],
-    "last_verified": null,
-    "images": []
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Fatehpur-Fatehpur_Sikri_India0002.JPG",
+        "caption": "Fatehpur Sikri, India",
+        "credit": "Diego Delso / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Fatehpur-Fatehpur_Sikri_India0002.JPG"
+      }
+    ]
   },
   {
     "id": "akbar-tomb-sikandra",
@@ -88,8 +104,16 @@
         "url": "https://agra.nic.in/tourist-place/akbars-tomb-sikandra/"
       }
     ],
-    "last_verified": null,
-    "images": []
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Akbar%27s_Tomb_in_Sikandra_09.jpg",
+        "caption": "Gateway of Akbar's Tomb at Sikandra",
+        "credit": "Darshanavenugopal / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Akbar%27s_Tomb_in_Sikandra_09.jpg"
+      }
+    ]
   },
   {
     "id": "mehtab-bagh",
@@ -108,8 +132,16 @@
         "url": "https://agra.nic.in/tourist-place/mehtab-bagh/"
       }
     ],
-    "last_verified": null,
-    "images": []
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Mehtab_Bagh_lawn.jpg",
+        "caption": "Lawn at Mehtab Bagh",
+        "credit": "Aks khandelwal",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Mehtab_Bagh_lawn.jpg"
+      }
+    ]
   },
   {
     "id": "ram-bagh",
@@ -117,18 +149,26 @@
     "city": "Agra",
     "state": "Uttar Pradesh",
     "country": "India",
-    "summary": "Mughal garden in Agra, also known as Aram Bagh.",
-    "history": "The garden is attributed to Emperor Babur and dated to 1526. Babur was temporarily buried there before his remains were moved to Kabul.",
-    "architecture": "Additional architectural details are not included in the currently reviewed source summary.",
+    "summary": "Ram Bagh, also known as Bagh-i-Gul Afshan, is a Mughal garden laid out by Emperor Babur around 1528 and regarded as the oldest surviving Mughal garden in India.",
+    "history": "The Agra District Administration describes Ram Bagh as laid out by Emperor Babur around 1528 and as the oldest surviving Mughal garden in India.",
+    "architecture": "The garden has terraced walkways, water channels and pavilions overlooking the Yamuna, and is described by the Agra District Administration as a prototype of the charbagh tradition.",
     "latitude": 27.2087,
     "longitude": 78.0457,
     "sources": [
       {
-        "title": "Aram Bagh, Agra",
-        "url": "https://en.wikipedia.org/wiki/Aram_Bagh,_Agra"
+        "title": "Ram Bagh (Bagh-i-Gul Afshan) - Agra District Administration",
+        "url": "https://agra.nic.in/tourist-place/ram-bagh-bagh-i-gul-afshan/"
       }
     ],
-    "last_verified": null,
-    "images": []
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Chhatri_at_Aram_Bagh_1.jpg",
+        "caption": "Chhatri at Aram Bagh",
+        "credit": "Rangan Datta Wiki / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Chhatri_at_Aram_Bagh_1.jpg"
+      }
+    ]
   }
 ]

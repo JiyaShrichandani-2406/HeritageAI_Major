@@ -7,6 +7,9 @@ from typing import Any
 from backend.app.ai.llm_client import generate_response
 from backend.app.rag.retriever import HeritageRetriever
 from backend.app.repositories.place_repository import PlaceRepository
+from backend.app.repositories.monument_repository import (
+    get_monuments,
+)
 from backend.app.repositories.transport_repository import TransportRepository
 from backend.app.repositories.visitor_service_repository import (
     VisitorServiceRepository,
@@ -25,6 +28,9 @@ COST_STATUS_FIELDS = {
     "estimated_transport_cost": "transport_cost_status",
     "estimated_food_cost": "food_cost_status",
 }
+
+class UnsupportedDestinationError(ValueError):
+    """Raised when no supported heritage place exists for a destination."""
 
 
 def _validate_source_url(
@@ -84,22 +90,25 @@ def _validate_place(
     if not isinstance(destination, str) or not destination.strip():
         return None
 
-    try:
-        places = PlaceRepository().all()
-    except (OSError, ValueError, RuntimeError):
-        return None
+    places = PlaceRepository().all()
 
     # For example, convert "Agra, India" to "agra".
     normalized_destination = (
         destination.split(",")[0].casefold().strip()
     )
-    normalized_place_name = place_name.casefold().strip()
+    normalized_place_name = _normalize_name(place_name)
 
     if not normalized_destination:
         return None
 
+    for monument in get_monuments():
+        if not _same_place_name(normalized_place_name, monument["name"]):
+            continue
+        if normalized_destination in monument["city"].casefold():
+            return monument["name"]
+
     for place in places:
-        if place.name.casefold().strip() != normalized_place_name:
+        if not _same_place_name(normalized_place_name, place.name):
             continue
 
         address = place.address.casefold()
@@ -108,6 +117,36 @@ def _validate_place(
             return place.name
 
     return None
+
+
+def _normalize_name(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", name.casefold()).strip()
+
+
+def _same_place_name(candidate: str, canonical_name: str) -> bool:
+    """Match a canonical name and its parenthetical aliases."""
+    aliases = [canonical_name.split("(", maxsplit=1)[0].strip()]
+    aliases.extend(re.findall(r"\(([^)]+)\)", canonical_name))
+    aliases.append(canonical_name)
+    return candidate in {_normalize_name(alias) for alias in aliases}
+
+
+def _supports_destination(destination: str) -> bool:
+    """Return whether the local heritage catalog covers this destination."""
+    destination_key = destination.split(",")[0].casefold().strip()
+    if not destination_key:
+        return False
+
+    if any(
+        destination_key in monument["city"].casefold()
+        for monument in get_monuments()
+    ):
+        return True
+
+    return any(
+        destination_key in place.address.casefold()
+        for place in PlaceRepository().all()
+    )
 
 
 def _normalize_activity(activity: Any) -> dict[str, Any]:
@@ -181,7 +220,11 @@ def _load_travel_references(
     visitor_services = [
         service
         for service in VisitorServiceRepository().all()
-        if destination_key in service.location.casefold()
+        if destination_key
+        in {
+            location_part.strip().casefold()
+            for location_part in service.location.split(",")
+        }
     ]
 
     return (
@@ -195,6 +238,15 @@ def generate_itinerary(
     heritage_context: str | None = None,
 ) -> dict[str, Any]:
     """Generate an itinerary using retrieved heritage context."""
+
+    if heritage_context is None and not _supports_destination(
+        request.destination
+    ):
+        raise UnsupportedDestinationError(
+            f"No heritage or nearby-place data is available for "
+            f"{request.destination}. Supported destinations include Agra "
+            "and Fatehpur Sikri."
+        )
 
     try:
         transport_options, visitor_services = _load_travel_references(request)

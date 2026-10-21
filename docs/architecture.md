@@ -214,7 +214,9 @@ The common schema definitions include:
 
 
 
-Unknown costs must not be represented as zero. Cost information should be marked according to its verification status.
+Unknown costs must not be represented as zero. Cost information should be marked according to its verification status. For itinerary responses, each day's `estimated_cost` and the overall `estimated_total_cost` are null when an included cost is unknown. `known_cost_subtotal` includes only verified prices; a numeric overall estimate may also include estimates. `within_budget` is null whenever any included cost is estimated or unknown, unless verified costs alone already exceed the budget.
+
+Itinerary generation is limited to destinations covered by the local heritage or nearby-place data. An unsupported destination returns an explanatory 422 response instead of being treated as an AI-generation failure.
 
 
 

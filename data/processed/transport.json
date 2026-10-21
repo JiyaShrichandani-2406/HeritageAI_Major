@@ -1,1 +1,26 @@
-﻿[]
+﻿[
+  {
+    "id": "agra-fatehpur-sikri-upsrtc-bus",
+    "origin": "Agra",
+    "destination": "Fatehpur Sikri",
+    "transport_type": "bus",
+    "estimated_cost": null,
+    "currency": "INR",
+    "estimated_duration_minutes": null,
+    "cost_status": "unknown",
+    "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/",
+    "notes": "The Agra District Administration reports regular UPSRTC buses from ISBT/Idgah; fares and schedules were not verified."
+  },
+  {
+    "id": "fatehpur-sikri-parking-battery-bus",
+    "origin": "Fatehpur Sikri parking area",
+    "destination": "Fatehpur Sikri monument gate",
+    "transport_type": "battery bus",
+    "estimated_cost": null,
+    "currency": "INR",
+    "estimated_duration_minutes": null,
+    "cost_status": "unknown",
+    "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/",
+    "notes": "The Agra District Administration reports authorised battery buses between the parking area and monument gate; fares were not verified."
+  }
+]
