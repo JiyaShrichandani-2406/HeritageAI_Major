@@ -26,7 +26,15 @@ def test_taj_mahal_returns_details_and_sources():
     assert data["images"][0]["source_url"].startswith(
         "https://commons.wikimedia.org/wiki/File:"
     )
-    assert data["last_verified"] is None
+    assert data["last_verified"] == "2026-10-21"
+    assert any(
+        source["url"]
+        == (
+            "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra/"
+            "magnificent-world-heritage-site-taj-mahal"
+        )
+        for source in data["sources"]
+    )
 
 
 def test_monument_id_is_case_insensitive():

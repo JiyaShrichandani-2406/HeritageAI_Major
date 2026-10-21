@@ -97,6 +97,42 @@ def test_generate_response_handles_connection_failure(monkeypatch):
         llm_client.generate_response("Say hello")
 
 
+def test_generate_response_handles_timeout(monkeypatch):
+    settings = type("Settings", (), {
+        "ollama_url": "http://test-ollama:11434/api/generate",
+        "ollama_model": "test-model",
+        "ollama_timeout_seconds": 15,
+    })()
+
+    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        MagicMock(side_effect=TimeoutError("request timed out")),
+    )
+
+    with pytest.raises(RuntimeError, match="Ollama request timed out"):
+        llm_client.generate_response("Say hello")
+
+
+def test_generate_response_handles_connection_reset(monkeypatch):
+    settings = type("Settings", (), {
+        "ollama_url": "http://test-ollama:11434/api/generate",
+        "ollama_model": "test-model",
+        "ollama_timeout_seconds": 15,
+    })()
+
+    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        MagicMock(side_effect=ConnectionResetError("connection reset")),
+    )
+
+    with pytest.raises(RuntimeError, match="Could not connect to Ollama"):
+        llm_client.generate_response("Say hello")
+
+
 def test_generate_response_rejects_empty_model_output(monkeypatch):
     settings = type("Settings", (), {
         "ollama_url": "http://test-ollama:11434/api/generate",

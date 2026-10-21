@@ -1,7 +1,13 @@
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    field_validator,
+    model_validator,
+)
 
 from backend.app.schemas.route import TransportOptionResponse
 from backend.app.schemas.service import VisitorServiceResponse
@@ -69,6 +75,12 @@ class ItineraryRequest(BaseModel):
         default=True,
         description="Whether local transport expenses should be included",
     )
+
+    @field_validator("destination", "origin", mode="before")
+    @classmethod
+    def strip_locations(cls, value):
+        """Trim locations before applying their length and equality checks."""
+        return value.strip() if isinstance(value, str) else value
 
     @model_validator(mode="after")
     def validate_interests(self):

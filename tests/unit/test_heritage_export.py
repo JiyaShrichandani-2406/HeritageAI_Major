@@ -81,4 +81,18 @@ def test_heritage_catalog_contains_multiple_sourced_monuments():
         "mehtab-bagh",
     }
     assert all(record["sources"] for record in records)
-    assert all(record["last_verified"] is None for record in records)
+    verified_dates = {
+        record["id"]: record["last_verified"]
+        for record in records
+    }
+    assert verified_dates["taj-mahal"] == "2026-10-21"
+    assert verified_dates["agra-fort"] == "2026-10-21"
+    assert all(
+        verified_dates[monument_id] is None
+        for monument_id in (
+            "fatehpur-sikri",
+            "akbar-tomb-sikandra",
+            "mehtab-bagh",
+            "ram-bagh",
+        )
+    )

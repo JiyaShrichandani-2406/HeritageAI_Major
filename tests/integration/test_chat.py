@@ -86,6 +86,36 @@ def test_chat_endpoint_rejects_invalid_top_k():
     assert response.status_code == 422
 
 
+def test_chat_endpoint_rejects_top_k_above_maximum():
+    response = client.post(
+        "/api/v1/chat",
+        json={
+            "question": "Tell me about Indian heritage.",
+            "top_k": 11,
+        },
+    )
+
+    assert response.status_code == 422
+
+
+def test_chat_endpoint_rejects_question_longer_than_2000_characters():
+    response = client.post(
+        "/api/v1/chat",
+        json={"question": "a" * 2001},
+    )
+
+    assert response.status_code == 422
+
+
+def test_chat_endpoint_returns_bad_request_for_whitespace_question():
+    response = client.post(
+        "/api/v1/chat",
+        json={"question": "   "},
+    )
+
+    assert response.status_code == 400
+
+
 def test_chat_endpoint_handles_service_unavailable(monkeypatch):
     """A runtime failure should return HTTP 503."""
 
@@ -105,3 +135,21 @@ def test_chat_endpoint_handles_service_unavailable(monkeypatch):
 
     assert response.status_code == 503
     assert "currently unavailable" in response.json()["detail"]
+
+
+def test_chat_endpoint_handles_ollama_timeout(monkeypatch):
+    def mock_generate_answer(question, top_k=3):
+        raise RuntimeError("The Ollama request timed out.")
+
+    monkeypatch.setattr(
+        chat_endpoint,
+        "generate_answer",
+        mock_generate_answer,
+    )
+
+    response = client.post(
+        "/api/v1/chat",
+        json={"question": "Tell me about Indian heritage."},
+    )
+
+    assert response.status_code == 503

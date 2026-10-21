@@ -48,12 +48,25 @@ def generate_response(
         ) as response:
             result = json.loads(response.read().decode("utf-8"))
 
+    except TimeoutError as error:
+        logger.warning("The Ollama request timed out.")
+        raise RuntimeError(
+            "The Ollama request timed out. Please try again later."
+        ) from error
     except urllib.error.URLError as error:
         logger.warning("Could not connect to the Ollama service.")
         raise RuntimeError(
             "Could not connect to Ollama. Check that Ollama is running "
             "and the configured model is available."
         ) from error
+    except OSError as error:
+        logger.warning("The Ollama service request failed.")
+        raise RuntimeError(
+            "Could not connect to Ollama. Check that Ollama is running "
+            "and the configured model is available."
+        ) from error
+    except json.JSONDecodeError as error:
+        raise RuntimeError("Ollama returned an invalid response.") from error
 
     if not isinstance(result, dict):
         raise RuntimeError("Ollama returned an invalid response.")

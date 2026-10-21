@@ -127,6 +127,19 @@ def test_create_itinerary_invalid_budget():
     assert response.status_code == 422
 
 
+def test_create_itinerary_rejects_negative_budget():
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "destination": "Bhopal",
+            "budget": -1,
+            "days": 2,
+        },
+    )
+
+    assert response.status_code == 422
+
+
 def test_create_itinerary_invalid_days():
     response = client.post(
         "/api/v1/itinerary",
@@ -140,12 +153,60 @@ def test_create_itinerary_invalid_days():
     assert response.status_code == 422
 
 
+def test_create_itinerary_rejects_more_than_30_days():
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "destination": "Bhopal",
+            "budget": 3000,
+            "days": 31,
+        },
+    )
+
+    assert response.status_code == 422
+
+
 def test_create_itinerary_missing_destination():
     response = client.post(
         "/api/v1/itinerary",
         json={
             "budget": 3000,
             "days": 2,
+        },
+    )
+
+    assert response.status_code == 422
+
+
+@pytest.mark.parametrize("destination", ["", "A", "   "])
+def test_create_itinerary_rejects_missing_or_short_destination(destination):
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "destination": destination,
+            "budget": 3000,
+            "days": 2,
+        },
+    )
+
+    assert response.status_code == 422
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [
+        {"travel_style": "luxury"},
+        {"hotel": "Palace"},
+    ],
+)
+def test_create_itinerary_rejects_unsupported_or_extra_fields(extra):
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "destination": "Bhopal",
+            "budget": 3000,
+            "days": 2,
+            **extra,
         },
     )
 
@@ -209,6 +270,24 @@ def test_create_itinerary_rejects_empty_day_from_generator(monkeypatch):
     assert "Each itinerary day must contain at least one activity" in (
         response.json()["detail"]
     )
+
+
+def test_create_itinerary_rejects_wrong_number_of_days_from_generator(
+    monkeypatch,
+):
+    monkeypatch.setattr(
+        itinerary_endpoint,
+        "generate_itinerary",
+        lambda request: {"itinerary": [], "assumptions": []},
+    )
+
+    response = client.post(
+        "/api/v1/itinerary",
+        json={"destination": "Agra", "budget": 3000, "days": 1},
+    )
+
+    assert response.status_code == 502
+    assert "Expected 1 daily plans" in response.json()["detail"]
 
 
 def test_create_itinerary_returns_null_total_for_unknown_costs(monkeypatch):

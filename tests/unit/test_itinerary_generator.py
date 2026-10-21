@@ -32,6 +32,19 @@ def test_extract_json_rejects_malformed_json():
         _extract_json('```json\n{"itinerary": }\n```')
 
 
+def test_itinerary_generation_rejects_malformed_model_json(monkeypatch):
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.generate_response",
+        lambda *args, **kwargs: '{"itinerary": ',
+    )
+
+    with pytest.raises(ValueError, match="The AI returned invalid JSON"):
+        generate_itinerary(
+            ItineraryRequest(destination="Agra", budget=10000, days=1),
+            heritage_context="Heritage context",
+        )
+
+
 def test_generated_source_url_must_be_grounded_in_context():
     context = (
         "Title: Agra Fort\n"
@@ -48,6 +61,33 @@ def test_generated_source_url_must_be_grounded_in_context():
         "https://redfort.in",
         context,
     ) is None
+
+
+def test_generated_ungrounded_source_url_is_removed(monkeypatch):
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator.generate_response",
+        lambda *args, **kwargs: (
+            '{"itinerary":[{"title":"Day 1","activities":[{'
+            '"place_name":"Taj Mahal",'
+            '"description":"Visit the monument",'
+            '"estimated_entry_cost":null,'
+            '"estimated_transport_cost":null,'
+            '"estimated_food_cost":null,'
+            '"source_url":"https://untrusted.example/source"'
+            '}]}],"assumptions":[]}'
+        ),
+    )
+    monkeypatch.setattr(
+        "backend.app.ai.itinerary_generator._validate_place",
+        lambda place_name, destination: place_name,
+    )
+
+    result = generate_itinerary(
+        ItineraryRequest(destination="Agra", budget=10000, days=1),
+        heritage_context="Verified heritage context.",
+    )
+
+    assert result["itinerary"][0]["activities"][0]["source_url"] is None
 
 
 def test_itinerary_generation_reports_ollama_timeout(monkeypatch):
@@ -223,6 +263,28 @@ def test_itinerary_loads_route_and_destination_service_references(monkeypatch):
     assert [service["id"] for service in visitor_services] == [
         "agra-guide"
     ]
+
+
+def test_agras_sourced_visitor_services_are_included_without_inventing_costs():
+    _, visitor_services = _load_travel_references(
+        ItineraryRequest(
+            destination="Agra",
+            budget=5000,
+            days=1,
+        )
+    )
+
+    assert [service["id"] for service in visitor_services] == [
+        "agra-fort-licensed-guides",
+        "agra-fort-audio-guides",
+    ]
+    assert all(
+        service["cost_status"] == "unknown"
+        and service["estimated_cost"] is None
+        and service["source_url"]
+        == "https://agra.nic.in/tourist-place/agra-fort/"
+        for service in visitor_services
+    )
 
 
 def test_multiple_activities_are_allowed_and_transport_is_not_guessed(

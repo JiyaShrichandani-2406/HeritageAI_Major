@@ -1,1 +1,28 @@
-﻿[]
+[
+  {
+    "id": "agra-fort-licensed-guides",
+    "name": "Licensed guides",
+    "category": "guide",
+    "location": "Agra Fort, Agra, Uttar Pradesh",
+    "latitude": null,
+    "longitude": null,
+    "description": "Licensed guides are available at Agra Fort; availability and fees may vary.",
+    "estimated_cost": null,
+    "currency": "INR",
+    "cost_status": "unknown",
+    "source_url": "https://agra.nic.in/tourist-place/agra-fort/"
+  },
+  {
+    "id": "agra-fort-audio-guides",
+    "name": "Audio guides",
+    "category": "guide",
+    "location": "Agra Fort, Agra, Uttar Pradesh",
+    "latitude": null,
+    "longitude": null,
+    "description": "Audio guides are available at Agra Fort; availability and fees may vary.",
+    "estimated_cost": null,
+    "currency": "INR",
+    "cost_status": "unknown",
+    "source_url": "https://agra.nic.in/tourist-place/agra-fort/"
+  }
+]

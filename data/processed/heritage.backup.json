@@ -1,0 +1,33 @@
+
+{
+  "id": "taj-mahal",
+  "name": "Taj Mahal",
+  "city": "Agra",
+  "state": "Uttar Pradesh",
+  "country": "India",
+  "summary": "Ivory-white marble mausoleum in Agra, built by the Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal.",
+  "history": "The Taj Mahal was commissioned by the Mughal emperor Shah Jahan in memory of Mumtaz Mahal. Construction began around 1632. The main mausoleum was completed around 1648, while additional elements of the complex were completed by 1653. It was inscribed as a UNESCO World Heritage Site in 1983.",
+  "architecture": "A masterpiece of Mughal architecture combining Persian, Islamic and Indian influences. The complex features a white-marble mausoleum on a raised platform, four minarets, a central dome, symmetrical Mughal gardens, decorative stone inlay, and red-sandstone mosque and guest-house structures.",
+  "latitude": 27.1751,
+  "longitude": 78.0421,
+  "sources": [
+    {
+      "title": "UNESCO World Heritage Centre: Taj Mahal",
+      "url": "https://whc.unesco.org/en/list/252"
+    },
+    {
+      "title": "Incredible India: Magnificent World Heritage Site Taj Mahal",
+      "url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra/magnificent-world-heritage-site-taj-mahal"
+    }
+  ],
+  "last_verified": "2026-10-21",
+  "images": [
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Taj_Mahal%2C_Agra%2C_India_edit2.jpg",
+      "caption": "Taj Mahal viewed from the south side",
+      "credit": "Yann Forget; edited by King of Hearts / Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg"
+    }
+  ]
+}
