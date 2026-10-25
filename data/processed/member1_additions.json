@@ -1,0 +1,226 @@
+[
+  {
+    "id": "itimad-ud-daulah",
+    "name": "Tomb of Itimad-ud-Daulah",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Mughal-era riverside tomb commissioned by Empress Nur Jahan for her father, Mirza Ghiyas Beg; often called the Baby Taj.",
+    "history": "The tomb was commissioned by Empress Nur Jahan for her father Mirza Ghiyas Beg and was built between 1622 and 1628, according to official Agra tourism information.",
+    "latitude": 27.1927,
+    "longitude": 78.0349,
+    "sources": [
+      {
+        "title": "Agra District Administration: Historic Tourist Places",
+        "url": "https://agra.nic.in/tourist-place-category/historic/"
+      },
+      {
+        "title": "Taj Mahal Official Website: Nearby Attractions",
+        "url": "https://www.tajmahal.gov.in/nearby-attractions.aspx"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "A compact Mughal tomb notable for extensive marble decoration and inlay work, with a garden setting beside the Yamuna River."
+  },
+  {
+    "id": "chini-ka-rauza",
+    "name": "Chini ka Rauza",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Mughal-period tomb associated with Afzal Khan, a Persian poet and high-ranking official under Shah Jahan, near the Yamuna.",
+    "history": "Official tourism information identifies Chini ka Rauza as the tomb of Allama Afzal Khan, also known as Mullah Shukrullah Shirazi, a poet-scholar and prime minister to Shah Jahan.",
+    "latitude": 27.2058,
+    "longitude": 78.0342,
+    "sources": [
+      {
+        "title": "Agra District Administration: Historic Tourist Places",
+        "url": "https://agra.nic.in/tourist-place-category/historic/"
+      },
+      {
+        "title": "Taj Mahal Official Website: Nearby Attractions",
+        "url": "https://www.tajmahal.gov.in/nearby-attractions.aspx"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "Known for its Persian-influenced design and glazed tile decoration on the facade."
+  },
+  {
+    "id": "tomb-mariam-uz-zamani",
+    "name": "Tomb of Mariam-uz-Zamani",
+    "city": "Sikandra, Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Mughal tomb traditionally identified as the resting place of Mariam-uz-Zamani, wife of Emperor Akbar and mother of Jahangir.",
+    "history": "The official Agra district tourism listing identifies the monument as the tomb of Mariam-uz-Zamani and places it near Akbar's Tomb at Sikandra.",
+    "latitude": 27.2242,
+    "longitude": 77.9508,
+    "sources": [
+      {
+        "title": "Agra District Administration: Historic Tourist Places",
+        "url": "https://agra.nic.in/tourist-place-category/historic/"
+      },
+      {
+        "title": "Taj Mahal Official Website: About Agra",
+        "url": "https://tajmahal.gov.in/about-agra.aspx"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "A pre-existing structure adapted as a tomb, with red sandstone, carved details and Mughal-era architectural features."
+  },
+  {
+    "id": "jama-masjid-agra",
+    "name": "Jama Masjid, Agra",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Large Mughal congregational mosque opposite Agra Fort, commissioned by Jahanara Begum, daughter of Shah Jahan.",
+    "history": "The Taj Mahal official nearby-attractions page describes the Jama Masjid as a major Mughal mosque opposite Agra Fort and notes its association with Shah Jahan's daughter Jahanara Begum.",
+    "latitude": 27.1814,
+    "longitude": 78.0176,
+    "sources": [
+      {
+        "title": "Taj Mahal Official Website: Nearby Attractions",
+        "url": "https://www.tajmahal.gov.in/nearby-attractions.aspx"
+      },
+      {
+        "title": "Incredible India: Places to Visit in Agra",
+        "url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "The mosque features a large courtyard and Mughal-era red sandstone and marble elements, with Iranian/Persian design influences described by official tourism sources."
+  },
+  {
+    "id": "guru-ka-taal",
+    "name": "Guru ka Taal",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Historic Sikh religious site in the Sikandra area, associated with Guru Tegh Bahadur.",
+    "history": "The Agra District Administration lists Guru ka Taal among Agra's historic and religious visitor sites and describes its association with the ninth Sikh Guru, Guru Tegh Bahadur.",
+    "latitude": 27.2119,
+    "longitude": 77.9345,
+    "sources": [
+      {
+        "title": "Agra District Administration: Historic Tourist Places",
+        "url": "https://agra.nic.in/tourist-place-category/historic/"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "The site includes a Sikh shrine complex and a historic water reservoir. Detailed architectural claims require confirmation from a dedicated heritage source."
+  },
+  {
+    "id": "soami-bagh-samadhi",
+    "name": "Soami Bagh Samadhi",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Ornate memorial and religious site in the Soami Bagh area of Agra, associated with the Radhasoami faith.",
+    "history": "Incredible India lists Radhasoami Samadhi / Soamibagh Temple among Agra's attractions. Detailed construction dates and attribution require further official verification.",
+    "latitude": 27.2249,
+    "longitude": 78.0089,
+    "sources": [
+      {
+        "title": "Incredible India: Places to Visit in Agra",
+        "url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "Known for elaborate stone and marble craftsmanship; detailed claims should be verified against a dedicated authoritative source."
+  },
+  {
+    "id": "mankameshwar-temple-agra",
+    "name": "Mankameshwar Temple",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Historic Hindu temple in the old city of Agra, dedicated to Lord Shiva.",
+    "history": "The temple is a known religious site in Agra. The sources collected for this dataset do not establish a sufficiently detailed official historical chronology, so no founding date is asserted.",
+    "latitude": 27.1857,
+    "longitude": 78.0145,
+    "sources": [
+      {
+        "title": "Incredible India: Places to Visit in Agra",
+        "url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "A functioning Hindu temple complex. Detailed architectural dating and stylistic descriptions require a dedicated official or scholarly source."
+  },
+  {
+    "id": "balkeshwar-temple-agra",
+    "name": "Balkeshwar Temple",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "A local Hindu religious site in the Balkeshwar area of Agra, included as a nearby place of cultural interest.",
+    "history": "A reliable detailed official historical account was not established from the sources used for this first-pass dataset; no date or founder is asserted.",
+    "latitude": 27.2156,
+    "longitude": 78.0235,
+    "sources": [
+      {
+        "title": "Incredible India: Places to Visit in Agra",
+        "url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "Temple complex; further architectural details should be added only after checking an authoritative source."
+  },
+  {
+    "id": "roman-catholic-cemetery-agra",
+    "name": "Roman Catholic Cemetery, Agra",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Historic cemetery in Agra containing European-era tombs and memorials, including the tomb traditionally associated with John Hessing.",
+    "history": "The cemetery is a recognized heritage site in Agra. The sources used for this dataset do not establish a complete official chronology, so individual dates and attributions should be checked against monument-specific records before publication.",
+    "latitude": 27.2035,
+    "longitude": 78.0088,
+    "sources": [
+      {
+        "title": "Incredible India: Places to Visit in Agra",
+        "url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra"
+      },
+      {
+        "title": "Agra District Administration: Historic Tourist Places",
+        "url": "https://agra.nic.in/tourist-place-category/historic/"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "Historic tombs and memorial structures with European and Indo-European memorial forms; individual details require verification."
+  },
+  {
+    "id": "delhi-gate-agra",
+    "name": "Delhi Gate, Agra",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Historic gate associated with Agra's old fortified urban landscape and Mughal-era city history.",
+    "history": "Delhi Gate is part of Agra's historic built heritage. A monument-specific authoritative chronology was not established in the sources used for this dataset, so this record avoids assigning an unverified construction date or patron.",
+    "latitude": 27.1852,
+    "longitude": 78.0128,
+    "sources": [
+      {
+        "title": "Incredible India: Places to Visit in Agra",
+        "url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra"
+      },
+      {
+        "title": "Agra District Administration: Historic Tourist Places",
+        "url": "https://agra.nic.in/tourist-place-category/historic/"
+      }
+    ],
+    "last_verified": "2026-10-23",
+    "images": [],
+    "architecture": "Historic gateway structure; detailed architectural description and conservation status should be confirmed with ASI or another dedicated heritage authority."
+  }
+]

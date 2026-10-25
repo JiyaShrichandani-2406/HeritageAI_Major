@@ -1,0 +1,174 @@
+[
+  {
+    "id": "taj-mahal",
+    "name": "Taj Mahal",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Ivory-white marble mausoleum in Agra, built by the Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal.",
+    "history": "The Taj Mahal was commissioned by the Mughal emperor Shah Jahan in memory of Mumtaz Mahal. Construction began around 1632. The main mausoleum was completed around 1648, while additional elements of the complex were completed by 1653. It was inscribed as a UNESCO World Heritage Site in 1983.",
+    "architecture": "A masterpiece of Mughal architecture combining Persian, Islamic and Indian influences. The complex features a white-marble mausoleum on a raised platform, four minarets, a central dome, symmetrical Mughal gardens, decorative stone inlay, and red-sandstone mosque and guest-house structures.",
+    "latitude": 27.1751,
+    "longitude": 78.0421,
+    "sources": [
+      {
+        "title": "UNESCO World Heritage Centre: Taj Mahal",
+        "url": "https://whc.unesco.org/en/list/252"
+      },
+      {
+        "title": "Incredible India: Magnificent World Heritage Site Taj Mahal",
+        "url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra/magnificent-world-heritage-site-taj-mahal"
+      }
+    ],
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Taj_Mahal%2C_Agra%2C_India_edit2.jpg",
+        "caption": "Taj Mahal viewed from the south side",
+        "credit": "Yann Forget; edited by King of Hearts / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg"
+      }
+    ]
+  },
+  {
+    "id": "agra-fort",
+    "name": "Agra Fort",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "The walled imperial city of the Mughals in Agra, rebuilt in red sandstone by Emperor Akbar from 1565 and later embellished in white marble by Shah Jahan.",
+    "history": "The official Agra district tourism page describes Agra Fort as the walled imperial city of the Mughals and states that Emperor Akbar rebuilt it in red sandstone from 1565, with later white-marble additions by Shah Jahan.",
+    "architecture": "The fort's 2.5-kilometre ramparts enclose structures including Jahangir Mahal, Khas Mahal, Diwan-i-Aam, Diwan-i-Khas, Sheesh Mahal, Musamman Burj and Moti Masjid.",
+    "latitude": 27.1795,
+    "longitude": 78.0211,
+    "sources": [
+      {
+        "title": "Agra District Administration: Agra Fort",
+        "url": "https://agra.nic.in/tourist-place/agra-fort/"
+      }
+    ],
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Agra_03-2016_14_Agra_Fort.jpg",
+        "caption": "Agra Fort in Agra, India",
+        "credit": "A.Savin, Wikipedia",
+        "license": "Free Art License",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Agra_03-2016_14_Agra_Fort.jpg"
+      }
+    ]
+  },
+  {
+    "id": "fatehpur-sikri",
+    "name": "Fatehpur Sikri",
+    "city": "Fatehpur Sikri",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Historic red-sandstone city in Agra district founded by Emperor Akbar in 1571 and used as the Mughal capital for about 14 years.",
+    "history": "The official Agra district tourism page states that Akbar founded Fatehpur Sikri in 1571 and that it served as the Mughal capital for about 14 years.",
+    "architecture": "The complex includes Buland Darwaza, Jama Masjid, the marble Tomb of Sheikh Salim Chishti, Panch Mahal, Diwan-i-Khas and Jodha Bai's Palace. The district page describes a blend of Persian, Hindu and Jain architectural idioms.",
+    "latitude": 27.094,
+    "longitude": 77.661,
+    "sources": [
+      {
+        "title": "Agra District Administration: Fatehpur Sikri",
+        "url": "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+      }
+    ],
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Fatehpur-Fatehpur_Sikri_India0002.JPG",
+        "caption": "Fatehpur Sikri, India",
+        "credit": "Diego Delso / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Fatehpur-Fatehpur_Sikri_India0002.JPG"
+      }
+    ]
+  },
+  {
+    "id": "akbar-tomb-sikandra",
+    "name": "Akbar's Tomb (Sikandra)",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Mausoleum of the Mughal emperor Akbar, located in Sikandra near Agra.",
+    "history": "The official Agra district tourism page says the mausoleum was begun by Akbar and completed by his son Jahangir in 1613. It stands in a 119-acre charbagh at Sikandra.",
+    "architecture": "The five-storeyed sandstone-and-marble pyramid and its gateway combine Hindu, Islamic and Persian motifs, according to the official Agra district tourism page.",
+    "latitude": 27.2205,
+    "longitude": 77.9511,
+    "sources": [
+      {
+        "title": "Agra District Administration: Akbar's Tomb, Sikandra",
+        "url": "https://agra.nic.in/tourist-place/akbars-tomb-sikandra/"
+      }
+    ],
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Akbar%27s_Tomb_in_Sikandra_09.jpg",
+        "caption": "Gateway of Akbar's Tomb at Sikandra",
+        "credit": "Darshanavenugopal / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Akbar%27s_Tomb_in_Sikandra_09.jpg"
+      }
+    ]
+  },
+  {
+    "id": "mehtab-bagh",
+    "name": "Mehtab Bagh",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Mughal charbagh garden across the Yamuna River from the Taj Mahal, laid out originally by Babur and later aligned by Shah Jahan.",
+    "history": "The official Agra district tourism page describes Mehtab Bagh as originally laid out by Babur and later aligned by Shah Jahan with the Taj Mahal across the Yamuna.",
+    "architecture": "The restored charbagh includes fruit trees and pathways, according to the official Agra district tourism page.",
+    "latitude": 27.179,
+    "longitude": 78.0437,
+    "sources": [
+      {
+        "title": "Agra District Administration: Mehtab Bagh",
+        "url": "https://agra.nic.in/tourist-place/mehtab-bagh/"
+      }
+    ],
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Mehtab_Bagh_lawn.jpg",
+        "caption": "Lawn at Mehtab Bagh",
+        "credit": "Aks khandelwal",
+        "license": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Mehtab_Bagh_lawn.jpg"
+      }
+    ]
+  },
+  {
+    "id": "ram-bagh",
+    "name": "Ram Bagh (Aram Bagh)",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "summary": "Ram Bagh, also known as Bagh-i-Gul Afshan, is a Mughal garden laid out by Emperor Babur around 1528 and regarded as the oldest surviving Mughal garden in India.",
+    "history": "The Agra District Administration describes Ram Bagh as laid out by Emperor Babur around 1528 and as the oldest surviving Mughal garden in India.",
+    "architecture": "The garden has terraced walkways, water channels and pavilions overlooking the Yamuna, and is described by the Agra District Administration as a prototype of the charbagh tradition.",
+    "latitude": 27.2087,
+    "longitude": 78.0457,
+    "sources": [
+      {
+        "title": "Ram Bagh (Bagh-i-Gul Afshan) - Agra District Administration",
+        "url": "https://agra.nic.in/tourist-place/ram-bagh-bagh-i-gul-afshan/"
+      }
+    ],
+    "last_verified": "2026-10-21",
+    "images": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Chhatri_at_Aram_Bagh_1.jpg",
+        "caption": "Chhatri at Aram Bagh",
+        "credit": "Rangan Datta Wiki / Wikimedia Commons",
+        "license": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Chhatri_at_Aram_Bagh_1.jpg"
+      }
+    ]
+  }
+]

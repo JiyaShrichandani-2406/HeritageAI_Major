@@ -1,8 +1,16 @@
 """Domain model for a nearby attraction (Member 3)."""
 from dataclasses import dataclass
 
-CATEGORIES = ("monument", "garden", "museum", "religious", "nature", "viewpoint")
-
+CATEGORIES = (
+    "monument",
+    "garden",
+    "museum",
+    "religious",
+    "nature",
+    "viewpoint",
+    "market",
+    "restaurant",
+)
 
 @dataclass(frozen=True)
 class Place:

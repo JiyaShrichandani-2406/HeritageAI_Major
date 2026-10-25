@@ -2,23 +2,39 @@
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
-
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    field_validator,
+    model_validator,
+)
 
 CostStatus = Literal["verified", "estimated", "unknown"]
 
 
 class RouteRequest(BaseModel):
-    """Request transport options between two locations."""
-
     model_config = ConfigDict(extra="forbid")
 
     origin: str = Field(..., min_length=2, max_length=150)
     destination: str = Field(..., min_length=2, max_length=150)
 
+    @field_validator("origin", "destination")
+    @classmethod
+    def validate_location_not_blank(cls, value: str) -> str:
+        value = value.strip()
+
+        if not value:
+            raise ValueError("Location must not be blank.")
+
+        if len(value) < 2:
+            raise ValueError("Location must contain at least 2 characters.")
+
+        return value
+
     @model_validator(mode="after")
     def validate_different_locations(self):
-        if self.origin.strip().casefold() == self.destination.strip().casefold():
+        if self.origin.casefold() == self.destination.casefold():
             raise ValueError("Origin and destination must be different.")
         return self
 

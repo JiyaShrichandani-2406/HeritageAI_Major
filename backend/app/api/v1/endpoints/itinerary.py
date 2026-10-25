@@ -3,6 +3,7 @@ import logging
 
 from fastapi import APIRouter, HTTPException, status
 
+from backend.app.ai.llm_client import OllamaTimeoutError
 from backend.app.ai.itinerary_generator import (
     UnsupportedDestinationError,
     generate_itinerary,
@@ -68,6 +69,10 @@ logger = logging.getLogger(__name__)
                 }
             },
         },
+        504: {
+            "description": "Ollama did not finish generating the itinerary in time.",
+            "model": ErrorResponse,
+        },
         500: {
             "description": "Unexpected itinerary generation error.",
             "model": ErrorResponse,
@@ -109,6 +114,13 @@ def create_itinerary(request: ItineraryRequest) -> ItineraryResponse:
     except ValueError as error:
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=str(error),
+        ) from error
+
+    except OllamaTimeoutError as error:
+        logger.warning("Itinerary generation timed out: %s", error)
+        raise HTTPException(
+            status_code=status.HTTP_504_GATEWAY_TIMEOUT,
             detail=str(error),
         ) from error
 

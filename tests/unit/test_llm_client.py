@@ -16,9 +16,14 @@ def test_generate_response_uses_configured_settings(monkeypatch):
     monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
 
     response = MagicMock()
-    response.read.return_value = json.dumps(
-        {"response": "  HeritageAI is ready.  "}
-    ).encode("utf-8")
+    response.__iter__.return_value = iter(
+        [
+            json.dumps(
+                {"response": "  HeritageAI is ready.  ", "done": False}
+            ).encode("utf-8"),
+            b'{"response": "", "done": true}',
+        ]
+    )
 
     mock_urlopen = MagicMock()
     mock_urlopen.return_value.__enter__.return_value = response
@@ -36,7 +41,30 @@ def test_generate_response_uses_configured_settings(monkeypatch):
     payload = json.loads(request.data.decode("utf-8"))
     assert payload["model"] == "test-model"
     assert payload["prompt"] == "Say hello"
-    assert payload["stream"] is False
+    assert payload["stream"] is True
+
+
+def test_generate_response_combines_streamed_chunks(monkeypatch):
+    settings = type("Settings", (), {
+        "ollama_url": "http://test-ollama:11434/api/generate",
+        "ollama_model": "test-model",
+        "ollama_timeout_seconds": 15,
+    })()
+    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+
+    response = MagicMock()
+    response.__iter__.return_value = iter(
+        [
+            b'{"response": "Heritage", "done": false}',
+            b'{"response": "AI is ready.", "done": false}',
+            b'{"response": "", "done": true}',
+        ]
+    )
+    mock_urlopen = MagicMock()
+    mock_urlopen.return_value.__enter__.return_value = response
+    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
+
+    assert llm_client.generate_response("Say hello") == "HeritageAI is ready."
 
 
 def test_generate_response_rejects_empty_prompt(monkeypatch):
@@ -58,7 +86,9 @@ def test_generate_response_sets_output_limit(monkeypatch):
     monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
 
     response = MagicMock()
-    response.read.return_value = json.dumps({"response": "Done"}).encode()
+    response.__iter__.return_value = iter(
+        [json.dumps({"response": "Done", "done": True}).encode()]
+    )
     mock_urlopen = MagicMock()
     mock_urlopen.return_value.__enter__.return_value = response
     monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
@@ -143,7 +173,9 @@ def test_generate_response_rejects_empty_model_output(monkeypatch):
     monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
 
     response = MagicMock()
-    response.read.return_value = b'{"response": "   "}'
+    response.__iter__.return_value = iter(
+        [b'{"response": "   ", "done": true}']
+    )
 
     mock_urlopen = MagicMock()
     mock_urlopen.return_value.__enter__.return_value = response

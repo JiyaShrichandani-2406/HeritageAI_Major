@@ -237,6 +237,33 @@ def test_create_itinerary_ai_service_unavailable(monkeypatch):
     assert response.json()["detail"] == "Simulated AI service failure."
 
 
+def test_create_itinerary_ollama_timeout_returns_gateway_timeout(monkeypatch):
+    from backend.app.ai.llm_client import OllamaTimeoutError
+
+    def timeout(request):
+        raise OllamaTimeoutError("Ollama timed out generating the itinerary.")
+
+    monkeypatch.setattr(
+        itinerary_endpoint,
+        "generate_itinerary",
+        timeout,
+    )
+
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "destination": "Agra",
+            "budget": 5000,
+            "days": 1,
+        },
+    )
+
+    assert response.status_code == 504
+    assert response.json()["detail"] == (
+        "Ollama timed out generating the itinerary."
+    )
+
+
 def test_create_itinerary_reports_unsupported_destination(monkeypatch):
     def unsupported_destination(request):
         from backend.app.ai.itinerary_generator import (

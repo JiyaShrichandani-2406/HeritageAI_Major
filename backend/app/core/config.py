@@ -101,7 +101,7 @@ def load_settings() -> Settings:
             f"OLLAMA_URL must be a full http(s) URL, but got {ollama_url!r}."
         )
 
-    ollama_timeout = _get_int("OLLAMA_TIMEOUT_SECONDS", 300, errors)
+    ollama_timeout = _get_int("OLLAMA_TIMEOUT_SECONDS", 600, errors)
 
     if errors:
         details = "\n".join(f"  - {message}" for message in errors)

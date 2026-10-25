@@ -5,7 +5,14 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 
-ServiceCategory = Literal["food", "market", "guide", "taxi", "other"]
+ServiceCategory = Literal[
+    "food",
+    "market",
+    "guide",
+    "taxi",
+    "parking",
+    "other",
+]
 CostStatus = Literal["verified", "estimated", "unknown"]
 
 

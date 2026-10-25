@@ -1,0 +1,556 @@
+{
+  "report_title": "HeritageAI - Member 2 Final Report",
+  "subject": "Nearby Places and Attractions",
+  "source_file": "data/processed/nearby_places.json",
+  "prepared_date": "2026-10-23",
+  "conversion_note": "This JSON structures the report's place list, distances, verification status, responsibilities, decisions, and checks. The report's full extracted page text is retained for completeness. source_url and address values are not fabricated; they must be taken from the original nearby_places.json because the PDF does not list their full values.",
+  "summary": {
+    "total_places": 19,
+    "original_records": 11,
+    "added_records": 8,
+    "duplicates_found": 0,
+    "fields_in_target_dataset": [
+      "id",
+      "name",
+      "category",
+      "latitude",
+      "longitude",
+      "address",
+      "source_url"
+    ],
+    "distance_km_in_target_dataset": false,
+    "tests_reported_passing": 134,
+    "test_date": "2026-10-23",
+    "test_timing_note": "Tests were reported as passing before the final JSON update and should be rerun after copying the final JSON."
+  },
+  "places": [
+    {
+      "id": "agra-fort",
+      "name": "Agra Fort",
+      "category": "monument",
+      "latitude": 27.1795,
+      "longitude": 78.0211,
+      "added_by_member_2": false
+    },
+    {
+      "id": "akbar-tomb-sikandra",
+      "name": "Akbar's Tomb (Sikandra)",
+      "category": "monument",
+      "latitude": 27.2205,
+      "longitude": 77.9511,
+      "added_by_member_2": false
+    },
+    {
+      "id": "chini-ka-rauza",
+      "name": "Chini Ka Rauza",
+      "category": "monument",
+      "latitude": 27.2,
+      "longitude": 78.0233,
+      "added_by_member_2": false
+    },
+    {
+      "id": "fatehpur-sikri",
+      "name": "Fatehpur Sikri",
+      "category": "monument",
+      "latitude": 27.094,
+      "longitude": 77.661,
+      "added_by_member_2": false
+    },
+    {
+      "id": "guru-ka-taal-gurudwara",
+      "name": "Guru Ka Taal Gurudwara",
+      "category": "religious",
+      "latitude": 27.2117,
+      "longitude": 77.9677,
+      "added_by_member_2": true
+    },
+    {
+      "id": "itmad-ud-daulah",
+      "name": "Tomb of Itmad-ud-Daulah",
+      "category": "monument",
+      "latitude": 27.193,
+      "longitude": 78.0309,
+      "added_by_member_2": false
+    },
+    {
+      "id": "jama-masjid-agra",
+      "name": "Jama Masjid Agra",
+      "category": "religious",
+      "latitude": 27.183,
+      "longitude": 78.0147,
+      "added_by_member_2": false
+    },
+    {
+      "id": "keoladeo-national-park",
+      "name": "Keoladeo National Park",
+      "category": "nature",
+      "latitude": 27.159,
+      "longitude": 77.522,
+      "added_by_member_2": false
+    },
+    {
+      "id": "kinari-bazaar",
+      "name": "Kinari Bazaar",
+      "category": "market",
+      "latitude": 27.1839,
+      "longitude": 78.0149,
+      "added_by_member_2": true
+    },
+    {
+      "id": "mankameshwar-temple",
+      "name": "Mankameshwar Temple",
+      "category": "religious",
+      "latitude": 27.188,
+      "longitude": 78.012,
+      "added_by_member_2": false
+    },
+    {
+      "id": "mariam-tomb-sikandra",
+      "name": "Tomb of Mariam-uz-Zamani",
+      "category": "monument",
+      "latitude": 27.2153,
+      "longitude": 77.9427,
+      "added_by_member_2": true
+    },
+    {
+      "id": "mehtab-bagh",
+      "name": "Mehtab Bagh",
+      "category": "garden",
+      "latitude": 27.179,
+      "longitude": 78.0437,
+      "added_by_member_2": false
+    },
+    {
+      "id": "pinch-of-spice-fatehabad-road",
+      "name": "Pinch of Spice (Fatehabad Road)",
+      "category": "restaurant",
+      "latitude": 27.1599,
+      "longitude": 78.0431,
+      "added_by_member_2": true
+    },
+    {
+      "id": "pinch-of-spice-wazirpura",
+      "name": "Pinch of Spice (Wazirpura)",
+      "category": "restaurant",
+      "latitude": 27.2019,
+      "longitude": 78.0077,
+      "added_by_member_2": true
+    },
+    {
+      "id": "ram-bagh",
+      "name": "Ram Bagh (Aram Bagh)",
+      "category": "garden",
+      "latitude": 27.2087,
+      "longitude": 78.0457,
+      "added_by_member_2": false
+    },
+    {
+      "id": "sadar-bazaar",
+      "name": "Sadar Bazaar",
+      "category": "market",
+      "latitude": 27.1588,
+      "longitude": 78.01,
+      "added_by_member_2": true
+    },
+    {
+      "id": "soami-bagh-samadhi",
+      "name": "Soami Bagh (Radhasoami Samadhi)",
+      "category": "religious",
+      "latitude": 27.2228,
+      "longitude": 78.0093,
+      "added_by_member_2": true
+    },
+    {
+      "id": "sur-sarovar-bird-sanctuary",
+      "name": "Sur Sarovar Bird Sanctuary (Keetham Lake)",
+      "category": "nature",
+      "latitude": 27.2517,
+      "longitude": 77.84,
+      "added_by_member_2": true
+    },
+    {
+      "id": "taj-mahal",
+      "name": "Taj Mahal",
+      "category": "monument",
+      "latitude": 27.1751,
+      "longitude": 78.0421,
+      "added_by_member_2": false
+    }
+  ],
+  "coordinate_and_source_verification": [
+    {
+      "id": "agra-fort",
+      "coordinate_status": "Same as heritage.json (Member 1). No outside map check.",
+      "source_url_kind": "Government site",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "akbar-tomb-sikandra",
+      "coordinate_status": "Same as heritage.json (Member 1). No outside map check.",
+      "source_url_kind": "Government site",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "chini-ka-rauza",
+      "coordinate_status": "Same as original project CSV. No outside map check.",
+      "source_url_kind": "Wikipedia",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "fatehpur-sikri",
+      "coordinate_status": "Same as heritage.json (Member 1). No outside map check.",
+      "source_url_kind": "Government site",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "guru-ka-taal-gurudwara",
+      "coordinate_status": "Not map-checked. From source listed.",
+      "source_url_kind": "Government site",
+      "address_status": "No. Third-party listing"
+    },
+    {
+      "id": "itmad-ud-daulah",
+      "coordinate_status": "Same as original project CSV. No outside map check.",
+      "source_url_kind": "Wikipedia",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "jama-masjid-agra",
+      "coordinate_status": "Same as original project CSV. No outside map check.",
+      "source_url_kind": "Wikipedia",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "keoladeo-national-park",
+      "coordinate_status": "Same as original project CSV. No outside map check.",
+      "source_url_kind": "Wikipedia",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "kinari-bazaar",
+      "coordinate_status": "Pin-checked in Google Maps by Member 2 (2026-10-23)",
+      "source_url_kind": "Google Maps link (made from coordinates; not an official source)",
+      "address_status": "No"
+    },
+    {
+      "id": "mankameshwar-temple",
+      "coordinate_status": "Same as original project CSV. No outside map check.",
+      "source_url_kind": "Wikipedia",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "mariam-tomb-sikandra",
+      "coordinate_status": "Not map-checked. From source listed.",
+      "source_url_kind": "Wikipedia",
+      "address_status": "No"
+    },
+    {
+      "id": "mehtab-bagh",
+      "coordinate_status": "Same as heritage.json (Member 1). No outside map check.",
+      "source_url_kind": "Government site",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "pinch-of-spice-fatehabad-road",
+      "coordinate_status": "Pin-checked in Google Maps by Member 2 (2026-10-23)",
+      "source_url_kind": "Google Maps link (made from coordinates; not an official source)",
+      "address_status": "No"
+    },
+    {
+      "id": "pinch-of-spice-wazirpura",
+      "coordinate_status": "Pin-checked in Google Maps by Member 2 (2026-10-23)",
+      "source_url_kind": "Google Maps link (made from coordinates; not an official source)",
+      "address_status": "No"
+    },
+    {
+      "id": "ram-bagh",
+      "coordinate_status": "Same as heritage.json (Member 1). No outside map check.",
+      "source_url_kind": "Government site",
+      "address_status": "Original record, kept"
+    },
+    {
+      "id": "sadar-bazaar",
+      "coordinate_status": "Pin-checked in Google Maps by Member 2 (2026-10-23)",
+      "source_url_kind": "Google Maps link (made from coordinates; not an official source)",
+      "address_status": "No"
+    },
+    {
+      "id": "soami-bagh-samadhi",
+      "coordinate_status": "Not map-checked. From source listed.",
+      "source_url_kind": "Government site",
+      "address_status": "No. Third-party listing"
+    },
+    {
+      "id": "sur-sarovar-bird-sanctuary",
+      "coordinate_status": "Not map-checked. From source listed.",
+      "source_url_kind": "Ramsar Sites Information Service",
+      "address_status": "No"
+    },
+    {
+      "id": "taj-mahal",
+      "coordinate_status": "Same as heritage.json (Member 1). No outside map check.",
+      "source_url_kind": "Government site",
+      "address_status": "Original record, kept"
+    }
+  ],
+  "distance_from_taj_mahal": {
+    "method": "Straight-line distances computed with the haversine formula from coordinates.",
+    "road_distance_note": "Road distances are estimates only, calculated using straight-line distance multipliers; they are not map-sourced.",
+    "places": [
+      {
+        "id": "mehtab-bagh",
+        "name": "Mehtab Bagh",
+        "category": "garden",
+        "straight_line_km": 0.5,
+        "road_distance_estimate_km": {
+          "min": 0.6,
+          "max": 0.7
+        }
+      },
+      {
+        "id": "pinch-of-spice-fatehabad-road",
+        "name": "Pinch of Spice (Fatehabad Road)",
+        "category": "restaurant",
+        "straight_line_km": 1.7,
+        "road_distance_estimate_km": {
+          "min": 2.0,
+          "max": 2.5
+        }
+      },
+      {
+        "id": "agra-fort",
+        "name": "Agra Fort",
+        "category": "monument",
+        "straight_line_km": 2.1,
+        "road_distance_estimate_km": {
+          "min": 2.6,
+          "max": 3.2
+        }
+      },
+      {
+        "id": "itmad-ud-daulah",
+        "name": "Tomb of Itmad-ud-Daulah",
+        "category": "monument",
+        "straight_line_km": 2.3,
+        "road_distance_estimate_km": {
+          "min": 2.7,
+          "max": 3.4
+        }
+      },
+      {
+        "id": "jama-masjid-agra",
+        "name": "Jama Masjid Agra",
+        "category": "religious",
+        "straight_line_km": 2.8,
+        "road_distance_estimate_km": {
+          "min": 3.4,
+          "max": 4.3
+        }
+      },
+      {
+        "id": "kinari-bazaar",
+        "name": "Kinari Bazaar",
+        "category": "market",
+        "straight_line_km": 2.9,
+        "road_distance_estimate_km": {
+          "min": 3.4,
+          "max": 4.3
+        }
+      },
+      {
+        "id": "mankameshwar-temple",
+        "name": "Mankameshwar Temple",
+        "category": "religious",
+        "straight_line_km": 3.3,
+        "road_distance_estimate_km": {
+          "min": 4.0,
+          "max": 5.0
+        }
+      },
+      {
+        "id": "chini-ka-rauza",
+        "name": "Chini Ka Rauza",
+        "category": "monument",
+        "straight_line_km": 3.3,
+        "road_distance_estimate_km": {
+          "min": 4.0,
+          "max": 5.0
+        }
+      },
+      {
+        "id": "sadar-bazaar",
+        "name": "Sadar Bazaar",
+        "category": "market",
+        "straight_line_km": 3.7,
+        "road_distance_estimate_km": {
+          "min": 4.4,
+          "max": 5.5
+        }
+      },
+      {
+        "id": "ram-bagh",
+        "name": "Ram Bagh (Aram Bagh)",
+        "category": "garden",
+        "straight_line_km": 3.8,
+        "road_distance_estimate_km": {
+          "min": 4.5,
+          "max": 5.6
+        }
+      },
+      {
+        "id": "pinch-of-spice-wazirpura",
+        "name": "Pinch of Spice (Wazirpura)",
+        "category": "restaurant",
+        "straight_line_km": 4.5,
+        "road_distance_estimate_km": {
+          "min": 5.4,
+          "max": 6.8
+        }
+      },
+      {
+        "id": "soami-bagh-samadhi",
+        "name": "Soami Bagh (Radhasoami Samadhi)",
+        "category": "religious",
+        "straight_line_km": 6.2,
+        "road_distance_estimate_km": {
+          "min": 7.5,
+          "max": 9.3
+        }
+      },
+      {
+        "id": "guru-ka-taal-gurudwara",
+        "name": "Guru Ka Taal Gurudwara",
+        "category": "religious",
+        "straight_line_km": 8.4,
+        "road_distance_estimate_km": {
+          "min": 10.1,
+          "max": 12.6
+        }
+      },
+      {
+        "id": "akbar-tomb-sikandra",
+        "name": "Akbar's Tomb (Sikandra)",
+        "category": "monument",
+        "straight_line_km": 10.3,
+        "road_distance_estimate_km": {
+          "min": 12.4,
+          "max": 15.5
+        }
+      },
+      {
+        "id": "mariam-tomb-sikandra",
+        "name": "Tomb of Mariam-uz-Zamani",
+        "category": "monument",
+        "straight_line_km": 10.8,
+        "road_distance_estimate_km": {
+          "min": 13.0,
+          "max": 16.2
+        }
+      },
+      {
+        "id": "sur-sarovar-bird-sanctuary",
+        "name": "Sur Sarovar Bird Sanctuary (Keetham Lake)",
+        "category": "nature",
+        "straight_line_km": 21.7,
+        "road_distance_estimate_km": {
+          "min": 23.9,
+          "max": 28.2
+        }
+      },
+      {
+        "id": "fatehpur-sikri",
+        "name": "Fatehpur Sikri",
+        "category": "monument",
+        "straight_line_km": 38.8,
+        "road_distance_estimate_km": {
+          "min": 42.7,
+          "max": 50.4
+        }
+      },
+      {
+        "id": "keoladeo-national-park",
+        "name": "Keoladeo National Park",
+        "category": "nature",
+        "straight_line_km": 51.5,
+        "road_distance_estimate_km": {
+          "min": 56.6,
+          "max": 66.9
+        }
+      }
+    ]
+  },
+  "member_handoff": [
+    {
+      "member": 3,
+      "responsibility": "transport",
+      "use_place_ids": [
+        "taj-mahal",
+        "agra-fort",
+        "mehtab-bagh",
+        "itmad-ud-daulah",
+        "sadar-bazaar",
+        "kinari-bazaar",
+        "akbar-tomb-sikandra",
+        "fatehpur-sikri"
+      ],
+      "notes": "transport.json currently holds 2 records and uses text names, not place IDs. Member 3 owns that file and should reference these IDs."
+    },
+    {
+      "member": 4,
+      "responsibility": "food and services",
+      "use_place_ids": [
+        "pinch-of-spice-fatehabad-road",
+        "pinch-of-spice-wazirpura"
+      ],
+      "notes": "visitor_services.json has 3 guide records and no restaurant record. Reuse these IDs and locations; prices are not in this file."
+    },
+    {
+      "member": 5,
+      "responsibility": "budget",
+      "use_place_ids": "all place IDs",
+      "notes": "No cost fields exist here. Itinerary code needs 'Agra' in the address. Categories market and restaurant are new in backend/app/models/place.py and backend/app/schemas/place.py."
+    }
+  ],
+  "known_data_problems": [
+    "Keoladeo National Park is an original record with address 'Bharatpur, Rajasthan 321001'. It does not contain 'Agra', and itinerary code recognises a city by finding the name in the address.",
+    "The old CSV data/raw/places/agra_places_raw.csv has Wikipedia links for 6 places where the JSON has official links. Running backend/app/ingestion/import_places.py would overwrite the JSON with older data and remove added records and official links. Do not run it before the CSV is synced."
+  ],
+  "not_done_or_decisions_needed": [
+    "Subhash Bazaar, Raja Ki Mandi, Shilpgram and Shahganj Market were not added because real coordinates were unavailable; Shahganj Market is shown as permanently closed.",
+    "Team agreement is needed before merging the new market and restaurant categories because they change shared code.",
+    "A road-distance file or field was not created because it would break the same-format rule.",
+    "Addresses and PIN codes of the 4 market and restaurant records remain unchecked.",
+    "Coordinates of 15 records remain without a map check.",
+    "All source links still need to be opened manually.",
+    "heritage.json (Member 1), transport.json (Member 3), and visitor_services.json (Member 4) were not changed."
+  ],
+  "commands_to_repeat_checks": [
+    "python scripts/merge_new_places.py --check",
+    "python scripts/merge_new_places.py --distances",
+    "python scripts/merge_new_places.py --nearest",
+    "python scripts/merge_new_places.py new_places.csv (dry run), add --apply to write",
+    "python -m pytest -q"
+  ],
+  "full_report_pages": [
+    {
+      "page": 1,
+      "text": "HeritageAI | Member 2: Nearby Places and Attractions\nPage 1\nHeritageAI - Member 2 Final Report\nNearby Places and Attractions | file: data/processed/nearby_places.json\nPrepared 2026-10-23. Every statement below is marked as checked, or as not checked.\n1. Result in one view\nThe dataset has 19 places (monument 7, religious 4, nature 2, market 2, garden 2, restaurant 2). 11 are original\nrecords and 8 were added. No original record was changed. No duplicate exists. Each record has exactly the 7 fields:\nid, name, category, latitude, longitude, address, source_url. The file is sorted by id. The file has no distance field,\nbecause the backend computes distance_km.\nTest results. Member 2 reported all tests passing on their own machine (134 tests, run on 2026-10-23, before the final\nJSON update). The check script prints OK: 19 places, no duplicates or broken ids. The tests should be run once more\nafter the final JSON is copied in.\n2. Responsibilities and status\nResponsibility (team plan)\nStatus\nEvidence or gap\nVerify coordinates\nPartly done\n4 records pin-checked in Google Maps. 6 monuments equal the heritage.json\ncoordinates. The other 11 original records equal the original project CSV. 15\nrecords have no outside map check (11 original, 4 new; see section 4).\nVerify source URLs\nPartly done\nEach URL was checked for kind (official, Wikipedia, Maps link). No page was\nopened here: the workspace could not reach the sites. Open every link once by\nhand.\nRemove duplicate records\nDone\nScript checks same id, same name, same name within 2 km, and any place within\n150 m. No duplicates found.\nAdd missing relevant places\nPartly done\nAgra Fort, Mehtab Bagh and Tomb of Itmad-ud-Daulah were already present. 8\nplaces added: 2 markets, 2 restaurants, 4 attractions.\nDo not add distance_km to the\nJSON\nDone\nThe field does not exist in any record.\nSeparate straight-line and road\ndistance\nDone\nSection 5. Straight-line values are computed. Road values are estimates and are\nlabelled as such.\nSupport Member 3, 4 and 5\nReady\nSection 6 lists the place IDs each member should use.\n3. The 19 places\nid\nName\nCategory\nLat\nLon\nAdded\nby M2\nagra-fort\nAgra Fort\nmonument\n27.1795\n78.0211\nno\n(original)\nakbar-tomb-sikandra\nAkbar's Tomb (Sikandra)\nmonument\n27.2205\n77.9511\nno\n(original)\nchini-ka-rauza\nChini Ka Rauza\nmonument\n27.2\n78.0233\nno\n(original)\nfatehpur-sikri\nFatehpur Sikri\nmonument\n27.094\n77.661\nno\n(original)\nguru-ka-taal-gurudwara\nGuru Ka Taal Gurudwara\nreligious\n27.2117\n77.9677\nyes\nitmad-ud-daulah\nTomb of Itmad-ud-Daulah\nmonument\n27.193\n78.0309\nno\n(original)\njama-masjid-agra\nJama Masjid Agra\nreligious\n27.183\n78.0147\nno\n(original)\nkeoladeo-national-park\nKeoladeo National Park\nnature\n27.159\n77.522\nno\n(original)\nkinari-bazaar\nKinari Bazaar\nmarket\n27.1839\n78.0149\nyes\nmankameshwar-temple\nMankameshwar Temple\nreligious\n27.188\n78.012\nno\n(original)"
+    },
+    {
+      "page": 2,
+      "text": "HeritageAI | Member 2: Nearby Places and Attractions\nPage 2\nid\nName\nCategory\nLat\nLon\nAdded\nby M2\nmariam-tomb-sikandra\nTomb of Mariam-uz-Zamani\nmonument\n27.2153\n77.9427\nyes\nmehtab-bagh\nMehtab Bagh\ngarden\n27.179\n78.0437\nno\n(original)\npinch-of-spice-fatehabad-road\nPinch of Spice (Fatehabad Road)\nrestaurant\n27.1599\n78.0431\nyes\npinch-of-spice-wazirpura\nPinch of Spice (Wazirpura)\nrestaurant\n27.2019\n78.0077\nyes\nram-bagh\nRam Bagh (Aram Bagh)\ngarden\n27.2087\n78.0457\nno\n(original)\nsadar-bazaar\nSadar Bazaar\nmarket\n27.1588\n78.01\nyes\nsoami-bagh-samadhi\nSoami Bagh (Radhasoami Samadhi)\nreligious\n27.2228\n78.0093\nyes\nsur-sarovar-bird-sanctuary\nSur Sarovar Bird Sanctuary (Keetham\nLake)\nnature\n27.2517\n77.84\nyes\ntaj-mahal\nTaj Mahal\nmonument\n27.1751\n78.0421\nno\n(original)"
+    },
+    {
+      "page": 3,
+      "text": "HeritageAI | Member 2: Nearby Places and Attractions\nPage 3\n4. Verification status of each record\nStraight-line checks only compare numbers inside the project files. They show that the files agree with each other.\nThey do not prove the pin is on the right building.\nid\nCoordinate status\nSource URL kind\nAddress checked\nagra-fort\nSame as heritage.json (Member 1). No\noutside map check.\nGovernment site\nOriginal record,\nkept\nakbar-tomb-sikandra\nSame as heritage.json (Member 1). No\noutside map check.\nGovernment site\nOriginal record,\nkept\nchini-ka-rauza\nSame as original project CSV. No outside\nmap check.\nWikipedia\nOriginal record,\nkept\nfatehpur-sikri\nSame as heritage.json (Member 1). No\noutside map check.\nGovernment site\nOriginal record,\nkept\nguru-ka-taal-gurudwara\nNot map-checked. From source listed.\nGovernment site\nNo. Third-party\nlisting\nitmad-ud-daulah\nSame as original project CSV. No outside\nmap check.\nWikipedia\nOriginal record,\nkept\njama-masjid-agra\nSame as original project CSV. No outside\nmap check.\nWikipedia\nOriginal record,\nkept\nkeoladeo-national-park\nSame as original project CSV. No outside\nmap check.\nWikipedia\nOriginal record,\nkept\nkinari-bazaar\nPin-checked in Google Maps by Member 2\n(2026-10-23)\nGoogle Maps link (made from\ncoordinates; not an official\nsource)\nNo\nmankameshwar-temple\nSame as original project CSV. No outside\nmap check.\nWikipedia\nOriginal record,\nkept\nmariam-tomb-sikandra\nNot map-checked. From source listed.\nWikipedia\nNo\nmehtab-bagh\nSame as heritage.json (Member 1). No\noutside map check.\nGovernment site\nOriginal record,\nkept\npinch-of-spice-fatehabad-road\nPin-checked in Google Maps by Member 2\n(2026-10-23)\nGoogle Maps link (made from\ncoordinates; not an official\nsource)\nNo\npinch-of-spice-wazirpura\nPin-checked in Google Maps by Member 2\n(2026-10-23)\nGoogle Maps link (made from\ncoordinates; not an official\nsource)\nNo\nram-bagh\nSame as heritage.json (Member 1). No\noutside map check.\nGovernment site\nOriginal record,\nkept\nsadar-bazaar\nPin-checked in Google Maps by Member 2\n(2026-10-23)\nGoogle Maps link (made from\ncoordinates; not an official\nsource)\nNo\nsoami-bagh-samadhi\nNot map-checked. From source listed.\nGovernment site\nNo. Third-party\nlisting\nsur-sarovar-bird-sanctuary\nNot map-checked. From source listed.\nRamsar Sites Information\nService\nNo\ntaj-mahal\nSame as heritage.json (Member 1). No\noutside map check.\nGovernment site\nOriginal record,\nkept\nKnown data problems (not changed): (a) Keoladeo National Park is an original record with the address 'Bharatpur,\nRajasthan 321001'. It does not contain 'Agra', and the itinerary code recognises a city by finding the name in the\naddress. (b) The old CSV data/raw/places/agra_places_raw.csv has Wikipedia links for 6 places where the JSON has\nofficial links. Running backend/app/ingestion/import_places.py would overwrite the JSON with the older data and\nremove the added records and official links. Do not run it before the CSV is synced.\n5. Straight-line distance and road distance from the Taj Mahal\nStraight-line = the shortest distance over the ground between two points, computed by the haversine formula from the\ncoordinates in the JSON. The API uses the same formula for distance_km. Road distance = the distance a vehicle\ntravels. It is always longer. The road column below is only an estimate: straight-line x 1.2 to x 1.5 for city roads, x 1.1"
+    },
+    {
+      "page": 4,
+      "text": "HeritageAI | Member 2: Nearby Places and Attractions\nPage 4\nto x 1.3 for long highway trips. It is not read from a map. Real road distances need a map source and a new field, so\nthe team must agree first.\nPlace\nCategory\nStraight-line (km, computed)\nRoad (km, estimate only)\nMehtab Bagh\ngarden\n0.5\n0.6 - 0.7\nPinch of Spice (Fatehabad Road)\nrestaurant\n1.7\n2.0 - 2.5\nAgra Fort\nmonument\n2.1\n2.6 - 3.2\nTomb of Itmad-ud-Daulah\nmonument\n2.3\n2.7 - 3.4\nJama Masjid Agra\nreligious\n2.8\n3.4 - 4.3\nKinari Bazaar\nmarket\n2.9\n3.4 - 4.3\nMankameshwar Temple\nreligious\n3.3\n4.0 - 5.0\nChini Ka Rauza\nmonument\n3.3\n4.0 - 5.0\nSadar Bazaar\nmarket\n3.7\n4.4 - 5.5\nRam Bagh (Aram Bagh)\ngarden\n3.8\n4.5 - 5.6\nPinch of Spice (Wazirpura)\nrestaurant\n4.5\n5.4 - 6.8\nSoami Bagh (Radhasoami Samadhi)\nreligious\n6.2\n7.5 - 9.3\nGuru Ka Taal Gurudwara\nreligious\n8.4\n10.1 - 12.6\nAkbar's Tomb (Sikandra)\nmonument\n10.3\n12.4 - 15.5\nTomb of Mariam-uz-Zamani\nmonument\n10.8\n13.0 - 16.2\nSur Sarovar Bird Sanctuary (Keetham Lake)\nnature\n21.7\n23.9 - 28.2\nFatehpur Sikri\nmonument\n38.8\n42.7 - 50.4\nKeoladeo National Park\nnature\n51.5\n56.6 - 66.9\nThese road ranges replace the ranges in the earlier PDF. They changed because 4 coordinates were corrected and one rule is now used for\nevery row.\n6. What other members should use\nMember\nUse from nearby_places.json\nNote\n3 (transport)\nPlace ids and coordinates. Start point: id taj-mahal.\nGood first destinations: agra-fort, mehtab-bagh,\nitmad-ud-daulah, sadar-bazaar, kinari-bazaar,\nakbar-tomb-sikandra, fatehpur-sikri.\ntransport.json currently holds only 2 records and uses\ntext names (for example 'Agra'), not place ids. Member 3\nowns that file. Ask Member 3 to reference these ids.\n4 (food and\nservices)\nRestaurant records: pinch-of-spice-fatehabad-road,\npinch-of-spice-wazirpura.\nvisitor_services.json has 3 guide records and no\nrestaurant record. Member 4 should reuse these ids and\nlocations, not create new ones. Prices are not in this file.\n5 (budget)\nAll place ids for choosing destinations. No cost fields\nexist here.\nItinerary code needs 'Agra' in the address. Categories\nmarket and restaurant are new in\nbackend/app/models/place.py and\nbackend/app/schemas/place.py.\n7. Not done and decisions needed\n- Not added (no real coordinates): Subhash Bazaar, Raja Ki Mandi, Shilpgram, Shahganj Market (shown as\npermanently closed). Candidates are in docs/places_candidates_template.csv.\n- Team decision: the new categories market and restaurant change shared code (2 files). Get agreement from the\nbackend owner before merging.\n- Team decision: a road-distance file or field. Not created, because it would break the 'same format' rule.\n- Still unchecked: addresses and PIN codes of the 4 market and restaurant records; coordinates of the 15 records in\nsection 4 with no map check; all source links opened by hand.\n- Not touched: heritage.json (Member 1), transport.json (Member 3), visitor_services.json (Member 4).\n8. Commands to repeat the checks"
+    },
+    {
+      "page": 5,
+      "text": "HeritageAI | Member 2: Nearby Places and Attractions\nPage 5\npython scripts/merge_new_places.py --check   (duplicates, broken ids, transport and service locations)\npython scripts/merge_new_places.py --distances   (writes docs/place_distances.md)\npython scripts/merge_new_places.py --nearest   (writes docs/place_relationships.md)\npython scripts/merge_new_places.py new_places.csv   (dry run), add --apply to write\npython -m pytest -q"
+    }
+  ]
+}

@@ -60,4 +60,3 @@ class TransportRepository:
             if option.origin.casefold().strip() == origin_key
             and option.destination.casefold().strip() == destination_key
         ]
-

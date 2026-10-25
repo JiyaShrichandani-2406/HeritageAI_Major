@@ -12,6 +12,8 @@ class PlaceCategory(str, Enum):
     religious = "religious"
     nature = "nature"
     viewpoint = "viewpoint"
+    market = "market"
+    restaurant = "restaurant"
 
 
 class NearbyPlacesQuery(BaseModel):

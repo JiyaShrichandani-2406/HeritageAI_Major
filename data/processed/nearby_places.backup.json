@@ -1,0 +1,101 @@
+[
+  {
+    "id": "agra-fort",
+    "name": "Agra Fort",
+    "category": "monument",
+    "latitude": 27.1795,
+    "longitude": 78.0211,
+    "address": "Rakabganj, Agra, Uttar Pradesh 282003",
+    "source_url": "https://agra.nic.in/tourist-place/agra-fort/"
+  },
+  {
+    "id": "akbar-tomb-sikandra",
+    "name": "Akbar's Tomb (Sikandra)",
+    "category": "monument",
+    "latitude": 27.2205,
+    "longitude": 77.9511,
+    "address": "Sikandra, Agra, Uttar Pradesh 282007",
+    "source_url": "https://agra.nic.in/tourist-place/akbars-tomb-sikandra/"
+  },
+  {
+    "id": "chini-ka-rauza",
+    "name": "Chini Ka Rauza",
+    "category": "monument",
+    "latitude": 27.2,
+    "longitude": 78.0233,
+    "address": "Itmad-ud-Daulah Rd, Agra, Uttar Pradesh 282006",
+    "source_url": "https://en.wikipedia.org/wiki/Chini_Ka_Rauza"
+  },
+  {
+    "id": "fatehpur-sikri",
+    "name": "Fatehpur Sikri",
+    "category": "monument",
+    "latitude": 27.094,
+    "longitude": 77.661,
+    "address": "Fatehpur Sikri, Agra district, Uttar Pradesh 283110",
+    "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+  },
+  {
+    "id": "itmad-ud-daulah",
+    "name": "Tomb of Itmad-ud-Daulah",
+    "category": "monument",
+    "latitude": 27.193,
+    "longitude": 78.0309,
+    "address": "Moti Bagh, Bairon Para, Agra, Uttar Pradesh 282006",
+    "source_url": "https://en.wikipedia.org/wiki/Tomb_of_Itimad-ud-Daulah"
+  },
+  {
+    "id": "jama-masjid-agra",
+    "name": "Jama Masjid Agra",
+    "category": "religious",
+    "latitude": 27.183,
+    "longitude": 78.0147,
+    "address": "Jama Masjid Rd, Agra, Uttar Pradesh 282003",
+    "source_url": "https://en.wikipedia.org/wiki/Jama_Masjid"
+  },
+  {
+    "id": "keoladeo-national-park",
+    "name": "Keoladeo National Park",
+    "category": "nature",
+    "latitude": 27.159,
+    "longitude": 77.522,
+    "address": "Bharatpur, Rajasthan 321001",
+    "source_url": "https://en.wikipedia.org/wiki/Keoladeo_National_Park"
+  },
+  {
+    "id": "mankameshwar-temple",
+    "name": "Mankameshwar Temple",
+    "category": "religious",
+    "latitude": 27.188,
+    "longitude": 78.012,
+    "address": "Rawatpara, Agra, Uttar Pradesh 282003",
+    "source_url": "https://en.wikipedia.org/wiki/Mankameshwar_Temple"
+  },
+  {
+    "id": "mehtab-bagh",
+    "name": "Mehtab Bagh",
+    "category": "garden",
+    "latitude": 27.179,
+    "longitude": 78.0437,
+    "address": "Northern bank of Yamuna river, Agra, Uttar Pradesh 282006",
+    "source_url": "https://agra.nic.in/tourist-place/mehtab-bagh/"
+  },
+  {
+    "id": "ram-bagh",
+    "name": "Ram Bagh (Aram Bagh)",
+    "category": "garden",
+    "latitude": 27.2087,
+    "longitude": 78.0457,
+    "address": "Ram Bagh, Agra, Uttar Pradesh 282006",
+    "source_url": "https://agra.nic.in/tourist-place/ram-bagh-bagh-i-gul-afshan/"
+  },
+  {
+    "id": "taj-mahal",
+    "name": "Taj Mahal",
+    "category": "monument",
+    "latitude": 27.1751,
+    "longitude": 78.0421,
+    "address": "Dharmapuri, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001",
+    "source_url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra/magnificent-world-heritage-site-taj-mahal"
+  }
+]

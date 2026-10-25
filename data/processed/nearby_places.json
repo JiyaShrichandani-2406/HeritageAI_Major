@@ -97,5 +97,77 @@
     "longitude": 78.0421,
     "address": "Dharmapuri, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001",
     "source_url": "https://www.incredibleindia.gov.in/en/uttar-pradesh/agra/magnificent-world-heritage-site-taj-mahal"
+  },
+  {
+    "id": "guru-ka-taal-gurudwara",
+    "name": "Guru Ka Taal Gurudwara",
+    "category": "religious",
+    "latitude": 27.2117,
+    "longitude": 77.9677,
+    "address": "NH-19, Sikandra, Agra, Uttar Pradesh 282007",
+    "source_url": "https://agra.nic.in/tourist-place/guru-ka-taal-gurudwara/"
+  },
+  {
+    "id": "kinari-bazaar",
+    "name": "Kinari Bazaar",
+    "category": "market",
+    "latitude": 27.1839,
+    "longitude": 78.0149,
+    "address": "Kinari Bazaar Road, Mantola, Agra, Uttar Pradesh",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=27.1839,78.0149"
+  },
+  {
+    "id": "mariam-tomb-sikandra",
+    "name": "Tomb of Mariam-uz-Zamani",
+    "category": "monument",
+    "latitude": 27.2153,
+    "longitude": 77.9427,
+    "address": "Sikandra, Agra, Uttar Pradesh 282007",
+    "source_url": "https://en.wikipedia.org/wiki/Tomb_of_Mariam-uz-Zamani"
+  },
+  {
+    "id": "pinch-of-spice-fatehabad-road",
+    "name": "Pinch of Spice (Fatehabad Road)",
+    "category": "restaurant",
+    "latitude": 27.1599,
+    "longitude": 78.0431,
+    "address": "Fatehabad Road, Agra, Uttar Pradesh",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=27.1599,78.0431"
+  },
+  {
+    "id": "pinch-of-spice-wazirpura",
+    "name": "Pinch of Spice (Wazirpura)",
+    "category": "restaurant",
+    "latitude": 27.2019,
+    "longitude": 78.0077,
+    "address": "Wazirpura Road, Agra, Uttar Pradesh",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=27.2019,78.0077"
+  },
+  {
+    "id": "sadar-bazaar",
+    "name": "Sadar Bazaar",
+    "category": "market",
+    "latitude": 27.1588,
+    "longitude": 78.01,
+    "address": "Sadar Bhatti Road, Agra Cantt, Agra, Uttar Pradesh",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=27.1588,78.0100"
+  },
+  {
+    "id": "soami-bagh-samadhi",
+    "name": "Soami Bagh (Radhasoami Samadhi)",
+    "category": "religious",
+    "latitude": 27.2228,
+    "longitude": 78.0093,
+    "address": "Poiya Ghat Road, Swamibagh, Dayalbagh, Agra, Uttar Pradesh 282005",
+    "source_url": "https://incredibleindia.gov.in/en/uttar-pradesh/agra/radhasoami-samadhi-soamibag-h-temple"
+  },
+  {
+    "id": "sur-sarovar-bird-sanctuary",
+    "name": "Sur Sarovar Bird Sanctuary (Keetham Lake)",
+    "category": "nature",
+    "latitude": 27.2517,
+    "longitude": 77.84,
+    "address": "Keetham, Kiraoli, Agra, Uttar Pradesh 282007",
+    "source_url": "https://rsis.ramsar.org/ris/2440"
   }
 ]

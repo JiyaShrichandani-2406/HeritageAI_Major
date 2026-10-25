@@ -10,6 +10,10 @@ from backend.app.core.config import get_settings
 logger = logging.getLogger(__name__)
 
 
+class OllamaTimeoutError(RuntimeError):
+    """Raised when Ollama does not finish a request before the timeout."""
+
+
 def generate_response(
     prompt: str,
     *,
@@ -30,7 +34,7 @@ def generate_response(
     payload = {
         "model": settings.ollama_model,
         "prompt": prompt,
-        "stream": False,
+        "stream": True,
         "options": options,
     }
 
@@ -46,11 +50,29 @@ def generate_response(
             request,
             timeout=settings.ollama_timeout_seconds,
         ) as response:
-            result = json.loads(response.read().decode("utf-8"))
+            response_parts = []
+            for line in response:
+                if not line.strip():
+                    continue
+
+                result = json.loads(line.decode("utf-8"))
+                if not isinstance(result, dict):
+                    raise RuntimeError("Ollama returned an invalid response.")
+                if "error" in result:
+                    raise RuntimeError(
+                        f"Ollama returned an error: {result['error']}"
+                    )
+
+                answer_part = result.get("response", "")
+                if not isinstance(answer_part, str):
+                    raise RuntimeError("Ollama returned an invalid response.")
+                response_parts.append(answer_part)
+                if result.get("done") is True:
+                    break
 
     except TimeoutError as error:
         logger.warning("The Ollama request timed out.")
-        raise RuntimeError(
+        raise OllamaTimeoutError(
             "The Ollama request timed out. Please try again later."
         ) from error
     except urllib.error.URLError as error:
@@ -68,11 +90,8 @@ def generate_response(
     except json.JSONDecodeError as error:
         raise RuntimeError("Ollama returned an invalid response.") from error
 
-    if not isinstance(result, dict):
-        raise RuntimeError("Ollama returned an invalid response.")
-
-    answer = result.get("response", "")
-    if not isinstance(answer, str) or not answer.strip():
+    answer = "".join(response_parts)
+    if not answer.strip():
         raise RuntimeError("Ollama returned an empty response.")
 
     return answer.strip()

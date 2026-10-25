@@ -4,7 +4,7 @@ import re
 from dataclasses import asdict
 from typing import Any
 
-from backend.app.ai.llm_client import generate_response
+from backend.app.ai.llm_client import OllamaTimeoutError, generate_response
 from backend.app.rag.retriever import HeritageRetriever
 from backend.app.repositories.place_repository import PlaceRepository
 from backend.app.repositories.monument_repository import (
@@ -387,11 +387,11 @@ Required JSON structure:
 
     try:
         raw_response = generate_response(
-            prompt,
-            num_predict=min(8192, max(512, request.days * 512)),
-        )
-    except TimeoutError as error:
-        raise RuntimeError(
+    prompt,
+    num_predict=min(2048, max(384, request.days * 384)),
+)
+    except (OllamaTimeoutError, TimeoutError) as error:
+        raise OllamaTimeoutError(
             "Ollama timed out generating the itinerary. Verify Ollama is "
             "reachable from the API host and increase "
             "OLLAMA_TIMEOUT_SECONDS if needed."
