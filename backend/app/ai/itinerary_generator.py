@@ -48,6 +48,32 @@ def _validate_source_url(
 
     return candidate
 
+def _normalize_assumptions(value: Any) -> list[str]:
+    """Coerce the model's assumptions field into a list of non-empty strings."""
+    if value is None:
+        return []
+    if isinstance(value, str):
+        value = [value]
+    if not isinstance(value, list):
+        return []
+
+    cleaned: list[str] = []
+    for item in value:
+        if isinstance(item, str):
+            text = item.strip()
+        elif isinstance(item, dict):
+            # Use the first string value, e.g. {"assumption": "..."}
+            text = next(
+                (v.strip() for v in item.values() if isinstance(v, str) and v.strip()),
+                "",
+            )
+        elif item is None:
+            text = ""
+        else:
+            text = str(item).strip()
+        if text:
+            cleaned.append(text)
+    return cleaned
 
 def _extract_json(text: str) -> dict[str, Any]:
     """Extract a JSON object from the model response."""
@@ -417,12 +443,7 @@ Required JSON structure:
             f"The AI must return exactly {request.days} daily plans."
         )
 
-    if not isinstance(assumptions, list) or not all(
-        isinstance(item, str) for item in assumptions
-    ):
-        raise ValueError(
-            "The assumptions field must be a list of strings."
-        )
+    assumptions = _normalize_assumptions(assumptions)
 
     if request.origin and not transport_options:
         assumptions.append(
@@ -458,10 +479,7 @@ Required JSON structure:
                 f"{len(normalized_itinerary) + 1}."
             )
 
-        if len(activities) > 4:
-            raise ValueError(
-                "Each day's itinerary may contain at most four activities."
-            )
+        activities = activities[:4]
 
         normalized_activities = []
 
