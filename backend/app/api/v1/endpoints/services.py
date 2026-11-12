@@ -14,7 +14,7 @@ from backend.app.services.visitor_services import find_visitor_services
 
 router = APIRouter(tags=["Visitor Services"])
 
-ServiceCategory = Literal["food", "market", "guide", "taxi", "other"]
+ServiceCategory = Literal["food", "market", "guide", "taxi", "parking", "other"]
 
 
 @router.get(

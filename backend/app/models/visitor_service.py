@@ -9,6 +9,7 @@ ServiceCategory = Literal[
     "market",
     "guide",
     "taxi",
+    "parking",
     "other",
 ]
 

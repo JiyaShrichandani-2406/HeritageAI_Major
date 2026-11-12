@@ -1,8 +1,7 @@
-
 import json
+from functools import lru_cache
 
 import faiss
-from sentence_transformers import SentenceTransformer
 
 from backend.app.core.config import get_settings
 
@@ -32,7 +31,13 @@ class HeritageRetriever:
         with open(chunks_path, "r", encoding="utf-8") as file:
             self.chunks = json.load(file)
 
+        # Import the embedding model only when a retriever is initialized.
+        # This allows the FastAPI application to import/start without
+        # sentence-transformers being installed, provided the retriever
+        # is not initialized during startup.
         print("Loading embedding model...")
+        from sentence_transformers import SentenceTransformer
+
         self.model = SentenceTransformer(MODEL_NAME)
 
         if self.index.ntotal != len(self.chunks):
@@ -88,3 +93,9 @@ if __name__ == "__main__":
         print("Source:", result["source_url"])
         print("Similarity:", round(result["relevance_score"], 4))
         print("Text:", result["text"][:300])
+
+
+@lru_cache(maxsize=1)
+def get_retriever() -> HeritageRetriever:
+    """Return the shared retriever instance for this process."""
+    return HeritageRetriever()

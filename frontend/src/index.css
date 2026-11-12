@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+/* HeritageAI – Option B design tokens (deep teal + saffron on cream). */
+@theme {
+  --color-teal-950: #082527;
+  --color-teal-900: #0B2E2F;
+  --color-teal-800: #103D3E;
+  --color-teal-700: #16504F;
+  --color-teal-600: #1E6665;
+  --color-teal-500: #2D8282;
+  --color-teal-100: #D7E7E6;
+  --color-teal-50: #EEF6F5;
+
+  --color-saffron-700: #B55A28;
+  --color-saffron-600: #D06A33;
+  --color-saffron-500: #E37B40;
+  --color-saffron-400: #EC9663;
+  --color-saffron-100: #FBE4D2;
+
+  --color-gold-500: #D6A248;
+  --color-gold-100: #F5E2B4;
+
+  --color-cream-50:  #FBF6EC;
+  --color-cream-100: #F6EFE2;
+  --color-cream-200: #EEE4CF;
+  --color-cream-300: #E4DCCB;
+
+  --color-ink-900: #0F3B3C;
+  --color-ink-700: #294847;
+  --color-ink-500: #5C6B6B;
+  --color-ink-400: #8A9696;
+
+  --color-leaf-600: #39734D;
+  --color-leaf-100: #DDEADF;
+  --color-rose-600: #B4463C;
+  --color-rose-100: #F5DED9;
+  --color-sand-600: #B07A2A;
+  --color-sand-100: #F4E4C0;
+
+  --font-heading: "Playfair Display", ui-serif, Georgia, serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 18px;
+  --radius-button: 999px;
+  --radius-field: 12px;
+
+  --shadow-soft: 0 1px 2px rgba(15, 59, 60, 0.05), 0 8px 24px rgba(15, 59, 60, 0.06);
+  --shadow-ring: 0 0 0 4px rgba(227, 123, 64, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-body);
+  background: var(--color-cream-100);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+  color: var(--color-ink-900);
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Scrollbar polish */
+*::-webkit-scrollbar { height: 10px; width: 10px; }
+*::-webkit-scrollbar-thumb { background: var(--color-cream-300); border-radius: 999px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* Utility classes */
+.container-page { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
+@media (min-width: 768px) { .container-page { padding-left: 32px; padding-right: 32px; } }
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-saffron-600);
+}
+
+.serif-italic {
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: var(--color-saffron-500);
+}
+
+/* Soft dotted grid shimmer used in hero backgrounds */
+.hero-glow {
+  background:
+    radial-gradient(60% 50% at 80% 40%, rgba(214, 162, 72, 0.35), transparent 60%),
+    radial-gradient(40% 40% at 20% 60%, rgba(45, 130, 130, 0.35), transparent 60%),
+    linear-gradient(180deg, #0B2E2F 0%, #082527 100%);
+}
+
+/* Subtle pattern for cream sections */
+.paper {
+  background:
+    radial-gradient(1px 1px at 20% 30%, rgba(15,59,60,0.05) 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 60%, rgba(15,59,60,0.04) 50%, transparent 51%),
+    var(--color-cream-100);
+  background-size: 24px 24px, 32px 32px, auto;
+}
+
+/* Keyframes */
+@keyframes bounce-dot {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-4px); opacity: 1; }
+}
+.dot-pulse > span {
+  display: inline-block;
+  width: 7px; height: 7px; border-radius: 999px;
+  background: var(--color-saffron-500);
+  margin: 0 2px;
+  animation: bounce-dot 1.2s infinite ease-in-out;
+}
+.dot-pulse > span:nth-child(2) { animation-delay: 0.15s; }
+.dot-pulse > span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in-up 0.35s ease-out both; }
+
+/* Leaflet overrides (keep tiles inside rounded cards) */
+.leaflet-container { font-family: var(--font-body); border-radius: 14px; }

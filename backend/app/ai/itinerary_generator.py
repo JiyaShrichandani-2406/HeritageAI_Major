@@ -5,7 +5,7 @@ from dataclasses import asdict
 from typing import Any
 
 from backend.app.ai.llm_client import OllamaTimeoutError, generate_response
-from backend.app.rag.retriever import HeritageRetriever
+from backend.app.rag.retriever import get_retriever
 from backend.app.repositories.place_repository import PlaceRepository
 from backend.app.repositories.monument_repository import (
     get_monuments,
@@ -284,7 +284,7 @@ def generate_itinerary(
 
     if heritage_context is None:
         try:
-            retriever = HeritageRetriever()
+            retriever = get_retriever()
 
             query = (
                 f"Heritage sites, historical places, architecture, and "
