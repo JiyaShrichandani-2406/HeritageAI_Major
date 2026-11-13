@@ -178,6 +178,8 @@ The currently registered versioned endpoints are:
 
 | `/api/v1/itinerary` | POST | Request an itinerary |
 
+| `/api/v1/locations` | GET | List the merged city and place catalog |
+
 
 
 The application also exposes `/` and a legacy `/health` endpoint.
@@ -214,9 +216,21 @@ The common schema definitions include:
 
 
 
-Unknown costs must not be represented as zero. Cost information should be marked according to its verification status. For itinerary responses, each day's `estimated_cost` and the overall `estimated_total_cost` are null when an included cost is unknown. `known_cost_subtotal` includes only verified prices; a numeric overall estimate may also include estimates. `within_budget` is null whenever any included cost is estimated or unknown, unless verified costs alone already exceed the budget.
+Unknown costs must not be represented as zero. Cost information should be marked according to its verification status. For itinerary responses, each day's `estimated_cost` and the overall `estimated_total_cost` are null when an included cost is unknown. `known_cost_subtotal` includes only verified prices, while `priced_cost_subtotal` includes verified and estimated prices and `unknown_cost_count` reports unresolved included cost categories. A numeric overall estimate may include estimates but never treats unknown costs as zero. `within_budget` is null whenever any included cost is estimated or unknown, unless verified costs alone already exceed the budget.
+
+Guide and parking expenses are opt-in. When enabled, itinerary activities use at most one matching sourced guide option and the parking rate for the selected vehicle type. If the matching service or amount is unavailable, the selected cost remains unknown. Entry, food, and transport amounts follow the same verified/estimated/unknown accounting; only exact-direction sourced transport routes are used.
 
 Itinerary generation is limited to destinations covered by the local heritage or nearby-place data. An unsupported destination returns an explanatory 422 response instead of being treated as an AI-generation failure.
+
+Itinerary activities are limited to catalogued places, de-duplicated across
+days, and ordered using straight-line distances between known coordinates.
+This ordering is not road navigation. Local travel cost and duration are
+attached only when an exact-direction record exists in `transport.json`;
+unsupported legs remain unknown. Structured opening hours and visit durations
+are not currently present in the location catalog. Explicit, cited visit
+timing in retrieved heritage context takes precedence over geogra
+phic ordering;
+otherwise no time-window schedule is inferred.
 
 
 
@@ -318,9 +332,34 @@ The repository currently contains the following data directories:
 
 \- `data/raw/` — source data.
 
+\- `data/processed/` — normalized heritage, nearby-place, transport, and visitor-service records.
+
 \- `data/samples/` — sample data.
 
 \- `data/vector\_store/` — vector-store-related artifacts.
+
+`GET /api/v1/locations` merges `heritage.json` and `nearby_places.json` at
+read time. City IDs use the `city-` prefix and place IDs use `place-`, so IDs
+are unique across both kinds. Each place references its canonical city using
+`city_id`. Agra, Fatehpur Sikri, and Bharatpur are separate city records;
+Sikandra is treated as an Agra locality, while Keoladeo National Park belongs
+to Bharatpur.
+
+For duplicate places, heritage names are canonical and alternate source names
+are returned as aliases. Nearby-place coordinates take precedence when both
+datasets contain the same place; heritage coordinates are used for heritage-
+only records. `coordinate_source` identifies the selected source. City
+coordinates remain null because neither source provides verified city
+centroids.
+
+`POST /api/v1/routes` accepts `origin_id` and `destination_id` from this
+catalog. Each record in `transport.json` uses those canonical IDs; searches
+are exact and directional, so a reverse route is not implied. The API returns
+the recorded transport type, cost status, estimated cost, duration, and
+duration status, and human-readable endpoint labels. Unknown amounts and
+durations remain null rather than becoming zero. An empty options list means
+the dataset does not currently support that exact route; no route or fare is
+inferred.
 
 
 
@@ -336,7 +375,8 @@ This decision does not prevent the team from adding a database later if requirem
 
 
 
-The `data/processed/` directory is not currently present and should not be treated as an existing component.
+The processed data directory contains the structured source records used by
+the API and is not a separate database.
 
 
 

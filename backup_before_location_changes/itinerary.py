@@ -1,0 +1,218 @@
+
+from typing import Literal
+
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    field_validator,
+    model_validator,
+)
+
+from backend.app.schemas.route import TransportOptionResponse
+from backend.app.schemas.service import VisitorServiceResponse
+
+
+CostStatus = Literal["verified", "estimated", "unknown"]
+
+
+class ItineraryRequest(BaseModel):
+    """Input accepted by POST /api/v1/itinerary."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    destination: str = Field(
+        ...,
+        min_length=2,
+        max_length=150,
+        description="City or region where the traveler wants to explore heritage sites",
+    )
+
+    origin: str | None = Field(
+        default=None,
+        min_length=2,
+        max_length=150,
+        description="Optional starting location for matching transport routes",
+    )
+
+    budget: float = Field(
+        ...,
+        gt=0,
+        description="Total available trip budget in INR",
+    )
+
+    days: int = Field(
+        ...,
+        ge=1,
+        le=30,
+        description="Number of days for the trip",
+    )
+
+    interests: list[str] = Field(
+        default_factory=list,
+        max_length=20,
+        description="Interests such as architecture, history, art, and culture",
+    )
+
+    travelers: int = Field(
+        default=1,
+        ge=1,
+        le=100,
+        description="Number of travelers",
+    )
+
+    travel_style: Literal["budget", "balanced", "comfortable"] = Field(
+        default="budget",
+        description="Preferred travel style",
+    )
+
+    include_food: bool = Field(
+        default=True,
+        description="Whether food expenses should be included",
+    )
+
+    include_transport: bool = Field(
+        default=True,
+        description="Whether local transport expenses should be included",
+    )
+
+    @field_validator("destination", "origin", mode="before")
+    @classmethod
+    def strip_locations(cls, value):
+        """Trim locations before applying their length and equality checks."""
+        return value.strip() if isinstance(value, str) else value
+
+    @model_validator(mode="after")
+    def validate_interests(self):
+        """Reject empty interest entries."""
+        for interest in self.interests:
+            if not interest.strip():
+                raise ValueError("Interests cannot contain empty values.")
+        if (
+            self.origin
+            and self.origin.strip().casefold()
+            == self.destination.strip().casefold()
+        ):
+            raise ValueError("Origin and destination must be different.")
+        return self
+
+
+class ItineraryActivity(BaseModel):
+    """One recommended activity or heritage stop."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    place_name: str
+    description: str
+    estimated_entry_cost: float | None = Field(
+        default=None,
+        ge=0,
+        description="Entry cost in INR, or null if unknown.",
+    )
+    estimated_transport_cost: float | None = Field(
+        default=None,
+        ge=0,
+        description="Transport cost in INR, or null if unknown.",
+    )
+    estimated_food_cost: float | None = Field(
+        default=None,
+        ge=0,
+        description="Food cost in INR, or null if unknown.",
+    )
+
+    entry_cost_status: CostStatus | None = None
+    transport_cost_status: CostStatus | None = None
+    food_cost_status: CostStatus | None = None
+
+    source_url: str | None = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def infer_cost_statuses(cls, data):
+        """Infer a safe default status when one is not supplied."""
+        if not isinstance(data, dict):
+            return data
+
+        data = dict(data)
+
+        status_fields = {
+            "estimated_entry_cost": "entry_cost_status",
+            "estimated_transport_cost": "transport_cost_status",
+            "estimated_food_cost": "food_cost_status",
+        }
+
+        for cost_field, status_field in status_fields.items():
+            if status_field not in data or data[status_field] is None:
+                value = data.get(cost_field, 0)
+
+                if (
+                    isinstance(value, (int, float))
+                    and not isinstance(value, bool)
+                    and value > 0
+                ):
+                    data[status_field] = "estimated"
+                else:
+                    data[status_field] = "unknown"
+
+        return data
+
+
+class ItineraryDay(BaseModel):
+    """Activities and estimated expenses for one day."""
+
+    day: int = Field(..., ge=1)
+    title: str
+    activities: list[ItineraryActivity] = Field(
+        default_factory=list,
+        min_length=1,
+        max_length=4,
+    )
+    estimated_cost: float | None = Field(
+        ...,
+        ge=0,
+        description="Estimated day total, or null if an included cost is unknown.",
+    )
+
+
+class ItineraryResponse(BaseModel):
+    """Output returned by POST /api/v1/itinerary."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    destination: str
+    days: int
+    currency: str = "INR"
+    itinerary: list[ItineraryDay] = Field(default_factory=list)
+    transport_options: list[TransportOptionResponse] = Field(
+        default_factory=list,
+        description="Matching route options; their costs are not included in itinerary totals.",
+    )
+    visitor_services: list[VisitorServiceResponse] = Field(
+        default_factory=list,
+        description="Visitor services matching the destination; their costs are not included in itinerary totals.",
+    )
+    known_cost_subtotal: float = Field(
+        ...,
+        ge=0,
+        description="Sum of known included costs; may be incomplete.",
+    )
+    estimated_total_cost: float | None = Field(
+        ...,
+        ge=0,
+        description="Complete estimated total, or null if included costs are unknown.",
+    )
+    budget: float = Field(..., gt=0)
+    within_budget: bool | None = Field(
+        ...,
+        description=(
+            "True if within budget, false if over budget, "
+            "or null if budget compliance cannot be verified "
+            "because one or more included costs are unknown."
+        ),
+    )
+    remaining_budget: float | None = Field(
+        ...,
+        description="Remaining budget, or null when the total cost is incomplete.",
+    )
+    assumptions: list[str] = Field(default_factory=list)
+    message: str

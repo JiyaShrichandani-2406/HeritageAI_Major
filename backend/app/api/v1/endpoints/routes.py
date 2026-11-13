@@ -22,6 +22,10 @@ router = APIRouter(tags=["Transport"])
             "description": "The transport dataset is unavailable.",
             "model": ErrorResponse,
         },
+        404: {
+            "description": "A requested location ID does not exist.",
+            "model": ErrorResponse,
+        },
         500: {
             "description": "An unexpected route lookup error occurred.",
             "model": ErrorResponse,
@@ -32,9 +36,14 @@ def get_transport_options(request: RouteRequest) -> RouteResponse:
     """Find available transport options between two locations."""
     try:
         return find_transport_options(
-            origin=request.origin,
-            destination=request.destination,
+            origin_id=request.origin_id,
+            destination_id=request.destination_id,
         )
+    except LookupError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(error),
+        ) from error
     except TransportDataError as error:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,

@@ -20,12 +20,16 @@ def test_calculate_activity_cost():
     assert calculate_activity_cost(activity) == 300.0
 
 
-def test_missing_cost_fields_default_to_zero():
+def test_missing_cost_fields_are_unknown_not_free():
     activity = {
         "estimated_entry_cost": 100,
     }
 
     assert calculate_activity_cost(activity) == 100.0
+    assert get_unknown_cost_fields(activity) == [
+        "estimated_transport_cost",
+        "estimated_food_cost",
+    ]
 
 
 def test_calculate_day_cost():
@@ -208,6 +212,27 @@ def test_unknown_cost_amount_is_not_counted_as_a_zero_or_known_cost():
         activity,
         include_transport=False,
     ) == ["estimated_food_cost"]
+
+
+def test_optional_guide_and_parking_costs_are_included_only_when_selected():
+    activity = {
+        "estimated_entry_cost": 100,
+        "entry_cost_status": "verified",
+        "estimated_guide_cost": 400,
+        "guide_cost_status": "estimated",
+        "estimated_parking_cost": None,
+        "parking_cost_status": "unknown",
+    }
+
+    assert calculate_activity_cost(activity) == 100
+    assert calculate_activity_cost(activity, include_guides=True) == 500
+    assert get_unknown_cost_fields(
+        activity,
+        include_food=False,
+        include_transport=False,
+        include_guides=True,
+        include_parking=True,
+    ) == ["estimated_parking_cost"]
 
 
 def test_optimization_updates_day_title_after_removing_activity():

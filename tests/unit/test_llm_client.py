@@ -102,6 +102,29 @@ def test_generate_response_sets_output_limit(monkeypatch):
     }
 
 
+def test_generate_response_enables_json_mode_and_context(monkeypatch):
+    settings = type("Settings", (), {
+        "ollama_url": "http://test-ollama:11434/api/generate",
+        "ollama_model": "test-model",
+        "ollama_timeout_seconds": 15,
+    })()
+    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+
+    response = MagicMock()
+    response.__iter__.return_value = iter(
+        [json.dumps({"response": "{}", "done": True}).encode()]
+    )
+    mock_urlopen = MagicMock()
+    mock_urlopen.return_value.__enter__.return_value = response
+    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
+
+    llm_client.generate_response("Say hello", json_mode=True, num_ctx=8192)
+
+    payload = json.loads(mock_urlopen.call_args.args[0].data.decode())
+    assert payload["format"] == "json"
+    assert payload["options"]["num_ctx"] == 8192
+
+
 def test_generate_response_rejects_invalid_output_limit():
     with pytest.raises(ValueError, match="num_predict must be at least 1"):
         llm_client.generate_response("Say hello", num_predict=0)

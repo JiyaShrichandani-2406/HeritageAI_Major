@@ -21,18 +21,37 @@ class ItineraryRequest(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
+    itinerary_mode: Literal["city_to_city", "place_to_place"] | None = Field(
+        default=None,
+        description="Optional itinerary mode. Omitted for legacy destination planning.",
+    )
+
     destination: str = Field(
         ...,
         min_length=2,
         max_length=150,
-        description="City or region where the traveler wants to explore heritage sites",
+        description="Destination city, region, or selected heritage place",
     )
 
     origin: str | None = Field(
         default=None,
         min_length=2,
         max_length=150,
-        description="Optional starting location for matching transport routes",
+        description="Starting city or place; required when an itinerary mode is selected",
+    )
+
+    origin_id: str | None = Field(
+        default=None,
+        min_length=3,
+        max_length=150,
+        description="Canonical city or place ID used to look up transport routes",
+    )
+
+    destination_id: str | None = Field(
+        default=None,
+        min_length=3,
+        max_length=150,
+        description="Canonical destination city or place ID used to look up routes",
     )
 
     budget: float = Field(
@@ -76,18 +95,74 @@ class ItineraryRequest(BaseModel):
         description="Whether local transport expenses should be included",
     )
 
+    include_guides: bool = Field(
+        default=False,
+        description="Whether sourced guide costs should be included",
+    )
+
+    include_parking: bool = Field(
+        default=False,
+        description="Whether vehicle parking costs should be included",
+    )
+
+    parking_vehicle_type: Literal[
+        "two_wheeler",
+        "car_taxi",
+        "tempo_traveller",
+        "bus",
+    ] | None = Field(
+        default=None,
+        description="Vehicle category used to select a sourced parking estimate",
+    )
+
     @field_validator("destination", "origin", mode="before")
     @classmethod
     def strip_locations(cls, value):
         """Trim locations before applying their length and equality checks."""
         return value.strip() if isinstance(value, str) else value
 
+    @field_validator("origin_id", "destination_id", mode="before")
+    @classmethod
+    def strip_location_ids(cls, value):
+        """Trim canonical IDs before applying their length constraints."""
+        return value.strip() if isinstance(value, str) else value
+
+    def _validate_city_to_city_request(self) -> None:
+        if self.destination.casefold() != "agra":
+            raise ValueError(
+                "City-to-city itineraries must use Agra as the destination."
+            )
+        self.destination = "Agra"
+        if not self.origin:
+            raise ValueError(
+                "City-to-city itineraries require an origin city."
+            )
+
+    def _validate_place_to_place_request(self) -> None:
+        if not self.origin:
+            raise ValueError(
+                "Place-to-place itineraries require a starting place."
+            )
+
     @model_validator(mode="after")
-    def validate_interests(self):
-        """Reject empty interest entries."""
+    def validate_request(self):
+        """Validate interests and enforce mode-specific location requirements."""
         for interest in self.interests:
             if not interest.strip():
                 raise ValueError("Interests cannot contain empty values.")
+        if self.itinerary_mode == "city_to_city":
+            self._validate_city_to_city_request()
+        elif self.itinerary_mode == "place_to_place":
+            self._validate_place_to_place_request()
+        if self.include_parking and self.parking_vehicle_type is None:
+            raise ValueError(
+                "A vehicle type is required when parking costs are included."
+            )
+        if not self.include_parking and self.parking_vehicle_type is not None:
+            raise ValueError(
+                "A parking vehicle type can only be set when parking costs "
+                "are included."
+            )
         if (
             self.origin
             and self.origin.strip().casefold()
@@ -114,11 +189,27 @@ class ItineraryActivity(BaseModel):
         ge=0,
         description="Transport cost in INR, or null if unknown.",
     )
+    estimated_travel_duration_minutes: int | None = Field(
+        default=None,
+        ge=0,
+        description="Sourced travel duration from the previous stop, if available.",
+    )
+    travel_duration_status: CostStatus = "unknown"
+    transport_type: str | None = None
+    transport_source_url: str | None = None
+    transport_notes: str | None = None
     estimated_food_cost: float | None = Field(
         default=None,
         ge=0,
         description="Food cost in INR, or null if unknown.",
     )
+
+    estimated_guide_cost: float | None = Field(default=None, ge=0)
+    guide_cost_status: CostStatus = "unknown"
+    guide_source_url: str | None = None
+    estimated_parking_cost: float | None = Field(default=None, ge=0)
+    parking_cost_status: CostStatus = "unknown"
+    parking_source_url: str | None = None
 
     entry_cost_status: CostStatus | None = None
     transport_cost_status: CostStatus | None = None
@@ -139,11 +230,13 @@ class ItineraryActivity(BaseModel):
             "estimated_entry_cost": "entry_cost_status",
             "estimated_transport_cost": "transport_cost_status",
             "estimated_food_cost": "food_cost_status",
+            "estimated_guide_cost": "guide_cost_status",
+            "estimated_parking_cost": "parking_cost_status",
         }
 
         for cost_field, status_field in status_fields.items():
             if status_field not in data or data[status_field] is None:
-                value = data.get(cost_field, 0)
+                value = data.get(cost_field)
 
                 if (
                     isinstance(value, (int, float))
@@ -185,16 +278,35 @@ class ItineraryResponse(BaseModel):
     itinerary: list[ItineraryDay] = Field(default_factory=list)
     transport_options: list[TransportOptionResponse] = Field(
         default_factory=list,
-        description="Matching route options; their costs are not included in itinerary totals.",
+        description=(
+            "Matching route options; selected route costs are reflected in "
+            "activity estimates when applicable."
+        ),
     )
     visitor_services: list[VisitorServiceResponse] = Field(
         default_factory=list,
-        description="Visitor services matching the destination; their costs are not included in itinerary totals.",
+        description=(
+            "Matching visitor-service records; selected guide or parking "
+            "costs are reflected in activity estimates when applicable."
+        ),
     )
     known_cost_subtotal: float = Field(
         ...,
         ge=0,
         description="Sum of known included costs; may be incomplete.",
+    )
+    priced_cost_subtotal: float = Field(
+        ...,
+        ge=0,
+        description=(
+            "Sum of verified and estimated included costs; excludes unknown "
+            "costs and is not a complete total when any are unknown."
+        ),
+    )
+    unknown_cost_count: int = Field(
+        ...,
+        ge=0,
+        description="Number of included cost categories with unknown amounts.",
     )
     estimated_total_cost: float | None = Field(
         ...,
@@ -206,8 +318,8 @@ class ItineraryResponse(BaseModel):
         ...,
         description=(
             "True if within budget, false if over budget, "
-            "or null if budget compliance cannot be verified "
-            "because one or more included costs are unknown."
+            "or null if included estimates or unknown costs prevent "
+            "verified budget compliance."
         ),
     )
     remaining_budget: float | None = Field(

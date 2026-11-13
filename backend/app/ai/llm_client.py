@@ -18,6 +18,8 @@ def generate_response(
     prompt: str,
     *,
     num_predict: int | None = None,
+    json_mode: bool = False,
+    num_ctx: int | None = None,
 ) -> str:
     """Generate text through Ollama using the centralized application settings."""
     if not prompt or not prompt.strip():
@@ -26,6 +28,12 @@ def generate_response(
     settings = get_settings()
 
     options = {"temperature": 0.2}
+    if num_ctx is not None:
+        if num_ctx < 1:
+            raise ValueError("num_ctx must be at least 1.")
+        # Ollama's default context window is small; a long prompt would be
+        # silently truncated (losing the instructions) without this.
+        options["num_ctx"] = num_ctx
     if num_predict is not None:
         if num_predict < 1:
             raise ValueError("num_predict must be at least 1.")
@@ -37,6 +45,9 @@ def generate_response(
         "stream": True,
         "options": options,
     }
+    if json_mode:
+        # Constrains Ollama to emit syntactically valid JSON.
+        payload["format"] = "json"
 
     request = urllib.request.Request(
         settings.ollama_url,

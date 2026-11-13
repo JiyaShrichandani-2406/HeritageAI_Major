@@ -45,12 +45,15 @@ def mock_generated_itinerary(monkeypatch):
             "transport_options": [
                 {
                     "id": "delhi-bhopal-train",
+                    "origin_id": "city-delhi",
+                    "destination_id": "city-bhopal",
                     "origin": "Delhi",
                     "destination": "Bhopal",
                     "transport_type": "train",
                     "estimated_cost": 500,
                     "currency": "INR",
                     "estimated_duration_minutes": 120,
+                    "duration_status": "estimated",
                     "cost_status": "estimated",
                     "source_url": "https://example.com/train",
                     "notes": "",
@@ -107,12 +110,132 @@ def test_create_itinerary_success(mock_generated_itinerary):
     assert data["remaining_budget"] is None
     assert data["known_cost_subtotal"] == 0
     assert data["transport_options"][0]["id"] == "delhi-bhopal-train"
+    assert data["transport_options"][0]["transport_type"] == "train"
+    assert data["transport_options"][0]["estimated_cost"] == 500
+    assert data["transport_options"][0]["estimated_duration_minutes"] == 120
+    assert data["transport_options"][0]["duration_status"] == "estimated"
     assert data["visitor_services"][0]["id"] == "bhopal-guide"
+    assert data["itinerary"][0]["activities"][0]["estimated_entry_cost"] == 100
+    assert data["itinerary"][0]["estimated_cost"] == 300
     assert data["estimated_total_cost"] == 800
-    assert any(
-        "not included in the itinerary total" in assumption
-        for assumption in data["assumptions"]
+    assert data["priced_cost_subtotal"] == 800
+    assert data["unknown_cost_count"] == 0
+
+
+def test_city_to_city_itinerary_uses_fixed_agra_destination(
+    mock_generated_itinerary,
+):
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "itinerary_mode": "city_to_city",
+            "destination": "Agra",
+            "origin": "Delhi",
+            "budget": 3000,
+            "days": 2,
+        },
     )
+
+    assert response.status_code == 200
+    assert response.json()["destination"] == "Agra"
+
+
+def test_city_to_city_itinerary_rejects_non_agra_destination():
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "itinerary_mode": "city_to_city",
+            "destination": "Jaipur",
+            "origin": "Delhi",
+            "budget": 3000,
+            "days": 1,
+        },
+    )
+
+    assert response.status_code == 422
+
+
+def test_itinerary_rejects_unknown_mode():
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "itinerary_mode": "city_to_place",
+            "origin": "Delhi",
+            "destination": "Agra",
+            "budget": 3000,
+            "days": 1,
+        },
+    )
+
+    assert response.status_code == 422
+
+
+def test_city_to_city_itinerary_requires_a_catalogued_origin_city():
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "itinerary_mode": "city_to_city",
+            "origin": "Taj Mahal",
+            "destination": "Agra",
+            "budget": 3000,
+            "days": 1,
+        },
+    )
+
+    assert response.status_code == 422
+    assert "catalogued origin city" in response.json()["detail"]
+
+
+def test_itinerary_rejects_ids_that_do_not_match_selected_locations():
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "itinerary_mode": "city_to_city",
+            "origin": "Delhi",
+            "origin_id": "city-bhopal",
+            "destination": "Agra",
+            "destination_id": "city-agra",
+            "budget": 3000,
+            "days": 1,
+        },
+    )
+
+    assert response.status_code == 422
+    assert "does not match the selected location" in response.json()["detail"]
+
+
+def test_place_to_place_itinerary_requires_both_places(
+    mock_generated_itinerary,
+):
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "itinerary_mode": "place_to_place",
+            "destination": "Agra Fort",
+            "budget": 3000,
+            "days": 2,
+        },
+    )
+
+    assert response.status_code == 422
+
+
+def test_place_to_place_itinerary_accepts_both_selected_places(
+    mock_generated_itinerary,
+):
+    response = client.post(
+        "/api/v1/itinerary",
+        json={
+            "itinerary_mode": "place_to_place",
+            "origin": "Taj Mahal",
+            "destination": "Agra Fort",
+            "budget": 3000,
+            "days": 2,
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.json()["destination"] == "Agra Fort"
 
 
 def test_create_itinerary_invalid_budget():
@@ -341,6 +464,49 @@ def test_create_itinerary_rejects_wrong_number_of_days_from_generator(
 
     assert response.status_code == 502
     assert "Expected 1 daily plans" in response.json()["detail"]
+
+
+@pytest.mark.parametrize(
+    ("generator_result", "expected_detail"),
+    [
+        (None, "The itinerary generator returned an invalid response."),
+        ({}, "The AI response must contain an itinerary list."),
+        (
+            {"itinerary": "not-a-list"},
+            "The AI response must contain an itinerary list.",
+        ),
+        (
+            {"itinerary": [], "assumptions": "not-a-list"},
+            "The AI response assumptions must be a list of strings.",
+        ),
+        (
+            {"itinerary": [], "transport_options": "not-a-list"},
+            "The AI response transport_options must be a list.",
+        ),
+        (
+            {"itinerary": [], "local_transport_options": "not-a-list"},
+            "The AI response local_transport_options must be a list.",
+        ),
+    ],
+)
+def test_create_itinerary_rejects_malformed_generator_payload(
+    monkeypatch,
+    generator_result,
+    expected_detail,
+):
+    monkeypatch.setattr(
+        itinerary_endpoint,
+        "generate_itinerary",
+        lambda request: generator_result,
+    )
+
+    response = client.post(
+        "/api/v1/itinerary",
+        json={"destination": "Agra", "budget": 3000, "days": 1},
+    )
+
+    assert response.status_code == 502
+    assert response.json()["detail"] == expected_detail
 
 
 def test_create_itinerary_returns_null_total_for_unknown_costs(monkeypatch):

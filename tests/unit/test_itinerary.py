@@ -51,6 +51,77 @@ def sample_daily_plans():
     ]
 
 
+def test_parking_inclusion_requires_a_vehicle_type():
+    with pytest.raises(ValueError, match="vehicle type is required"):
+        ItineraryRequest(
+            destination="Agra",
+            budget=5000,
+            days=1,
+            include_parking=True,
+        )
+
+
+def test_parking_vehicle_type_cannot_be_set_when_parking_is_excluded():
+    with pytest.raises(ValueError, match="only be set when parking costs"):
+        ItineraryRequest(
+            destination="Agra",
+            budget=5000,
+            days=1,
+            parking_vehicle_type="car_taxi",
+        )
+
+
+def test_budget_optimization_reapplies_city_to_city_fare_to_first_stop():
+    from backend.app.services.itinerary_service import (
+        _reapply_local_transport_estimates,
+    )
+
+    request = ItineraryRequest(
+        itinerary_mode="city_to_city",
+        origin="Delhi",
+        origin_id="city-delhi",
+        destination="Agra",
+        destination_id="city-agra",
+        budget=5000,
+        days=1,
+    )
+    itinerary = [
+        {
+            "activities": [
+                {
+                    "place_name": "Taj Mahal",
+                    "estimated_transport_cost": None,
+                    "transport_cost_status": "unknown",
+                }
+            ]
+        }
+    ]
+
+    _reapply_local_transport_estimates(
+        itinerary,
+        request,
+        [
+            {
+                "id": "delhi-agra-train",
+                "origin_id": "city-delhi",
+                "destination_id": "city-agra",
+                "estimated_cost": 500,
+                "cost_status": "estimated",
+                "estimated_duration_minutes": 180,
+                "duration_status": "estimated",
+                "transport_type": "train",
+                "source_url": "https://example.com/route",
+                "notes": None,
+            }
+        ],
+    )
+
+    activity = itinerary[0]["activities"][0]
+    assert activity["estimated_transport_cost"] == 500
+    assert activity["transport_cost_status"] == "estimated"
+    assert activity["estimated_travel_duration_minutes"] == 180
+
+
 def test_build_itinerary_response(sample_request, sample_daily_plans):
     result = build_itinerary_response(sample_request, sample_daily_plans)
 
@@ -62,6 +133,7 @@ def test_build_itinerary_response(sample_request, sample_daily_plans):
     assert result.within_budget is None
     assert result.remaining_budget is None
     assert result.known_cost_subtotal == 0
+    assert result.priced_cost_subtotal == 800
     assert result.estimated_total_cost == 800
 
 
@@ -72,6 +144,83 @@ def test_day_costs_are_calculated_correctly(
 
     assert result.itinerary[0].estimated_cost == 300
     assert result.itinerary[1].estimated_cost == 500
+
+
+def test_place_to_place_recalculates_legs_after_budget_removes_a_stop():
+    request = ItineraryRequest(
+        itinerary_mode="place_to_place",
+        origin="Taj Mahal",
+        origin_id="place-taj-mahal",
+        destination="Chini ka Rauza",
+        destination_id="place-chini-ka-rauza",
+        budget=50,
+        days=1,
+    )
+    daily_plans = [
+        {
+            "title": "Day 1",
+            "activities": [
+                {
+                    "place_name": "Taj Mahal",
+                    "description": "Start at selected place.",
+                    "estimated_entry_cost": None,
+                    "entry_cost_status": "unknown",
+                },
+                {
+                    "place_name": "Agra Fort",
+                    "description": "Visit the fort.",
+                    "estimated_entry_cost": None,
+                    "entry_cost_status": "unknown",
+                    "estimated_transport_cost": 65,
+                    "transport_cost_status": "estimated",
+                },
+                {
+                    "place_name": "Chini ka Rauza",
+                    "description": "Arrive at selected destination.",
+                    "estimated_entry_cost": None,
+                    "entry_cost_status": "unknown",
+                },
+            ],
+        }
+    ]
+
+    result = build_itinerary_response(
+        request,
+        daily_plans,
+        local_transport_options=[
+            {
+                "origin_id": "place-taj-mahal",
+                "destination_id": "place-agra-fort",
+                "transport_type": "auto-rickshaw",
+                "estimated_cost": 65,
+                "estimated_duration_minutes": 10,
+                "duration_status": "estimated",
+                "cost_status": "estimated",
+                "source_url": "https://example.org/taj-to-fort",
+                "notes": "",
+            },
+            {
+                "origin_id": "place-taj-mahal",
+                "destination_id": "place-chini-ka-rauza",
+                "transport_type": "auto-rickshaw",
+                "estimated_cost": 85,
+                "estimated_duration_minutes": 15,
+                "duration_status": "estimated",
+                "cost_status": "estimated",
+                "source_url": "https://example.org/taj-to-chini",
+                "notes": "",
+            },
+        ],
+    )
+
+    assert [
+        activity.place_name for activity in result.itinerary[0].activities
+    ] == ["Taj Mahal", "Chini ka Rauza"]
+    assert result.itinerary[0].activities[-1].estimated_transport_cost == 85
+    assert (
+        result.itinerary[0].activities[-1].estimated_travel_duration_minutes
+        == 15
+    )
 
 
 def test_assumptions_are_preserved(sample_request, sample_daily_plans):
@@ -195,6 +344,8 @@ def test_unknown_costs_do_not_confirm_budget_compliance():
     assert result.within_budget is None
     assert result.known_cost_subtotal == 0
     assert result.estimated_total_cost is None
+    assert result.priced_cost_subtotal == 0
+    assert result.unknown_cost_count == 3
     assert result.remaining_budget is None
     assert result.itinerary[0].estimated_cost is None
     assert "not verified" in result.message.lower()
@@ -231,6 +382,8 @@ def test_estimated_food_cost_is_not_in_known_cost_subtotal():
     result = build_itinerary_response(request, daily_plans)
 
     assert result.known_cost_subtotal == 100
+    assert result.priced_cost_subtotal == 600
+    assert result.unknown_cost_count == 0
     assert result.estimated_total_cost == 600
     assert (
         result.itinerary[0].activities[0].estimated_food_cost

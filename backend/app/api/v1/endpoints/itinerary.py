@@ -91,9 +91,42 @@ def create_itinerary(request: ItineraryRequest) -> ItineraryResponse:
 
     try:
         generated = generate_itinerary(request)
+        if not isinstance(generated, dict):
+            raise ValueError(
+                "The itinerary generator returned an invalid response."
+            )
 
-        daily_plans = generated["itinerary"]
+        daily_plans = generated.get("itinerary")
+        if not isinstance(daily_plans, list):
+            raise ValueError(
+                "The AI response must contain an itinerary list."
+            )
+
         assumptions = generated.get("assumptions", [])
+        if assumptions is None:
+            assumptions = []
+        if not isinstance(assumptions, list) or not all(
+            isinstance(assumption, str) for assumption in assumptions
+        ):
+            raise ValueError(
+                "The AI response assumptions must be a list of strings."
+            )
+
+        for field in ("transport_options", "visitor_services"):
+            if field in generated and not isinstance(generated[field], list):
+                raise ValueError(
+                    f"The AI response {field} must be a list."
+                )
+        local_transport_options = generated.get(
+            "local_transport_options"
+        )
+        if (
+            local_transport_options is not None
+            and not isinstance(local_transport_options, list)
+        ):
+            raise ValueError(
+                "The AI response local_transport_options must be a list."
+            )
 
         result = build_itinerary_response(
             request=request,
@@ -101,6 +134,7 @@ def create_itinerary(request: ItineraryRequest) -> ItineraryResponse:
             assumptions=assumptions,
             transport_options=generated.get("transport_options", []),
             visitor_services=generated.get("visitor_services", []),
+            local_transport_options=local_transport_options,
         )
 
         return result

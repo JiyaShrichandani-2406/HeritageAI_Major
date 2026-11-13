@@ -53,6 +53,7 @@ export const api = {
   chat: (body, opts) => request("/chat", { method: "POST", body, ...opts }),
   getMonument: (id, opts) => request(`/monuments/${encodeURIComponent(id)}`, opts),
   createItinerary: (body, opts) => request("/itinerary", { method: "POST", body, ...opts }),
+  locations: (opts) => request("/locations", opts),
   nearbyPlaces: (params, opts) => request("/places/nearby", { params, ...opts }),
   routes: (body, opts) => request("/routes", { method: "POST", body, ...opts }),
   services: (params, opts) => request("/services", { params, ...opts }),

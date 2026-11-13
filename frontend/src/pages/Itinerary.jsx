@@ -86,8 +86,13 @@ export default function Itinerary() {
   const costPct = useMemo(() => {
     if (!res) return { v: 0, e: 0, u: 0 };
     let verified = 0, estimated = 0, unknown = 0;
+    const statuses = ["entry_cost_status"];
+    if (req?.include_transport) statuses.push("transport_cost_status");
+    if (req?.include_food) statuses.push("food_cost_status");
+    if (req?.include_guides) statuses.push("guide_cost_status");
+    if (req?.include_parking) statuses.push("parking_cost_status");
     for (const day of res.itinerary) for (const a of day.activities) {
-      for (const s of ["entry_cost_status","transport_cost_status","food_cost_status"]) {
+      for (const s of statuses) {
         if (a[s] === "verified") verified++;
         else if (a[s] === "estimated") estimated++;
         else unknown++;
@@ -95,11 +100,12 @@ export default function Itinerary() {
     }
     const total = Math.max(1, verified + estimated + unknown);
     return { v: Math.round((verified/total)*100), e: Math.round((estimated/total)*100), u: Math.round((unknown/total)*100) };
-  }, [res]);
+  }, [req, res]);
 
   if (!bundle) {
     return (
       <div>
+        
         <NavBar />
         <main className="container-page py-16 text-center">
           <h1 className="font-heading text-3xl font-bold">No itinerary yet</h1>
@@ -126,7 +132,13 @@ export default function Itinerary() {
           <div>
             <h1 className="font-heading text-4xl md:text-5xl font-bold">{res.destination} Heritage Trail</h1>
             <div className="mt-3 flex flex-wrap gap-2">
+              {req.itinerary_mode && (
+                <Badge variant="teal" size="sm">
+                  {req.itinerary_mode === "place_to_place" ? "Place-to-Place" : "City-to-City"}
+                </Badge>
+              )}
               {req.origin && <Badge variant="teal" size="sm">From {req.origin}</Badge>}
+              <Badge variant="teal" size="sm">To {res.destination}</Badge>
               <Badge variant="teal" size="sm">{res.days} day{res.days > 1 ? "s" : ""}</Badge>
               <Badge variant="teal" size="sm">{req.travelers} traveller{req.travelers > 1 ? "s" : ""}</Badge>
               <Badge variant="teal" size="sm">{req.travel_style} style</Badge>
@@ -149,15 +161,25 @@ export default function Itinerary() {
                   {day.activities.map((a, i) => {
                     const art = ART_FOR_NAME(a.place_name);
                     const costSummary = (() => {
-                      const parts = [];
-                      if (a.estimated_entry_cost != null) parts.push({ label: "Entry", v: a.estimated_entry_cost, s: a.entry_cost_status });
-                      if (a.estimated_transport_cost != null) parts.push({ label: "Transport", v: a.estimated_transport_cost, s: a.transport_cost_status });
-                      if (a.estimated_food_cost != null) parts.push({ label: "Food", v: a.estimated_food_cost, s: a.food_cost_status });
-                      return parts;
+                      const fields = [
+                        ["Entry", a.estimated_entry_cost, a.entry_cost_status],
+                        ...(req.include_transport ? [["Transport", a.estimated_transport_cost, a.transport_cost_status]] : []),
+                        ...(req.include_food ? [["Food", a.estimated_food_cost, a.food_cost_status]] : []),
+                        ...(req.include_guides ? [["Guide", a.estimated_guide_cost, a.guide_cost_status]] : []),
+                        ...(req.include_parking ? [["Parking", a.estimated_parking_cost, a.parking_cost_status]] : []),
+                      ];
+                      return fields.map(([label, value, status]) => ({ label, v: value, s: status }));
                     })();
+                    const includedStatuses = [
+                      a.entry_cost_status,
+                      ...(req.include_transport ? [a.transport_cost_status] : []),
+                      ...(req.include_food ? [a.food_cost_status] : []),
+                      ...(req.include_guides ? [a.guide_cost_status] : []),
+                      ...(req.include_parking ? [a.parking_cost_status] : []),
+                    ];
                     const worstStatus =
-                      [a.entry_cost_status, a.transport_cost_status, a.food_cost_status].includes("unknown") ? "unknown" :
-                      [a.entry_cost_status, a.transport_cost_status, a.food_cost_status].includes("estimated") ? "estimated" :
+                      includedStatuses.includes("unknown") ? "unknown" :
+                      includedStatuses.includes("estimated") ? "estimated" :
                       "verified";
                     return (
                       <li key={i} className="flex items-start gap-4">
@@ -176,13 +198,57 @@ export default function Itinerary() {
                                   : costSummary.map((p, j) => (
                                       <span key={j} className="inline-flex items-center gap-1 mr-2">
                                         <span className="text-ink-400">{p.label}</span>
-                                        <span className={p.s === "unknown" ? "text-ink-400" : "text-ink-700 font-semibold"}>
-                                          {p.s === "estimated" ? `about ${formatINR(p.v)}` : formatINR(p.v)}
+                                        <span className={p.s === "unknown" || p.v == null ? "text-ink-400" : "text-ink-700 font-semibold"}>
+                                          {p.s === "unknown" || p.v == null
+                                            ? "Unknown"
+                                            : p.s === "estimated" ? `about ${formatINR(p.v)}` : formatINR(p.v)}
                                         </span>
                                       </span>
                                     ))}
                               </span>
                             </div>
+                            {req.include_guides && a.guide_source_url && (
+                              <a href={a.guide_source_url} target="_blank" rel="noreferrer" className="mr-3 mt-1 inline-block text-xs text-teal-800 hover:text-saffron-600 font-semibold">Guide source</a>
+                            )}
+                            {req.include_parking && a.parking_source_url && (
+                              <a href={a.parking_source_url} target="_blank" rel="noreferrer" className="mt-1 inline-block text-xs text-teal-800 hover:text-saffron-600 font-semibold">Parking source</a>
+                            )}
+                            {(a.transport_type || a.estimated_travel_duration_minutes != null) && (
+                              <div className="mt-1 text-xs text-ink-500">
+                                Travel from previous stop
+                                {a.transport_type ? ` · ${a.transport_type}` : ""}
+                                {a.estimated_travel_duration_minutes != null
+                                  ? ` · ${a.travel_duration_status === "estimated" ? "estimated " : a.travel_duration_status === "verified" ? "verified " : ""}${a.estimated_travel_duration_minutes < 60
+                                    ? `${a.estimated_travel_duration_minutes} min`
+                                    : `${Math.floor(a.estimated_travel_duration_minutes / 60)} h ${a.estimated_travel_duration_minutes % 60} min`}`
+                                  : ""}
+                              </div>
+                            )}
+                            {a.travel_duration_status === "unknown" && a.transport_type && i > 0 && (
+                              <div className="mt-1 text-xs text-ink-400">
+                                Travel duration unavailable or unverified.
+                              </div>
+                            )}
+                            {a.transport_notes && (
+                              <div className="mt-1 text-xs text-ink-400">
+                                {a.transport_notes}
+                              </div>
+                            )}
+                            {i > 0 && !a.transport_type && a.estimated_travel_duration_minutes == null && (
+                              <div className="mt-1 text-xs text-ink-400">
+                                No sourced local route is listed for this leg.
+                              </div>
+                            )}
+                            {a.transport_source_url && (
+                              <a
+                                href={a.transport_source_url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-1 mt-1 text-xs text-teal-800 hover:text-saffron-600 font-semibold"
+                              >
+                                Transport source
+                              </a>
+                            )}
                             {a.source_url && (
                               <a href={a.source_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 mt-1 text-xs text-teal-800 hover:text-saffron-600 font-semibold">
                                 Source
@@ -198,15 +264,20 @@ export default function Itinerary() {
 
                 <div className="mt-5 flex items-center justify-between text-sm">
                   <span className="text-ink-500">Day estimated total</span>
-                  <span className="font-semibold">{day.estimated_cost == null ? "Not available" : formatINR(day.estimated_cost)}</span>
+                  <span className="font-semibold">
+                    {day.estimated_cost == null
+                      ? "Incomplete — included costs are unknown"
+                      : formatINR(day.estimated_cost)}
+                  </span>
                 </div>
               </Card>
             ))}
 
-            {res.transport_options?.length > 0 && (
+            {(res.transport_options?.length > 0 || req.origin_id || req.destination_id) && (
               <Card>
                 <div className="eyebrow mb-3">Transport options</div>
-                <div className="grid sm:grid-cols-3 gap-3">
+                {res.transport_options?.length > 0 ? (
+                  <div className="grid sm:grid-cols-3 gap-3">
                   {res.transport_options.map((t) => (
                     <div key={t.id} className="p-4 rounded-2xl border border-cream-300 bg-white">
                       <div className="flex items-center gap-2 text-teal-800">
@@ -217,16 +288,37 @@ export default function Itinerary() {
                       <div className="mt-2 flex items-center justify-between text-sm">
                         <CostBadge status={t.cost_status} />
                         <span className="font-semibold">
-                          {t.estimated_cost == null ? "Not available" : (t.cost_status === "estimated" ? `about ${formatINR(t.estimated_cost)}` : formatINR(t.estimated_cost))}
+                          {t.estimated_cost == null
+                            ? "Fare unavailable or unverified"
+                            : (t.cost_status === "estimated" ? `about ${formatINR(t.estimated_cost)}` : formatINR(t.estimated_cost))}
                         </span>
                       </div>
                       {t.estimated_duration_minutes != null && (
-                        <div className="mt-1 text-xs text-ink-400">~{Math.round(t.estimated_duration_minutes / 60 * 10) / 10} h</div>
+                        <div className="mt-1 text-xs text-ink-400">
+                          {t.duration_status === "estimated"
+                            ? "Estimated "
+                            : t.duration_status === "verified"
+                              ? "Verified "
+                              : ""}
+                          {t.estimated_duration_minutes < 60
+                            ? `${t.estimated_duration_minutes} min`
+                            : `${Math.floor(t.estimated_duration_minutes / 60)} h ${t.estimated_duration_minutes % 60} min`}
+                        </div>
+                      )}
+                      {t.duration_status === "unknown" && (
+                        <div className="mt-1 text-xs text-ink-400">
+                          Duration unavailable or unverified.
+                        </div>
                       )}
                       {t.notes && <div className="mt-2 text-xs text-ink-500">{t.notes}</div>}
                     </div>
                   ))}
-                </div>
+                  </div>
+                ) : (
+                  <p className="text-sm text-ink-500">
+                    No sourced transport options are currently listed for this exact route.
+                  </p>
+                )}
               </Card>
             )}
 
@@ -279,12 +371,15 @@ export default function Itinerary() {
               <div className="space-y-2 text-sm">
                 <Row label="Budget" value={formatINR(res.budget)} />
                 <Row label="Known cost subtotal" value={formatINR(res.known_cost_subtotal)} valueClass="text-teal-800 font-semibold" />
+                <Row label="Priced subtotal" value={`${formatINR(res.priced_cost_subtotal)} (verified + estimated)`} />
                 <Row
                   label="Estimated total cost"
-                  value={res.estimated_total_cost == null ? "Not available" : `${formatINR(res.estimated_total_cost)} (est.)`}
+                  value={res.estimated_total_cost == null
+                    ? "Incomplete — included costs are unknown"
+                    : `${formatINR(res.estimated_total_cost)} (est.)`}
                   valueClass={res.estimated_total_cost == null ? "text-ink-400" : "text-saffron-600 font-semibold"}
                 />
-                <Row label="Unknown costs" value={res.estimated_total_cost == null ? "Present" : "None"} />
+                <Row label="Unknown cost items" value={res.unknown_cost_count} />
                 <Row
                   label="Remaining budget"
                   value={res.remaining_budget == null ? "Cannot confirm" : formatINR(res.remaining_budget)}
@@ -316,7 +411,11 @@ export default function Itinerary() {
                 </div>
                 <div className="text-xs mt-1 opacity-90">
                   {res.within_budget === null
-                    ? "Some costs are unknown, so we do not claim this trip is within budget."
+                    ? res.priced_cost_subtotal > res.budget
+                      ? "Priced costs already exceed the budget; unresolved costs prevent a complete total."
+                      : res.unknown_cost_count > 0
+                        ? "Unknown costs are excluded from the priced subtotal, so the complete trip total is unavailable."
+                        : "The total includes estimates, so budget compliance is not verified."
                     : res.within_budget
                       ? "The estimated total is at or below your budget."
                       : "The estimated total exceeds your budget — adjust days, style or interests."}

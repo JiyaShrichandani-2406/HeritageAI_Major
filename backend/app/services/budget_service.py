@@ -6,6 +6,8 @@ COST_STATUS_FIELDS = {
     "estimated_entry_cost": "entry_cost_status",
     "estimated_transport_cost": "transport_cost_status",
     "estimated_food_cost": "food_cost_status",
+    "estimated_guide_cost": "guide_cost_status",
+    "estimated_parking_cost": "parking_cost_status",
 }
 
 
@@ -13,6 +15,8 @@ def get_unknown_cost_fields(
     activity: dict[str, Any],
     include_food: bool = True,
     include_transport: bool = True,
+    include_guides: bool = False,
+    include_parking: bool = False,
 ) -> list[str]:
     """Return included cost fields whose status is unknown."""
 
@@ -20,6 +24,8 @@ def get_unknown_cost_fields(
         "estimated_entry_cost": True,
         "estimated_transport_cost": include_transport,
         "estimated_food_cost": include_food,
+        "estimated_guide_cost": include_guides,
+        "estimated_parking_cost": include_parking,
     }
 
     unknown_fields = []
@@ -32,26 +38,34 @@ def get_unknown_cost_fields(
         value = activity.get(cost_field)
         status = activity.get(status_field)
 
-        # Legacy data without statuses: positive costs are estimates;
-        # missing or zero costs are unknown.
         if status is None:
-            status = (
-                "estimated"
-                if isinstance(value, (int, float))
-                and not isinstance(value, bool)
-                and value > 0
-                else "unknown"
-            )
+            status = _infer_cost_status(value)
 
         if status == "unknown":
             unknown_fields.append(cost_field)
+        elif status not in {"verified", "estimated"}:
+            raise ValueError(f"{status_field} has an invalid cost status.")
 
     return unknown_fields
+
+
+def _infer_cost_status(value: Any) -> str:
+    """Treat missing or null legacy amounts as unknown, never as free."""
+    return (
+        "estimated"
+        if isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and value > 0
+        else "unknown"
+    )
+
 
 def calculate_activity_cost(
     activity: dict[str, Any],
     include_food: bool = True,
     include_transport: bool = True,
+    include_guides: bool = False,
+    include_parking: bool = False,
 ) -> float:
     """Calculate the estimated cost of one activity."""
 
@@ -59,24 +73,31 @@ def calculate_activity_cost(
         "estimated_entry_cost": True,
         "estimated_transport_cost": include_transport,
         "estimated_food_cost": include_food,
+        "estimated_guide_cost": include_guides,
+        "estimated_parking_cost": include_parking,
     }
 
     total = 0.0
 
     for field, should_include in cost_fields.items():
-        value = activity.get(field, 0)
+        value = activity.get(field)
         status = activity.get(COST_STATUS_FIELDS[field])
 
-        if value is None:
-            value = 0
-
-        if isinstance(value, bool) or not isinstance(value, (int, float)):
+        if value is not None and (
+            isinstance(value, bool) or not isinstance(value, (int, float))
+        ):
             raise ValueError(f"{field} must be a number.")
-
-        if value < 0:
+        if value is not None and value < 0:
             raise ValueError(f"{field} cannot be negative.")
 
-        if should_include and status != "unknown":
+        if status is None:
+            status = _infer_cost_status(value)
+        if status not in {"verified", "estimated", "unknown"}:
+            raise ValueError(
+                f"{COST_STATUS_FIELDS[field]} has an invalid cost status."
+            )
+
+        if should_include and status != "unknown" and value is not None:
             total += float(value)
 
     return round(total, 2)
@@ -86,6 +107,8 @@ def calculate_day_cost(
     activities: list[dict[str, Any]],
     include_food: bool = True,
     include_transport: bool = True,
+    include_guides: bool = False,
+    include_parking: bool = False,
 ) -> float:
     """Calculate the total estimated cost of a day's activities."""
 
@@ -97,6 +120,8 @@ def calculate_day_cost(
             activity,
             include_food=include_food,
             include_transport=include_transport,
+            include_guides=include_guides,
+            include_parking=include_parking,
         )
         for activity in activities
     )
@@ -108,6 +133,8 @@ def calculate_itinerary_cost(
     itinerary: list[dict[str, Any]],
     include_food: bool = True,
     include_transport: bool = True,
+    include_guides: bool = False,
+    include_parking: bool = False,
 ) -> float:
     """Calculate the estimated cost across all itinerary days."""
 
@@ -123,6 +150,8 @@ def calculate_itinerary_cost(
             activities,
             include_food=include_food,
             include_transport=include_transport,
+            include_guides=include_guides,
+            include_parking=include_parking,
         )
 
     return round(total, 2)
@@ -159,6 +188,9 @@ def optimize_itinerary(
     budget: float,
     include_food: bool = True,
     include_transport: bool = True,
+    include_guides: bool = False,
+    include_parking: bool = False,
+    protected_place_names: set[str] | None = None,
 ) -> dict[str, Any]:
     """Reduce itinerary costs while preserving at least one activity per
     day that originally contained activities.
@@ -190,9 +222,14 @@ def optimize_itinerary(
             optimized,
             include_food=include_food,
             include_transport=include_transport,
+            include_guides=include_guides,
+            include_parking=include_parking,
         )
 
     removed_activities = []
+    protected_names = {
+        name.casefold().strip() for name in (protected_place_names or set())
+    }
 
     while total_cost() > budget:
         candidates = []
@@ -205,10 +242,17 @@ def optimize_itinerary(
                 continue
 
             for activity_index, activity in enumerate(activities):
+                if (
+                    activity.get("place_name", "").casefold().strip()
+                    in protected_names
+                ):
+                    continue
                 cost = calculate_activity_cost(
                     activity,
                     include_food=include_food,
                     include_transport=include_transport,
+                    include_guides=include_guides,
+                    include_parking=include_parking,
                 )
                 candidates.append(
                     (cost, day_index, activity_index)
