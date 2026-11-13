@@ -6,6 +6,7 @@ import Button from "../components/ui/button.jsx";
 import Card from "../components/ui/Card.jsx";
 import Badge from "../components/ui/Badge.jsx";
 import MonumentArt from "../components/MonumentArt.jsx";
+import MonumentPhoto from "../components/MonumentPhoto.jsx";
 import { MONUMENT_CATALOG, DESTINATION_HINTS, POPULAR_SEARCHES } from "../lib/catalog.js";
 
 function Feature({ label }) {
@@ -87,7 +88,7 @@ export default function Home() {
             </div>
 
             <div className="relative hidden lg:block">
-              <MonumentArt art="taj" palette="night" rounded="rounded-[32px]" className="aspect-[5/4] shadow-[0_30px_80px_rgba(0,0,0,0.45)]" />
+              <MonumentPhoto image={MONUMENT_CATALOG[0].image} art="taj" palette="night" rounded="rounded-[32px]" className="aspect-[5/4] shadow-[0_30px_80px_rgba(0,0,0,0.45)]" />
             </div>
           </div>
         </section>
@@ -107,9 +108,9 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {featured.map((m) => (
-            <Link key={m.id} to={`/monuments/${m.id}`} className="group">
+            <div key={m.id} className="group">
               <Card padding="p-0" className="overflow-hidden hover:-translate-y-0.5 transition">
-                <MonumentArt art={m.art} palette={m.palette} rounded="rounded-none" className="aspect-[4/3]"
+                <MonumentPhoto image={m.image} art={m.art} palette={m.palette} linkTo={`/monuments/${m.id}`} linkLabel={`Explore ${m.name}`} rounded="rounded-none" className="aspect-[4/3]"
                   overlay={
                     <>
                       {m.unesco && <div className="absolute top-3 left-3"><Badge variant="unesco" size="sm">UNESCO</Badge></div>}
@@ -124,7 +125,9 @@ export default function Home() {
                   }
                 />
                 <div className="p-4">
-                  <h3 className="font-heading font-bold text-lg text-ink-900">{m.name}</h3>
+                  <h3 className="font-heading font-bold text-lg text-ink-900">
+                    <Link to={`/monuments/${m.id}`} className="hover:text-teal-800">{m.name}</Link>
+                  </h3>
                   <div className="text-xs text-ink-500 flex items-center gap-1 mt-1">
                     <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s7-7 7-12a7 7 0 1 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
                     {m.city}{m.state && `, ${m.state}`}
@@ -136,7 +139,7 @@ export default function Home() {
                   </div>
                 </div>
               </Card>
-            </Link>
+            </div>
           ))}
         </div>
       </section>
@@ -147,20 +150,29 @@ export default function Home() {
         <h2 className="font-heading text-3xl md:text-4xl font-bold mt-2 mb-6">Start your journey</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
           {DESTINATION_HINTS.map((d) => (
-            <Link
+            <div
               key={d.name}
-              to={d.monumentId ? `/monuments/${d.monumentId}` : `/plan?destination=${encodeURIComponent(d.name)}`}
               className="group block"
             >
-              <div className="relative rounded-2xl overflow-hidden aspect-[5/4]">
-                <MonumentArt art={d.art} palette={d.palette} rounded="rounded-2xl" className="w-full h-full" />
-                <div className="absolute inset-0 bg-gradient-to-t from-teal-950/85 via-teal-950/10 to-transparent" />
-                <div className="absolute inset-0 p-4 flex flex-col justify-end text-white">
-                  <div className="font-heading text-xl font-bold">{d.name}</div>
-                  <div className="text-xs text-white/75">{d.summary}</div>
-                </div>
+              <MonumentPhoto
+                image={MONUMENT_CATALOG.find((monument) => monument.id === d.monumentId)?.image}
+                art={d.art}
+                palette={d.palette}
+                linkTo={d.monumentId ? `/monuments/${d.monumentId}` : `/plan?destination=${encodeURIComponent(d.name)}`}
+                linkLabel={`Explore ${d.name}`}
+                rounded="rounded-2xl"
+                className="aspect-[5/4]"
+              />
+              <div className="pt-3">
+                <Link
+                  to={d.monumentId ? `/monuments/${d.monumentId}` : `/plan?destination=${encodeURIComponent(d.name)}`}
+                  className="font-heading text-xl font-bold hover:text-teal-800"
+                >
+                  {d.name}
+                </Link>
+                <div className="text-xs text-ink-500">{d.summary}</div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </section>

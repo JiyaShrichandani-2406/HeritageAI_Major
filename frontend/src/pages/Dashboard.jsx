@@ -6,7 +6,8 @@ import Card from "../components/ui/Card.jsx";
 import Badge from "../components/ui/Badge.jsx";
 import Button from "../components/ui/button.jsx";
 import MonumentArt from "../components/MonumentArt.jsx";
-import { MONUMENT_CATALOG } from "../lib/catalog.js";
+import MonumentPhoto from "../components/MonumentPhoto.jsx";
+import { findMonument, MONUMENT_CATALOG } from "../lib/catalog.js";
 
 const QUICK_ACTIONS = [
   { to: "/monuments", title: "Explore Monuments", subtitle: "Browse heritage sites", icon: "monument" },
@@ -99,7 +100,7 @@ export default function Dashboard() {
               <div className="grid sm:grid-cols-3 gap-4">
                 {recentCards.map((m) => (
                   <Card key={m.id || m.name} padding="p-0" className="overflow-hidden">
-                    <MonumentArt art={m.art} palette={m.palette} className="aspect-[5/3]" rounded="rounded-none" />
+                    <MonumentPhoto image={findMonument(m.id)?.image} art={m.art} palette={m.palette} className="aspect-[5/3]" rounded="rounded-none" />
                     <div className="p-4">
                       <div className="font-semibold">{m.name}</div>
                       <div className="text-xs text-ink-500 mt-0.5">{(m.tags || ["History","Architecture"]).slice(0,2).join(" · ")}</div>

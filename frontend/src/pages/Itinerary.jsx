@@ -6,9 +6,11 @@ import Card from "../components/ui/Card.jsx";
 import Button from "../components/ui/button.jsx";
 import Badge from "../components/ui/Badge.jsx";
 import MonumentArt from "../components/MonumentArt.jsx";
+import MonumentPhoto from "../components/MonumentPhoto.jsx";
 import CostBadge from "../components/CostBadge.jsx";
 import MapView from "../components/MapView.jsx";
 import { api, formatINR } from "../lib/api.js";
+import { MONUMENT_CATALOG } from "../lib/catalog.js";
 
 const TRANSPORT_ICONS = {
   train: "train", bus: "bus", cab: "cab", taxi: "cab", car: "cab", flight: "plane",
@@ -160,6 +162,9 @@ export default function Itinerary() {
                 <ol className="mt-5 space-y-4">
                   {day.activities.map((a, i) => {
                     const art = ART_FOR_NAME(a.place_name);
+                    const monument = MONUMENT_CATALOG.find(
+                      (item) => item.name.toLowerCase() === a.place_name.toLowerCase(),
+                    );
                     const costSummary = (() => {
                       const fields = [
                         ["Entry", a.estimated_entry_cost, a.entry_cost_status],
@@ -185,7 +190,11 @@ export default function Itinerary() {
                       <li key={i} className="flex items-start gap-4">
                         <div className="w-8 h-8 shrink-0 rounded-full bg-teal-800 text-white grid place-items-center font-semibold text-sm">{i + 1}</div>
                         <div className="flex-1 rounded-2xl border border-cream-300 bg-white p-3 flex gap-3">
-                          <MonumentArt art={art.art} palette={art.palette} className="w-24 h-20 shrink-0" rounded="rounded-xl" withTrees={false} withHill />
+                          {monument ? (
+                            <MonumentPhoto image={monument.image} art={art.art} palette={art.palette} className="w-24 h-20 shrink-0" rounded="rounded-xl" withTrees={false} withHill />
+                          ) : (
+                            <MonumentArt art={art.art} palette={art.palette} className="w-24 h-20 shrink-0" rounded="rounded-xl" withTrees={false} withHill />
+                          )}
                           <div className="flex-1 min-w-0">
                             <div className="font-semibold text-ink-900">{a.place_name}</div>
                             <div className="text-sm text-ink-500 line-clamp-2">{a.description}</div>

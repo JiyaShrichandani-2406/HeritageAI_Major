@@ -19,6 +19,13 @@ export const MONUMENT_CATALOG = [
     tags: ["UNESCO", "Architectural", "Historical"],
     art: "taj",
     palette: "dusk",
+    image: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/7/74/Taj_Mahal%2C_Agra%2C_India_edit2.jpg",
+      caption: "Taj Mahal viewed from the south side",
+      credit: "Yann Forget; edited by King of Hearts",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg",
+    },
   },
   {
     id: "agra-fort",
@@ -29,6 +36,13 @@ export const MONUMENT_CATALOG = [
     tags: ["UNESCO", "Historical", "Architectural"],
     art: "fort",
     palette: "rust",
+    image: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/6/68/Agra_03-2016_14_Agra_Fort.jpg",
+      caption: "Agra Fort in Agra, India",
+      credit: "A. Savin",
+      license: "Free Art License",
+      source_url: "https://commons.wikimedia.org/wiki/File:Agra_03-2016_14_Agra_Fort.jpg",
+    },
   },
   {
     id: "fatehpur-sikri",
@@ -39,6 +53,13 @@ export const MONUMENT_CATALOG = [
     tags: ["UNESCO", "Historical", "Architectural"],
     art: "fort",
     palette: "sand",
+    image: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Fatehpur-Fatehpur_Sikri_India0002.JPG",
+      caption: "Fatehpur Sikri, India",
+      credit: "Diego Delso",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Fatehpur-Fatehpur_Sikri_India0002.JPG",
+    },
   },
   {
     id: "akbar-tomb-sikandra",
@@ -49,6 +70,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Historical", "Architectural"],
     art: "shikhara",
     palette: "sand",
+    image: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Akbar%27s_Tomb_in_Sikandra_09.jpg",
+      caption: "Gateway of Akbar's Tomb at Sikandra",
+      credit: "Darshanavenugopal",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Akbar%27s_Tomb_in_Sikandra_09.jpg",
+    },
   },
   {
     id: "mehtab-bagh",
@@ -59,6 +87,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Historical"],
     art: "ruins",
     palette: "sage",
+    image: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/8/84/Mehtab_Bagh_lawn.jpg",
+      caption: "Lawn at Mehtab Bagh",
+      credit: "Aks khandelwal",
+      license: "Public domain",
+      source_url: "https://commons.wikimedia.org/wiki/File:Mehtab_Bagh_lawn.jpg",
+    },
   },
   {
     id: "ram-bagh",
@@ -69,6 +104,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Historical"],
     art: "ruins",
     palette: "mint",
+    image: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Chhatri_at_Aram_Bagh_1.jpg",
+      caption: "Chhatri at Aram Bagh",
+      credit: "Rangan Datta Wiki",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Chhatri_at_Aram_Bagh_1.jpg",
+    },
   },
   {
     id: "itimad-ud-daulah",
@@ -79,6 +121,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Historical", "Architectural"],
     art: "shikhara",
     palette: "dusk",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Itimad-ud-Daulah_Agra_04.jpg/1280px-Itimad-ud-Daulah_Agra_04.jpg",
+      caption: "Tomb of Itimad-ud-Daulah in Agra",
+      credit: "Philip Nalangan",
+      license: "CC BY 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Itimad-ud-Daulah_Agra_04.jpg",
+    },
   },
   {
     id: "chini-ka-rauza",
@@ -89,6 +138,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Historical", "Architectural"],
     art: "shikhara",
     palette: "sage",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Chini_Ka_Rauza%2C_Agra%2C_India_-_October_2014.jpg/1280px-Chini_Ka_Rauza%2C_Agra%2C_India_-_October_2014.jpg",
+      caption: "Chini ka Rauza in Agra",
+      credit: "Rickard Tornblad",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Chini_Ka_Rauza,_Agra,_India_-_October_2014.jpg",
+    },
   },
   {
     id: "tomb-mariam-uz-zamani",
@@ -99,6 +155,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Historical", "Architectural"],
     art: "shikhara",
     palette: "sand",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Mariam-uz-Zamani_Ka_Maqbara.jpg/1280px-Mariam-uz-Zamani_Ka_Maqbara.jpg",
+      caption: "Mariam-uz-Zamani's tomb in Sikandra",
+      credit: "Sharvarism",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Mariam-uz-Zamani_Ka_Maqbara.jpg",
+    },
   },
   {
     id: "jama-masjid-agra",
@@ -109,6 +172,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Religious", "Architectural"],
     art: "fort",
     palette: "rust",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Agra_Jama_Masjid_%289960414605%29.jpg/1280px-Agra_Jama_Masjid_%289960414605%29.jpg",
+      caption: "Jama Masjid, Agra",
+      credit: "Varun Shiv Kapur",
+      license: "CC BY 2.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Agra_Jama_Masjid_(9960414605).jpg",
+    },
   },
   {
     id: "guru-ka-taal",
@@ -119,6 +189,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Religious"],
     art: "shikhara",
     palette: "mint",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Agra_179_-_Sikandra%2C_Gurudwara_Guru_Ka_Taal_%2840825007775%29.jpg/1280px-Agra_179_-_Sikandra%2C_Gurudwara_Guru_Ka_Taal_%2840825007775%29.jpg",
+      caption: "Gurudwara Guru ka Taal in Agra",
+      credit: "juggadery",
+      license: "CC BY-SA 2.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Agra_179_-_Sikandra,_Gurudwara_Guru_Ka_Taal_(40825007775).jpg",
+    },
   },
   {
     id: "soami-bagh-samadhi",
@@ -129,6 +206,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Religious", "Architectural"],
     art: "taj",
     palette: "dusk",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Soami-Bagh-Agra.jpg/1280px-Soami-Bagh-Agra.jpg",
+      caption: "Soami Bagh Samadhi in Agra",
+      credit: "VibrantVivek",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Soami-Bagh-Agra.jpg",
+    },
   },
   {
     id: "mankameshwar-temple-agra",
@@ -139,6 +223,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Religious"],
     art: "shikhara",
     palette: "night",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/IAshishTripathi_Mankameshwar_Temple_Agra.jpg/1280px-IAshishTripathi_Mankameshwar_Temple_Agra.jpg",
+      caption: "Mankameshwar Temple in Agra",
+      credit: "IAshishTripathi",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:IAshishTripathi_Mankameshwar_Temple_Agra.jpg",
+    },
   },
   {
     id: "balkeshwar-temple-agra",
@@ -149,6 +240,11 @@ export const MONUMENT_CATALOG = [
     tags: ["Religious"],
     art: "shikhara",
     palette: "sage",
+    image: {
+      url: "/images/balkeshwar-temple.png",
+      caption: "Balkeshwar Temple, Agra",
+      credit: "User-provided photo",
+    },
   },
   {
     id: "roman-catholic-cemetery-agra",
@@ -159,6 +255,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Religious", "Historical"],
     art: "ruins",
     palette: "night",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Catholic_Cemetery_Agra_6.jpg/1280px-Catholic_Cemetery_Agra_6.jpg",
+      caption: "Roman Catholic Cemetery, Agra",
+      credit: "Rangan Datta Wiki",
+      license: "CC BY-SA 4.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:Catholic_Cemetery_Agra_6.jpg",
+    },
   },
   {
     id: "delhi-gate-agra",
@@ -169,6 +272,13 @@ export const MONUMENT_CATALOG = [
     tags: ["Historical", "Architectural"],
     art: "fort",
     palette: "rust",
+    image: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/The_Delhi_Gate_at_Agra_Fort_01.JPG/1280px-The_Delhi_Gate_at_Agra_Fort_01.JPG",
+      caption: "Delhi Gate at Agra Fort",
+      credit: "g.kaustav",
+      license: "CC BY-SA 3.0",
+      source_url: "https://commons.wikimedia.org/wiki/File:The_Delhi_Gate_at_Agra_Fort_01.JPG",
+    },
   },
 ];
 

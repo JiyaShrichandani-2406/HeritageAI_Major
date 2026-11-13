@@ -8,6 +8,7 @@ import Button from "../components/ui/button.jsx";
 import Thinking from "../components/Thinking.jsx";
 import ErrorBanner from "../components/ErrorBanner.jsx";
 import MonumentArt from "../components/MonumentArt.jsx";
+import MonumentPhoto from "../components/MonumentPhoto.jsx";
 import { api } from "../lib/api.js";
 import { findMonument, MONUMENT_CATALOG } from "../lib/catalog.js";
 
@@ -286,7 +287,7 @@ export default function Chat() {
         <aside className="space-y-4">
           {monumentHint && (
             <Card padding="p-0" className="overflow-hidden">
-              <MonumentArt art={monumentHint.art} palette={monumentHint.palette} className="aspect-[16/9]" rounded="rounded-none" />
+              <MonumentPhoto image={monumentHint.image} art={monumentHint.art} palette={monumentHint.palette} className="aspect-[16/9]" rounded="rounded-none" />
               <div className="p-4">
                 <div className="eyebrow mb-1">Context</div>
                 <div className="font-semibold">{monumentHint.name}</div>

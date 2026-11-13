@@ -5,7 +5,7 @@ import Footer from "../components/Footer.jsx";
 import Card from "../components/ui/Card.jsx";
 import Badge from "../components/ui/Badge.jsx";
 import Button from "../components/ui/button.jsx";
-import MonumentArt from "../components/MonumentArt.jsx";
+import MonumentPhoto from "../components/MonumentPhoto.jsx";
 import { MONUMENT_CATALOG, CATEGORIES } from "../lib/catalog.js";
 
 const SORTS = [
@@ -86,7 +86,7 @@ export default function Monuments() {
 
         {/* Featured monument banner */}
         <div className="relative overflow-hidden rounded-card mt-6">
-          <MonumentArt art={featured.art} palette="night" rounded="rounded-card" className="absolute inset-0 w-full h-full" />
+          <MonumentPhoto image={featured.image} art={featured.art} palette="night" rounded="rounded-card" className="absolute inset-0 w-full h-full" />
           <div className="relative p-8 md:p-10 text-white min-h-[260px] flex flex-col justify-end">
             <Badge variant="gold" size="sm" className="self-start mb-3">Featured monument</Badge>
             <h2 className="font-heading text-4xl md:text-5xl font-bold">{featured.name}</h2>
@@ -101,7 +101,12 @@ export default function Monuments() {
             </div>
             <div className="mt-5 flex items-center gap-3">
               <Button as={Link} to={`/monuments/${featured.id}`}>Explore details</Button>
-              <Button variant="darkGhost">Save</Button>
+              <Button
+                variant="darkGhost"
+                className="!bg-teal-950/70 border-white/50 hover:!bg-teal-950/90 shadow-lg"
+              >
+                Save
+              </Button>
             </div>
           </div>
         </div>
@@ -113,7 +118,8 @@ export default function Monuments() {
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((m) => (
               <Card key={m.id} padding="p-0" className="overflow-hidden group">
-                <MonumentArt
+                <MonumentPhoto
+                  image={m.image}
                   art={m.art}
                   palette={m.palette}
                   rounded="rounded-none"

@@ -5,7 +5,7 @@ import Footer from "../components/Footer.jsx";
 import Card from "../components/ui/Card.jsx";
 import Badge from "../components/ui/Badge.jsx";
 import Button from "../components/ui/button.jsx";
-import MonumentArt from "../components/MonumentArt.jsx";
+import MonumentPhoto from "../components/MonumentPhoto.jsx";
 import MapView from "../components/MapView.jsx";
 import ErrorBanner from "../components/ErrorBanner.jsx";
 import { api } from "../lib/api.js";
@@ -82,7 +82,7 @@ export default function MonumentDetail() {
 
       {/* Hero */}
       <div className="relative overflow-hidden">
-        <MonumentArt art={art} palette={palette} rounded="rounded-none" className="absolute inset-0 w-full h-[360px]" withTrees={false} />
+        <MonumentPhoto image={catalogHint?.image} art={art} palette={palette} rounded="rounded-none" className="absolute inset-0 w-full h-[360px]" withTrees={false} />
         <div className="absolute inset-0 bg-gradient-to-b from-teal-950/60 via-teal-950/30 to-teal-950/85 h-[360px]" />
         <div className="relative container-page pt-5 pb-14 text-white">
           <div className="text-xs text-white/70">
