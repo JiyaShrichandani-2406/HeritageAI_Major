@@ -108,7 +108,7 @@ def _reapply_local_transport_estimates(
                     ]
                     activity["transport_type"] = route["transport_type"]
                     activity["transport_source_url"] = route["source_url"]
-                    activity["transport_notes"] = route["notes"]
+                    activity["transport_notes"] = route.get("notes", "")
             elif previous_place_id and previous_place_id != place["id"]:
                 route = select_transport_option(
                     routes_by_pair.get((previous_place_id, place["id"]), []),
@@ -130,7 +130,7 @@ def _reapply_local_transport_estimates(
                     ]
                     activity["transport_type"] = route["transport_type"]
                     activity["transport_source_url"] = route["source_url"]
-                    activity["transport_notes"] = route["notes"]
+                    activity["transport_notes"] = route.get("notes", "")
 
             previous_place_id = place["id"]
 
