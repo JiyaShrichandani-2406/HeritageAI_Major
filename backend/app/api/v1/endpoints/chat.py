@@ -32,7 +32,7 @@ router = APIRouter(tags=["Chat"])
     },
 )
 def chat(request: ChatRequest) -> ChatResponse:
-    """Answer a heritage question using RAG and Ollama."""
+    """Answer a heritage question using RAG and Cloudflare Workers AI."""
 
     try:
         result = generate_answer(

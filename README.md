@@ -64,7 +64,7 @@ HeritageAI aims to provide a unified, intelligent platform that improves the way
 - Ask questions about Indian monuments, historical places, and cultural heritage.
 - Uses Retrieval-Augmented Generation (RAG).
 - Retrieves relevant information from the heritage knowledge base.
-- Generates contextual responses using a locally hosted language model through Ollama.
+- Generates contextual responses using Cloudflare Workers AI.
 - Supports source-grounded responses based on available retrieved information.
 
 ### 2. Heritage Information Explorer
@@ -123,7 +123,7 @@ HeritageAI aims to provide a unified, intelligent platform that improves the way
 | Backend | Python, FastAPI |
 | API Server | Uvicorn |
 | Data Validation | Pydantic |
-| AI / LLM | Ollama, Llama 3.2 |
+| AI / LLM | Cloudflare Workers AI |
 | RAG Framework | Custom document-based RAG pipeline |
 | Vector Store | FAISS |
 | Embeddings | Sentence Transformers |
@@ -238,7 +238,6 @@ Install the following before running the project:
 - Python 3.11 (recommended)
 - Node.js and npm
 - Git
-- Ollama
 - Visual Studio Code (recommended)
 
 ### 1. Clone the Repository
@@ -271,29 +270,36 @@ Activate it on Windows PowerShell:
 python -m pip install -r requirements-dev.txt
 ```
 
+
 ### 4. Configure Environment Variables
 
 Create a `.env` file in the project root using `.env.example` as a template.
 
-The default AI configuration uses:
+Configure the following Cloudflare Workers AI variables:
 
 ```env
-OLLAMA_URL=http://localhost:11434/api/generate
-OLLAMA_MODEL=llama3.2:latest
-OLLAMA_TIMEOUT_SECONDS=600
+CLOUDFLARE_ACCOUNT_ID=your_cloudflare_account_id
+CLOUDFLARE_API_TOKEN=your_cloudflare_api_token
+CLOUDFLARE_TEXT_MODEL=@cf/google/gemma-4-26b-a4b-it
+CLOUDFLARE_TIMEOUT_SECONDS=120
 ```
 
-Keep your local `.env` file private and do not commit secrets.
+Obtain your Cloudflare account ID and API token from your Cloudflare dashboard.
 
-### 5. Set Up Ollama
+Keep your `.env` file private. Never commit API tokens or other secrets to GitHub.
 
-Install Ollama and download the configured model:
+### 5. Configure Cloudflare Workers AI
 
-```bash
-ollama pull llama3.2
-```
+HeritageAI uses Cloudflare Workers AI for text generation.
 
-Make sure the Ollama service is running before using AI-powered features.
+Before using the chatbot and itinerary-generation features:
+
+1. Create a Cloudflare account.
+2. Generate an API token with the required Workers AI permissions.
+3. Configure your account ID and API token in `.env`.
+4. Verify that the configured model is available to your account.
+
+No local Ollama installation is required.
 
 ### 6. Prepare the RAG Knowledge Base
 
@@ -416,7 +422,7 @@ HeritageAI uses Retrieval-Augmented Generation to improve the relevance of AI-ge
        Context + User Query
                  |
                  v
-          Ollama LLM
+      Cloudflare Workers AI
                  |
                  v
        Contextual AI Answer

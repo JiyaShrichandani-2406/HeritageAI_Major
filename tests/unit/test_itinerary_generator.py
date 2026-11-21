@@ -191,7 +191,7 @@ def test_generated_ungrounded_source_url_is_removed(monkeypatch):
     assert result["itinerary"][0]["activities"][0]["source_url"] is None
 
 
-def test_itinerary_generation_reports_ollama_timeout(monkeypatch):
+def test_itinerary_generation_reports_cloudflare_timeout(monkeypatch):
     def timeout(*args, **kwargs):
         raise TimeoutError("request timed out")
 
@@ -206,7 +206,10 @@ def test_itinerary_generation_reports_ollama_timeout(monkeypatch):
         days=1,
     )
 
-    with pytest.raises(RuntimeError, match="Ollama timed out generating"):
+    with pytest.raises(
+    RuntimeError,
+    match="Cloudflare Workers AI timed out generating",
+    ):
         generate_itinerary(request, heritage_context="Heritage context")
 
 

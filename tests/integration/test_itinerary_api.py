@@ -360,11 +360,13 @@ def test_create_itinerary_ai_service_unavailable(monkeypatch):
     assert response.json()["detail"] == "Simulated AI service failure."
 
 
-def test_create_itinerary_ollama_timeout_returns_gateway_timeout(monkeypatch):
-    from backend.app.ai.llm_client import OllamaTimeoutError
+def test_create_itinerary_cloudflare_timeout_returns_gateway_timeout(monkeypatch):
+    from backend.app.ai.llm_client import CloudflareTimeoutError
 
     def timeout(request):
-        raise OllamaTimeoutError("Ollama timed out generating the itinerary.")
+        raise CloudflareTimeoutError(
+            "Cloudflare Workers AI timed out generating the itinerary."
+        )
 
     monkeypatch.setattr(
         itinerary_endpoint,
@@ -383,7 +385,7 @@ def test_create_itinerary_ollama_timeout_returns_gateway_timeout(monkeypatch):
 
     assert response.status_code == 504
     assert response.json()["detail"] == (
-        "Ollama timed out generating the itinerary."
+        "Cloudflare Workers AI timed out generating the itinerary."
     )
 
 

@@ -1,7 +1,7 @@
 """Health endpoint (owner: Member 1).
 
 This is a basic liveness check: it only proves the API process is running.
-It must never depend on Ollama, vector stores or other external services.
+It must never depend on AI providers, vector stores or other external services.
 """
 
 from fastapi import APIRouter

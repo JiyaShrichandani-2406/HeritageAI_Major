@@ -134,11 +134,11 @@ Configuration includes:
 
 \- Allowed CORS origins.
 
-\- Ollama server URL.
+\- Cloudflare account ID and API token.
 
-\- Ollama model name.
+\- Cloudflare Workers AI text-generation model.
 
-\- LLM request timeout.
+\- Cloudflare AI request timeout.
 
 \- Data and storage paths.
 
@@ -250,8 +250,7 @@ Feature-specific request and response models should remain with their respective
 
 
 
-The AI client communicates with Ollama using the centralized configuration.
-
+The AI client communicates with Cloudflare Workers AI through its REST API using the centralized application configuration.
 
 
 Its responsibilities include:
@@ -268,7 +267,7 @@ Its responsibilities include:
 
 
 
-The existing `generate\_response(prompt: str) -> str` interface should be preserved unless a coordinated change is required.
+The `generate_response()` function provides a centralized interface for generating text responses through Cloudflare Workers AI. It handles request configuration, response parsing, timeouts, and API errors.
 
 
 

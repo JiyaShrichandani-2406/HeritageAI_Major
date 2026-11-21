@@ -1,4 +1,5 @@
-"""Shared Ollama client for HeritageAI."""
+
+"""Shared Cloudflare Workers AI client for HeritageAI."""
 
 import json
 import logging
@@ -10,8 +11,8 @@ from backend.app.core.config import get_settings
 logger = logging.getLogger(__name__)
 
 
-class OllamaTimeoutError(RuntimeError):
-    """Raised when Ollama does not finish a request before the timeout."""
+class CloudflareTimeoutError(RuntimeError):
+    """Raised when Cloudflare AI does not respond before the timeout."""
 
 
 def generate_response(
@@ -21,98 +22,136 @@ def generate_response(
     json_mode: bool = False,
     num_ctx: int | None = None,
 ) -> str:
-    """Generate text through Ollama using the centralized application settings."""
+    """Generate text using Cloudflare Workers AI."""
+
     if not prompt or not prompt.strip():
         raise ValueError("Prompt cannot be empty.")
 
+    if num_predict is not None and num_predict < 1:
+        raise ValueError("num_predict must be at least 1.")
+
+    if num_ctx is not None and num_ctx < 1:
+        raise ValueError("num_ctx must be at least 1.")
+
     settings = get_settings()
 
-    options = {"temperature": 0.2}
-    if num_ctx is not None:
-        if num_ctx < 1:
-            raise ValueError("num_ctx must be at least 1.")
-        # Ollama's default context window is small; a long prompt would be
-        # silently truncated (losing the instructions) without this.
-        options["num_ctx"] = num_ctx
-    if num_predict is not None:
-        if num_predict < 1:
-            raise ValueError("num_predict must be at least 1.")
-        options["num_predict"] = num_predict
+    if not settings.cloudflare_account_id:
+        raise RuntimeError("Cloudflare account ID is not configured.")
+
+    if not settings.cloudflare_api_token:
+        raise RuntimeError("Cloudflare API token is not configured.")
+
+    model = settings.cloudflare_text_model
+
+    url = (
+        "https://api.cloudflare.com/client/v4/accounts/"
+        f"{settings.cloudflare_account_id}/ai/run/{model}"
+    )
 
     payload = {
-        "model": settings.ollama_model,
-        "prompt": prompt,
-        "stream": True,
-        "options": options,
+        "messages": [
+            {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
+        "temperature": 0.2,
     }
-    if json_mode:
-        # Constrains Ollama to emit syntactically valid JSON.
-        payload["format"] = "json"
+
+    if num_predict is not None:
+        payload["max_tokens"] = num_predict
 
     request = urllib.request.Request(
-        settings.ollama_url,
+        url,
         data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Authorization": f"Bearer {settings.cloudflare_api_token}",
+            "Content-Type": "application/json",
+        },
         method="POST",
     )
 
     try:
         with urllib.request.urlopen(
             request,
-            timeout=settings.ollama_timeout_seconds,
+            timeout=settings.cloudflare_timeout_seconds,
         ) as response:
-            response_parts = []
-            for line in response:
-                if not line.strip():
-                    continue
+            raw_response = response.read().decode("utf-8")
 
-                result = json.loads(line.decode("utf-8"))
-                if not isinstance(result, dict):
-                    raise RuntimeError("Ollama returned an invalid response.")
-                if "error" in result:
-                    raise RuntimeError(
-                        f"Ollama returned an error: {result['error']}"
-                    )
+        result = json.loads(raw_response)
 
-                answer_part = result.get("response", "")
-                if not isinstance(answer_part, str):
-                    raise RuntimeError("Ollama returned an invalid response.")
-                response_parts.append(answer_part)
-                if result.get("done") is True:
-                    break
+        if not isinstance(result, dict):
+            raise RuntimeError("Cloudflare returned an invalid response.")
 
-    except TimeoutError as error:
-        logger.warning("The Ollama request timed out.")
-        raise OllamaTimeoutError(
-            "The Ollama request timed out. Please try again later."
+        if result.get("success") is False:
+            errors = result.get("errors", [])
+            message = "Cloudflare Workers AI request failed."
+
+            if errors and isinstance(errors, list):
+                first_error = errors[0]
+                if isinstance(first_error, dict):
+                    message = first_error.get("message", message)
+
+            raise RuntimeError(message)
+
+        model_result = result.get("result")
+
+        if not isinstance(model_result, dict):
+            raise RuntimeError("Cloudflare returned an invalid response.")
+
+        answer = model_result.get("response")
+
+        if not isinstance(answer, str):
+            raise RuntimeError("Cloudflare returned an invalid response.")
+
+    except urllib.error.HTTPError as error:
+        logger.warning(
+            "Cloudflare Workers AI returned HTTP status %s.",
+            error.code,
+        )
+        raise RuntimeError(
+            f"Cloudflare Workers AI request failed with HTTP {error.code}."
         ) from error
+
+    except (TimeoutError, OSError) as error:
+        logger.warning("Cloudflare Workers AI request timed out or failed.")
+
+        if isinstance(error, TimeoutError):
+            raise CloudflareTimeoutError(
+                "Cloudflare Workers AI request timed out. "
+                "Please try again later."
+            ) from error
+
+        raise RuntimeError(
+            "Could not connect to Cloudflare Workers AI. "
+            "Check your network connection."
+        ) from error
+
     except urllib.error.URLError as error:
-        logger.warning("Could not connect to the Ollama service.")
-        raise RuntimeError(
-            "Could not connect to Ollama. Check that Ollama is running "
-            "and the configured model is available."
-        ) from error
-    except OSError as error:
-        logger.warning("The Ollama service request failed.")
-        raise RuntimeError(
-            "Could not connect to Ollama. Check that Ollama is running "
-            "and the configured model is available."
-        ) from error
-    except json.JSONDecodeError as error:
-        raise RuntimeError("Ollama returned an invalid response.") from error
+        if isinstance(error.reason, TimeoutError):
+            raise CloudflareTimeoutError(
+                "Cloudflare Workers AI request timed out. "
+                "Please try again later."
+            ) from error
 
-    answer = "".join(response_parts)
+        logger.warning("Could not connect to Cloudflare Workers AI.")
+        raise RuntimeError(
+            "Could not connect to Cloudflare Workers AI."
+        ) from error
+
+    except json.JSONDecodeError as error:
+        raise RuntimeError(
+            "Cloudflare returned an invalid JSON response."
+        ) from error
+
     if not answer.strip():
-        raise RuntimeError("Ollama returned an empty response.")
+        raise RuntimeError("Cloudflare returned an empty response.")
 
     return answer.strip()
 
 
 if __name__ == "__main__":
-    test_prompt = (
-        "Return a JSON object with one key, status, "
-        "whose value is Ollama connection successful."
-    )
+    test_prompt = "Reply with: HeritageAI Cloudflare connection successful."
 
     try:
         print(generate_response(test_prompt))

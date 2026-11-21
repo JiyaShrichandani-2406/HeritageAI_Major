@@ -10,7 +10,7 @@ This guide explains how to set up the HeritageAI backend locally for development
 
 - Internet access for installing Python packages and downloading the embedding model when needed
 
-- Ollama installed locally if you want to use the local language model for AI responses
+- A Cloudflare account with Workers AI API access for AI-powered responses
 
 ## 2. Open the project directory
 
@@ -158,11 +158,11 @@ Stage and commit only files within your task scope. Do not push directly to the 
 
 - **Embedding model download errors:** check internet access and retry the operation.
 
-- **Ollama generation timeouts:** confirm Ollama is running on the API host and
-  that `OLLAMA_URL` and `OLLAMA_MODEL` identify the reachable service and
-  installed model. The default request timeout is 600 seconds; set
-  `OLLAMA_TIMEOUT_SECONDS` in `.env` to a larger positive number for slower
-  hardware, then restart the API.
+- **Cloudflare Workers AI errors or timeouts:** verify that
+  `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` are correctly configured
+  in `.env`. Check that the configured `CLOUDFLARE_TEXT_MODEL` is available
+  to your account. The default request timeout is 120 seconds; adjust
+  `CLOUDFLARE_TIMEOUT_SECONDS` if necessary, then restart the API.
 
 - **Configuration errors:** compare `.env` values with the validation rules in `backend/app/core/config.py`.
 

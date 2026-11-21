@@ -1,3 +1,4 @@
+
 import json
 from unittest.mock import MagicMock
 
@@ -6,70 +7,71 @@ import pytest
 from backend.app.ai import llm_client
 
 
-def test_generate_response_uses_configured_settings(monkeypatch):
-    settings = type("Settings", (), {
-        "ollama_url": "http://test-ollama:11434/api/generate",
-        "ollama_model": "test-model",
-        "ollama_timeout_seconds": 15,
-    })()
+def make_settings():
+    return type(
+        "Settings",
+        (),
+        {
+            "cloudflare_account_id": "test-account",
+            "cloudflare_api_token": "test-token",
+            "cloudflare_text_model": "@cf/test/model",
+            "cloudflare_timeout_seconds": 15,
+        },
+    )()
 
+
+def mock_response(mock_urlopen, payload):
+    response = MagicMock()
+    response.read.return_value = json.dumps(payload).encode("utf-8")
+    mock_urlopen.return_value.__enter__.return_value = response
+
+
+def test_generate_response_uses_configured_settings(monkeypatch):
+    settings = make_settings()
     monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
 
-    response = MagicMock()
-    response.__iter__.return_value = iter(
-        [
-            json.dumps(
-                {"response": "  HeritageAI is ready.  ", "done": False}
-            ).encode("utf-8"),
-            b'{"response": "", "done": true}',
-        ]
-    )
-
     mock_urlopen = MagicMock()
-    mock_urlopen.return_value.__enter__.return_value = response
-    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
+    mock_response(
+        mock_urlopen,
+        {
+            "success": True,
+            "result": {"response": "  HeritageAI is ready.  "},
+        },
+    )
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        mock_urlopen,
+    )
 
     result = llm_client.generate_response("Say hello")
 
     assert result == "HeritageAI is ready."
+
     args, kwargs = mock_urlopen.call_args
     request = args[0]
 
-    assert request.full_url == settings.ollama_url
+    assert request.full_url == (
+        "https://api.cloudflare.com/client/v4/accounts/"
+        "test-account/ai/run/@cf/test/model"
+    )
+    assert request.get_header("Authorization") == "Bearer test-token"
     assert kwargs["timeout"] == 15
 
     payload = json.loads(request.data.decode("utf-8"))
-    assert payload["model"] == "test-model"
-    assert payload["prompt"] == "Say hello"
-    assert payload["stream"] is True
-
-
-def test_generate_response_combines_streamed_chunks(monkeypatch):
-    settings = type("Settings", (), {
-        "ollama_url": "http://test-ollama:11434/api/generate",
-        "ollama_model": "test-model",
-        "ollama_timeout_seconds": 15,
-    })()
-    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
-
-    response = MagicMock()
-    response.__iter__.return_value = iter(
-        [
-            b'{"response": "Heritage", "done": false}',
-            b'{"response": "AI is ready.", "done": false}',
-            b'{"response": "", "done": true}',
-        ]
-    )
-    mock_urlopen = MagicMock()
-    mock_urlopen.return_value.__enter__.return_value = response
-    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
-
-    assert llm_client.generate_response("Say hello") == "HeritageAI is ready."
+    assert payload["messages"] == [
+        {"role": "user", "content": "Say hello"}
+    ]
+    assert payload["temperature"] == 0.2
 
 
 def test_generate_response_rejects_empty_prompt(monkeypatch):
     mock_urlopen = MagicMock()
-    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        mock_urlopen,
+    )
 
     with pytest.raises(ValueError, match="Prompt cannot be empty"):
         llm_client.generate_response("   ")
@@ -78,66 +80,129 @@ def test_generate_response_rejects_empty_prompt(monkeypatch):
 
 
 def test_generate_response_sets_output_limit(monkeypatch):
-    settings = type("Settings", (), {
-        "ollama_url": "http://test-ollama:11434/api/generate",
-        "ollama_model": "test-model",
-        "ollama_timeout_seconds": 15,
-    })()
-    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
-
-    response = MagicMock()
-    response.__iter__.return_value = iter(
-        [json.dumps({"response": "Done", "done": True}).encode()]
+    monkeypatch.setattr(
+        llm_client,
+        "get_settings",
+        make_settings,
     )
-    mock_urlopen = MagicMock()
-    mock_urlopen.return_value.__enter__.return_value = response
-    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
 
-    assert llm_client.generate_response("Say hello", num_predict=768) == "Done"
+    mock_urlopen = MagicMock()
+    mock_response(
+        mock_urlopen,
+        {"success": True, "result": {"response": "Done"}},
+    )
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        mock_urlopen,
+    )
+
+    assert (
+        llm_client.generate_response("Say hello", num_predict=768)
+        == "Done"
+    )
 
     payload = json.loads(mock_urlopen.call_args.args[0].data.decode())
-    assert payload["options"] == {
-        "temperature": 0.2,
-        "num_predict": 768,
-    }
+    assert payload["max_tokens"] == 768
 
 
-def test_generate_response_enables_json_mode_and_context(monkeypatch):
-    settings = type("Settings", (), {
-        "ollama_url": "http://test-ollama:11434/api/generate",
-        "ollama_model": "test-model",
-        "ollama_timeout_seconds": 15,
-    })()
-    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
-
-    response = MagicMock()
-    response.__iter__.return_value = iter(
-        [json.dumps({"response": "{}", "done": True}).encode()]
+def test_generate_response_preserves_json_mode_and_context_arguments(
+    monkeypatch,
+):
+    monkeypatch.setattr(
+        llm_client,
+        "get_settings",
+        make_settings,
     )
-    mock_urlopen = MagicMock()
-    mock_urlopen.return_value.__enter__.return_value = response
-    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
 
-    llm_client.generate_response("Say hello", json_mode=True, num_ctx=8192)
+    mock_urlopen = MagicMock()
+    mock_response(
+        mock_urlopen,
+        {"success": True, "result": {"response": "{}"}},
+    )
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        mock_urlopen,
+    )
+
+    result = llm_client.generate_response(
+        "Return JSON",
+        json_mode=True,
+        num_ctx=8192,
+    )
+
+    assert result == "{}"
 
     payload = json.loads(mock_urlopen.call_args.args[0].data.decode())
-    assert payload["format"] == "json"
-    assert payload["options"]["num_ctx"] == 8192
+    assert "num_ctx" not in payload
+    assert "format" not in payload
 
 
-def test_generate_response_rejects_invalid_output_limit():
-    with pytest.raises(ValueError, match="num_predict must be at least 1"):
-        llm_client.generate_response("Say hello", num_predict=0)
+@pytest.mark.parametrize(
+    "kwargs, message",
+    [
+        ({"num_predict": 0}, "num_predict must be at least 1"),
+        ({"num_ctx": 0}, "num_ctx must be at least 1"),
+    ],
+)
+def test_generate_response_rejects_invalid_limits(kwargs, message):
+    with pytest.raises(ValueError, match=message):
+        llm_client.generate_response("Say hello", **kwargs)
+
+
+@pytest.mark.parametrize(
+    "setting, message",
+    [
+        ("cloudflare_account_id", "Cloudflare account ID"),
+        ("cloudflare_api_token", "Cloudflare API token"),
+    ],
+)
+def test_generate_response_rejects_missing_credentials(
+    monkeypatch,
+    setting,
+    message,
+):
+    settings = make_settings()
+    setattr(settings, setting, "")
+
+    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+
+    with pytest.raises(RuntimeError, match=message):
+        llm_client.generate_response("Say hello")
+
+
+def test_generate_response_handles_api_error(monkeypatch):
+    monkeypatch.setattr(
+        llm_client,
+        "get_settings",
+        make_settings,
+    )
+
+    mock_urlopen = MagicMock()
+    mock_response(
+        mock_urlopen,
+        {
+            "success": False,
+            "errors": [{"message": "Invalid model"}],
+        },
+    )
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        mock_urlopen,
+    )
+
+    with pytest.raises(RuntimeError, match="Invalid model"):
+        llm_client.generate_response("Say hello")
 
 
 def test_generate_response_handles_connection_failure(monkeypatch):
-    settings = type("Settings", (), {
-        "ollama_url": "http://test-ollama:11434/api/generate",
-        "ollama_model": "test-model",
-        "ollama_timeout_seconds": 15,
-    })()
-
-    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+    monkeypatch.setattr(
+        llm_client,
+        "get_settings",
+        make_settings,
+    )
     monkeypatch.setattr(
         llm_client.urllib.request,
         "urlopen",
@@ -146,63 +211,102 @@ def test_generate_response_handles_connection_failure(monkeypatch):
         ),
     )
 
-    with pytest.raises(RuntimeError, match="Could not connect to Ollama"):
+    with pytest.raises(
+        RuntimeError,
+        match="Could not connect to Cloudflare",
+    ):
         llm_client.generate_response("Say hello")
 
 
 def test_generate_response_handles_timeout(monkeypatch):
-    settings = type("Settings", (), {
-        "ollama_url": "http://test-ollama:11434/api/generate",
-        "ollama_model": "test-model",
-        "ollama_timeout_seconds": 15,
-    })()
-
-    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+    monkeypatch.setattr(
+        llm_client,
+        "get_settings",
+        make_settings,
+    )
     monkeypatch.setattr(
         llm_client.urllib.request,
         "urlopen",
         MagicMock(side_effect=TimeoutError("request timed out")),
     )
 
-    with pytest.raises(RuntimeError, match="Ollama request timed out"):
+    with pytest.raises(
+        llm_client.CloudflareTimeoutError,
+        match="Cloudflare Workers AI request timed out",
+    ):
         llm_client.generate_response("Say hello")
 
 
 def test_generate_response_handles_connection_reset(monkeypatch):
-    settings = type("Settings", (), {
-        "ollama_url": "http://test-ollama:11434/api/generate",
-        "ollama_model": "test-model",
-        "ollama_timeout_seconds": 15,
-    })()
-
-    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
+    monkeypatch.setattr(
+        llm_client,
+        "get_settings",
+        make_settings,
+    )
     monkeypatch.setattr(
         llm_client.urllib.request,
         "urlopen",
         MagicMock(side_effect=ConnectionResetError("connection reset")),
     )
 
-    with pytest.raises(RuntimeError, match="Could not connect to Ollama"):
+    with pytest.raises(
+        RuntimeError,
+        match="Could not connect to Cloudflare",
+    ):
         llm_client.generate_response("Say hello")
 
 
-def test_generate_response_rejects_empty_model_output(monkeypatch):
-    settings = type("Settings", (), {
-        "ollama_url": "http://test-ollama:11434/api/generate",
-        "ollama_model": "test-model",
-        "ollama_timeout_seconds": 15,
-    })()
-
-    monkeypatch.setattr(llm_client, "get_settings", lambda: settings)
-
-    response = MagicMock()
-    response.__iter__.return_value = iter(
-        [b'{"response": "   ", "done": true}']
+@pytest.mark.parametrize(
+    "response_payload",
+    [
+        {"success": True, "result": {"response": "   "}},
+        {"success": True, "result": {}},
+        {"success": True},
+        [],
+    ],
+)
+def test_generate_response_rejects_invalid_or_empty_output(
+    monkeypatch,
+    response_payload,
+):
+    monkeypatch.setattr(
+        llm_client,
+        "get_settings",
+        make_settings,
     )
 
     mock_urlopen = MagicMock()
-    mock_urlopen.return_value.__enter__.return_value = response
-    monkeypatch.setattr(llm_client.urllib.request, "urlopen", mock_urlopen)
+    mock_response(mock_urlopen, response_payload)
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        mock_urlopen,
+    )
 
-    with pytest.raises(RuntimeError, match="Ollama returned an empty response"):
+    with pytest.raises(RuntimeError):
+        llm_client.generate_response("Say hello")
+
+
+def test_generate_response_rejects_invalid_json(monkeypatch):
+    monkeypatch.setattr(
+        llm_client,
+        "get_settings",
+        make_settings,
+    )
+
+    response = MagicMock()
+    response.read.return_value = b"not valid JSON"
+
+    mock_urlopen = MagicMock()
+    mock_urlopen.return_value.__enter__.return_value = response
+    monkeypatch.setattr(
+        llm_client.urllib.request,
+        "urlopen",
+        mock_urlopen,
+    )
+
+    with pytest.raises(
+        RuntimeError,
+        match="Cloudflare returned an invalid JSON response",
+    ):
         llm_client.generate_response("Say hello")

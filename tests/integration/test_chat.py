@@ -137,9 +137,9 @@ def test_chat_endpoint_handles_service_unavailable(monkeypatch):
     assert "currently unavailable" in response.json()["detail"]
 
 
-def test_chat_endpoint_handles_ollama_timeout(monkeypatch):
+def test_chat_endpoint_handles_cloudflare_timeout(monkeypatch):
     def mock_generate_answer(question, top_k=3):
-        raise RuntimeError("The Ollama request timed out.")
+        raise RuntimeError("The Cloudflare Workers AI request timed out.")
 
     monkeypatch.setattr(
         chat_endpoint,

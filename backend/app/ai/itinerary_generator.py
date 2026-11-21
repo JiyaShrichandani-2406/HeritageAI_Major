@@ -5,7 +5,7 @@ import re
 from dataclasses import asdict
 from typing import Any
 
-from backend.app.ai.llm_client import OllamaTimeoutError, generate_response
+from backend.app.ai.llm_client import CloudflareTimeoutError, generate_response
 from backend.app.rag.retriever import get_retriever
 from backend.app.repositories.location_repository import (
     LocationRepository,
@@ -20,7 +20,7 @@ from backend.app.services.transport_service import select_transport_option
 
 logger = logging.getLogger(__name__)
 
-# Ollama's default context window is far smaller than this prompt.
+# Keep prompts within the context limits of the configured AI model.
 LLM_CONTEXT_TOKENS = 8192
 
 
@@ -1051,16 +1051,16 @@ Required JSON structure:
             json_mode=True,
             num_ctx=LLM_CONTEXT_TOKENS,
         )
-    except (OllamaTimeoutError, TimeoutError) as error:
-        raise OllamaTimeoutError(
-            "Ollama timed out generating the itinerary. Verify Ollama is "
-            "reachable from the API host and increase "
-            "OLLAMA_TIMEOUT_SECONDS if needed."
+    except (CloudflareTimeoutError, TimeoutError) as error:
+        raise CloudflareTimeoutError(
+            "Cloudflare Workers AI timed out generating the itinerary. "
+            "Please try again later."
         ) from error
     except (ConnectionError, OSError, RuntimeError) as error:
         raise RuntimeError(
-            "Ollama is unavailable to the API. Verify OLLAMA_URL and "
-            "OLLAMA_MODEL on the API host."
+            "Cloudflare Workers AI is unavailable. Verify "
+            "CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN, and "
+            "CLOUDFLARE_TEXT_MODEL on the API host."
         ) from error
 
     result = _extract_json(raw_response)

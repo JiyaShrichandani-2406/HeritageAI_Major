@@ -1,3 +1,4 @@
+
 """Central application configuration.
 
 All settings are read from environment variables (optionally loaded from a
@@ -11,7 +12,6 @@ import os
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
-from urllib.parse import urlparse
 
 from dotenv import load_dotenv
 
@@ -20,7 +20,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 VALID_ENVIRONMENTS = ("development", "test", "production")
 DEFAULT_CORS_ORIGINS = "http://localhost:3000,http://localhost:5173"
-DEFAULT_OLLAMA_URL = "http://localhost:11434/api/generate"
+
 
 
 class ConfigError(RuntimeError):
@@ -36,9 +36,15 @@ class Settings:
     app_version: str
     environment: str
     cors_origins: tuple[str, ...]
-    ollama_url: str
-    ollama_model: str
-    ollama_timeout_seconds: int
+
+    # Cloudflare Workers AI settings
+    cloudflare_account_id: str
+    cloudflare_api_token: str
+    cloudflare_text_model: str
+    cloudflare_timeout_seconds: int
+
+
+
     data_dir: Path
     vector_store_dir: Path
 
@@ -51,27 +57,38 @@ def _get_str(name: str, default: str) -> str:
     return value.strip()
 
 
-def _get_int(name: str, default: int, errors: list[str], minimum: int = 1) -> int:
+def _get_int(
+    name: str,
+    default: int,
+    errors: list[str],
+    minimum: int = 1,
+) -> int:
     """Return an integer environment value, recording problems in errors."""
     raw = os.getenv(name)
     if raw is None or not raw.strip():
         return default
+
     try:
         value = int(raw.strip())
     except ValueError:
         errors.append(f"{name} must be a whole number, but got {raw!r}.")
         return default
+
     if value < minimum:
         errors.append(f"{name} must be at least {minimum}, but got {value}.")
+
     return value
 
 
 def _get_path(name: str, default: Path) -> Path:
     """Return a path; relative values are resolved from the project root."""
     raw = os.getenv(name)
+
     if raw is None or not raw.strip():
         return default
+
     path = Path(raw.strip())
+
     return path if path.is_absolute() else (PROJECT_ROOT / path).resolve()
 
 
@@ -82,6 +99,7 @@ def load_settings() -> Settings:
     errors: list[str] = []
 
     environment = _get_str("APP_ENV", "development").lower()
+
     if environment not in VALID_ENVIRONMENTS:
         errors.append(
             f"APP_ENV must be one of {', '.join(VALID_ENVIRONMENTS)}, "
@@ -90,40 +108,62 @@ def load_settings() -> Settings:
 
     cors_origins = tuple(
         origin.strip()
-        for origin in _get_str("CORS_ORIGINS", DEFAULT_CORS_ORIGINS).split(",")
+        for origin in _get_str(
+            "CORS_ORIGINS",
+            DEFAULT_CORS_ORIGINS,
+        ).split(",")
         if origin.strip()
     )
 
-    ollama_url = _get_str("OLLAMA_URL", DEFAULT_OLLAMA_URL)
-    parsed_url = urlparse(ollama_url)
-    if parsed_url.scheme not in ("http", "https") or not parsed_url.netloc:
-        errors.append(
-            f"OLLAMA_URL must be a full http(s) URL, but got {ollama_url!r}."
-        )
+    # Cloudflare Workers AI configuration
+    cloudflare_account_id = _get_str(
+        "CLOUDFLARE_ACCOUNT_ID",
+        "",
+    )
 
-    ollama_timeout = _get_int("OLLAMA_TIMEOUT_SECONDS", 600, errors)
+    cloudflare_api_token = _get_str(
+        "CLOUDFLARE_API_TOKEN",
+        "",
+    )
 
+    cloudflare_text_model = _get_str(
+        "CLOUDFLARE_TEXT_MODEL",
+        "@cf/google/gemma-4-26b-a4b-it",
+    )
+
+    cloudflare_timeout = _get_int(
+        "CLOUDFLARE_TIMEOUT_SECONDS",
+        120,
+        errors,
+    )
     if errors:
         details = "\n".join(f"  - {message}" for message in errors)
+
         raise ConfigError(
             "Invalid configuration:\n"
             f"{details}\n"
             "Check your environment variables or the .env file "
             "(see .env.example)."
         )
-
     return Settings(
         app_name=_get_str("APP_NAME", "HeritageAI API"),
         service_name=_get_str("SERVICE_NAME", "heritageai-api"),
         app_version=_get_str("APP_VERSION", "1.0.0"),
         environment=environment,
         cors_origins=cors_origins,
-        ollama_url=ollama_url,
-        ollama_model=_get_str("OLLAMA_MODEL", "llama3.2"),
-        ollama_timeout_seconds=ollama_timeout,
-        data_dir=_get_path("DATA_DIR", PROJECT_ROOT / "data"),
+
+        # Cloudflare
+        cloudflare_account_id=cloudflare_account_id,
+        cloudflare_api_token=cloudflare_api_token,
+        cloudflare_text_model=cloudflare_text_model,
+        cloudflare_timeout_seconds=cloudflare_timeout,
+        data_dir=_get_path(
+            "DATA_DIR",
+            PROJECT_ROOT / "data",
+        ),
         vector_store_dir=_get_path(
-            "VECTOR_STORE_DIR", PROJECT_ROOT / "data" / "vector_store"
+            "VECTOR_STORE_DIR",
+            PROJECT_ROOT / "data" / "vector_store",
         ),
     )
 
