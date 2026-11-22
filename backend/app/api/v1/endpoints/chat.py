@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, HTTPException, status
 
 from backend.app.ai.answer_generator import generate_answer
@@ -5,6 +7,9 @@ from backend.app.ai.output_validator import validate_output
 from backend.app.schemas.chat import ChatRequest, ChatResponse
 from backend.app.schemas.common import ErrorResponse, ValidationErrorResponse
 
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 router = APIRouter(tags=["Chat"])
 
@@ -45,12 +50,14 @@ def chat(request: ChatRequest) -> ChatResponse:
         return ChatResponse(**validated_result)
 
     except ValueError as error:
+        logger.warning("Chat 400 (ValueError): %s", error)
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(error),
         ) from error
 
     except RuntimeError as error:
+        logger.error("Chat 503 (RuntimeError): %r", error, exc_info=True)
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=(
@@ -60,7 +67,7 @@ def chat(request: ChatRequest) -> ChatResponse:
         ) from error
 
     except Exception as error:
-        print(f"Unexpected chat endpoint error: {error}")
+        logger.exception("Chat 500 (unexpected): %r", error)
 
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
