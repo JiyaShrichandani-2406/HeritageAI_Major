@@ -114,7 +114,21 @@ def generate_response(
             )
             raise RuntimeError("Cloudflare returned an invalid response.")
 
+        # Workers AI returns either the classic shape {"response": "..."}
+        # or the OpenAI-compatible shape {"choices": [{"message": {"content": "..."}}]}
+        # depending on the model. Accept both.
         answer = model_result.get("response")
+
+        if not isinstance(answer, str):
+            choices = model_result.get("choices")
+            if isinstance(choices, list) and choices:
+                first_choice = choices[0]
+                if isinstance(first_choice, dict):
+                    message = first_choice.get("message")
+                    if isinstance(message, dict):
+                        content = message.get("content")
+                        if isinstance(content, str):
+                            answer = content
 
         if not isinstance(answer, str):
             print(
