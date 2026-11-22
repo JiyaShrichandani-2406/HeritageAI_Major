@@ -7,4 +7,4 @@ python-dotenv
 faiss-cpu
 sentence-transformers==6.3.0
 numpy
-torch==2.15.0+cpu
+torch==2.15.0+cpu   
