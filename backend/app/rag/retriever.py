@@ -2,6 +2,7 @@ import json
 from functools import lru_cache
 
 import faiss
+import numpy as np
 
 from backend.app.core.config import get_settings
 
@@ -32,18 +33,24 @@ class HeritageRetriever:
             self.chunks = json.load(file)
 
         # Import the embedding model only when a retriever is initialized.
-        # This allows the FastAPI application to import/start without
-        # sentence-transformers being installed, provided the retriever
-        # is not initialized during startup.
+        # fastembed uses an ONNX runtime, which keeps the backend small enough
+        # to fit in 512 MB RAM (no PyTorch dependency).
         print("Loading embedding model...")
-        from sentence_transformers import SentenceTransformer
+        from fastembed import TextEmbedding
 
-        self.model = SentenceTransformer(MODEL_NAME)
+        self.model = TextEmbedding(model_name=MODEL_NAME)
 
         if self.index.ntotal != len(self.chunks):
             raise ValueError(
                 "Index and chunk metadata counts do not match."
             )
+
+    def _embed(self, texts: list[str]) -> np.ndarray:
+        # fastembed returns a generator of 1D numpy arrays, already L2-normalized
+        # for sentence-transformers models — matching the previous behavior of
+        # SentenceTransformer(..., normalize_embeddings=True).
+        vectors = list(self.model.embed(texts))
+        return np.asarray(vectors, dtype="float32")
 
     def search(self, question: str, top_k: int = 3):
         if not question or not question.strip():
@@ -52,14 +59,10 @@ class HeritageRetriever:
         if top_k < 1:
             raise ValueError("top_k must be at least 1.")
 
-        query_embedding = self.model.encode(
-            [question.strip()],
-            convert_to_numpy=True,
-            normalize_embeddings=True,
-        )
+        query_embedding = self._embed([question.strip()])
 
         scores, indices = self.index.search(
-            query_embedding.astype("float32"),
+            query_embedding,
             min(top_k, len(self.chunks)),
         )
 

@@ -1,14 +1,15 @@
 
 import faiss
 import numpy as np
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 
 from backend.app.core.config import get_settings
 from backend.app.rag.document_loader import load_documents
 from backend.app.rag.text_splitter import split_text
 
 
-# Embedding model
+# Embedding model (ONNX port via fastembed — same weights as the original
+# sentence-transformers/all-MiniLM-L6-v2, so the FAISS index remains compatible).
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 
@@ -22,7 +23,7 @@ def build_vector_store():
         raise ValueError("No documents found to index.")
 
     print("Loading embedding model...")
-    model = SentenceTransformer(MODEL_NAME)
+    model = TextEmbedding(model_name=MODEL_NAME)
 
     chunks = []
 
@@ -53,14 +54,8 @@ def build_vector_store():
 
     print(f"Creating embeddings for {len(texts)} chunks...")
 
-    embeddings = model.encode(
-        texts,
-        convert_to_numpy=True,
-        normalize_embeddings=True,
-        show_progress_bar=True,
-    )
-
-    embeddings = np.asarray(embeddings, dtype="float32")
+    # fastembed returns a generator; outputs are already L2-normalized.
+    embeddings = np.asarray(list(model.embed(texts)), dtype="float32")
 
     # Normalized vectors allow inner product to measure cosine similarity.
     index = faiss.IndexFlatIP(embeddings.shape[1])

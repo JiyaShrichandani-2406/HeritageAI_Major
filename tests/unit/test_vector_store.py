@@ -13,8 +13,9 @@ def test_vector_store_builder_uses_configured_directory(
     written_index_paths = []
 
     class StubModel:
-        def encode(self, texts, **kwargs):
-            return np.array([[1.0, 0.0]], dtype="float32")
+        def embed(self, texts, **kwargs):
+            for _ in texts:
+                yield np.array([1.0, 0.0], dtype="float32")
 
     class StubIndex:
         def __init__(self, dimensions):
@@ -43,7 +44,7 @@ def test_vector_store_builder_uses_configured_directory(
     )
     monkeypatch.setattr(
         vector_store,
-        "SentenceTransformer",
+        "TextEmbedding",
         lambda model_name: StubModel(),
     )
     monkeypatch.setattr(

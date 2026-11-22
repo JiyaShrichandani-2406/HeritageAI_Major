@@ -34,14 +34,10 @@ def test_retriever_uses_configured_vector_store_directory(
             and StubIndex()
         ),
     )
-    from sentence_transformers import SentenceTransformer
-
-    from sentence_transformers import SentenceTransformer
-
     monkeypatch.setattr(
-         "sentence_transformers.SentenceTransformer",
-         lambda model_name: object(),
-)
+        "fastembed.TextEmbedding",
+        lambda model_name: object(),
+    )
 
     retriever = HeritageRetriever()
 

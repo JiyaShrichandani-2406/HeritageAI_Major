@@ -3,15 +3,9 @@ FROM python:3.11-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
-    HF_HOME=/tmp/hf \
-    TRANSFORMERS_CACHE=/tmp/hf \
-    SENTENCE_TRANSFORMERS_HOME=/tmp/hf
+    FASTEMBED_CACHE_PATH=/tmp/fastembed
 
 WORKDIR /app
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        build-essential \
-    && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
@@ -19,7 +13,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY backend ./backend
 COPY data ./data
 
-RUN mkdir -p /tmp/hf && chmod -R 777 /tmp/hf
+RUN mkdir -p /tmp/fastembed && chmod -R 777 /tmp/fastembed
 
 EXPOSE 7860
 
