@@ -1,6 +1,6 @@
 
 from backend.app.ai.llm_client import generate_response
-from backend.app.rag.retriever import HeritageRetriever
+from backend.app.rag.retriever import get_retriever
 from backend.app.services.places_service import get_places_service
 
 INSUFFICIENT_CONTEXT = "INSUFFICIENT_CONTEXT"
@@ -12,17 +12,7 @@ ABSTENTION_ANSWER = (
 
 MIN_RELEVANCE_SCORE = 0.55
 
-# Create the retriever once and reuse it.
-_retriever = None
 
-
-def get_retriever():
-    global _retriever
-
-    if _retriever is None:
-        _retriever = HeritageRetriever()
-
-    return _retriever
 
 
 def get_nearby_places(
