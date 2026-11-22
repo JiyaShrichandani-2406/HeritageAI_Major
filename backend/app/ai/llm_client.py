@@ -81,6 +81,10 @@ def generate_response(
         result = json.loads(raw_response)
 
         if not isinstance(result, dict):
+            print(
+                f"!!! CF RAW (not-dict): {raw_response[:800]}",
+                flush=True,
+            )
             raise RuntimeError("Cloudflare returned an invalid response.")
 
         if result.get("success") is False:
@@ -92,16 +96,34 @@ def generate_response(
                 if isinstance(first_error, dict):
                     message = first_error.get("message", message)
 
+            print(
+                f"!!! CF success=False model={model!r} "
+                f"errors={errors!r}",
+                flush=True,
+            )
             raise RuntimeError(message)
 
         model_result = result.get("result")
 
         if not isinstance(model_result, dict):
+            print(
+                f"!!! CF result not-dict model={model!r} "
+                f"result_type={type(model_result).__name__} "
+                f"raw={raw_response[:800]}",
+                flush=True,
+            )
             raise RuntimeError("Cloudflare returned an invalid response.")
 
         answer = model_result.get("response")
 
         if not isinstance(answer, str):
+            print(
+                f"!!! CF response not-str model={model!r} "
+                f"response_type={type(answer).__name__} "
+                f"result_keys={list(model_result.keys())} "
+                f"raw={raw_response[:800]}",
+                flush=True,
+            )
             raise RuntimeError("Cloudflare returned an invalid response.")
 
     except urllib.error.HTTPError as error:
