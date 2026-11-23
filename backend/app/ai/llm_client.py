@@ -141,16 +141,23 @@ def generate_response(
             raise RuntimeError("Cloudflare returned an invalid response.")
 
     except urllib.error.HTTPError as error:
-        logger.warning(
-            "Cloudflare Workers AI returned HTTP status %s.",
-            error.code,
+        try:
+            body = error.read().decode("utf-8", errors="replace")
+        except Exception:
+            body = "<unreadable>"
+        print(
+            f"!!! CF HTTP {error.code} model={model!r} body={body[:800]}",
+            flush=True,
         )
         raise RuntimeError(
             f"Cloudflare Workers AI request failed with HTTP {error.code}."
         ) from error
 
     except (TimeoutError, OSError) as error:
-        logger.warning("Cloudflare Workers AI request timed out or failed.")
+        print(
+            f"!!! CF conn/timeout model={model!r} error={error!r}",
+            flush=True,
+        )
 
         if isinstance(error, TimeoutError):
             raise CloudflareTimeoutError(
