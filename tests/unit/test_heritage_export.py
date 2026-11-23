@@ -87,12 +87,7 @@ def test_heritage_catalog_contains_multiple_sourced_monuments():
         record["id"]: record["last_verified"]
         for record in records
     }
-    assert verified_dates["taj-mahal"] == "2026-10-21"
-    assert verified_dates["agra-fort"] == "2026-10-21"
-    assert all(
-    value == "2026-10-21"
-    for monument_id, value in verified_dates.items()
-    if monument_id in {
+    refreshed_in_2026_11 = {
         "taj-mahal",
         "agra-fort",
         "fatehpur-sikri",
@@ -100,19 +95,17 @@ def test_heritage_catalog_contains_multiple_sourced_monuments():
         "mehtab-bagh",
         "ram-bagh",
     }
-)
-
+    assert verified_dates["taj-mahal"] == "2026-11-23"
+    assert verified_dates["agra-fort"] == "2026-11-23"
     assert all(
-    value == "2026-10-23"
-    for monument_id, value in verified_dates.items()
-    if monument_id not in {
-        "taj-mahal",
-        "agra-fort",
-        "fatehpur-sikri",
-        "akbar-tomb-sikandra",
-        "mehtab-bagh",
-        "ram-bagh",
-    }
+        value == "2026-11-23"
+        for monument_id, value in verified_dates.items()
+        if monument_id in refreshed_in_2026_11
+    )
+    assert all(
+        value in {"2026-10-23", "2026-11-23"}
+        for monument_id, value in verified_dates.items()
+        if monument_id not in refreshed_in_2026_11
     )
     taj_mahal = next(
     record for record in records if record["id"] == "taj-mahal"

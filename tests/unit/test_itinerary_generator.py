@@ -391,7 +391,7 @@ def test_agras_sourced_visitor_services_are_included_without_inventing_costs():
     }.issubset(services_by_id)
     assert services_by_id["agra-fort-licensed-guides"][
         "estimated_cost"
-    ] == 400
+    ] == 2050
     assert services_by_id["agra-fort-licensed-guides"][
         "cost_status"
     ] == "estimated"
@@ -407,43 +407,59 @@ def test_fatehpur_sikri_transport_and_services_are_sourced():
         )
     )
 
-    assert [option["id"] for option in transport_options] == [
-        "agra-fatehpur-sikri-upsrtc-bus"
+    assert sorted(option["id"] for option in transport_options) == [
+        "agra-fatehpur-sikri-train",
+        "agra-fatehpur-sikri-upsrtc-bus",
     ]
-    assert transport_options[0]["cost_status"] == "unknown"
-    assert transport_options[0]["estimated_cost"] is None
+    bus_option = next(
+        option
+        for option in transport_options
+        if option["id"] == "agra-fatehpur-sikri-upsrtc-bus"
+    )
+    assert bus_option["cost_status"] == "unknown"
+    assert bus_option["estimated_cost"] is None
     assert [service["id"] for service in visitor_services] == [
         "fatehpur-sikri-licensed-guides"
     ]
-    assert visitor_services[0]["estimated_cost"] == 625
+    assert visitor_services[0]["estimated_cost"] == 2500
     assert visitor_services[0]["cost_status"] == "estimated"
 
 
-@pytest.mark.parametrize(
-    ("origin", "origin_id"),
-    [
-        ("Bhopal", "city-bhopal"),
-        ("Delhi", "city-delhi"),
-    ],
-)
-def test_city_to_agra_route_options_reflect_only_sourced_records(
-    origin,
-    origin_id,
-):
-    transport_options, _, _ = _load_travel_references(
+def test_city_to_agra_route_options_reflect_only_sourced_records():
+    bhopal_options, _, _ = _load_travel_references(
         ItineraryRequest(
             itinerary_mode="city_to_city",
-            origin=origin,
-            origin_id=origin_id,
+            origin="Bhopal",
+            origin_id="city-bhopal",
             destination="Agra",
             destination_id="city-agra",
             budget=5000,
             days=1,
         )
     )
+    # Bhopal->Agra is not in the transport dataset; do not infer one.
+    assert bhopal_options == []
 
-    # Neither route is present in the transport dataset; do not infer one.
-    assert transport_options == []
+    delhi_options, _, _ = _load_travel_references(
+        ItineraryRequest(
+            itinerary_mode="city_to_city",
+            origin="Delhi",
+            origin_id="city-delhi",
+            destination="Agra",
+            destination_id="city-agra",
+            budget=5000,
+            days=1,
+        )
+    )
+    # Delhi->Agra is sourced from the Indian Railways timetable.
+    assert sorted(option["id"] for option in delhi_options) == [
+        "delhi-agra-gatimaan-express-train",
+        "delhi-agra-taj-express-train",
+    ]
+    assert all(
+        option["cost_status"] in {"verified", "estimated"}
+        for option in delhi_options
+    )
 
 
 def test_itinerary_route_ids_must_match_selected_locations():
@@ -499,7 +515,12 @@ def test_sourced_local_transport_cost_and_duration_are_attached_to_the_leg(
     )
 
     result = generate_itinerary(
-        ItineraryRequest(destination="Agra", budget=10000, days=1),
+        ItineraryRequest(
+            destination="Agra",
+            budget=10000,
+            days=1,
+            travel_style="comfortable",
+        ),
         heritage_context="Verified heritage context.",
     )
 
@@ -539,6 +560,7 @@ def test_place_to_place_keeps_selected_endpoints_and_removes_duplicate_stops(
             destination="Agra Fort",
             budget=10000,
             days=1,
+            travel_style="comfortable",
         ),
         heritage_context="Verified heritage context.",
     )
@@ -643,6 +665,7 @@ def test_transport_costs_are_omitted_when_user_excludes_them(monkeypatch):
             budget=10000,
             days=1,
             include_transport=False,
+            travel_style="comfortable",
         ),
         heritage_context="Verified heritage context.",
     )
@@ -683,10 +706,10 @@ def test_selected_guide_and_vehicle_parking_costs_are_sourced(monkeypatch):
     )
 
     activity = result["itinerary"][0]["activities"][0]
-    assert activity["estimated_guide_cost"] == 1300
+    assert activity["estimated_guide_cost"] == 2050
     assert activity["guide_cost_status"] == "estimated"
-    assert activity["estimated_parking_cost"] == 100
-    assert activity["parking_cost_status"] == "estimated"
+    assert activity["estimated_parking_cost"] is None
+    assert activity["parking_cost_status"] == "unknown"
 
 
 def test_selected_cost_without_matching_service_stays_unknown(monkeypatch):
@@ -714,7 +737,7 @@ def test_selected_cost_without_matching_service_stays_unknown(monkeypatch):
     )
 
     activity = result["itinerary"][0]["activities"][0]
-    assert activity["estimated_guide_cost"] == 400
+    assert activity["estimated_guide_cost"] == 2050
     assert activity["guide_cost_status"] == "estimated"
     assert activity["estimated_parking_cost"] is None
     assert activity["parking_cost_status"] == "unknown"

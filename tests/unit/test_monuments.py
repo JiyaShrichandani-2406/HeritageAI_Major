@@ -26,7 +26,7 @@ def test_taj_mahal_returns_details_and_sources():
     assert data["images"][0]["source_url"].startswith(
         "https://commons.wikimedia.org/wiki/File:"
     )
-    assert data["last_verified"] == "2026-10-21"
+    assert data["last_verified"] == "2026-11-23"
     assert any(
         source["url"]
         == (

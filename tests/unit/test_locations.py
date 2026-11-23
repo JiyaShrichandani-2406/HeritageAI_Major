@@ -17,7 +17,7 @@ def test_unified_catalog_has_unique_ids_and_valid_city_relationships():
     location_ids = [location["id"] for location in [*cities, *places]]
     city_ids = {city["id"] for city in cities}
 
-    assert len(places) == 25
+    assert len(places) == 24
     assert len(location_ids) == len(set(location_ids))
     assert all(place["city_id"] in city_ids for place in places)
     assert {city["name"] for city in cities} == {
@@ -51,11 +51,11 @@ def test_nearby_coordinates_are_canonical_when_both_sources_have_a_place():
     chini = repository.find_place("Chini Ka Rauza")
     jama_masjid = repository.find_place("Jama Masjid Agra")
 
-    assert (chini["latitude"], chini["longitude"]) == (27.2, 78.0233)
+    assert (chini["latitude"], chini["longitude"]) == (27.2009, 78.0344)
     assert chini["coordinate_source"] == "nearby_places.json"
     assert (jama_masjid["latitude"], jama_masjid["longitude"]) == (
-        27.183,
-        78.0147,
+        27.1821,
+        78.0162,
     )
 
 

@@ -21,14 +21,19 @@ def test_routes_api_returns_matching_city_route_with_ids_and_labels():
     assert data["destination_id"] == "city-fatehpur-sikri"
     assert data["origin"] == "Agra"
     assert data["destination"] == "Fatehpur Sikri"
-    assert [option["id"] for option in data["options"]] == [
-        "agra-fatehpur-sikri-upsrtc-bus"
+    assert sorted(option["id"] for option in data["options"]) == [
+        "agra-fatehpur-sikri-train",
+        "agra-fatehpur-sikri-upsrtc-bus",
     ]
-    assert data["options"][0]["cost_status"] == "unknown"
-    assert data["options"][0]["estimated_cost"] is None
-    assert data["options"][0]["estimated_duration_minutes"] is None
-    assert data["options"][0]["duration_status"] == "unknown"
-    assert "unavailable" in data["message"]
+    bus_option = next(
+        option
+        for option in data["options"]
+        if option["id"] == "agra-fatehpur-sikri-upsrtc-bus"
+    )
+    assert bus_option["cost_status"] == "unknown"
+    assert bus_option["estimated_cost"] is None
+    assert bus_option["estimated_duration_minutes"] is None
+    assert bus_option["duration_status"] == "unknown"
 
 
 def test_routes_api_returns_place_options_for_exact_direction():
@@ -44,18 +49,23 @@ def test_routes_api_returns_place_options_for_exact_direction():
     options = response.json()["options"]
     assert {
         option["transport_type"] for option in response.json()["options"]
-    } == {"auto-rickshaw", "taxi"}
+    } == {"auto-rickshaw", "taxi", "metro"}
+    road_options = [
+        option
+        for option in options
+        if option["transport_type"] in {"auto-rickshaw", "taxi"}
+    ]
     assert all(
         option["duration_status"] == "estimated"
         and option["estimated_duration_minutes"] is not None
-        for option in options
+        for option in road_options
     )
     assert all(option["cost_status"] == "estimated" for option in options)
 
 
 def test_routes_api_returns_empty_for_unsupported_or_reversed_routes():
     for origin_id, destination_id in [
-        ("city-delhi", "city-agra"),
+        ("city-bhopal", "city-delhi"),
         ("city-bhopal", "city-agra"),
         ("place-agra-fort", "place-taj-mahal"),
     ]:

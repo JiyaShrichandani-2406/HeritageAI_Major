@@ -15,7 +15,7 @@ def test_locations_endpoint_returns_merged_cities_and_places():
     places = {place["name"]: place for place in data["places"]}
 
     assert len(cities) == 5
-    assert len(places) == 25
+    assert len(places) == 24
     assert places["Taj Mahal"]["city_id"] == "city-agra"
     assert places["Fatehpur Sikri"]["city_id"] == "city-fatehpur-sikri"
     assert places["Keoladeo National Park"]["city_id"] == "city-bharatpur"

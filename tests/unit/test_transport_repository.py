@@ -17,7 +17,7 @@ def test_transport_records_use_resolvable_location_ids():
         for location in [*locations.cities(), *locations.places()]
     }
 
-    assert len(options) == 43
+    assert len(options) == 51
     assert all(
         option.origin_id in location_ids
         and option.destination_id in location_ids
@@ -43,6 +43,7 @@ def test_transport_search_matches_only_the_exact_direction():
     assert {option.transport_type for option in forward} == {
         "auto-rickshaw",
         "taxi",
+        "metro",
     }
     assert reverse == []
 
@@ -50,7 +51,7 @@ def test_transport_search_matches_only_the_exact_direction():
 def test_unsupported_city_routes_are_not_invented():
     repository = TransportRepository()
 
-    assert repository.search("city-delhi", "city-agra") == []
+    assert repository.search("city-bhopal", "city-delhi") == []
     assert repository.search("city-bhopal", "city-agra") == []
 
 
@@ -66,16 +67,22 @@ def test_search_supports_sourced_city_and_place_route_records():
         "place-fatehpur-sikri-monument-gate",
     )
 
-    assert [route.id for route in city_route] == [
-        "agra-fatehpur-sikri-upsrtc-bus"
+    assert sorted(route.id for route in city_route) == [
+        "agra-fatehpur-sikri-train",
+        "agra-fatehpur-sikri-upsrtc-bus",
     ]
     assert [route.id for route in place_route] == [
         "fatehpur-sikri-parking-battery-bus"
     ]
-    assert city_route[0].cost_status == "unknown"
-    assert city_route[0].duration_status == "unknown"
-    assert city_route[0].estimated_cost is None
-    assert city_route[0].estimated_duration_minutes is None
+    bus_route = next(
+        route
+        for route in city_route
+        if route.id == "agra-fatehpur-sikri-upsrtc-bus"
+    )
+    assert bus_route.cost_status == "unknown"
+    assert bus_route.duration_status == "unknown"
+    assert bus_route.estimated_cost is None
+    assert bus_route.estimated_duration_minutes is None
 
 
 @pytest.mark.parametrize(
