@@ -4,7 +4,39 @@ from typing import Any
 
 from backend.app.repositories.transport_repository import TransportRepository
 from backend.app.repositories.location_repository import LocationRepository
+from backend.app.repositories.route_details_repository import get_route_details
 from backend.app.schemas.route import RouteResponse, TransportOptionResponse
+
+
+def _extended_fields(route_id: str) -> dict[str, Any]:
+    """Return the richer attributes for a transport route, if any.
+
+    Falls back to empty values so the base route record still validates when
+    the extended dataset is missing or doesn't cover a given route.
+    """
+    details = get_route_details(route_id)
+    if not details:
+        return {
+            "distance_km": None,
+            "fare_category": None,
+            "transport_provider": None,
+            "booking_url": None,
+            "last_verified": None,
+        }
+
+    distance = details.get("distance") or {}
+    fare = details.get("fare") or {}
+    distance_km = distance.get("value_km")
+    if not isinstance(distance_km, (int, float)) or distance_km < 0:
+        distance_km = None
+
+    return {
+        "distance_km": float(distance_km) if distance_km is not None else None,
+        "fare_category": fare.get("fare_category"),
+        "transport_provider": details.get("transport_provider"),
+        "booking_url": details.get("booking_or_information_url"),
+        "last_verified": details.get("last_verified"),
+    }
 
 
 def select_transport_option(
@@ -94,6 +126,7 @@ def find_transport_options(
                 cost_status=option.cost_status,
                 source_url=option.source_url,
                 notes=option.notes,
+                **_extended_fields(option.id),
             )
             for option in options
         ],

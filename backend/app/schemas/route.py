@@ -55,6 +55,11 @@ class TransportOptionResponse(BaseModel):
     cost_status: CostStatus
     source_url: str | None = None
     notes: str = ""
+    distance_km: float | None = Field(default=None, ge=0)
+    fare_category: str | None = None
+    transport_provider: str | None = None
+    booking_url: str | None = None
+    last_verified: str | None = None
 
 
 class RouteResponse(BaseModel):
