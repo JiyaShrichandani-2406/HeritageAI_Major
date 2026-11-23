@@ -3,8 +3,8 @@
     "id": "agra-fort",
     "name": "Agra Fort",
     "category": "monument",
-    "latitude": 27.1795,
-    "longitude": 78.0211,
+    "latitude": 27.1797,
+    "longitude": 78.0228,
     "address": "Rakabganj, Agra, Uttar Pradesh 282003",
     "source_url": "https://agra.nic.in/tourist-place/agra-fort/"
   },
@@ -12,8 +12,8 @@
     "id": "akbar-tomb-sikandra",
     "name": "Akbar's Tomb (Sikandra)",
     "category": "monument",
-    "latitude": 27.2205,
-    "longitude": 77.9511,
+    "latitude": 27.2204,
+    "longitude": 77.9503,
     "address": "Sikandra, Agra, Uttar Pradesh 282007",
     "source_url": "https://agra.nic.in/tourist-place/akbars-tomb-sikandra/"
   },
@@ -21,10 +21,10 @@
     "id": "chini-ka-rauza",
     "name": "Chini Ka Rauza",
     "category": "monument",
-    "latitude": 27.2,
-    "longitude": 78.0233,
+    "latitude": 27.2009,
+    "longitude": 78.0344,
     "address": "Itmad-ud-Daulah Rd, Agra, Uttar Pradesh 282006",
-    "source_url": "https://en.wikipedia.org/wiki/Chini_Ka_Rauza"
+    "source_url": "https://agra.nic.in/tourist-place/chini-ka-rauza/"
   },
   {
     "id": "fatehpur-sikri",
@@ -36,22 +36,13 @@
     "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/"
   },
   {
-    "id": "itmad-ud-daulah",
-    "name": "Tomb of Itmad-ud-Daulah",
-    "category": "monument",
-    "latitude": 27.193,
-    "longitude": 78.0309,
-    "address": "Moti Bagh, Bairon Para, Agra, Uttar Pradesh 282006",
-    "source_url": "https://en.wikipedia.org/wiki/Tomb_of_Itimad-ud-Daulah"
-  },
-  {
     "id": "jama-masjid-agra",
     "name": "Jama Masjid Agra",
     "category": "religious",
-    "latitude": 27.183,
-    "longitude": 78.0147,
+    "latitude": 27.1821,
+    "longitude": 78.0162,
     "address": "Jama Masjid Rd, Agra, Uttar Pradesh 282003",
-    "source_url": "https://en.wikipedia.org/wiki/Jama_Masjid"
+    "source_url": "https://en.wikipedia.org/wiki/Jama_Masjid,_Agra"
   },
   {
     "id": "keoladeo-national-park",
@@ -66,9 +57,9 @@
     "id": "mankameshwar-temple",
     "name": "Mankameshwar Temple",
     "category": "religious",
-    "latitude": 27.188,
-    "longitude": 78.012,
-    "address": "Rawatpara, Agra, Uttar Pradesh 282003",
+    "latitude": 27.1837,
+    "longitude": 78.0175,
+    "address": "Daresi Road, Rawatpara, Mantola, Agra, Uttar Pradesh 282003",
     "source_url": "https://en.wikipedia.org/wiki/Mankameshwar_Temple"
   },
   {
@@ -123,7 +114,7 @@
     "latitude": 27.2153,
     "longitude": 77.9427,
     "address": "Sikandra, Agra, Uttar Pradesh 282007",
-    "source_url": "https://en.wikipedia.org/wiki/Tomb_of_Mariam-uz-Zamani"
+    "source_url": "https://agra.nic.in/?p=29747"
   },
   {
     "id": "pinch-of-spice-fatehabad-road",
@@ -168,6 +159,15 @@
     "latitude": 27.2517,
     "longitude": 77.84,
     "address": "Keetham, Kiraoli, Agra, Uttar Pradesh 282007",
-    "source_url": "https://rsis.ramsar.org/ris/2440"
+    "source_url": "https://agra.nic.in/tourist-place/sur-sarovar-keetham-bird-sanctuary/"
+  },
+  {
+    "id": "itimad-ud-daulah",
+    "name": "Tomb of Itimad-ud-Daulah",
+    "category": "monument",
+    "latitude": 27.1925,
+    "longitude": 78.0319,
+    "address": "Moti Bagh, Bairon Para, Agra, Uttar Pradesh 282006",
+    "source_url": "https://agra.nic.in/?p=29758"
   }
 ]

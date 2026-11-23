@@ -1,0 +1,139 @@
+[
+  {
+    "id": "agra-metro-yellow-line",
+    "name": "Agra Metro Yellow Line (priority corridor)",
+    "operator": "Uttar Pradesh Metro Rail Corporation (UPMRC)",
+    "city_id": "city-agra",
+    "status_of_service": "Operational: Taj East Gate - Mankameshwar, 6 stations, opened 6 March 2024. ISBT/RBS College/Raja Ki Mandi extension was expected from 20 Sep 2026 (news) but a transit guide updated 22 Nov 2026 still shows it not open.",
+    "stations": [
+      "Taj East Gate",
+      "Shaheed Captain Shubham Gupta (Basai)",
+      "Fatehabad Road",
+      "Taj Mahal",
+      "Agra Fort (also listed as Dr. Ambedkar Chowk)",
+      "Mankameshwar"
+    ],
+    "hours": {
+      "text": "About 06:00-22:00, every 6-10 min",
+      "status": "ESTIMATED"
+    },
+    "fares": [
+      {
+        "stations": "1",
+        "amount_inr": 10,
+        "status": "ESTIMATED"
+      },
+      {
+        "stations": "2",
+        "amount_inr": 15,
+        "status": "ESTIMATED"
+      },
+      {
+        "stations": "3-5",
+        "amount_inr": 20,
+        "status": "ESTIMATED",
+        "note": "Sources give 10/15/20 slabs; exact slab boundaries for 3-5 stations not stated"
+      },
+      {
+        "stations": "6 (end to end)",
+        "amount_inr": 20,
+        "status": "ESTIMATED"
+      }
+    ],
+    "source_urls": [
+      "https://mapa-metro.com/en/india/agra/agra-metro-map.htm",
+      "https://www.onmanorama.com/travel/travel-news/2024/03/14/agra-metro-taj-mahal-ticket-fares-booking-tourist-destinations-facilities.amp.html",
+      "https://en.wikipedia.org/wiki/Yellow_Line_(Agra_Metro)",
+      "https://news24online.com/india/agra-metro-to-get-5-new-stations-on-september-20-check-names-route-timings-and-fare/915883/"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "taj-mahal-battery-bus-golf-cart",
+    "name": "Taj Mahal battery buses and golf carts",
+    "operator": "Authorised operators (ADA/ASI area)",
+    "city_id": "city-agra",
+    "status_of_service": "Operational",
+    "stations": [
+      "Shilpgram parking (East Gate)",
+      "Western Gate parking (Amrood ka Teela)"
+    ],
+    "hours": {
+      "text": "During Taj opening hours",
+      "status": "ESTIMATED"
+    },
+    "fares": [
+      {
+        "service": "battery bus",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "note": "Free (agra.nic.in)"
+      },
+      {
+        "service": "golf cart",
+        "amount_inr": null,
+        "status": "UNKNOWN",
+        "note": "Paid; free with SAARC/BIMSTEC/foreign Taj tickets"
+      }
+    ],
+    "source_urls": [
+      "https://agra.nic.in/tourist-place/tajmahal/",
+      "https://tajmahal.gov.in/dos-and-donts.aspx"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "fatehpur-sikri-battery-bus",
+    "name": "Fatehpur Sikri parking-to-gate battery bus",
+    "operator": "Authorised operator",
+    "city_id": "city-fatehpur-sikri",
+    "status_of_service": "Operational",
+    "stations": [
+      "Fatehpur Sikri parking area",
+      "Fatehpur Sikri monument gate"
+    ],
+    "hours": {
+      "text": null,
+      "status": "UNKNOWN"
+    },
+    "fares": [
+      {
+        "service": "battery bus",
+        "amount_inr": null,
+        "status": "UNKNOWN"
+      }
+    ],
+    "source_urls": [
+      "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "agra-auto-taxi-fares",
+    "name": "Auto-rickshaw and taxi fares in Agra",
+    "operator": "Independent operators / ride apps",
+    "city_id": "city-agra",
+    "status_of_service": "Operational",
+    "stations": [],
+    "hours": {
+      "text": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "fares": [
+      {
+        "service": "auto-rickshaw",
+        "amount_inr": null,
+        "status": "UNKNOWN",
+        "note": "No official tariff found; see transport.json estimates (distance-scaled, ESTIMATED)."
+      },
+      {
+        "service": "taxi",
+        "amount_inr": null,
+        "status": "UNKNOWN",
+        "note": "No official tariff found; see transport.json estimates."
+      }
+    ],
+    "source_urls": [],
+    "last_verified": "2026-11-23"
+  }
+]

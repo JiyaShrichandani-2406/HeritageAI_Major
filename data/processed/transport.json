@@ -111,7 +111,7 @@
     "estimated_duration_minutes": 15,
     "cost_status": "estimated",
     "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2,78.0233&travelmode=driving",
-    "notes": "Straight-line 3.3 km (computed); estimated road distance about 4.5 km (straight-line x 1.35). Estimate range INR 65-100; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "notes": "Straight-line 3.3 km (computed); estimated road distance about 4.5 km (straight-line x 1.35). Estimate range INR 65-100; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23. Note 2026-11-23: destination coordinates were corrected to 27.2009, 78.0344 (previous point was ~1 km west); straight-line distance above was computed from the old point.",
     "origin_id": "place-taj-mahal",
     "destination_id": "place-chini-ka-rauza",
     "duration_status": "estimated"
@@ -124,7 +124,7 @@
     "estimated_duration_minutes": 15,
     "cost_status": "estimated",
     "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2,78.0233&travelmode=driving",
-    "notes": "Straight-line 3.3 km (computed); estimated road distance about 4.5 km (straight-line x 1.35). Estimate range INR 100-145; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "notes": "Straight-line 3.3 km (computed); estimated road distance about 4.5 km (straight-line x 1.35). Estimate range INR 100-145; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23. Note 2026-11-23: destination coordinates were corrected to 27.2009, 78.0344 (previous point was ~1 km west); straight-line distance above was computed from the old point.",
     "origin_id": "place-taj-mahal",
     "destination_id": "place-chini-ka-rauza",
     "duration_status": "estimated"
@@ -217,7 +217,7 @@
     "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.193,78.0309&travelmode=driving",
     "notes": "Straight-line 2.3 km (computed); estimated road distance about 3.1 km (straight-line x 1.35). Estimate range INR 55-80; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
     "origin_id": "place-taj-mahal",
-    "destination_id": "place-itmad-ud-daulah",
+    "destination_id": "place-itimad-ud-daulah",
     "duration_status": "estimated"
   },
   {
@@ -230,7 +230,7 @@
     "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.193,78.0309&travelmode=driving",
     "notes": "Straight-line 2.3 km (computed); estimated road distance about 3.1 km (straight-line x 1.35). Estimate range INR 80-120; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
     "origin_id": "place-taj-mahal",
-    "destination_id": "place-itmad-ud-daulah",
+    "destination_id": "place-itimad-ud-daulah",
     "duration_status": "estimated"
   },
   {
@@ -366,12 +366,12 @@
   {
     "id": "taj-mahal-mehtab-bagh-auto-rickshaw",
     "transport_type": "auto-rickshaw",
-    "estimated_cost": 35,
+    "estimated_cost": 125,
     "currency": "INR",
-    "estimated_duration_minutes": 0,
+    "estimated_duration_minutes": 30,
     "cost_status": "estimated",
-    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.179,78.0437&travelmode=driving",
-    "notes": "Straight-line 0.5 km (computed); estimated road distance about 0.6 km (straight-line x 1.35). Estimate range INR 30-45; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "source_url": "https://agra.nic.in/?p=29756",
+    "notes": "Corrected 2026-11-23: Mehtab Bagh is across the Yamuna from the Taj Mahal, so the previous 0.6 km / 0 min figures (straight line across the river) were wrong. Agra district administration gives about 8 km from Agra Fort via the Ambedkar (Yamuna) bridge; road distance from the Taj Mahal is assumed similar (about 8 km, not measured). Fare re-derived with the same calibration as the other Agra auto-rickshaw records (estimate range INR 100-150); per vehicle, one-way, negotiated. Checked 2026-11-23.",
     "origin_id": "place-taj-mahal",
     "destination_id": "place-mehtab-bagh",
     "duration_status": "estimated"
@@ -379,12 +379,12 @@
   {
     "id": "taj-mahal-mehtab-bagh-taxi",
     "transport_type": "taxi",
-    "estimated_cost": 60,
+    "estimated_cost": 175,
     "currency": "INR",
-    "estimated_duration_minutes": 0,
+    "estimated_duration_minutes": 25,
     "cost_status": "estimated",
-    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.179,78.0437&travelmode=driving",
-    "notes": "Straight-line 0.5 km (computed); estimated road distance about 0.6 km (straight-line x 1.35). Estimate range INR 50-70; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "source_url": "https://agra.nic.in/?p=29756",
+    "notes": "Corrected 2026-11-23: Mehtab Bagh is across the Yamuna from the Taj Mahal, so the previous 0.6 km / 0 min figures (straight line across the river) were wrong. Agra district administration gives about 8 km from Agra Fort via the Ambedkar (Yamuna) bridge; road distance from the Taj Mahal is assumed similar (about 8 km, not measured). Fare re-derived with the same calibration as the other Agra taxi records (estimate range INR 140-210); per vehicle, one-way, negotiated. Checked 2026-11-23.",
     "origin_id": "place-taj-mahal",
     "destination_id": "place-mehtab-bagh",
     "duration_status": "estimated"
@@ -557,5 +557,109 @@
     "origin_id": "place-taj-mahal",
     "destination_id": "place-sur-sarovar-bird-sanctuary",
     "duration_status": "estimated"
+  },
+  {
+    "id": "delhi-agra-gatimaan-express-train",
+    "transport_type": "train",
+    "estimated_cost": 1105,
+    "currency": "INR",
+    "estimated_duration_minutes": 100,
+    "cost_status": "estimated",
+    "source_url": "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC",
+    "notes": "12050 Gatimaan Express, Hazrat Nizamuddin (NZM) 08:10 -> Agra Cantt (AGC) 09:50, 188 km; runs every day except Friday. Fare: AC Chair Car (CC), per adult, one-way, general quota; published figures range INR 860-1,105 (catering included); Executive Class INR 1,695-2,260. Fares are not from IRCTC; confirm on irctc.co.in. Checked 2026-11-23.",
+    "origin_id": "city-delhi",
+    "destination_id": "city-agra",
+    "duration_status": "estimated"
+  },
+  {
+    "id": "agra-delhi-gatimaan-express-train",
+    "transport_type": "train",
+    "estimated_cost": 1105,
+    "currency": "INR",
+    "estimated_duration_minutes": 115,
+    "cost_status": "estimated",
+    "source_url": "https://erail.in/train-enquiry/12049",
+    "notes": "12049 Gatimaan Express, Agra Cantt (AGC) dep. 17:35 (some listings 17:40) -> Hazrat Nizamuddin (NZM) 19:30; runs every day except Friday. Fare: AC Chair Car, per adult, one-way, general quota; published range INR 860-1,105. Confirm on irctc.co.in. Checked 2026-11-23.",
+    "origin_id": "city-agra",
+    "destination_id": "city-delhi",
+    "duration_status": "estimated"
+  },
+  {
+    "id": "delhi-agra-taj-express-train",
+    "transport_type": "train",
+    "estimated_cost": 85,
+    "currency": "INR",
+    "estimated_duration_minutes": 140,
+    "cost_status": "estimated",
+    "source_url": "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC",
+    "notes": "12280 Taj Express, Hazrat Nizamuddin 07:05 -> Agra Cantt 09:25, daily, 195 km. Fare: Second Sitting (2S) reserved, per adult, one-way, from the erail.in Mail/Express fare table (INR 85; AC Chair Car INR 325). Not confirmed on IRCTC. Checked 2026-11-23.",
+    "origin_id": "city-delhi",
+    "destination_id": "city-agra",
+    "duration_status": "estimated"
+  },
+  {
+    "id": "agra-fatehpur-sikri-train",
+    "transport_type": "train",
+    "estimated_cost": 30,
+    "currency": "INR",
+    "estimated_duration_minutes": 41,
+    "cost_status": "estimated",
+    "source_url": "https://erail.in/trains-between-stations/idgah-(agra)-IDH/fatehpur-sikri-FTS",
+    "notes": "Example: 19038 Avadh Express, Idgah (Agra) 06:30 -> Fatehpur Sikri 07:11, daily, 34 km. 11 trains listed, incl. 59814 Agra Fort-Kota Passenger 07:00 -> 07:44 and 69158 MEMU 15:42 -> 16:30. Fare: General (unreserved) class, per adult, one-way, from the erail.in Mail/Express fare table; Sleeper INR 140. Fatehpur Sikri station is about 1 km from the monument (not measured). Checked 2026-11-23.",
+    "origin_id": "city-agra",
+    "destination_id": "city-fatehpur-sikri",
+    "duration_status": "estimated"
+  },
+  {
+    "id": "agra-bharatpur-train",
+    "transport_type": "train",
+    "estimated_cost": 35,
+    "currency": "INR",
+    "estimated_duration_minutes": 55,
+    "cost_status": "estimated",
+    "source_url": "https://erail.in/trains-between-stations/agra-fort-AF/bharatpur-jn-BTE",
+    "notes": "Example: 12195 Ajmer Intercity, Agra Fort (AF) 06:00 -> Bharatpur Jn 06:55, daily, 54 km; also 22988 AF-Ajmer SF Express 14:35 -> 15:30 daily. Fare: General class, per adult, one-way, from the erail.in fare table (2S INR 50, Sleeper INR 140). Keoladeo National Park is a short road trip from Bharatpur Jn (distance not measured). Checked 2026-11-23.",
+    "origin_id": "city-agra",
+    "destination_id": "city-bharatpur",
+    "duration_status": "estimated"
+  },
+  {
+    "id": "agra-bhopal-shatabdi-train",
+    "transport_type": "train",
+    "estimated_cost": null,
+    "currency": "INR",
+    "estimated_duration_minutes": 377,
+    "cost_status": "unknown",
+    "source_url": "https://erail.in/trains-between-stations/agra-cantt-AGC/bhopal-jn-BPL",
+    "notes": "12002 Shatabdi Express, Agra Cantt 07:55 -> Bhopal Jn 14:12, daily, 507 km. Other options: 22222 Rajdhani 18:47 -> 00:35, 20172 Vande Bharat 16:20 -> Rani Kamlapati 22:16. Shatabdi/Vande Bharat fares were not available from a reliable page, so cost is unknown. Mail/Express reference fares for 506 km: Sleeper INR 300, 3A INR 815. Checked 2026-11-23.",
+    "origin_id": "city-agra",
+    "destination_id": "city-bhopal",
+    "duration_status": "estimated"
+  },
+  {
+    "id": "taj-mahal-agra-fort-metro",
+    "transport_type": "metro",
+    "estimated_cost": 10,
+    "currency": "INR",
+    "estimated_duration_minutes": null,
+    "cost_status": "estimated",
+    "source_url": "https://mapa-metro.com/en/india/agra/agra-metro-map.htm",
+    "notes": "Agra Metro Yellow Line (UPMRC), Taj Mahal station -> Agra Fort station (also listed as Dr. Ambedkar Chowk), 1 stop. Fare slabs reported as INR 10 / 15 / 20 by number of stations; per person, one-way. Service about 06:00-22:00, every 6-10 min. Walking legs: Taj Mahal station is outside the Taj's 500 m no-vehicle zone; Agra Fort station is adjacent to the fort (agra.nic.in). Door-to-door time not known. Fare not confirmed on an official UPMRC page. Checked 2026-11-23.",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-agra-fort",
+    "duration_status": "unknown"
+  },
+  {
+    "id": "taj-mahal-jama-masjid-agra-metro",
+    "transport_type": "metro",
+    "estimated_cost": 15,
+    "currency": "INR",
+    "estimated_duration_minutes": null,
+    "cost_status": "estimated",
+    "source_url": "https://mapa-metro.com/en/india/agra/agra-metro-map.htm",
+    "notes": "Agra Metro Yellow Line, Taj Mahal station -> Mankameshwar station, 2 stops (INR 15 slab), per person, one-way. Mankameshwar station (27.1775, 78.0179) is about 0.5 km from Jama Masjid (straight line, computed). Fare not confirmed on an official UPMRC page. Checked 2026-11-23.",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-jama-masjid-agra",
+    "duration_status": "unknown"
   }
 ]

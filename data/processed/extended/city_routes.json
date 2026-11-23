@@ -1,0 +1,615 @@
+[
+  {
+    "route_id": "city-delhi__city-agra",
+    "source_city_id": "city-delhi",
+    "destination_city_id": "city-agra",
+    "source_city": "Delhi",
+    "destination_city": "Agra",
+    "distance": {
+      "rail_km": 188,
+      "road_km": null,
+      "status": "ESTIMATED",
+      "note": "Rail km NZM-AGC from erail.in; road distance not sourced."
+    },
+    "transport_modes": [
+      "train",
+      "bus",
+      "road"
+    ],
+    "train": {
+      "available": true,
+      "status": "ESTIMATED",
+      "trains": [
+        {
+          "number": "12050",
+          "name": "Gatimaan Express",
+          "from_station": "Hazrat Nizamuddin (NZM)",
+          "departs": "08:10",
+          "to_station": "Agra Cantt (AGC)",
+          "arrives": "09:50",
+          "run_days": "Daily except Friday",
+          "distance_km": 188,
+          "classes": [
+            "CC",
+            "EC"
+          ]
+        },
+        {
+          "number": "22470",
+          "name": "Vande Bharat Express",
+          "from_station": "Hazrat Nizamuddin (NZM)",
+          "departs": "06:00",
+          "to_station": "Agra Cantt (AGC)",
+          "arrives": "07:40",
+          "run_days": "not shown",
+          "distance_km": 188,
+          "classes": null
+        },
+        {
+          "number": "20172",
+          "name": "Vande Bharat Express",
+          "from_station": "Hazrat Nizamuddin (NZM)",
+          "departs": "14:40",
+          "to_station": "Agra Cantt (AGC)",
+          "arrives": "16:16",
+          "run_days": "not shown",
+          "distance_km": 188,
+          "classes": null
+        },
+        {
+          "number": "12002",
+          "name": "Shatabdi Express",
+          "from_station": "New Delhi (NDLS)",
+          "departs": "06:00",
+          "to_station": "Agra Cantt (AGC)",
+          "arrives": "07:50",
+          "run_days": "Daily",
+          "distance_km": 194,
+          "classes": null
+        },
+        {
+          "number": "12280",
+          "name": "Taj Express",
+          "from_station": "Hazrat Nizamuddin (NZM)",
+          "departs": "07:05",
+          "to_station": "Agra Cantt (AGC)",
+          "arrives": "09:25",
+          "run_days": "Daily",
+          "distance_km": 195,
+          "classes": null
+        },
+        {
+          "number": "12618",
+          "name": "Mangala Lakshadweep Express",
+          "from_station": "Hazrat Nizamuddin (NZM)",
+          "departs": "05:35",
+          "to_station": "Agra Cantt (AGC)",
+          "arrives": "08:20",
+          "run_days": "Daily",
+          "distance_km": 188,
+          "classes": null
+        },
+        {
+          "number": "22222",
+          "name": "CSMT Rajdhani",
+          "from_station": "Hazrat Nizamuddin (NZM)",
+          "departs": "16:55",
+          "to_station": "Agra Cantt (AGC)",
+          "arrives": "18:45",
+          "run_days": "Daily",
+          "distance_km": 187,
+          "classes": null
+        }
+      ],
+      "fares": [
+        {
+          "train": "12050 Gatimaan",
+          "fare_class": "CC",
+          "amount_inr_min": 860,
+          "amount_inr_max": 1105,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://www.railmitra.com/blog/gatimaan-express-guide-timings-fares",
+            "https://travelkhana.com/rail-info/?p=4728"
+          ]
+        },
+        {
+          "train": "12050 Gatimaan",
+          "fare_class": "EC",
+          "amount_inr_min": 1695,
+          "amount_inr_max": 2260,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://www.railmitra.com/blog/gatimaan-express-guide-timings-fares",
+            "https://travelkhana.com/rail-info/?p=4728"
+          ]
+        },
+        {
+          "train": "Mail/Express (e.g. 12280)",
+          "fare_class": "2S",
+          "amount_inr_min": 85,
+          "amount_inr_max": 85,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC"
+          ]
+        },
+        {
+          "train": "Mail/Express",
+          "fare_class": "CC",
+          "amount_inr_min": 325,
+          "amount_inr_max": 325,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC"
+          ]
+        },
+        {
+          "train": "Mail/Express",
+          "fare_class": "SL",
+          "amount_inr_min": 140,
+          "amount_inr_max": 140,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC"
+          ]
+        },
+        {
+          "train": "Mail/Express",
+          "fare_class": "3A",
+          "amount_inr_min": 495,
+          "amount_inr_max": 495,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC"
+          ]
+        },
+        {
+          "train": "Vande Bharat / Shatabdi",
+          "fare_class": "CC/EC",
+          "amount_inr_min": null,
+          "amount_inr_max": null,
+          "status": "UNKNOWN",
+          "source_urls": []
+        }
+      ],
+      "source_urls": [
+        "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC",
+        "https://erail.in/train-enquiry/12049"
+      ],
+      "booking_url": "https://www.irctc.co.in"
+    },
+    "bus": {
+      "available": true,
+      "status": "UNKNOWN",
+      "info": "UPSRTC operates Agra services (Idgah/ISBT); Delhi-Agra fare and timetable not retrieved.",
+      "fare_inr": null,
+      "booking_url": "https://www.upsrtc.up.gov.in"
+    },
+    "flight": {
+      "available": false,
+      "status": "NOT_APPLICABLE",
+      "info": "No scheduled Delhi-Agra flights; Agra (AGR) is served by IndiGo to other cities only.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Agra_Airport",
+        "https://www.skyscanner.co.in/flights-to/AGR"
+      ]
+    },
+    "transport_record_ids": [
+      "delhi-agra-gatimaan-express-train",
+      "delhi-agra-taj-express-train"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "route_id": "city-agra__city-delhi",
+    "source_city_id": "city-agra",
+    "destination_city_id": "city-delhi",
+    "source_city": "Agra",
+    "destination_city": "Delhi",
+    "distance": {
+      "rail_km": 188,
+      "road_km": null,
+      "status": "ESTIMATED",
+      "note": "Rail km; road not sourced."
+    },
+    "transport_modes": [
+      "train",
+      "bus",
+      "road"
+    ],
+    "train": {
+      "available": true,
+      "status": "ESTIMATED",
+      "trains": [
+        {
+          "number": "12049",
+          "name": "Gatimaan Express",
+          "from_station": "Agra Cantt (AGC)",
+          "departs": "17:35",
+          "to_station": "Hazrat Nizamuddin (NZM)",
+          "arrives": "19:30",
+          "run_days": "Daily except Friday",
+          "distance_km": 187,
+          "classes": [
+            "CC",
+            "EC"
+          ]
+        }
+      ],
+      "fares": [
+        {
+          "train": "12049 Gatimaan",
+          "fare_class": "CC",
+          "amount_inr_min": 860,
+          "amount_inr_max": 1105,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://www.railmitra.com/blog/gatimaan-express-guide-timings-fares",
+            "https://travelkhana.com/rail-info/?p=4728"
+          ]
+        }
+      ],
+      "source_urls": [
+        "https://erail.in/train-enquiry/12049"
+      ],
+      "booking_url": "https://www.irctc.co.in"
+    },
+    "bus": {
+      "available": true,
+      "status": "UNKNOWN",
+      "info": "Fare/timetable not retrieved.",
+      "fare_inr": null,
+      "booking_url": "https://www.upsrtc.up.gov.in"
+    },
+    "flight": {
+      "available": false,
+      "status": "NOT_APPLICABLE",
+      "info": "No scheduled Agra-Delhi flights.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Agra_Airport"
+      ]
+    },
+    "transport_record_ids": [
+      "agra-delhi-gatimaan-express-train"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "route_id": "city-agra__city-fatehpur-sikri",
+    "source_city_id": "city-agra",
+    "destination_city_id": "city-fatehpur-sikri",
+    "source_city": "Agra",
+    "destination_city": "Fatehpur Sikri",
+    "distance": {
+      "rail_km": 34,
+      "road_km_range": [
+        36,
+        40
+      ],
+      "status": "VERIFIED",
+      "note": "Road 36-40 km west via NH-21 (Agra district administration); rail 34 km Idgah-Fatehpur Sikri (erail.in)."
+    },
+    "transport_modes": [
+      "train",
+      "bus",
+      "taxi"
+    ],
+    "train": {
+      "available": true,
+      "status": "ESTIMATED",
+      "trains": [
+        {
+          "number": "19038",
+          "name": "Avadh Express",
+          "from_station": "Idgah (IDH)",
+          "departs": "06:30",
+          "to_station": "Fatehpur Sikri (FTS)",
+          "arrives": "07:11",
+          "run_days": "Daily",
+          "distance_km": 34,
+          "classes": null
+        },
+        {
+          "number": "59814",
+          "name": "Agra Fort-Kota Passenger",
+          "from_station": "Idgah (IDH)",
+          "departs": "07:00",
+          "to_station": "Fatehpur Sikri (FTS)",
+          "arrives": "07:44",
+          "run_days": "Daily",
+          "distance_km": 34,
+          "classes": null
+        },
+        {
+          "number": "69158",
+          "name": "Jabalpur-Bayana MEMU",
+          "from_station": "Idgah (IDH)",
+          "departs": "15:42",
+          "to_station": "Fatehpur Sikri (FTS)",
+          "arrives": "16:30",
+          "run_days": "Daily",
+          "distance_km": 34,
+          "classes": null
+        },
+        {
+          "number": "19818",
+          "name": "Jabalpur-Ratlam Express",
+          "from_station": "Idgah (IDH)",
+          "departs": "20:40",
+          "to_station": "Fatehpur Sikri (FTS)",
+          "arrives": "21:24",
+          "run_days": "Daily",
+          "distance_km": 34,
+          "classes": null
+        }
+      ],
+      "fares": [
+        {
+          "train": "Mail/Express",
+          "fare_class": "GN",
+          "amount_inr_min": 30,
+          "amount_inr_max": 30,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/idgah-(agra)-IDH/fatehpur-sikri-FTS"
+          ]
+        },
+        {
+          "train": "Mail/Express",
+          "fare_class": "SL",
+          "amount_inr_min": 140,
+          "amount_inr_max": 140,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/idgah-(agra)-IDH/fatehpur-sikri-FTS"
+          ]
+        }
+      ],
+      "source_urls": [
+        "https://erail.in/trains-between-stations/idgah-(agra)-IDH/fatehpur-sikri-FTS"
+      ],
+      "booking_url": "https://www.irctc.co.in"
+    },
+    "bus": {
+      "available": true,
+      "status": "UNKNOWN",
+      "info": "Regular UPSRTC buses from ISBT/Idgah (Agra district administration); official fare not retrieved. A blog reports INR 61.",
+      "fare_inr": null,
+      "booking_url": "https://www.upsrtc.up.gov.in",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+      ]
+    },
+    "flight": {
+      "available": false,
+      "status": "NOT_APPLICABLE",
+      "info": "No airport at Fatehpur Sikri.",
+      "source_urls": []
+    },
+    "transport_record_ids": [
+      "agra-fatehpur-sikri-upsrtc-bus",
+      "agra-fatehpur-sikri-train"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "route_id": "city-agra__city-bharatpur",
+    "source_city_id": "city-agra",
+    "destination_city_id": "city-bharatpur",
+    "source_city": "Agra",
+    "destination_city": "Bharatpur",
+    "distance": {
+      "rail_km": 54,
+      "road_km": null,
+      "status": "ESTIMATED",
+      "note": "Rail km Agra Fort-Bharatpur Jn (erail.in)."
+    },
+    "transport_modes": [
+      "train",
+      "bus",
+      "taxi"
+    ],
+    "train": {
+      "available": true,
+      "status": "ESTIMATED",
+      "trains": [
+        {
+          "number": "12195",
+          "name": "Ajmer Intercity",
+          "from_station": "Agra Fort (AF)",
+          "departs": "06:00",
+          "to_station": "Bharatpur Jn (BTE)",
+          "arrives": "06:55",
+          "run_days": "Daily",
+          "distance_km": 54,
+          "classes": null
+        },
+        {
+          "number": "22988",
+          "name": "Agra Fort-Ajmer SF Express",
+          "from_station": "Agra Fort (AF)",
+          "departs": "14:35",
+          "to_station": "Bharatpur Jn (BTE)",
+          "arrives": "15:30",
+          "run_days": "Daily",
+          "distance_km": 54,
+          "classes": null
+        },
+        {
+          "number": "19665",
+          "name": "Kurukshetra-Udaipur Express",
+          "from_station": "Agra Cantt (AGC)",
+          "departs": "17:20",
+          "to_station": "Bharatpur Jn (BTE)",
+          "arrives": "18:20",
+          "run_days": "Daily",
+          "distance_km": 53,
+          "classes": null
+        },
+        {
+          "number": "12987",
+          "name": "Sealdah-Ajmer SF Express",
+          "from_station": "Agra Fort (AF)",
+          "departs": "18:40",
+          "to_station": "Bharatpur Jn (BTE)",
+          "arrives": "19:50",
+          "run_days": "Daily",
+          "distance_km": 54,
+          "classes": null
+        }
+      ],
+      "fares": [
+        {
+          "train": "Mail/Express",
+          "fare_class": "GN",
+          "amount_inr_min": 35,
+          "amount_inr_max": 35,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/agra-fort-AF/bharatpur-jn-BTE"
+          ]
+        },
+        {
+          "train": "Mail/Express",
+          "fare_class": "2S",
+          "amount_inr_min": 50,
+          "amount_inr_max": 50,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/agra-fort-AF/bharatpur-jn-BTE"
+          ]
+        }
+      ],
+      "source_urls": [
+        "https://erail.in/trains-between-stations/agra-fort-AF/bharatpur-jn-BTE"
+      ],
+      "booking_url": "https://www.irctc.co.in"
+    },
+    "bus": {
+      "available": true,
+      "status": "UNKNOWN",
+      "info": "Buses from Agra Idgah to Bharatpur reported by a travel site; fare not found.",
+      "fare_inr": null,
+      "booking_url": null
+    },
+    "flight": {
+      "available": false,
+      "status": "NOT_APPLICABLE",
+      "info": "No scheduled flights.",
+      "source_urls": []
+    },
+    "transport_record_ids": [
+      "agra-bharatpur-train"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "route_id": "city-agra__city-bhopal",
+    "source_city_id": "city-agra",
+    "destination_city_id": "city-bhopal",
+    "source_city": "Agra",
+    "destination_city": "Bhopal",
+    "distance": {
+      "rail_km": 507,
+      "road_km": null,
+      "status": "ESTIMATED",
+      "note": "Rail km AGC-BPL (erail.in)."
+    },
+    "transport_modes": [
+      "train"
+    ],
+    "train": {
+      "available": true,
+      "status": "ESTIMATED",
+      "trains": [
+        {
+          "number": "12002",
+          "name": "Shatabdi Express",
+          "from_station": "Agra Cantt (AGC)",
+          "departs": "07:55",
+          "to_station": "Bhopal Jn (BPL)",
+          "arrives": "14:12",
+          "run_days": "Daily",
+          "distance_km": 507,
+          "classes": null
+        },
+        {
+          "number": "22222",
+          "name": "CSMT Rajdhani",
+          "from_station": "Agra Cantt (AGC)",
+          "departs": "18:47",
+          "to_station": "Bhopal Jn (BPL)",
+          "arrives": "00:35 (+1)",
+          "run_days": "Daily",
+          "distance_km": 507,
+          "classes": null
+        },
+        {
+          "number": "20172",
+          "name": "Vande Bharat Express",
+          "from_station": "Agra Cantt (AGC)",
+          "departs": "16:20",
+          "to_station": "Rani Kamlapati (RKMP)",
+          "arrives": "22:16",
+          "run_days": "not shown",
+          "distance_km": 512,
+          "classes": null
+        }
+      ],
+      "fares": [
+        {
+          "train": "Mail/Express",
+          "fare_class": "SL",
+          "amount_inr_min": 300,
+          "amount_inr_max": 300,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/agra-cantt-AGC/bhopal-jn-BPL"
+          ]
+        },
+        {
+          "train": "Mail/Express",
+          "fare_class": "3A",
+          "amount_inr_min": 815,
+          "amount_inr_max": 815,
+          "status": "ESTIMATED",
+          "source_urls": [
+            "https://erail.in/trains-between-stations/agra-cantt-AGC/bhopal-jn-BPL"
+          ]
+        },
+        {
+          "train": "Shatabdi / Vande Bharat / Rajdhani",
+          "fare_class": "all",
+          "amount_inr_min": null,
+          "amount_inr_max": null,
+          "status": "UNKNOWN",
+          "source_urls": []
+        }
+      ],
+      "source_urls": [
+        "https://erail.in/trains-between-stations/agra-cantt-AGC/bhopal-jn-BPL"
+      ],
+      "booking_url": "https://www.irctc.co.in"
+    },
+    "bus": {
+      "available": null,
+      "status": "UNKNOWN",
+      "info": "Not researched.",
+      "fare_inr": null,
+      "booking_url": null
+    },
+    "flight": {
+      "available": null,
+      "status": "UNKNOWN",
+      "info": "No direct AGR-BHO service found in airport listings; not confirmed.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Agra_Airport"
+      ]
+    },
+    "transport_record_ids": [
+      "agra-bhopal-shatabdi-train"
+    ],
+    "last_verified": "2026-11-23"
+  }
+]

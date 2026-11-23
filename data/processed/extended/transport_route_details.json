@@ -1,0 +1,1430 @@
+[
+  {
+    "route_id": "agra-fatehpur-sikri-upsrtc-bus",
+    "origin_id": "city-agra",
+    "destination_id": "city-fatehpur-sikri",
+    "level": "city",
+    "transport_mode": "bus",
+    "transport_provider": "Uttar Pradesh State Road Transport Corporation (UPSRTC) and private operators",
+    "distance": {
+      "value_km": null,
+      "kind": null,
+      "status": "UNKNOWN",
+      "basis": "Endpoints have no coordinates."
+    },
+    "fare": {
+      "amount_inr": null,
+      "fare_category": "per person, one-way",
+      "status": "UNKNOWN"
+    },
+    "duration": {
+      "minutes": null,
+      "status": "UNKNOWN"
+    },
+    "route_information": "The Agra District Administration reports regular UPSRTC buses from ISBT/Idgah; fares and schedules were not verified.",
+    "booking_or_information_url": "https://www.upsrtc.up.gov.in",
+    "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "fatehpur-sikri-parking-battery-bus",
+    "origin_id": "place-fatehpur-sikri-parking-area",
+    "destination_id": "place-fatehpur-sikri-monument-gate",
+    "level": "place",
+    "transport_mode": "battery bus",
+    "transport_provider": "Authorised operator at Fatehpur Sikri",
+    "distance": {
+      "value_km": null,
+      "kind": null,
+      "status": "UNKNOWN",
+      "basis": "Endpoints have no coordinates."
+    },
+    "fare": {
+      "amount_inr": null,
+      "fare_category": "per person",
+      "status": "UNKNOWN"
+    },
+    "duration": {
+      "minutes": null,
+      "status": "UNKNOWN"
+    },
+    "route_information": "The Agra District Administration reports authorised battery buses between the parking area and monument gate; fares were not verified.",
+    "booking_or_information_url": null,
+    "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-agra-fort-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-agra-fort",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 2.0,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 65,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 10,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 2.1 km (computed); estimated road distance about 2.9 km (straight-line x 1.35). Estimate range INR 50-75; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1795,78.0211&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-agra-fort-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-agra-fort",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 2.0,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 95,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 10,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 2.1 km (computed); estimated road distance about 2.9 km (straight-line x 1.35). Estimate range INR 75-115; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1795,78.0211&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-akbar-s-tomb-sikandra-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-akbar-tomb-sikandra",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 10.4,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 195,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 45,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 10.3 km (computed); estimated road distance about 13.9 km (straight-line x 1.35). Estimate range INR 160-235; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2205,77.9511&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-akbar-s-tomb-sikandra-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-akbar-tomb-sikandra",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 10.4,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 275,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 40,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 10.3 km (computed); estimated road distance about 13.9 km (straight-line x 1.35). Estimate range INR 220-330; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2205,77.9511&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-balkeshwar-temple-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-balkeshwar-temple-agra",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 4.9,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 110,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 20,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 4.9 km (computed); estimated road distance about 6.6 km (straight-line x 1.35). Coordinates from Member 1, need a map check. Estimate range INR 85-130; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2156,78.0235&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-balkeshwar-temple-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-balkeshwar-temple-agra",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 4.9,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 155,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 20,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 4.9 km (computed); estimated road distance about 6.6 km (straight-line x 1.35). Coordinates from Member 1, need a map check. Estimate range INR 125-185; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2156,78.0235&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-chini-ka-rauza-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-chini-ka-rauza",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 3.0,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 85,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.3 km (computed); estimated road distance about 4.5 km (straight-line x 1.35). Estimate range INR 65-100; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23. Note 2026-11-23: destination coordinates were corrected to 27.2009, 78.0344 (previous point was ~1 km west); straight-line distance above was computed from the old point.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2,78.0233&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-chini-ka-rauza-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-chini-ka-rauza",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 3.0,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 120,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.3 km (computed); estimated road distance about 4.5 km (straight-line x 1.35). Estimate range INR 100-145; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23. Note 2026-11-23: destination coordinates were corrected to 27.2009, 78.0344 (previous point was ~1 km west); straight-line distance above was computed from the old point.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2,78.0233&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-delhi-gate-agra-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-delhi-gate-agra",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 3.1,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 80,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.1 km (computed); estimated road distance about 4.2 km (straight-line x 1.35). Coordinates from Member 1, need a map check. Estimate range INR 65-95; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1852,78.0128&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-delhi-gate-agra-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-delhi-gate-agra",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 3.1,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 115,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.1 km (computed); estimated road distance about 4.2 km (straight-line x 1.35). Coordinates from Member 1, need a map check. Estimate range INR 95-140; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1852,78.0128&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-fatehpur-sikri-bus",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-fatehpur-sikri",
+    "level": "place",
+    "transport_mode": "bus",
+    "transport_provider": "Uttar Pradesh State Road Transport Corporation (UPSRTC) and private operators",
+    "distance": {
+      "value_km": 38.8,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 61,
+      "fare_category": "per person, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 105,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 38.8 km (computed); estimated road distance about 46.5 km (straight-line x 1.2). Day-trip destination. A blog reports UPSRTC bus INR 61 each way from Agra Idgah, 1.5-2 hours (105 = midpoint), per person, one-way. Add about INR 100-150 for an auto over the last 3 km. Cost and time start at Idgah, so getting from the Taj Mahal to Idgah is not included and no total is given. Not verified on an official page. Checked 2026-10-23.",
+    "booking_or_information_url": "https://www.upsrtc.up.gov.in",
+    "source_url": "https://www.machupicchu.org/fatehpur-sikri-day-trip-from-agra-2026-unesco-ghost-city-guide.htm",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-fatehpur-sikri-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-fatehpur-sikri",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 38.8,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 840,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 60,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 38.8 km (computed); estimated road distance about 46.5 km (straight-line x 1.2). Day-trip destination. Estimate range INR 670-1010; per vehicle, one-way (not per person). Rate calibrated to a blog's INR 1,500-2,500 round- trip private taxi to Fatehpur Sikri (machupicchu.org); about INR 18 per km one-way, waiting time not included. Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.094,77.661&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-guru-ka-taal-gurudwara-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-guru-ka-taal",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 8.4,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 165,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 40,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 8.4 km (computed); estimated road distance about 11.4 km (straight-line x 1.35). Estimate range INR 135-200; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2117,77.9677&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-guru-ka-taal-gurudwara-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-guru-ka-taal",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 8.4,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 230,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 35,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 8.4 km (computed); estimated road distance about 11.4 km (straight-line x 1.35). Estimate range INR 185-280; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2117,77.9677&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-tomb-of-itmad-ud-daulah-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-itimad-ud-daulah",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 2.2,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 65,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 10,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 2.3 km (computed); estimated road distance about 3.1 km (straight-line x 1.35). Estimate range INR 55-80; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.193,78.0309&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-tomb-of-itmad-ud-daulah-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-itimad-ud-daulah",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 2.2,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 100,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 10,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 2.3 km (computed); estimated road distance about 3.1 km (straight-line x 1.35). Estimate range INR 80-120; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.193,78.0309&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-jama-masjid-agra-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-jama-masjid-agra",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 2.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 75,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 2.8 km (computed); estimated road distance about 3.8 km (straight-line x 1.35). Estimate range INR 60-90; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.183,78.0147&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-jama-masjid-agra-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-jama-masjid-agra",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 2.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 110,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 10,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 2.8 km (computed); estimated road distance about 3.8 km (straight-line x 1.35). Estimate range INR 90-135; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.183,78.0147&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-keoladeo-national-park-bus",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-keoladeo-national-park",
+    "level": "place",
+    "transport_mode": "bus",
+    "transport_provider": "Uttar Pradesh State Road Transport Corporation (UPSRTC) and private operators",
+    "distance": {
+      "value_km": 51.5,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 90,
+      "fare_category": "per person, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 80,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 51.5 km (computed); estimated road distance about 61.8 km (straight-line x 1.2). Day-trip destination. A travel site says buses leave Agra Idgah for Bharatpur and take under 1.5 hours; no fare was found, so cost is scaled from the Fatehpur Sikri bus rate (about INR 1.4 per km). Per person, one-way. Starts at Idgah, so reaching Idgah from the Taj Mahal is not included. Checked 2026-10-23.",
+    "booking_or_information_url": "https://www.upsrtc.up.gov.in",
+    "source_url": "https://tapioca.co.in/?p=3878",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-keoladeo-national-park-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-keoladeo-national-park",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 51.5,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 1110,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 80,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 51.5 km (computed); estimated road distance about 61.8 km (straight-line x 1.2). Day-trip destination. Estimate range INR 890-1330; per vehicle, one-way (not per person). Rate calibrated to a blog's INR 1,500-2,500 round- trip private taxi to Fatehpur Sikri (machupicchu.org); about INR 18 per km one-way, waiting time not included. Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.159,77.522&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-kinari-bazaar-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-kinari-bazaar",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 2.9,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 75,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 2.9 km (computed); estimated road distance about 3.9 km (straight-line x 1.35). Estimate range INR 60-90; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1839,78.0149&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-kinari-bazaar-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-kinari-bazaar",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 2.9,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 110,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 10,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 2.9 km (computed); estimated road distance about 3.9 km (straight-line x 1.35). Estimate range INR 90-135; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1839,78.0149&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-mankameshwar-temple-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-mankameshwar-temple-agra",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 2.6,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 85,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.3 km (computed); estimated road distance about 4.5 km (straight-line x 1.35). Estimate range INR 65-100; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.188,78.012&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-mankameshwar-temple-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-mankameshwar-temple-agra",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 2.6,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 120,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.3 km (computed); estimated road distance about 4.5 km (straight-line x 1.35). Estimate range INR 95-145; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.188,78.012&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-tomb-of-mariam-uz-zamani-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-tomb-mariam-uz-zamani",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 10.8,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 205,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 50,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 10.8 km (computed); estimated road distance about 14.6 km (straight-line x 1.35). Estimate range INR 165-245; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2153,77.9427&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-tomb-of-mariam-uz-zamani-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-tomb-mariam-uz-zamani",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 10.8,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 285,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 45,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 10.8 km (computed); estimated road distance about 14.6 km (straight-line x 1.35). Estimate range INR 225-340; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2153,77.9427&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-mehtab-bagh-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-mehtab-bagh",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 8,
+      "kind": "road (approx.)",
+      "status": "ESTIMATED",
+      "basis": "Agra district page: ~8 km from Agra Fort via Ambedkar bridge; assumed similar from Taj."
+    },
+    "fare": {
+      "amount_inr": 125,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 30,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Corrected 2026-11-23: Mehtab Bagh is across the Yamuna from the Taj Mahal, so the previous 0.6 km / 0 min figures (straight line across the river) were wrong. Agra district administration gives about 8 km from Agra Fort via the Ambedkar (Yamuna) bridge; road distance from the Taj Mahal is assumed similar (about 8 km, not measured). Fare re-derived with the same calibration as the other Agra auto-rickshaw records (estimate range INR 100-150); per vehicle, one-way, negotiated. Checked 2026-11-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://agra.nic.in/?p=29756",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "taj-mahal-mehtab-bagh-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-mehtab-bagh",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 8,
+      "kind": "road (approx.)",
+      "status": "ESTIMATED",
+      "basis": "Agra district page: ~8 km from Agra Fort via Ambedkar bridge; assumed similar from Taj."
+    },
+    "fare": {
+      "amount_inr": 175,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 25,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Corrected 2026-11-23: Mehtab Bagh is across the Yamuna from the Taj Mahal, so the previous 0.6 km / 0 min figures (straight line across the river) were wrong. Agra district administration gives about 8 km from Agra Fort via the Ambedkar (Yamuna) bridge; road distance from the Taj Mahal is assumed similar (about 8 km, not measured). Fare re-derived with the same calibration as the other Agra taxi records (estimate range INR 140-210); per vehicle, one-way, negotiated. Checked 2026-11-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://agra.nic.in/?p=29756",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "taj-mahal-pinch-of-spice-fatehabad-road-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-pinch-of-spice-fatehabad-road",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 1.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 55,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 10,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 1.7 km (computed); estimated road distance about 2.3 km (straight-line x 1.35). Estimate range INR 45-70; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1599,78.0431&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-pinch-of-spice-fatehabad-road-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-pinch-of-spice-fatehabad-road",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 1.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 85,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 5,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 1.7 km (computed); estimated road distance about 2.3 km (straight-line x 1.35). Estimate range INR 70-105; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1599,78.0431&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-pinch-of-spice-wazirpura-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-pinch-of-spice-fatehabad-road",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 1.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 105,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 20,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 4.5 km (computed); estimated road distance about 6.1 km (straight-line x 1.35). Estimate range INR 85-125; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2019,78.0077&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-pinch-of-spice-wazirpura-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-pinch-of-spice-fatehabad-road",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 1.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 150,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 20,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 4.5 km (computed); estimated road distance about 6.1 km (straight-line x 1.35). Estimate range INR 120-175; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2019,78.0077&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-ram-bagh-aram-bagh-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-ram-bagh",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 3.8,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 90,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.8 km (computed); estimated road distance about 5.1 km (straight-line x 1.35). Estimate range INR 75-110; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2087,78.0457&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-ram-bagh-aram-bagh-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-ram-bagh",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 3.8,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 130,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.8 km (computed); estimated road distance about 5.1 km (straight-line x 1.35). Estimate range INR 105-155; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2087,78.0457&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-roman-catholic-cemetery-agra-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-roman-catholic-cemetery-agra",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 4.6,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 105,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 20,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 4.6 km (computed); estimated road distance about 6.2 km (straight-line x 1.35). Coordinates from Member 1, need a map check. Estimate range INR 85-125; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2035,78.0088&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-roman-catholic-cemetery-agra-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-roman-catholic-cemetery-agra",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 4.6,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 150,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 20,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 4.6 km (computed); estimated road distance about 6.2 km (straight-line x 1.35). Coordinates from Member 1, need a map check. Estimate range INR 120-180; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2035,78.0088&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-sadar-bazaar-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-sadar-bazaar",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 3.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 90,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.7 km (computed); estimated road distance about 4.9 km (straight-line x 1.35). Estimate range INR 70-105; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1588,78.01&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-sadar-bazaar-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-sadar-bazaar",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 3.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 130,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 15,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 3.7 km (computed); estimated road distance about 4.9 km (straight-line x 1.35). Estimate range INR 105-155; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.1588,78.01&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-soami-bagh-radhasoami-samadhi-auto-rickshaw",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-soami-bagh-samadhi",
+    "level": "place",
+    "transport_mode": "auto-rickshaw",
+    "transport_provider": "Independent auto-rickshaw operators / ride apps",
+    "distance": {
+      "value_km": 6.2,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 130,
+      "fare_category": "per vehicle, one-way, negotiated",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 30,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 6.2 km (computed); estimated road distance about 8.4 km (straight-line x 1.35). Estimate range INR 105-155; per vehicle, one-way, negotiated fare (not per person). Auto-rickshaws are mostly unmetered, so agree the fare first. Rate calibrated to INR 40-120 reported for app autos in central Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026- 10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2228,78.0093&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-soami-bagh-radhasoami-samadhi-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-soami-bagh-samadhi",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 6.2,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 185,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 25,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 6.2 km (computed); estimated road distance about 8.4 km (straight-line x 1.35). Estimate range INR 145-220; per vehicle, one-way (not per person). Rate calibrated to INR 100-300 reported for app car rides in Agra (goasia.cc). Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2228,78.0093&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "taj-mahal-sur-sarovar-bird-sanctuary-keetham-lake-taxi",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-sur-sarovar-bird-sanctuary",
+    "level": "place",
+    "transport_mode": "taxi",
+    "transport_provider": "Private taxis / ride apps (Uber, Ola, etc.)",
+    "distance": {
+      "value_km": 21.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 470,
+      "fare_category": "per vehicle, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 35,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Straight-line 21.7 km (computed); estimated road distance about 26.1 km (straight-line x 1.2). Day-trip destination. Estimate range INR 380-560; per vehicle, one-way (not per person). Rate calibrated to a blog's INR 1,500-2,500 round-trip private taxi to Fatehpur Sikri (machupicchu.org); about INR 18 per km one-way, waiting time not included. Not read from Google Maps; open source_url to check road distance and time. Checked 2026-10-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://www.google.com/maps/dir/?api=1&origin=27.1751,78.0421&destination=27.2517,77.84&travelmode=driving",
+    "last_verified": "2026-10-23",
+    "last_verified_note": "Date taken from the existing record notes ('Checked 2026-10-23'); not re-checked in this pass."
+  },
+  {
+    "route_id": "delhi-agra-gatimaan-express-train",
+    "origin_id": "city-delhi",
+    "destination_id": "city-agra",
+    "level": "city",
+    "transport_mode": "train",
+    "transport_provider": "Indian Railways",
+    "distance": {
+      "value_km": 188,
+      "kind": "rail",
+      "status": "ESTIMATED",
+      "basis": "Rail distance from erail.in timetable."
+    },
+    "fare": {
+      "amount_inr": 1105,
+      "fare_category": "per adult, one-way (class in notes)",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 100,
+      "status": "ESTIMATED"
+    },
+    "route_information": "12050 Gatimaan Express, Hazrat Nizamuddin (NZM) 08:10 -> Agra Cantt (AGC) 09:50, 188 km; runs every day except Friday. Fare: AC Chair Car (CC), per adult, one-way, general quota; published figures range INR 860-1,105 (catering included); Executive Class INR 1,695-2,260. Fares are not from IRCTC; confirm on irctc.co.in. Checked 2026-11-23.",
+    "booking_or_information_url": "https://www.irctc.co.in",
+    "source_url": "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "agra-delhi-gatimaan-express-train",
+    "origin_id": "city-agra",
+    "destination_id": "city-delhi",
+    "level": "city",
+    "transport_mode": "train",
+    "transport_provider": "Indian Railways",
+    "distance": {
+      "value_km": 188,
+      "kind": "rail",
+      "status": "ESTIMATED",
+      "basis": "Rail distance from erail.in timetable."
+    },
+    "fare": {
+      "amount_inr": 1105,
+      "fare_category": "per adult, one-way (class in notes)",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 115,
+      "status": "ESTIMATED"
+    },
+    "route_information": "12049 Gatimaan Express, Agra Cantt (AGC) dep. 17:35 (some listings 17:40) -> Hazrat Nizamuddin (NZM) 19:30; runs every day except Friday. Fare: AC Chair Car, per adult, one-way, general quota; published range INR 860-1,105. Confirm on irctc.co.in. Checked 2026-11-23.",
+    "booking_or_information_url": "https://www.irctc.co.in",
+    "source_url": "https://erail.in/train-enquiry/12049",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "delhi-agra-taj-express-train",
+    "origin_id": "city-delhi",
+    "destination_id": "city-agra",
+    "level": "city",
+    "transport_mode": "train",
+    "transport_provider": "Indian Railways",
+    "distance": {
+      "value_km": 195,
+      "kind": "rail",
+      "status": "ESTIMATED",
+      "basis": "Rail distance from erail.in timetable."
+    },
+    "fare": {
+      "amount_inr": 85,
+      "fare_category": "per adult, one-way (class in notes)",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 140,
+      "status": "ESTIMATED"
+    },
+    "route_information": "12280 Taj Express, Hazrat Nizamuddin 07:05 -> Agra Cantt 09:25, daily, 195 km. Fare: Second Sitting (2S) reserved, per adult, one-way, from the erail.in Mail/Express fare table (INR 85; AC Chair Car INR 325). Not confirmed on IRCTC. Checked 2026-11-23.",
+    "booking_or_information_url": "https://www.irctc.co.in",
+    "source_url": "https://erail.in/trains-between-stations/hazrat-nizamuddin-NZM/agra-cantt-AGC",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "agra-fatehpur-sikri-train",
+    "origin_id": "city-agra",
+    "destination_id": "city-fatehpur-sikri",
+    "level": "city",
+    "transport_mode": "train",
+    "transport_provider": "Indian Railways",
+    "distance": {
+      "value_km": 34,
+      "kind": "rail",
+      "status": "ESTIMATED",
+      "basis": "Rail distance from erail.in timetable."
+    },
+    "fare": {
+      "amount_inr": 30,
+      "fare_category": "per adult, one-way (class in notes)",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 41,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Example: 19038 Avadh Express, Idgah (Agra) 06:30 -> Fatehpur Sikri 07:11, daily, 34 km. 11 trains listed, incl. 59814 Agra Fort-Kota Passenger 07:00 -> 07:44 and 69158 MEMU 15:42 -> 16:30. Fare: General (unreserved) class, per adult, one-way, from the erail.in Mail/Express fare table; Sleeper INR 140. Fatehpur Sikri station is about 1 km from the monument (not measured). Checked 2026-11-23.",
+    "booking_or_information_url": "https://www.irctc.co.in",
+    "source_url": "https://erail.in/trains-between-stations/idgah-(agra)-IDH/fatehpur-sikri-FTS",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "agra-bharatpur-train",
+    "origin_id": "city-agra",
+    "destination_id": "city-bharatpur",
+    "level": "city",
+    "transport_mode": "train",
+    "transport_provider": "Indian Railways",
+    "distance": {
+      "value_km": 54,
+      "kind": "rail",
+      "status": "ESTIMATED",
+      "basis": "Rail distance from erail.in timetable."
+    },
+    "fare": {
+      "amount_inr": 35,
+      "fare_category": "per adult, one-way (class in notes)",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": 55,
+      "status": "ESTIMATED"
+    },
+    "route_information": "Example: 12195 Ajmer Intercity, Agra Fort (AF) 06:00 -> Bharatpur Jn 06:55, daily, 54 km; also 22988 AF-Ajmer SF Express 14:35 -> 15:30 daily. Fare: General class, per adult, one-way, from the erail.in fare table (2S INR 50, Sleeper INR 140). Keoladeo National Park is a short road trip from Bharatpur Jn (distance not measured). Checked 2026-11-23.",
+    "booking_or_information_url": "https://www.irctc.co.in",
+    "source_url": "https://erail.in/trains-between-stations/agra-fort-AF/bharatpur-jn-BTE",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "agra-bhopal-shatabdi-train",
+    "origin_id": "city-agra",
+    "destination_id": "city-bhopal",
+    "level": "city",
+    "transport_mode": "train",
+    "transport_provider": "Indian Railways",
+    "distance": {
+      "value_km": 507,
+      "kind": "rail",
+      "status": "ESTIMATED",
+      "basis": "Rail distance from erail.in timetable."
+    },
+    "fare": {
+      "amount_inr": null,
+      "fare_category": "per adult, one-way (class in notes)",
+      "status": "UNKNOWN"
+    },
+    "duration": {
+      "minutes": 377,
+      "status": "ESTIMATED"
+    },
+    "route_information": "12002 Shatabdi Express, Agra Cantt 07:55 -> Bhopal Jn 14:12, daily, 507 km. Other options: 22222 Rajdhani 18:47 -> 00:35, 20172 Vande Bharat 16:20 -> Rani Kamlapati 22:16. Shatabdi/Vande Bharat fares were not available from a reliable page, so cost is unknown. Mail/Express reference fares for 506 km: Sleeper INR 300, 3A INR 815. Checked 2026-11-23.",
+    "booking_or_information_url": "https://www.irctc.co.in",
+    "source_url": "https://erail.in/trains-between-stations/agra-cantt-AGC/bhopal-jn-BPL",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "taj-mahal-agra-fort-metro",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-agra-fort",
+    "level": "place",
+    "transport_mode": "metro",
+    "transport_provider": "Uttar Pradesh Metro Rail Corporation (UPMRC)",
+    "distance": {
+      "value_km": 2.0,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 10,
+      "fare_category": "per person, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": null,
+      "status": "UNKNOWN"
+    },
+    "route_information": "Agra Metro Yellow Line (UPMRC), Taj Mahal station -> Agra Fort station (also listed as Dr. Ambedkar Chowk), 1 stop. Fare slabs reported as INR 10 / 15 / 20 by number of stations; per person, one-way. Service about 06:00-22:00, every 6-10 min. Walking legs: Taj Mahal station is outside the Taj's 500 m no-vehicle zone; Agra Fort station is adjacent to the fort (agra.nic.in). Door-to-door time not known. Fare not confirmed on an official UPMRC page. Checked 2026-11-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://mapa-metro.com/en/india/agra/agra-metro-map.htm",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  },
+  {
+    "route_id": "taj-mahal-jama-masjid-agra-metro",
+    "origin_id": "place-taj-mahal",
+    "destination_id": "place-jama-masjid-agra",
+    "level": "place",
+    "transport_mode": "metro",
+    "transport_provider": "Uttar Pradesh Metro Rail Corporation (UPMRC)",
+    "distance": {
+      "value_km": 2.7,
+      "kind": "straight-line (computed from current coordinates)",
+      "status": "ESTIMATED",
+      "basis": "Great-circle distance; road distance is longer and was not measured."
+    },
+    "fare": {
+      "amount_inr": 15,
+      "fare_category": "per person, one-way",
+      "status": "ESTIMATED"
+    },
+    "duration": {
+      "minutes": null,
+      "status": "UNKNOWN"
+    },
+    "route_information": "Agra Metro Yellow Line, Taj Mahal station -> Mankameshwar station, 2 stops (INR 15 slab), per person, one-way. Mankameshwar station (27.1775, 78.0179) is about 0.5 km from Jama Masjid (straight line, computed). Fare not confirmed on an official UPMRC page. Checked 2026-11-23.",
+    "booking_or_information_url": null,
+    "source_url": "https://mapa-metro.com/en/india/agra/agra-metro-map.htm",
+    "last_verified": "2026-11-23",
+    "last_verified_note": null
+  }
+]

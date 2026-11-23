@@ -6,11 +6,11 @@
     "location": "Agra Fort, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Licensed guides are available at Agra Fort; availability and fees may vary.",
-    "estimated_cost": 400,
+    "description": "Approved guide fee per IATO-TGFI rate card (1 Oct 2023 - 30 Sep 2025): half day (up to 4 h) INR 2,050 for 1-5 persons; full day INR 2,500; 6-14 persons INR 2,500 / 3,250; language allowance INR 600 / 800. Per guide, not per person. The agreement period has ended and no newer published card was found, so treat as an estimate. Monument entry is extra. Use only guides showing a Ministry of Tourism / ASI licence card.",
+    "estimated_cost": 2050,
     "currency": "INR",
     "cost_status": "estimated",
-    "source_url": "https://agra.nic.in/tourist-place/agra-fort/"
+    "source_url": "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf"
   },
   {
     "id": "agra-fort-audio-guides",
@@ -19,10 +19,10 @@
     "location": "Agra Fort, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Audio guides are available at Agra Fort; availability and fees may vary.",
-    "estimated_cost": 150,
+    "description": "Audio guides are available at Agra Fort (Agra district administration and ASI 'Must See' page). Price not published on any page found.",
+    "estimated_cost": null,
     "currency": "INR",
-    "cost_status": "estimated",
+    "cost_status": "unknown",
     "source_url": "https://agra.nic.in/tourist-place/agra-fort/"
   },
   {
@@ -32,11 +32,11 @@
     "location": "Fatehpur Sikri, Agra district, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "The Agra District Administration lists licensed guides; availability and fees may vary.",
-    "estimated_cost": 625,
+    "description": "Approved guide fee per IATO-TGFI rate card: a Fatehpur Sikri excursion from Agra is paid as a full day, INR 2,500 for 1-5 persons plus INR 250 conveyance (once per trip). Per guide. Guides engaged at the site may quote differently. Agreement period ended 30 Sep 2025; estimate.",
+    "estimated_cost": 2500,
     "currency": "INR",
     "cost_status": "estimated",
-    "source_url": "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+    "source_url": "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf"
   },
   {
     "id": "taj-mahal-licensed-guides",
@@ -45,11 +45,11 @@
     "location": "Taj Mahal, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Estimated guide cost of INR 1300 per tour; duration and availability require confirmation.",
-    "estimated_cost": 1300,
+    "description": "Approved guide fee per IATO-TGFI rate card (1 Oct 2023 - 30 Sep 2025): half day (up to 4 h) INR 2,050 for 1-5 persons; full day INR 2,500; 6-14 persons INR 2,500 / 3,250; language allowance INR 600 / 800. Per guide, not per person. The agreement period has ended and no newer published card was found, so treat as an estimate. Monument entry is extra. Use only guides showing a Ministry of Tourism / ASI licence card.",
+    "estimated_cost": 2050,
     "currency": "INR",
     "cost_status": "estimated",
-    "source_url": null
+    "source_url": "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf"
   },
   {
     "id": "akbar-tomb-sikandra-licensed-guides",
@@ -58,11 +58,11 @@
     "location": "Akbar Tomb, Sikandra, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Estimated guide cost of INR 350 per visit; availability requires confirmation.",
-    "estimated_cost": 350,
+    "description": "Approved guide fee per IATO-TGFI rate card (1 Oct 2023 - 30 Sep 2025): half day (up to 4 h) INR 2,050 for 1-5 persons; full day INR 2,500; 6-14 persons INR 2,500 / 3,250; language allowance INR 600 / 800. Per guide, not per person. The agreement period has ended and no newer published card was found, so treat as an estimate. Monument entry is extra. Use only guides showing a Ministry of Tourism / ASI licence card.",
+    "estimated_cost": 2050,
     "currency": "INR",
     "cost_status": "estimated",
-    "source_url": null
+    "source_url": "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf"
   },
   {
     "id": "itmad-ud-daulah-licensed-guides",
@@ -71,11 +71,11 @@
     "location": "Itmad-ud-Daulah, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Estimated guide cost of INR 550 for a one-hour visit; availability requires confirmation.",
-    "estimated_cost": 550,
+    "description": "Approved guide fee per IATO-TGFI rate card (1 Oct 2023 - 30 Sep 2025): half day (up to 4 h) INR 2,050 for 1-5 persons; full day INR 2,500; 6-14 persons INR 2,500 / 3,250; language allowance INR 600 / 800. Per guide, not per person. The agreement period has ended and no newer published card was found, so treat as an estimate. Monument entry is extra. Use only guides showing a Ministry of Tourism / ASI licence card.",
+    "estimated_cost": 2050,
     "currency": "INR",
     "cost_status": "estimated",
-    "source_url": null
+    "source_url": "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf"
   },
   {
     "id": "mariam-tomb-sikandra-licensed-guides",
@@ -84,11 +84,11 @@
     "location": "Mariam Tomb, Sikandra, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Estimated guide cost of INR 1750 per short or half-day visit; availability requires confirmation.",
-    "estimated_cost": 1750,
+    "description": "Approved guide fee per IATO-TGFI rate card (1 Oct 2023 - 30 Sep 2025): half day (up to 4 h) INR 2,050 for 1-5 persons; full day INR 2,500; 6-14 persons INR 2,500 / 3,250; language allowance INR 600 / 800. Per guide, not per person. The agreement period has ended and no newer published card was found, so treat as an estimate. Monument entry is extra. Use only guides showing a Ministry of Tourism / ASI licence card.",
+    "estimated_cost": 2050,
     "currency": "INR",
     "cost_status": "estimated",
-    "source_url": null
+    "source_url": "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf"
   },
   {
     "id": "chini-ka-rauza-licensed-guides",
@@ -97,11 +97,11 @@
     "location": "Chini ka Rauza, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Guide availability and fees have not been verified; price is unknown.",
-    "estimated_cost": null,
+    "description": "Approved guide fee per IATO-TGFI rate card (1 Oct 2023 - 30 Sep 2025): half day (up to 4 h) INR 2,050 for 1-5 persons; full day INR 2,500; 6-14 persons INR 2,500 / 3,250; language allowance INR 600 / 800. Per guide, not per person. The agreement period has ended and no newer published card was found, so treat as an estimate. Monument entry is extra. Use only guides showing a Ministry of Tourism / ASI licence card.",
+    "estimated_cost": 2050,
     "currency": "INR",
-    "cost_status": "unknown",
-    "source_url": null
+    "cost_status": "estimated",
+    "source_url": "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf"
   },
   {
     "id": "pinch-of-spice-fatehabad-road",
@@ -136,11 +136,11 @@
     "location": "Taj Mahal, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Estimated parking cost of INR 20 per vehicle; confirm current rates.",
-    "estimated_cost": 20,
+    "description": "Parking for Taj Mahal visitors is at Shilpgram (East Gate) and Amrood ka Teela (West Gate); polluting vehicles are not allowed within 500 m. No official parking tariff was found, so the previous unsourced estimate (INR 20) was removed.",
+    "estimated_cost": null,
     "currency": "INR",
-    "cost_status": "estimated",
-    "source_url": null
+    "cost_status": "unknown",
+    "source_url": "https://tajmahal.gov.in/dos-and-donts.aspx"
   },
   {
     "id": "taj-mahal-parking-car-taxi",
@@ -149,11 +149,11 @@
     "location": "Taj Mahal, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Estimated parking cost of INR 100 per vehicle; confirm current rates.",
-    "estimated_cost": 100,
+    "description": "Parking for Taj Mahal visitors is at Shilpgram (East Gate) and Amrood ka Teela (West Gate); polluting vehicles are not allowed within 500 m. No official parking tariff was found, so the previous unsourced estimate (INR 100) was removed.",
+    "estimated_cost": null,
     "currency": "INR",
-    "cost_status": "estimated",
-    "source_url": null
+    "cost_status": "unknown",
+    "source_url": "https://tajmahal.gov.in/dos-and-donts.aspx"
   },
   {
     "id": "taj-mahal-parking-tempo-traveller",
@@ -162,11 +162,11 @@
     "location": "Taj Mahal, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Estimated parking cost of INR 225 per vehicle; confirm current rates.",
-    "estimated_cost": 225,
+    "description": "Parking for Taj Mahal visitors is at Shilpgram (East Gate) and Amrood ka Teela (West Gate); polluting vehicles are not allowed within 500 m. No official parking tariff was found, so the previous unsourced estimate (INR 225) was removed.",
+    "estimated_cost": null,
     "currency": "INR",
-    "cost_status": "estimated",
-    "source_url": null
+    "cost_status": "unknown",
+    "source_url": "https://tajmahal.gov.in/dos-and-donts.aspx"
   },
   {
     "id": "taj-mahal-parking-bus",
@@ -175,10 +175,114 @@
     "location": "Taj Mahal, Agra, Uttar Pradesh",
     "latitude": null,
     "longitude": null,
-    "description": "Estimated parking cost of INR 200 per vehicle; confirm current rates.",
-    "estimated_cost": 200,
+    "description": "Parking for Taj Mahal visitors is at Shilpgram (East Gate) and Amrood ka Teela (West Gate); polluting vehicles are not allowed within 500 m. No official parking tariff was found, so the previous unsourced estimate (INR 200) was removed.",
+    "estimated_cost": null,
+    "currency": "INR",
+    "cost_status": "unknown",
+    "source_url": "https://tajmahal.gov.in/dos-and-donts.aspx"
+  },
+  {
+    "id": "taj-mahal-battery-bus",
+    "name": "Battery bus to Taj Mahal gates",
+    "category": "other",
+    "location": "Shilpgram (East Gate) and Western Gate parking, Taj Mahal, Agra, Uttar Pradesh",
+    "latitude": null,
+    "longitude": null,
+    "description": "Free battery buses run from Shilpgram (Eastern Gate) and the Western Gate parking to the monument gates (Agra district administration).",
+    "estimated_cost": 0,
+    "currency": "INR",
+    "cost_status": "verified",
+    "source_url": "https://agra.nic.in/tourist-place/tajmahal/"
+  },
+  {
+    "id": "taj-mahal-golf-cart",
+    "name": "Golf cart to Taj Mahal gates",
+    "category": "other",
+    "location": "Shilpgram (East Gate) and Western Gate parking, Taj Mahal, Agra, Uttar Pradesh",
+    "latitude": null,
+    "longitude": null,
+    "description": "Paid golf carts run from the parking areas (Agra district administration); free with SAARC, BIMSTEC and foreign-visitor Taj tickets (UP Tourism). Fare for others not published.",
+    "estimated_cost": null,
+    "currency": "INR",
+    "cost_status": "unknown",
+    "source_url": "https://tajmahal.gov.in/dos-and-donts.aspx"
+  },
+  {
+    "id": "taj-mahal-museum",
+    "name": "Taj Museum",
+    "category": "other",
+    "location": "Inside the Taj Mahal complex, Agra, Uttar Pradesh",
+    "latitude": null,
+    "longitude": null,
+    "description": "Museum inside the Taj Mahal complex, open 10:00-17:00; entry free (Taj ticket required to enter the complex).",
+    "estimated_cost": 0,
+    "currency": "INR",
+    "cost_status": "verified",
+    "source_url": "https://tajmahal.gov.in/dos-and-donts.aspx"
+  },
+  {
+    "id": "taj-mahal-cloakroom",
+    "name": "Cloakroom and ticket windows",
+    "category": "other",
+    "location": "Eastern and Western Gates, Taj Mahal, Agra, Uttar Pradesh",
+    "latitude": null,
+    "longitude": null,
+    "description": "Ticket windows and cloak rooms at both Taj gates; wheelchairs available at the entry gates. Charges, if any, not published.",
+    "estimated_cost": null,
+    "currency": "INR",
+    "cost_status": "unknown",
+    "source_url": "https://agra.nic.in/tourist-place/tajmahal/"
+  },
+  {
+    "id": "jama-masjid-agra-photography",
+    "name": "Photography charge",
+    "category": "other",
+    "location": "Jama Masjid, Agra, Uttar Pradesh",
+    "latitude": null,
+    "longitude": null,
+    "description": "Entry to the mosque is free; several travel guides report a camera/phone photography charge of INR 30. Closed to tourists on Fridays. Not confirmed by an official source.",
+    "estimated_cost": 30,
     "currency": "INR",
     "cost_status": "estimated",
-    "source_url": null
+    "source_url": "https://www.indianholiday.com/uttar-pradesh/agra/holy-places/jama-masjid-agra.html"
+  },
+  {
+    "id": "guru-ka-taal-langar",
+    "name": "Langar (community kitchen)",
+    "category": "food",
+    "location": "Guru ka Taal Gurudwara, Sikandra, Agra, Uttar Pradesh",
+    "latitude": 27.2117,
+    "longitude": 77.9677,
+    "description": "Free community meals served daily; head covering required (scarves at entrance); footwear deposit available.",
+    "estimated_cost": 0,
+    "currency": "INR",
+    "cost_status": "verified",
+    "source_url": "https://agra.nic.in/tourist-place/guru-ka-taal-gurudwara/"
+  },
+  {
+    "id": "keoladeo-cycle-rickshaw",
+    "name": "Cycle rickshaw inside the park",
+    "category": "other",
+    "location": "Keoladeo National Park, Bharatpur, Rajasthan",
+    "latitude": null,
+    "longitude": null,
+    "description": "Private vehicles are not allowed in the main park; cycle rickshaws (many pullers trained as bird guides) are hired per hour. Reported INR 100-150 per hour; per rickshaw. Not from the Rajasthan Forest Department.",
+    "estimated_cost": 150,
+    "currency": "INR",
+    "cost_status": "estimated",
+    "source_url": "https://gotirupati.com/?p=47281"
+  },
+  {
+    "id": "keoladeo-naturalist-guide",
+    "name": "Naturalist guide",
+    "category": "guide",
+    "location": "Keoladeo National Park, Bharatpur, Rajasthan",
+    "latitude": null,
+    "longitude": null,
+    "description": "Park guides are hired per hour; reported INR 150-250 per hour. Not from the Rajasthan Forest Department.",
+    "estimated_cost": 250,
+    "currency": "INR",
+    "cost_status": "estimated",
+    "source_url": "https://rajasthandriver.com/tourist-attractions/keoladeo-national-park"
   }
 ]

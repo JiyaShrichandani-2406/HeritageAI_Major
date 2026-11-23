@@ -1,0 +1,168 @@
+[
+  {
+    "id": "agra-cantt-railway-station",
+    "name": "Agra Cantt railway station (AGC)",
+    "type": "railway_station",
+    "city_id": "city-agra",
+    "latitude": 27.15889,
+    "longitude": 77.99056,
+    "coordinate_status": "ESTIMATED",
+    "address": "Near Sadar Bazaar, Agra Cantt, Agra, Uttar Pradesh",
+    "address_status": "ESTIMATED",
+    "description": "Main railway station; Gatimaan, Vande Bharat, Shatabdi, Rajdhani stop here. About 6 km from the Taj Mahal (agra.nic.in).",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Agra_Cantonment_railway_station",
+      "https://agra.nic.in/tourist-place/tajmahal/"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "agra-fort-railway-station",
+    "name": "Agra Fort railway station (AF)",
+    "type": "railway_station",
+    "city_id": "city-agra",
+    "latitude": 27.1833,
+    "longitude": 78.0187,
+    "coordinate_status": "ESTIMATED",
+    "address": "Rakabganj / Rawatpara, Agra, Uttar Pradesh",
+    "address_status": "ESTIMATED",
+    "description": "Adjacent to Agra Fort and Jama Masjid; trains to Bharatpur and Rajasthan.",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Agra_Fort_railway_station",
+      "https://agra.nic.in/tourist-place/agra-fort/"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "idgah-railway-station",
+    "name": "Idgah (Agra) railway station (IDH)",
+    "type": "railway_station",
+    "city_id": "city-agra",
+    "latitude": null,
+    "longitude": null,
+    "coordinate_status": "UNKNOWN",
+    "address": null,
+    "address_status": "UNKNOWN",
+    "description": "Departure point for most Fatehpur Sikri trains.",
+    "source_urls": [
+      "https://erail.in/trains-between-stations/idgah-(agra)-IDH/fatehpur-sikri-FTS"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "idgah-bus-stand",
+    "name": "Idgah Bus Stand",
+    "type": "bus_station",
+    "city_id": "city-agra",
+    "latitude": null,
+    "longitude": null,
+    "coordinate_status": "UNKNOWN",
+    "address": "Idgah Colony, Agra, Uttar Pradesh",
+    "address_status": "ESTIMATED",
+    "description": "Main UPSRTC bus station; buses to Fatehpur Sikri and Bharatpur.",
+    "source_urls": [
+      "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "agra-isbt",
+    "name": "Agra ISBT",
+    "type": "bus_station",
+    "city_id": "city-agra",
+    "latitude": null,
+    "longitude": null,
+    "coordinate_status": "UNKNOWN",
+    "address": null,
+    "address_status": "UNKNOWN",
+    "description": "Inter-state bus terminal, about 4 km from the Taj Mahal (agra.nic.in). Metro station under construction.",
+    "source_urls": [
+      "https://agra.nic.in/tourist-place/tajmahal/",
+      "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "agra-airport",
+    "name": "Agra Airport (AGR), Kheria",
+    "type": "airport",
+    "city_id": "city-agra",
+    "latitude": 27.1618,
+    "longitude": 77.9707,
+    "coordinate_status": "ESTIMATED",
+    "address": "Kheria, Agra, Uttar Pradesh 282008 (entry via Arjun Nagar Gate)",
+    "address_status": "ESTIMATED",
+    "description": "Civil enclave at an IAF base, ~13 km from the Taj Mahal. IndiGo is the only airline; destination lists differ between sources (UNKNOWN).",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Agra_Airport",
+      "https://www.skyscanner.co.in/flights-to/AGR",
+      "https://agra.nic.in/tourist-place/tajmahal/"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "mankameshwar-metro-station",
+    "name": "Mankameshwar metro station",
+    "type": "metro_station",
+    "city_id": "city-agra",
+    "latitude": 27.1775,
+    "longitude": 78.0179,
+    "coordinate_status": "ESTIMATED",
+    "address": "Mantola Road, Rakabganj, Agra, Uttar Pradesh 282001",
+    "address_status": "ESTIMATED",
+    "description": "Yellow Line terminus; near Jama Masjid and Agra Fort station.",
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Mankameshwar_metro_station"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "shilpgram-parking",
+    "name": "Shilpgram parking (Taj East Gate)",
+    "type": "parking",
+    "city_id": "city-agra",
+    "latitude": null,
+    "longitude": null,
+    "coordinate_status": "UNKNOWN",
+    "address": "Shilpgram Road, Tajganj, Agra, Uttar Pradesh",
+    "address_status": "ESTIMATED",
+    "description": "Parking and battery bus/golf cart point for the Taj East Gate; night-viewing check-in.",
+    "source_urls": [
+      "https://tajmahal.gov.in/dos-and-donts.aspx",
+      "https://tajmahal.gov.in/night-view.aspx"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "amrood-ka-teela-parking",
+    "name": "Amrood ka Teela parking (Taj West Gate)",
+    "type": "parking",
+    "city_id": "city-agra",
+    "latitude": null,
+    "longitude": null,
+    "coordinate_status": "UNKNOWN",
+    "address": null,
+    "address_status": "UNKNOWN",
+    "description": "Parking for Taj West Gate entry.",
+    "source_urls": [
+      "https://tajmahal.gov.in/dos-and-donts.aspx"
+    ],
+    "last_verified": "2026-11-23"
+  },
+  {
+    "id": "tourist-helpline-1363",
+    "name": "Tourist helpline 1363 / Emergency 112",
+    "type": "emergency_service",
+    "city_id": "city-agra",
+    "latitude": null,
+    "longitude": null,
+    "coordinate_status": "NOT_APPLICABLE",
+    "address": null,
+    "address_status": "NOT_APPLICABLE",
+    "description": "Tourist helpline 1363 and emergency number 112, as listed on Agra district monument pages.",
+    "source_urls": [
+      "https://agra.nic.in/tourist-place/tajmahal/"
+    ],
+    "last_verified": "2026-11-23"
+  }
+]

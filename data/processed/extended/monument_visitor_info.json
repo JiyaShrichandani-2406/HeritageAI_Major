@@ -1,0 +1,2105 @@
+[
+  {
+    "location_id": "place-taj-mahal",
+    "heritage_id": "taj-mahal",
+    "nearby_place_id": null,
+    "name": "Taj Mahal",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Dharmapuri, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.1751,
+      "longitude": 78.0421,
+      "status": "ESTIMATED",
+      "source_url": null,
+      "note": "Existing value 27.1751, 78.0421 is consistent with the monument location; not re-checked against an official coordinate source."
+    },
+    "official_website": {
+      "url": "https://www.tajmahal.gov.in",
+      "status": "VERIFIED"
+    },
+    "official_information_page": "https://agra.nic.in/tourist-place/tajmahal/",
+    "ticket_booking_url": "https://asi.paygov.org.in",
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 50,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday (Sat-Thu). Online purchase: INR 5 off.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/tajmahal/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 540,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/tajmahal/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 1100,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday; UP Tourism states amounts include ASI and ADA fees. Online purchase: INR 50 off. Agra district pages add a note about a separate INR 500 ADA toll; see unresolved list.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/tajmahal/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "child_under_15",
+        "visitor_group": "All nationalities",
+        "age_group": "under 15",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero, not missing).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [
+      {
+        "category": "main_mausoleum_addon",
+        "visitor_group": "All ticket holders",
+        "age_group": "15+",
+        "amount_inr": 200,
+        "status": "VERIFIED",
+        "conditions": "Optional add-on to the entry ticket, per person.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://tajmahal.gov.in/visiting-hours.aspx",
+          "https://agra.nic.in/tourist-place/tajmahal/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "night_viewing_indian_adult",
+        "visitor_group": "Indian adult",
+        "age_group": "adult",
+        "amount_inr": 510,
+        "status": "VERIFIED",
+        "conditions": "Full-moon night +/-2 nights, not Fridays or Ramzan; 20:00-23:59 in 8 batches of max 50; check-in at Shilpgram.",
+        "source_urls": [
+          "https://tajmahal.gov.in/night-view.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "night_viewing_foreign_adult",
+        "visitor_group": "Foreign adult",
+        "age_group": "adult",
+        "amount_inr": 750,
+        "status": "VERIFIED",
+        "conditions": "Same conditions as above.",
+        "source_urls": [
+          "https://tajmahal.gov.in/night-view.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "night_viewing_child",
+        "visitor_group": "Indian or foreign child",
+        "age_group": "3-15",
+        "amount_inr": 500,
+        "status": "VERIFIED",
+        "conditions": "Same conditions as above.",
+        "source_urls": [
+          "https://tajmahal.gov.in/night-view.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "opening_hours": {
+      "opens": "30 min before sunrise",
+      "closes": "30 min before sunset",
+      "text": "Opens 30 minutes before sunrise, closes 30 minutes before sunset. Ticket windows: 1 h before sunrise to 45 min before sunset.",
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://tajmahal.gov.in/visiting-hours.aspx",
+        "https://agra.nic.in/tourist-place/tajmahal/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [
+        "Friday"
+      ],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://tajmahal.gov.in/visiting-hours.aspx",
+        "https://tajmahal.gov.in/ticketing.aspx",
+        "https://agra.nic.in/tourist-place/tajmahal/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Closed Friday except for namaz at the mosque. East and West gates are entrances; South gate is exit-only. Photo ID required.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-agra-fort",
+    "heritage_id": "agra-fort",
+    "nearby_place_id": null,
+    "name": "Agra Fort",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Rakabganj, Agra, Uttar Pradesh 282003 (visitor entry: Amar Singh Gate)",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.1797,
+      "longitude": 78.0228,
+      "status": "VERIFIED",
+      "source_url": "https://asi.nic.in/pages/WorldHeritageAgraFort",
+      "note": "ASI page states 27°10'47\"N 78°01'22\"E."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": "https://agra.nic.in/tourist-place/agra-fort/",
+    "ticket_booking_url": "https://asi.paygov.org.in",
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 50,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday (Sat-Thu). Online purchase: INR 5 off.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/agra-fort/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 90,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/agra-fort/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 650,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday; UP Tourism states amounts include ASI and ADA fees. Online purchase: INR 50 off. Agra district pages add a note about a separate INR 500 ADA toll; see unresolved list.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/agra-fort/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "child_under_15",
+        "visitor_group": "All nationalities",
+        "age_group": "under 15",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero, not missing).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "indian_adult_friday",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 40,
+        "status": "VERIFIED",
+        "conditions": "Friday rate (no ADA component).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult_friday",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 600,
+        "status": "VERIFIED",
+        "conditions": "Friday rate; same rate applies after visiting the Taj on the same day.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult_friday",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 40,
+        "status": "VERIFIED",
+        "conditions": "Friday rate.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "Sunrise to sunset (approx. 06:00-18:00).",
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/agra-fort/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/agra-fort/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Open all seven days. Licensed guides and audio guides available (prices: see visitor_services).",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-fatehpur-sikri",
+    "heritage_id": "fatehpur-sikri",
+    "nearby_place_id": null,
+    "name": "Fatehpur Sikri",
+    "city": "Fatehpur Sikri",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Fatehpur Sikri, Agra district, Uttar Pradesh 283110 (ticket counter near Diwan-i-Aam)",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.094,
+      "longitude": 77.661,
+      "status": "ESTIMATED",
+      "source_url": null,
+      "note": "Carried over from the existing dataset; not independently re-checked in this pass."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": "https://agra.nic.in/tourist-place/fatehpur-sikri/",
+    "ticket_booking_url": "https://asi.paygov.org.in",
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 50,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday (Sat-Thu). Online purchase: INR 5 off.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 50,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 610,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday; UP Tourism states amounts include ASI and ADA fees. Online purchase: INR 50 off. Agra district pages add a note about a separate INR 500 ADA toll; see unresolved list.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "child_under_15",
+        "visitor_group": "All nationalities",
+        "age_group": "under 15",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero, not missing).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "indian_adult_friday",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 40,
+        "status": "VERIFIED",
+        "conditions": "Friday rate (no ADA component).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult_friday",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 600,
+        "status": "VERIFIED",
+        "conditions": "Friday rate; same rate applies after visiting the Taj on the same day.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult_friday",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 40,
+        "status": "VERIFIED",
+        "conditions": "Friday rate.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "Sunrise to sunset (approx. 06:00-18:00); the dargah in Jama Masjid stays open longer.",
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/fatehpur-sikri/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h. Fatehpur Sikri excursion from Agra is paid as a full day plus INR 250 conveyance.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Private vehicles park at the base; authorised battery buses to the gate (fare unknown).",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-akbar-tomb-sikandra",
+    "heritage_id": "akbar-tomb-sikandra",
+    "nearby_place_id": null,
+    "name": "Akbar's Tomb (Sikandra)",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Sikandra, NH-19, Agra, Uttar Pradesh 282007",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.2204,
+      "longitude": 77.9503,
+      "status": "ESTIMATED",
+      "source_url": "https://en.wikipedia.org/wiki/Akbar%27s_tomb",
+      "note": "Wikipedia infobox 27.22044, 77.95031 (previous value ~80 m off)."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": "https://agra.nic.in/?p=29761",
+    "ticket_booking_url": "https://asi.paygov.org.in",
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 30,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday (Sat-Thu). Online purchase: INR 5 off.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29761"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 30,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29761"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 310,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday; UP Tourism states amounts include ASI and ADA fees. Online purchase: INR 50 off. Agra district pages add a note about a separate INR 500 ADA toll; see unresolved list.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29761"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "child_under_15",
+        "visitor_group": "All nationalities",
+        "age_group": "under 15",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero, not missing).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "indian_adult_friday",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate (no ADA component).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult_friday",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 300,
+        "status": "VERIFIED",
+        "conditions": "Friday rate; same rate applies after visiting the Taj on the same day.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult_friday",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "Sunrise to sunset, all days.",
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29761"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29761"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-mehtab-bagh",
+    "heritage_id": "mehtab-bagh",
+    "nearby_place_id": null,
+    "name": "Mehtab Bagh",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Northern (left) bank of the Yamuna, opposite the Taj Mahal, Agra, Uttar Pradesh 282006",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.179,
+      "longitude": 78.0437,
+      "status": "ESTIMATED",
+      "source_url": null,
+      "note": "Carried over from the existing dataset; not independently re-checked in this pass."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": "https://agra.nic.in/?p=29756",
+    "ticket_booking_url": "https://asi.paygov.org.in",
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday (Sat-Thu). Online purchase: INR 5 off.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29756"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29756"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 300,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday; UP Tourism states amounts include ASI and ADA fees. Online purchase: INR 50 off. Agra district pages add a note about a separate INR 500 ADA toll; see unresolved list.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29756"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "child_under_15",
+        "visitor_group": "All nationalities",
+        "age_group": "under 15",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero, not missing).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "indian_adult_friday",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate (no ADA component).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult_friday",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 300,
+        "status": "VERIFIED",
+        "conditions": "Friday rate; same rate applies after visiting the Taj on the same day.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult_friday",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [
+      {
+        "category": "ada_viewpoint_indian",
+        "visitor_group": "Indian",
+        "age_group": "12+",
+        "amount_inr": 50,
+        "status": "ESTIMATED",
+        "conditions": "ADA Taj viewpoint at Mehtab Bagh (separate from ASI garden ticket); news report, publication date not captured; free under 12.",
+        "source_urls": [
+          "https://www.dtnext.in/amp/story/news/national/ticket-prices-to-view-taj-mahal-from-vantage-point-increased"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "ada_viewpoint_foreign",
+        "visitor_group": "Foreign",
+        "age_group": "12+",
+        "amount_inr": 200,
+        "status": "ESTIMATED",
+        "conditions": "As above.",
+        "source_urls": [
+          "https://www.dtnext.in/amp/story/news/national/ticket-prices-to-view-taj-mahal-from-vantage-point-increased"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "Sunrise to sunset (ASI garden; district page gives no separate hours).",
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29756"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29756"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Best Taj view at sunset. ~8 km by road from Agra Fort via the Ambedkar bridge.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-ram-bagh",
+    "heritage_id": "ram-bagh",
+    "nearby_place_id": null,
+    "name": "Ram Bagh (Aram Bagh)",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Agra-Aligarh road, left bank of the Yamuna, Agra, Uttar Pradesh 282006",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.2087,
+      "longitude": 78.0457,
+      "status": "ESTIMATED",
+      "source_url": null,
+      "note": "Carried over from the existing dataset; not independently re-checked in this pass."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": "https://agra.nic.in/?p=29749",
+    "ticket_booking_url": "https://asi.paygov.org.in",
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday (Sat-Thu). Online purchase: INR 5 off.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29749"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29749"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 300,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday; UP Tourism states amounts include ASI and ADA fees. Online purchase: INR 50 off. Agra district pages add a note about a separate INR 500 ADA toll; see unresolved list.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29749"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "child_under_15",
+        "visitor_group": "All nationalities",
+        "age_group": "under 15",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero, not missing).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "indian_adult_friday",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate (no ADA component).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult_friday",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 300,
+        "status": "VERIFIED",
+        "conditions": "Friday rate; same rate applies after visiting the Taj on the same day.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult_friday",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "ASI monument; sunrise-to-sunset assumed (district page lists no hours).",
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29749"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29749"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-itimad-ud-daulah",
+    "heritage_id": "itimad-ud-daulah",
+    "nearby_place_id": null,
+    "name": "Tomb of Itimad-ud-Daulah",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Moti Bagh, Agra-Aligarh road, Agra, Uttar Pradesh 282006",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.1925,
+      "longitude": 78.0319,
+      "status": "ESTIMATED",
+      "source_url": "https://en.wikipedia.org/wiki/Tomb_of_I%27tim%C4%81d-ud-Daulah",
+      "note": "Wikipedia infobox 27.19250, 78.03194; previous heritage value was ~300 m east."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": "https://agra.nic.in/?p=29758",
+    "ticket_booking_url": "https://asi.paygov.org.in",
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 30,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday (Sat-Thu). Online purchase: INR 5 off.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29758"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 30,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29758"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 310,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday; UP Tourism states amounts include ASI and ADA fees. Online purchase: INR 50 off. Agra district pages add a note about a separate INR 500 ADA toll; see unresolved list.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29758"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "child_under_15",
+        "visitor_group": "All nationalities",
+        "age_group": "under 15",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero, not missing).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "indian_adult_friday",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate (no ADA component).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult_friday",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 300,
+        "status": "VERIFIED",
+        "conditions": "Friday rate; same rate applies after visiting the Taj on the same day.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult_friday",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "ASI monument; sunrise to sunset.",
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29758"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29758"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Open all seven days. Combine with Chini ka Rauza and Ram Bagh.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-chini-ka-rauza",
+    "heritage_id": "chini-ka-rauza",
+    "nearby_place_id": null,
+    "name": "Chini ka Rauza",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Itmad-ud-Daulah Road, Ram Bagh area, Agra, Uttar Pradesh",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.2009,
+      "longitude": 78.0344,
+      "status": "ESTIMATED",
+      "source_url": "https://en.wikipedia.org/wiki/Chini_Ka_Rauza",
+      "note": "Wikipedia infobox 27.2008556, 78.0343833; previous heritage value ~550 m north and nearby value ~1 km west (in the river)."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": "https://agra.nic.in/tourist-place/chini-ka-rauza/",
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "all_visitors",
+        "visitor_group": "All visitors",
+        "age_group": "all",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero).",
+        "source_urls": [
+          "https://agra.nic.in/?p=29751",
+          "https://agra.nic.in/tourist-place/chini-ka-rauza/"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "Sunrise to sunset, all days.",
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29751"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29751"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-tomb-mariam-uz-zamani",
+    "heritage_id": "tomb-mariam-uz-zamani",
+    "nearby_place_id": null,
+    "name": "Tomb of Mariam-uz-Zamani",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Mathura Road (NH-19), Sikandra, Agra, Uttar Pradesh 282007",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.2153,
+      "longitude": 77.9427,
+      "status": "ESTIMATED",
+      "source_url": "https://en.wikipedia.org/wiki/Tomb_of_Mariam-uz-Zamani",
+      "note": "Wikipedia infobox 27.2153, 77.9427 (matches Sygic and 'towards Mathura' descriptions); previous heritage value pointed ~400 m north of Akbar's Tomb."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": "https://agra.nic.in/?p=29747",
+    "ticket_booking_url": "https://asi.paygov.org.in",
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday (Sat-Thu). Online purchase: INR 5 off.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29747"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29747"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 300,
+        "status": "VERIFIED",
+        "conditions": "Per person, weekday; UP Tourism states amounts include ASI and ADA fees. Online purchase: INR 50 off. Agra district pages add a note about a separate INR 500 ADA toll; see unresolved list.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx",
+          "https://agra.nic.in/?p=29747"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "child_under_15",
+        "visitor_group": "All nationalities",
+        "age_group": "under 15",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free entry (genuine zero, not missing).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "indian_adult_friday",
+        "visitor_group": "Indian citizen",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate (no ADA component).",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult_friday",
+        "visitor_group": "Other foreign national",
+        "age_group": "15+",
+        "amount_inr": 300,
+        "status": "VERIFIED",
+        "conditions": "Friday rate; same rate applies after visiting the Taj on the same day.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "saarc_bimstec_adult_friday",
+        "visitor_group": "SAARC / BIMSTEC national",
+        "age_group": "15+",
+        "amount_inr": 25,
+        "status": "VERIFIED",
+        "conditions": "Friday rate.",
+        "source_urls": [
+          "https://tajmahal.gov.in/ticketing.aspx"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "Sunrise to sunset, all days.",
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29747"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/?p=29747"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "applies_to": "Ministry of Tourism / ASI approved guides in Agra (rate per guide, not per person)",
+      "half_day_1_5_persons_inr": 2050,
+      "full_day_1_5_persons_inr": 2500,
+      "half_day_6_14_persons_inr": 2500,
+      "full_day_6_14_persons_inr": 3250,
+      "half_day_15_40_persons_inr": 3350,
+      "full_day_15_40_persons_inr": 4350,
+      "language_allowance_half_day_inr": 600,
+      "language_allowance_full_day_inr": 800,
+      "conditions": "IATO-TGFI agreement valid 1 Oct 2023 - 30 Sep 2025; no newer card found. Half day = up to 4 h; full day = 4-8 h.",
+      "source_urls": [
+        "https://iato.in/uploads/circulars/.Guide_Fee_1st_October_2023_to_30th_September_2025_(7).pdf",
+        "https://www.tajhotels.com/en-in/hotels/taj-hotel-and-convention-centre-agra/places-to-visit/taj-mahal-an-ode-to-love-convention-centre-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "About 1 km from Akbar's Tomb.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-jama-masjid-agra",
+    "heritage_id": "jama-masjid-agra",
+    "nearby_place_id": null,
+    "name": "Jama Masjid, Agra",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Jama Masjid Road, Kinari Bazar, Mantola, Agra, Uttar Pradesh 282003",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.1821,
+      "longitude": 78.0162,
+      "status": "ESTIMATED",
+      "source_url": "https://en.wikipedia.org/wiki/Jama_Masjid,_Agra",
+      "note": "Wikipedia infobox 27.182056, 78.016194."
+    },
+    "official_website": {
+      "url": null,
+      "status": "NOT_APPLICABLE"
+    },
+    "official_information_page": null,
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "all_visitors",
+        "visitor_group": "All visitors",
+        "age_group": "all",
+        "amount_inr": 0,
+        "status": "ESTIMATED",
+        "conditions": "Free entry per several travel guides; photography INR 30 (see visitor_services). No official page found.",
+        "source_urls": [
+          "https://www.indianholiday.com/uttar-pradesh/agra/holy-places/jama-masjid-agra.html",
+          "https://www.holidify.com/places/agra/jama-masjid-agra-sightseeing-1017.html"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "07:00",
+      "closes": "18:30",
+      "text": "07:00-12:00 and 13:30-18:30 (travel guides).",
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://www.indianholiday.com/uttar-pradesh/agra/holy-places/jama-masjid-agra.html",
+        "https://www.holidify.com/places/agra/jama-masjid-agra-sightseeing-1017.html"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [
+        "Friday"
+      ],
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://www.indianholiday.com/uttar-pradesh/agra/holy-places/jama-masjid-agra.html",
+        "https://www.holidify.com/places/agra/jama-masjid-agra-sightseeing-1017.html"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "UNKNOWN",
+      "conditions": "No guide service or rate documented for this site.",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Closed to tourists on Fridays (open for prayers). Modest dress; shoes off.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-guru-ka-taal",
+    "heritage_id": "guru-ka-taal",
+    "nearby_place_id": null,
+    "name": "Guru ka Taal",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "NH-19, Sikandra, Agra, Uttar Pradesh 282007",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.2117,
+      "longitude": 77.9677,
+      "status": "ESTIMATED",
+      "source_url": "https://travel.sygic.com/tr/poi/guru-ka-taal-poi:20487",
+      "note": "Sygic 27.21168, 77.96768 and AroundUs 27.21167, 77.96750 agree; previous heritage longitude 77.9345 placed it ~3 km west, beyond Akbar's Tomb."
+    },
+    "official_website": {
+      "url": null,
+      "status": "UNKNOWN"
+    },
+    "official_information_page": "https://agra.nic.in/tourist-place/guru-ka-taal-gurudwara/",
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "all_visitors",
+        "visitor_group": "All visitors",
+        "age_group": "all",
+        "amount_inr": 0,
+        "status": "VERIFIED",
+        "conditions": "Free.",
+        "source_urls": [
+          "https://agra.nic.in/tourist-place/guru-ka-taal-gurudwara/"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": null,
+      "closes": null,
+      "text": "Open daily from early morning until night; exact times not published.",
+      "status": "UNKNOWN",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/guru-ka-taal-gurudwara/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/guru-ka-taal-gurudwara/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "UNKNOWN",
+      "conditions": "No guide service or rate documented for this site.",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Head covering required; free langar daily.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-soami-bagh-samadhi",
+    "heritage_id": "soami-bagh-samadhi",
+    "nearby_place_id": null,
+    "name": "Soami Bagh Samadhi",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Poiya Ghat Road, Soami Bagh, Dayal Bagh, Agra, Uttar Pradesh 282005",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.2228,
+      "longitude": 78.0093,
+      "status": "ESTIMATED",
+      "source_url": "https://travel.sygic.com/en/poi/soami-bagh-poi:7135318",
+      "note": "Sygic 27.22281, 78.00927 (matches nearby_places record)."
+    },
+    "official_website": {
+      "url": null,
+      "status": "UNKNOWN"
+    },
+    "official_information_page": "https://incredibleindia.gov.in/en/uttar-pradesh/agra/radhasoami-samadhi-soamibagh-temple",
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "all_visitors",
+        "visitor_group": "All visitors",
+        "age_group": "all",
+        "amount_inr": 0,
+        "status": "ESTIMATED",
+        "conditions": "No entry fee per travel guides; ID reportedly checked at gate; photography reportedly not allowed inside.",
+        "source_urls": [
+          "https://agratourism.in/soami-bagh-samadh-agra"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": null,
+      "closes": null,
+      "text": "Sources conflict (09:00-17:00 vs 06:00-10:00 and 16:00-19:00).",
+      "status": "UNKNOWN",
+      "source_urls": [
+        "https://agratourism.in/soami-bagh-samadh-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "UNKNOWN",
+      "source_urls": [
+        "https://agratourism.in/soami-bagh-samadh-agra"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "UNKNOWN",
+      "conditions": "No guide service or rate documented for this site.",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-mankameshwar-temple-agra",
+    "heritage_id": "mankameshwar-temple-agra",
+    "nearby_place_id": null,
+    "name": "Mankameshwar Temple",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Daresi Road, Rawatpara, Mantola, Agra, Uttar Pradesh 282003",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.1837,
+      "longitude": 78.0175,
+      "status": "ESTIMATED",
+      "source_url": "https://www.bhaktibharat.com/mandir/mankameshwar-mandir",
+      "note": "Bhakti Bharat lists 27.1836638, 78.0175343 (Rawatpara, near Agra Fort station)."
+    },
+    "official_website": {
+      "url": null,
+      "status": "UNKNOWN"
+    },
+    "official_information_page": null,
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "all_visitors",
+        "visitor_group": "All visitors",
+        "age_group": "all",
+        "amount_inr": 0,
+        "status": "ESTIMATED",
+        "conditions": "No entry fee (temple directories).",
+        "source_urls": [
+          "https://templesinindiainfo.com/agra-mankameshwar-temple-timings-history/"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "05:00",
+      "closes": "22:00",
+      "text": "05:00-12:00 and 16:00-22:00; Mondays until 23:00 (one directory says 21:00 close).",
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://templesinindiainfo.com/agra-mankameshwar-temple-timings-history/",
+        "https://www.bhaktibharat.com/mandir/mankameshwar-mandir"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://templesinindiainfo.com/agra-mankameshwar-temple-timings-history/",
+        "https://www.bhaktibharat.com/mandir/mankameshwar-mandir"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "UNKNOWN",
+      "conditions": "No guide service or rate documented for this site.",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Crowded on Mondays and in Shravan.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-balkeshwar-temple-agra",
+    "heritage_id": "balkeshwar-temple-agra",
+    "nearby_place_id": null,
+    "name": "Balkeshwar Temple",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": null,
+      "status": "UNKNOWN"
+    },
+    "coordinates": {
+      "latitude": 27.2156,
+      "longitude": 78.0235,
+      "status": "ESTIMATED",
+      "source_url": null,
+      "note": "Carried over from the existing dataset; not independently re-checked in this pass."
+    },
+    "official_website": {
+      "url": null,
+      "status": "UNKNOWN"
+    },
+    "official_information_page": null,
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "all_visitors",
+        "visitor_group": "All visitors",
+        "age_group": "all",
+        "amount_inr": null,
+        "status": "UNKNOWN",
+        "conditions": "No reliable source found.",
+        "source_urls": [],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": null,
+      "closes": null,
+      "text": null,
+      "status": "UNKNOWN",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": null,
+      "status": "UNKNOWN",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "UNKNOWN",
+      "conditions": "No guide service or rate documented for this site.",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Not researched successfully; see UNRESOLVED_FIELDS.csv.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-roman-catholic-cemetery-agra",
+    "heritage_id": "roman-catholic-cemetery-agra",
+    "nearby_place_id": null,
+    "name": "Roman Catholic Cemetery, Agra",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": null,
+      "status": "UNKNOWN"
+    },
+    "coordinates": {
+      "latitude": 27.2035,
+      "longitude": 78.0088,
+      "status": "ESTIMATED",
+      "source_url": null,
+      "note": "Carried over from the existing dataset; not independently re-checked in this pass."
+    },
+    "official_website": {
+      "url": null,
+      "status": "UNKNOWN"
+    },
+    "official_information_page": null,
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "all_visitors",
+        "visitor_group": "All visitors",
+        "age_group": "all",
+        "amount_inr": null,
+        "status": "UNKNOWN",
+        "conditions": "No reliable source found.",
+        "source_urls": [],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": null,
+      "closes": null,
+      "text": null,
+      "status": "UNKNOWN",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": null,
+      "status": "UNKNOWN",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "UNKNOWN",
+      "conditions": "No guide service or rate documented for this site.",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Not researched successfully; see UNRESOLVED_FIELDS.csv.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-delhi-gate-agra",
+    "heritage_id": "delhi-gate-agra",
+    "nearby_place_id": null,
+    "name": "Delhi Gate, Agra",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": null,
+      "status": "UNKNOWN"
+    },
+    "coordinates": {
+      "latitude": 27.1852,
+      "longitude": 78.0128,
+      "status": "ESTIMATED",
+      "source_url": null,
+      "note": "Carried over from the existing dataset; not independently re-checked in this pass."
+    },
+    "official_website": {
+      "url": null,
+      "status": "UNKNOWN"
+    },
+    "official_information_page": null,
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "all_visitors",
+        "visitor_group": "All visitors",
+        "age_group": "all",
+        "amount_inr": null,
+        "status": "UNKNOWN",
+        "conditions": "No reliable source found.",
+        "source_urls": [],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": null,
+      "closes": null,
+      "text": null,
+      "status": "UNKNOWN",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": null,
+      "status": "UNKNOWN",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "UNKNOWN",
+      "conditions": "No guide service or rate documented for this site.",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Not researched successfully; see UNRESOLVED_FIELDS.csv.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-keoladeo-national-park",
+    "heritage_id": null,
+    "nearby_place_id": "keoladeo-national-park",
+    "name": "Keoladeo National Park",
+    "city": "Bharatpur",
+    "state": "Rajasthan",
+    "country": "India",
+    "address": {
+      "value": "Bharatpur, Rajasthan 321001",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.159,
+      "longitude": 77.522,
+      "status": "ESTIMATED",
+      "source_url": "https://en.wikipedia.org/wiki/Keoladeo_National_Park",
+      "note": "Carried over from nearby_places.json; not independently re-checked."
+    },
+    "official_website": {
+      "url": null,
+      "status": "UNKNOWN"
+    },
+    "official_information_page": null,
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian",
+        "age_group": "adult",
+        "amount_inr": 75,
+        "status": "ESTIMATED",
+        "conditions": "Several guides agree on INR 75; Wikivoyage reports ~INR 90 including taxes. Rajasthan Forest Department page not retrieved.",
+        "source_urls": [
+          "https://site.outlookindia.com/traveller/ot-getaway-guides/keoladeo-ghana-national-park/",
+          "https://rajasthandriver.com/tourist-attractions/keoladeo-national-park",
+          "https://gotirupati.com/?p=47281"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Foreign",
+        "age_group": "adult",
+        "amount_inr": 500,
+        "status": "ESTIMATED",
+        "conditions": "~INR 570 including taxes per Wikivoyage.",
+        "source_urls": [
+          "https://site.outlookindia.com/traveller/ot-getaway-guides/keoladeo-ghana-national-park/",
+          "https://rajasthandriver.com/tourist-attractions/keoladeo-national-park",
+          "https://gotirupati.com/?p=47281"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "indian_student",
+        "visitor_group": "Indian student with ID",
+        "age_group": "student",
+        "amount_inr": 20,
+        "status": "ESTIMATED",
+        "conditions": "",
+        "source_urls": [
+          "https://gotirupati.com/?p=47281"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "SUNRISE",
+      "closes": "SUNSET",
+      "text": "Sunrise to sunset (approx. 06:00-18:00); ticket sales reportedly stop ~1.5 h before sunset.",
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://gotirupati.com/?p=47281",
+        "https://rajasthandriver.com/tourist-attractions/keoladeo-national-park"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://gotirupati.com/?p=47281",
+        "https://rajasthandriver.com/tourist-attractions/keoladeo-national-park"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "ESTIMATED",
+      "per_hour_inr": 250,
+      "conditions": "Reported INR 150-250 per hour; cycle-rickshaw pullers often act as guides.",
+      "source_urls": [
+        "https://rajasthandriver.com/tourist-attractions/keoladeo-national-park",
+        "https://site.outlookindia.com/traveller/ot-getaway-guides/keoladeo-ghana-national-park/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "UNESCO World Heritage Site in Rajasthan; private vehicles not allowed in the main park.",
+    "last_verified": "2026-11-23"
+  },
+  {
+    "location_id": "place-sur-sarovar-bird-sanctuary",
+    "heritage_id": null,
+    "nearby_place_id": "sur-sarovar-bird-sanctuary",
+    "name": "Sur Sarovar Bird Sanctuary (Keetham Lake)",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "address": {
+      "value": "Keetham, near Runakta, NH-19, Agra, Uttar Pradesh 282007",
+      "status": "ESTIMATED"
+    },
+    "coordinates": {
+      "latitude": 27.2517,
+      "longitude": 77.84,
+      "status": "ESTIMATED",
+      "source_url": "https://agra.nic.in/tourist-place/sur-sarovar-keetham-bird-sanctuary/",
+      "note": "Carried over from nearby_places.json; not independently re-checked."
+    },
+    "official_website": {
+      "url": null,
+      "status": "UNKNOWN"
+    },
+    "official_information_page": "https://agra.nic.in/tourist-place/sur-sarovar-keetham-bird-sanctuary/",
+    "ticket_booking_url": null,
+    "entry_fees": [
+      {
+        "category": "indian_adult",
+        "visitor_group": "Indian citizen",
+        "age_group": "adult",
+        "amount_inr": 30,
+        "status": "ESTIMATED",
+        "conditions": "District page labels these 'approx., Forest Dept. rates'.",
+        "source_urls": [
+          "https://agra.nic.in/tourist-place/sur-sarovar-keetham-bird-sanctuary/"
+        ],
+        "checked_on": "2026-11-23"
+      },
+      {
+        "category": "foreign_adult",
+        "visitor_group": "Foreign national",
+        "age_group": "adult",
+        "amount_inr": 350,
+        "status": "ESTIMATED",
+        "conditions": "As above.",
+        "source_urls": [
+          "https://agra.nic.in/tourist-place/sur-sarovar-keetham-bird-sanctuary/"
+        ],
+        "checked_on": "2026-11-23"
+      }
+    ],
+    "additional_tickets": [],
+    "opening_hours": {
+      "opens": "07:00",
+      "closes": "17:30",
+      "text": "Approx. 07:00-17:30; October-March best for birds.",
+      "status": "ESTIMATED",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/sur-sarovar-keetham-bird-sanctuary/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "weekly_closing_days": {
+      "days": [],
+      "status": "VERIFIED",
+      "source_urls": [
+        "https://agra.nic.in/tourist-place/sur-sarovar-keetham-bird-sanctuary/"
+      ],
+      "checked_on": "2026-11-23"
+    },
+    "recommended_visit_duration": {
+      "min_minutes": null,
+      "max_minutes": null,
+      "status": "UNKNOWN",
+      "basis": "No official recommended visit duration published; commercial guides vary. Left unknown rather than invented."
+    },
+    "guide_charges": {
+      "status": "UNKNOWN",
+      "conditions": "No guide service or rate documented for this site.",
+      "source_urls": [],
+      "checked_on": "2026-11-23"
+    },
+    "notes": "Wildlife SOS bear facility visits need prior booking. Ramsar site: https://rsis.ramsar.org/ris/2440",
+    "last_verified": "2026-11-23"
+  }
+]

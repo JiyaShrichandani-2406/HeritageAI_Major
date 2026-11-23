@@ -10,6 +10,9 @@ from backend.app.rag.retriever import get_retriever
 from backend.app.repositories.location_repository import (
     LocationRepository,
 )
+from backend.app.repositories.monument_info_repository import (
+    get_entry_fee as _get_monument_entry_fee,
+)
 from backend.app.repositories.transport_repository import TransportRepository
 from backend.app.repositories.visitor_service_repository import (
     VisitorServiceRepository,
@@ -778,6 +781,15 @@ def _finalize_activity_order(
                     ]
                     activity["parking_cost_status"] = parking["cost_status"]
                     activity["parking_source_url"] = parking["source_url"]
+
+            fee_amount, fee_status, fee_source = _get_monument_entry_fee(
+                place_id, visitor_type="indian_adult"
+            )
+            if fee_status != "unknown":
+                activity["estimated_entry_cost"] = fee_amount
+                activity["entry_cost_status"] = fee_status
+                if fee_source and not activity.get("source_url"):
+                    activity["source_url"] = fee_source
 
             activity["source_url"] = _validate_source_url(
                 activity.get("source_url"),
