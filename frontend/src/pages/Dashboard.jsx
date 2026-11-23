@@ -55,8 +55,14 @@ export default function Dashboard() {
 
       <main className="container-page py-8">
         {/* Hero welcome */}
-        <div className="relative overflow-hidden rounded-card">
-          <MonumentArt art="taj" palette="night" rounded="rounded-card" className="absolute inset-0" />
+        <div className="relative overflow-hidden rounded-card min-h-[280px] md:min-h-[340px]">
+          <img
+            src={MONUMENT_CATALOG[0].image.url}
+            alt={MONUMENT_CATALOG[0].image.caption}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-950/85 via-teal-950/55 to-teal-950/20" />
           <div className="relative p-8 md:p-10 text-white">
             <div className="eyebrow !text-saffron-400">Welcome back</div>
             <h1 className="font-heading text-4xl md:text-5xl font-bold mt-2">Namaste, Explorer</h1>
