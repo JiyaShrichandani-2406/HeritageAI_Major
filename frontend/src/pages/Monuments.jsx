@@ -95,8 +95,8 @@ export default function Monuments() {
               {featured.city}, {featured.state}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
-              {featured.tags.map((t) => (
-                <Badge key={t} variant={t === "UNESCO" ? "unesco" : "dot"} size="sm">{t}</Badge>
+              {featured.tags.filter((t) => t !== "UNESCO").map((t) => (
+                <Badge key={t} variant="dot" size="sm">{t}</Badge>
               ))}
             </div>
             <div className="mt-5 flex items-center gap-3">
@@ -122,21 +122,22 @@ export default function Monuments() {
                   image={m.image}
                   art={m.art}
                   palette={m.palette}
+                  linkTo={`/monuments/${m.id}`}
+                  linkLabel={`Explore ${m.name}`}
                   rounded="rounded-none"
                   className="aspect-[5/3]"
                   overlay={
-                    <>
-                      {m.unesco && <div className="absolute top-3 left-3"><Badge variant="unesco" size="sm">UNESCO</Badge></div>}
-                      <button aria-label="Save" className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 grid place-items-center hover:bg-white">
-                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-saffron-600" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
-                      </button>
-                    </>
+                    <button aria-label="Save" className="pointer-events-auto absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 grid place-items-center hover:bg-white">
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 text-saffron-600" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                    </button>
                   }
                 />
                 <div className="p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <h3 className="font-heading font-bold text-lg">{m.name}</h3>
+                      <h3 className="font-heading font-bold text-lg text-ink-900">
+                        <Link to={`/monuments/${m.id}`} className="hover:text-teal-800">{m.name}</Link>
+                      </h3>
                       <div className="text-xs text-ink-500 flex items-center gap-1 mt-0.5">
                         <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s7-7 7-12a7 7 0 1 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
                         {m.city}{m.state && `, ${m.state}`}

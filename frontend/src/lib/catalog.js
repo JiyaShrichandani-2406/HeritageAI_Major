@@ -7,7 +7,7 @@
 // Fields outside the backend contract (unesco, tags, art, palette) are
 // UI-only annotations used for the illustration and category filters.
 
-export const CATEGORIES = ["All", "Historical", "Religious", "Architectural", "UNESCO"];
+export const CATEGORIES = ["All", "Historical", "Religious", "Architectural"];
 
 export const MONUMENT_CATALOG = [
   {

@@ -112,16 +112,13 @@ export default function Home() {
               <Card padding="p-0" className="overflow-hidden hover:-translate-y-0.5 transition">
                 <MonumentPhoto image={m.image} art={m.art} palette={m.palette} linkTo={`/monuments/${m.id}`} linkLabel={`Explore ${m.name}`} rounded="rounded-none" className="aspect-[4/3]"
                   overlay={
-                    <>
-                      {m.unesco && <div className="absolute top-3 left-3"><Badge variant="unesco" size="sm">UNESCO</Badge></div>}
-                      <button
-                        type="button"
-                        aria-label="Save"
-                        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 grid place-items-center hover:bg-white"
-                      >
-                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-saffron-600" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
-                      </button>
-                    </>
+                    <button
+                      type="button"
+                      aria-label="Save"
+                      className="pointer-events-auto absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 grid place-items-center hover:bg-white"
+                    >
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 text-saffron-600" fill="currentColor"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                    </button>
                   }
                 />
                 <div className="p-4">

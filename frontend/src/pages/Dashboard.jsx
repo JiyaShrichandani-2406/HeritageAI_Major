@@ -104,18 +104,31 @@ export default function Dashboard() {
                 <Badge variant="teal" size="sm">From this browser</Badge>
               </div>
               <div className="grid sm:grid-cols-3 gap-4">
-                {recentCards.map((m) => (
-                  <Card key={m.id || m.name} padding="p-0" className="overflow-hidden">
-                    <MonumentPhoto image={findMonument(m.id)?.image} art={m.art} palette={m.palette} className="aspect-[5/3]" rounded="rounded-none" />
-                    <div className="p-4">
-                      <div className="font-semibold">{m.name}</div>
-                      <div className="text-xs text-ink-500 mt-0.5">{(m.tags || ["History","Architecture"]).slice(0,2).join(" · ")}</div>
-                      <Link to={m.id ? `/monuments/${m.id}` : "/monuments"} className="mt-3 inline-flex items-center gap-1 text-teal-800 font-semibold text-sm">
-                        Continue <span aria-hidden>›</span>
-                      </Link>
-                    </div>
-                  </Card>
-                ))}
+                {recentCards.map((m) => {
+                  const target = m.id ? `/monuments/${m.id}` : "/monuments";
+                  return (
+                    <Card key={m.id || m.name} padding="p-0" className="overflow-hidden">
+                      <MonumentPhoto
+                        image={findMonument(m.id)?.image}
+                        art={m.art}
+                        palette={m.palette}
+                        linkTo={target}
+                        linkLabel={`Open ${m.name}`}
+                        className="aspect-[5/3]"
+                        rounded="rounded-none"
+                      />
+                      <div className="p-4">
+                        <div className="font-semibold text-ink-900">
+                          <Link to={target} className="hover:text-teal-800">{m.name}</Link>
+                        </div>
+                        <div className="text-xs text-ink-500 mt-0.5">{(m.tags || ["History","Architecture"]).slice(0,2).join(" · ")}</div>
+                        <Link to={target} className="mt-3 inline-flex items-center gap-1 text-teal-800 font-semibold text-sm">
+                          Continue <span aria-hidden>›</span>
+                        </Link>
+                      </div>
+                    </Card>
+                  );
+                })}
               </div>
             </section>
 

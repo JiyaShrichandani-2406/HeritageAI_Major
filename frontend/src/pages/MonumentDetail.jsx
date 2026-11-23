@@ -45,7 +45,7 @@ export default function MonumentDetail() {
       rememberRecent({
         id: data.id,
         name: data.name,
-        tags: [catalogHint?.unesco && "UNESCO", "History", "Architecture"].filter(Boolean),
+        tags: ["History", "Architecture"],
         art: catalogHint?.art || "taj",
         palette: catalogHint?.palette || "dusk",
       });
@@ -94,7 +94,6 @@ export default function MonumentDetail() {
           <div className="mt-20 md:mt-24 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
             <div>
               <div className="flex flex-wrap gap-2 mb-3">
-                {catalogHint?.unesco && <Badge variant="unesco" size="sm">UNESCO</Badge>}
                 {catalogHint?.tags.filter((t) => t !== "UNESCO").map((t) => (
                   <Badge key={t} variant="dot" size="sm">{t}</Badge>
                 ))}
