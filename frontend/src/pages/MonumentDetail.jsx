@@ -83,9 +83,9 @@ export default function MonumentDetail() {
       {/* Hero */}
       <div className="relative overflow-hidden">
         <MonumentPhoto image={catalogHint?.image} art={art} palette={palette} rounded="rounded-none" className="absolute inset-0 w-full h-[360px]" withTrees={false} />
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-950/60 via-teal-950/30 to-teal-950/85 h-[360px]" />
+        <div className="absolute inset-0 h-[360px] bg-gradient-to-b from-teal-950/55 via-teal-950/65 to-teal-950/95" />
         <div className="relative container-page pt-5 pb-14 text-white">
-          <div className="text-xs text-white/70">
+          <div className="text-xs text-white/80">
             <Link to="/monuments" className="hover:text-white">Monuments</Link>
             <span className="mx-1.5">/</span>
             <span className="text-white">{d?.name || catalogHint?.name || "Monument"}</span>
@@ -98,9 +98,9 @@ export default function MonumentDetail() {
                   <Badge key={t} variant="dot" size="sm">{t}</Badge>
                 ))}
               </div>
-              <h1 className="font-heading text-5xl md:text-6xl font-bold leading-[1.02]">{d?.name || catalogHint?.name || "Loading..."}</h1>
+              <h1 className="font-heading text-5xl md:text-6xl font-bold leading-[1.02] text-white drop-shadow-[0_3px_14px_rgba(0,0,0,0.75)]">{d?.name || catalogHint?.name || "Loading..."}</h1>
               {d && (
-                <div className="mt-3 flex items-center gap-1 text-white/80 text-sm">
+                <div className="mt-3 flex items-center gap-1 text-white/90 text-sm drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
                   <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s7-7 7-12a7 7 0 1 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
                   {d.city}, {d.state}, {d.country}
                 </div>

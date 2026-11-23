@@ -208,12 +208,18 @@ export default function Home() {
 
       {/* PLAN TRIP CTA */}
       <section className="container-page pb-16">
-        <div className="relative overflow-hidden rounded-card bg-teal-900 text-white">
-          <MonumentArt art="minar" palette="night" rounded="rounded-card" className="absolute inset-0 opacity-70" />
+        <div className="relative overflow-hidden rounded-card bg-teal-900 text-white min-h-[220px]">
+          <img
+            src="/images/taj-mahal-sunset.jpg"
+            alt="Taj Mahal at sunset"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-950/90 via-teal-950/70 to-teal-950/30" />
           <div className="relative p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold">Plan your heritage trip</h2>
-              <p className="text-white/75 mt-2 max-w-xl">Day-wise itineraries with verified, estimated and unknown costs shown honestly.</p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">Plan your heritage trip</h2>
+              <p className="text-white/90 mt-2 max-w-xl">Day-wise itineraries with verified, estimated and unknown costs shown honestly.</p>
             </div>
             <Button as={Link} to="/plan">Plan your trip</Button>
           </div>

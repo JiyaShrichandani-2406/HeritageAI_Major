@@ -28,9 +28,8 @@ export default function Footer() {
         </nav>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-page py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-white/50">
+        <div className="container-page py-4 text-xs text-white/60">
           <span>© {new Date().getFullYear()} HeritageAI · Built for learning India's heritage.</span>
-          <span>Interface based on Option B template.</span>
         </div>
       </div>
     </footer>

@@ -446,12 +446,17 @@ export default function PlanTrip() {
           </form>
 
           <aside className="space-y-5">
-            <div className="relative rounded-card overflow-hidden">
-              <MonumentArt art="fort" palette="rust" rounded="rounded-card" className="w-full aspect-[5/4]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-teal-950/85 to-transparent" />
+            <div className="relative rounded-card overflow-hidden aspect-[5/4]">
+              <img
+                src="/images/taj-mahal-sunset.jpg"
+                alt="Taj Mahal at sunset"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-teal-950/90 via-teal-950/40 to-transparent" />
               <div className="absolute inset-0 p-5 flex flex-col justify-end text-white">
-                <div className="font-heading text-2xl font-bold">Heritage trips,</div>
-                <div className="serif-italic text-2xl">planned with context</div>
+                <div className="font-heading text-2xl font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">Heritage trips,</div>
+                <div className="serif-italic text-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">planned with context</div>
               </div>
             </div>
 
