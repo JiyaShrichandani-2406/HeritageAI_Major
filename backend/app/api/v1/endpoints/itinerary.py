@@ -152,21 +152,30 @@ def create_itinerary(request: ItineraryRequest) -> ItineraryResponse:
         ) from error
 
     except CloudflareTimeoutError as error:
-        logger.warning("Itinerary generation timed out: %s", error)
+        import sys, traceback
+        print(f"!!! ITIN 504 (CloudflareTimeout): {error!r}", flush=True)
+        traceback.print_exc(file=sys.stdout)
+        sys.stdout.flush()
         raise HTTPException(
             status_code=status.HTTP_504_GATEWAY_TIMEOUT,
             detail=str(error),
         ) from error
 
     except RuntimeError as error:
-        logger.exception("Itinerary generation service failed.")
+        import sys, traceback
+        print(f"!!! ITIN 503 (RuntimeError): {error!r}", flush=True)
+        traceback.print_exc(file=sys.stdout)
+        sys.stdout.flush()
         raise HTTPException(
             status_code=503,
             detail=str(error),
         ) from error
 
     except Exception as error:
-        logger.exception("Unexpected itinerary endpoint error.")
+        import sys, traceback
+        print(f"!!! ITIN 500 (unexpected): {error!r}", flush=True)
+        traceback.print_exc(file=sys.stdout)
+        sys.stdout.flush()
         raise HTTPException(
             status_code=500,
             detail="An unexpected error occurred while generating the itinerary.",
